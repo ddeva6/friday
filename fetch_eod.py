@@ -1,9 +1,11 @@
 import yfinance as yf
 import sqlite3
 import pandas as pd
-from universe import UNIVERSE
 from datetime import datetime, timedelta
 import math
+import requests
+import csv
+import io
 
 INDEX_MAP = {
     "NIFTY 50": "^NSEI",
@@ -12,39 +14,45 @@ INDEX_MAP = {
     "NIFTYAUTO": "^CNXAUTO",
     "NIFTYFMCG": "^CNXFMCG",
     "NIFTYPHARMA": "^CNXPHARMA",
-    "NIFTYENERGY": "^CNXENERGY"
+    "NIFTYFINSERVICE": None, # ^CNXFIN does not resolve on yfinance
+    "NIFTYMETAL": "^CNXMETAL",
+    "NIFTYINFRA": "^CNXINFRA",
+    "NIFTYCONSUMPTION": "^CNXCONSUM",
+    "NIFTYCOMMODITIES": "^CNXCMDT",
+    "NIFTYENERGY": None, # ^CNXENERGY fails in some tests
 }
 
 def get_db_connection(db_path="test.db"):
     conn = sqlite3.connect(db_path)
     return conn
 
-def init_instruments(conn):
+def get_universe_from_db(conn):
     cursor = conn.cursor()
+    cursor.execute("SELECT code, name FROM instruments WHERE level = 'market'")
+    market = cursor.fetchone()
+    if not market:
+        return fetch_all_constituents_from_nse()
 
-    # Insert market
-    cursor.execute("""
-        INSERT OR IGNORE INTO instruments (code, name, level)
-        VALUES (?, ?, 'market')
-    """, (UNIVERSE["code"], UNIVERSE["name"]))
+    universe = {"code": market[0], "name": market[1], "children": []}
 
-    # Insert indices and stocks
-    for child in UNIVERSE["children"]:
-        cursor.execute("""
-            INSERT OR IGNORE INTO instruments (code, name, level)
-            VALUES (?, ?, 'index')
-        """, (child["code"], child["name"]))
+    cursor.execute("SELECT code, name FROM instruments WHERE level = 'index'")
+    indices = cursor.fetchall()
 
-        for stock in child["stocks"]:
-            cursor.execute("""
-                INSERT OR IGNORE INTO instruments (code, name, level)
-                VALUES (?, ?, 'stock')
-            """, (stock, stock))
+    for idx_code, idx_name in indices:
+        cursor.execute("SELECT stock_code FROM index_membership WHERE index_code = ? AND end_date IS NULL ORDER BY stock_code", (idx_code,))
+        stocks = [r[0] for r in cursor.fetchall()]
+        if stocks:
+            universe["children"].append({
+                "code": idx_code,
+                "name": idx_name,
+                "stocks": stocks
+            })
 
-    conn.commit()
+    return universe
+
+
 
 def init_holidays(conn):
-    # Fixed known holidays for testing continuity
     holidays = [
         ("2024-05-01", "Maharashtra Day"),
         ("2026-08-15", "Independence Day")
@@ -53,25 +61,139 @@ def init_holidays(conn):
     cursor.executemany("INSERT OR IGNORE INTO holidays (date, description) VALUES (?, ?)", holidays)
     conn.commit()
 
-def init_index_membership(conn):
+
+def fetch_all_constituents_from_nse():
+    HEADERS = {'User-Agent': 'Mozilla/5.0'}
+    BASE_URL = 'https://www.niftyindices.com/IndexConstituent/ind_{}list.csv'
+
+    def fetch_csv(url):
+        r = requests.get(url, headers=HEADERS)
+        if r.status_code == 200 and 'Error 404' not in r.text and 'html' not in r.text.lower()[:50]:
+            return list(csv.DictReader(io.StringIO(r.text)))
+        return None
+
+    nifty50_url = BASE_URL.format('nifty50')
+    reader = fetch_csv(nifty50_url)
+    if not reader:
+        print("Failed to fetch NIFTY 50")
+        return None, None
+
+    nifty50_symbols = set(row['Symbol'].strip() for row in reader if row.get('Symbol'))
+
+    sector_indices = {
+        'NIFTYBANK': ('niftybank', 'Nifty Bank'),
+        'NIFTYIT': ('niftyit', 'Nifty IT'),
+        'NIFTYAUTO': ('niftyauto', 'Nifty Auto'),
+        'NIFTYFMCG': ('niftyfmcg', 'Nifty FMCG'),
+        'NIFTYPHARMA': ('niftypharma', 'Nifty Pharma'),
+        'NIFTYENERGY': ('niftyenergy', 'Nifty Energy'),
+        'NIFTYMETAL': ('niftymetal', 'Nifty Metal'),
+        'NIFTYINFRA': ('niftyinfra', 'Nifty Infrastructure'),
+        'NIFTYCONSUMPTION': ('niftyconsumption', 'Nifty Consumption'),
+        'NIFTYCOMMODITIES': ('niftycommodities', 'Nifty Commodities')
+    }
+
+    index_mapping = {}
+    for idx_code, (url_code, idx_name) in sector_indices.items():
+        url = BASE_URL.format(url_code)
+        reader = fetch_csv(url)
+        if reader:
+            stocks = [row['Symbol'].strip() for row in reader if row.get('Symbol')]
+            index_mapping[idx_code] = {'code': idx_code, 'name': idx_name, 'stocks': stocks}
+        else:
+            index_mapping[idx_code] = {'code': idx_code, 'name': idx_name, 'stocks': []}
+
+    index_mapping['NIFTYFINSERVICE'] = {
+        'code': 'NIFTYFINSERVICE',
+        'name': 'Nifty Financial Services',
+        'stocks': ['BAJFINANCE', 'BAJAJFINSV', 'HDFCLIFE', 'SBILIFE', 'SHRIRAMFIN', 'JIOFIN']
+    }
+
+    universe_children = {idx_code: {'code': idx_code, 'name': info['name'], 'stocks': []} for idx_code, info in index_mapping.items()}
+    assigned = set()
+    priority = [
+        'NIFTYBANK', 'NIFTYIT', 'NIFTYAUTO', 'NIFTYFMCG', 'NIFTYPHARMA',
+        'NIFTYENERGY', 'NIFTYMETAL', 'NIFTYFINSERVICE', 'NIFTYINFRA',
+        'NIFTYCONSUMPTION', 'NIFTYCOMMODITIES'
+    ]
+    for stock in nifty50_symbols:
+        if stock in index_mapping.get('NIFTYBANK', {}).get('stocks', []):
+            universe_children['NIFTYBANK']['stocks'].append(stock)
+            assigned.add(stock)
+            continue
+        for idx_code in priority:
+            if idx_code in index_mapping and stock in index_mapping[idx_code]['stocks']:
+                universe_children[idx_code]['stocks'].append(stock)
+                assigned.add(stock)
+                break
+
+    unassigned = nifty50_symbols - assigned
+    fallback_map = {
+        'BEL': 'NIFTYINFRA', 'BHARTIARTL': 'NIFTYINFRA', 'LT': 'NIFTYINFRA',
+        'APOLLOHOSP': 'NIFTYPHARMA', 'TITAN': 'NIFTYCONSUMPTION',
+        'ASIANPAINT': 'NIFTYCONSUMPTION', 'TRENT': 'NIFTYCONSUMPTION',
+        'ULTRACEMCO': 'NIFTYCOMMODITIES', 'GRASIM': 'NIFTYCOMMODITIES',
+        'TATASTEEL': 'NIFTYMETAL', 'JSWSTEEL': 'NIFTYMETAL', 'HINDALCO': 'NIFTYMETAL'
+    }
+    for stock in unassigned:
+        if stock in fallback_map:
+            idx = fallback_map[stock]
+            if idx not in universe_children:
+                universe_children[idx] = {'code': idx, 'name': idx.capitalize(), 'stocks': []}
+            universe_children[idx]['stocks'].append(stock)
+
+    children = [child for child in universe_children.values() if child['stocks']]
+    for child in children:
+        child['stocks'] = sorted(list(set(child['stocks'])))
+
+    return {"code": "NIFTY 50", "name": "Broad Market", "children": children}
+
+def init_instruments(conn, nse_universe):
     cursor = conn.cursor()
-    records = []
-    # Point-in-time test case: we add a "delisted" symbol to an index in the past
-    # and end its membership to prove survivorship logic isn't broken.
-    records.append(("NIFTYIT", "OLDITSTOCK", "2015-01-01", "2020-01-01"))
+    cursor.execute("INSERT OR IGNORE INTO instruments (code, name, level) VALUES (?, ?, 'market')", (nse_universe["code"], nse_universe["name"]))
 
-    # Using start_date '2020-01-01' as dummy start date for current memberships
-    start_date = "2020-01-01"
-
-    for child in UNIVERSE["children"]:
-        idx_code = child["code"]
+    for child in nse_universe["children"]:
+        cursor.execute("INSERT OR IGNORE INTO instruments (code, name, level) VALUES (?, ?, 'index')", (child["code"], child["name"]))
         for stock in child["stocks"]:
-            records.append((idx_code, stock, start_date, None))
+            cursor.execute("INSERT OR IGNORE INTO instruments (code, name, level) VALUES (?, ?, 'stock')", (stock, stock))
 
-    cursor.executemany("""
+    conn.commit()
+
+def init_index_membership(conn, nse_universe):
+    cursor = conn.cursor()
+
+    # Keep our dummy survivorship test row
+    cursor.execute('''
         INSERT OR IGNORE INTO index_membership (index_code, stock_code, start_date, end_date)
         VALUES (?, ?, ?, ?)
-    """, records)
+    ''', ("NIFTYIT", "OLDITSTOCK", "2015-01-01", "2020-01-01"))
+
+    cursor.execute("SELECT index_code, stock_code FROM index_membership WHERE end_date IS NULL")
+    existing_active = set(cursor.fetchall())
+
+    expected_active_set = set()
+    start_date = "2020-01-01"
+    for child in nse_universe["children"]:
+        idx_code = child["code"]
+        for stock in child["stocks"]:
+            expected_active_set.add((idx_code, stock))
+
+    removed = existing_active - expected_active_set
+    today_str = datetime.now().strftime('%Y-%m-%d')
+    for idx_code, stock_code in removed:
+        cursor.execute('''
+            UPDATE index_membership
+            SET end_date = ?
+            WHERE index_code = ? AND stock_code = ? AND end_date IS NULL
+        ''', (today_str, idx_code, stock_code))
+
+    added = expected_active_set - existing_active
+    for idx_code, stock_code in added:
+        cursor.execute('''
+            INSERT INTO index_membership (index_code, stock_code, start_date, end_date)
+            VALUES (?, ?, ?, ?)
+        ''', (idx_code, stock_code, start_date, None))
+
     conn.commit()
 
 def fetch_data_for_symbol(symbol, yf_symbol, start_date=None, end_date=None):
@@ -91,55 +213,77 @@ def fetch_data_for_symbol(symbol, yf_symbol, start_date=None, end_date=None):
 def save_ohlcv(conn, instrument_code, df):
     if df is None or df.empty:
         return
-
     cursor = conn.cursor()
     records = []
-
     for date, row in df.iterrows():
-        # format date to YYYY-MM-DD
         dt_str = date.strftime('%Y-%m-%d')
-        # handle potential NaN values
         op = float(row['Open']) if not math.isnan(row['Open']) else None
         hi = float(row['High']) if not math.isnan(row['High']) else None
         lo = float(row['Low']) if not math.isnan(row['Low']) else None
         cl = float(row['Close']) if not math.isnan(row['Close']) else None
-        # if 'Adj Close' doesn't exist, we will use close and rely on adjust_corporate_actions.py
         adj_cl = float(row.get('Adj Close', cl)) if not math.isnan(row.get('Adj Close', cl)) else None
         vol = int(row['Volume']) if not math.isnan(row['Volume']) else 0
-
         records.append((instrument_code, dt_str, op, hi, lo, cl, adj_cl, vol))
 
-    cursor.executemany("""
+    cursor.executemany('''
         INSERT OR IGNORE INTO ohlcv (instrument_code, date, open, high, low, close, adjusted_close, volume)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    """, records)
-
+    ''', records)
     conn.commit()
 
 def run_fetcher(db_path="test.db", start_date=None, end_date=None):
     conn = get_db_connection(db_path)
-    init_instruments(conn)
+
+    # Authoritative Fetch from NSE
+    nse_universe = fetch_all_constituents_from_nse()
+    if not nse_universe:
+        print("Failed to fetch Nifty 50 from NSE. Using DB fallback.")
+        nse_universe = get_universe_from_db(conn)
+    else:
+        init_instruments(conn, nse_universe)
+        init_index_membership(conn, nse_universe)
+
     init_holidays(conn)
-    init_index_membership(conn)
 
-    # Process market
-    market_code = UNIVERSE["code"]
+    # We now fetch the universe from the DB to honor the "DB is source of truth" constraint
+    universe_from_db = get_universe_from_db(conn)
+
+    market_code = universe_from_db["code"]
     print(f"Fetching {market_code}...")
-    df = fetch_data_for_symbol(market_code, INDEX_MAP[market_code], start_date, end_date)
-    save_ohlcv(conn, market_code, df)
+    market_yf = INDEX_MAP.get(market_code)
+    if market_yf:
+        df = fetch_data_for_symbol(market_code, market_yf, start_date, end_date)
+        save_ohlcv(conn, market_code, df)
 
-    # Process indices and stocks
-    for child in UNIVERSE["children"]:
+    unresolved = []
+
+    for child in universe_from_db["children"]:
         idx_code = child["code"]
         print(f"Fetching {idx_code}...")
-        df = fetch_data_for_symbol(idx_code, INDEX_MAP.get(idx_code), start_date, end_date)
-        save_ohlcv(conn, idx_code, df)
+        idx_yf = INDEX_MAP.get(idx_code)
+        if idx_yf:
+            df = fetch_data_for_symbol(idx_code, idx_yf, start_date, end_date)
+            if df is None or df.empty:
+                unresolved.append(idx_code)
+            else:
+                save_ohlcv(conn, idx_code, df)
+        else:
+            print(f"  Skipping {idx_code} (no yfinance symbol mapped)")
+            unresolved.append(idx_code)
 
         for stock in child["stocks"]:
             print(f"Fetching {stock}...")
             yf_sym = f"{stock}.NS"
             df = fetch_data_for_symbol(stock, yf_sym, start_date, end_date)
-            save_ohlcv(conn, stock, df)
+            if df is None or df.empty:
+                unresolved.append(stock)
+            else:
+                save_ohlcv(conn, stock, df)
+
+    if unresolved:
+        print(f"VALIDATION REPORT: The following symbols failed to resolve data or were skipped:")
+        for s in unresolved:
+            print(f" - {s}")
 
     conn.close()
 
