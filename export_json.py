@@ -66,16 +66,32 @@ def export_data(output_dir="data"):
         hist = df['adjusted_close'].tolist()
         last = hist[-1]
 
-        # Forecast contract shape with empty forecast cones
+        # Get forecast from DB
+        c.execute("SELECT ret, cone_width_pct, med_json, up_json, lo_json FROM forecasts WHERE instrument_code = ? ORDER BY asof_date DESC LIMIT 1", (inst,))
+        f_row = c.fetchone()
+
+        med = []
+        up = []
+        lo = []
+        ret = 0.0
+        cone_width_pct = 0.0
+
+        if f_row:
+            ret, cone_width_pct, med_json, up_json, lo_json = f_row
+            if med_json: med = json.loads(med_json)
+            if up_json: up = json.loads(up_json)
+            if lo_json: lo = json.loads(lo_json)
+
+        # Forecast contract shape with populated forecast cones
         data = {
             "code": inst,
             "last": last,
             "hist": hist,
-            "med": [],
-            "up": [],
-            "lo": [],
-            "ret": 0.0,
-            "cone_width_pct": 0.0,
+            "med": med,
+            "up": up,
+            "lo": lo,
+            "ret": ret,
+            "cone_width_pct": cone_width_pct,
             "asof": df.iloc[-1]['date']
         }
 
