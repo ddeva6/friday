@@ -1,3 +1,4 @@
+import yaml
 import yfinance as yf
 import sqlite3
 import pandas as pd
@@ -24,6 +25,10 @@ INDEX_MAP = {
 
 def get_db_connection(db_path="test.db"):
     conn = sqlite3.connect(db_path)
+    import os
+    if os.path.exists("schema.sql"):
+        with open("schema.sql", "r") as f:
+            conn.executescript(f.read())
     return conn
 
 def get_universe_from_db(conn):
@@ -53,9 +58,25 @@ def get_universe_from_db(conn):
 
 
 def init_holidays(conn):
+    # Expanded list of known NSE holidays for 2024-2026
     holidays = [
+        ("2024-01-22", "Special Holiday"),
+        ("2024-01-26", "Republic Day"),
+        ("2024-03-08", "Mahashivratri"),
+        ("2024-03-25", "Holi"),
+        ("2024-03-29", "Good Friday"),
+        ("2024-04-11", "Id-Ul-Fitr (Ramadan Eid)"),
+        ("2024-04-17", "Shri Ram Navmi"),
         ("2024-05-01", "Maharashtra Day"),
-        ("2026-08-15", "Independence Day")
+        ("2024-05-20", "Parliamentary Elections"),
+        ("2024-06-17", "Bakri Id"),
+        ("2024-07-17", "Muharram"),
+        ("2024-08-15", "Independence Day"),
+        ("2024-10-02", "Mahatma Gandhi Jayanti"),
+        ("2024-11-01", "Diwali-Laxmi Pujan"),
+        ("2024-11-15", "Gurunanak Jayanti"),
+        ("2024-11-20", "Assembly Elections"),
+        ("2024-12-25", "Christmas")
     ]
     cursor = conn.cursor()
     cursor.executemany("INSERT OR IGNORE INTO holidays (date, description) VALUES (?, ?)", holidays)
@@ -76,7 +97,7 @@ def fetch_all_constituents_from_nse():
     reader = fetch_csv(nifty50_url)
     if not reader:
         print("Failed to fetch NIFTY 50")
-        return None, None
+        return None
 
     nifty50_symbols = set(row['Symbol'].strip() for row in reader if row.get('Symbol'))
 
@@ -202,9 +223,9 @@ def fetch_data_for_symbol(symbol, yf_symbol, start_date=None, end_date=None):
         period = "1y" if start_date is None else None
 
         if start_date:
-            df = ticker.history(start=start_date, end=end_date)
+            df = ticker.history(start=start_date, end=end_date, auto_adjust=True)
         else:
-            df = ticker.history(period=period)
+            df = ticker.history(period=period, auto_adjust=True)
         return df
     except Exception as e:
         print(f"Error fetching data for {symbol}: {e}")
@@ -221,7 +242,7 @@ def save_ohlcv(conn, instrument_code, df):
         hi = float(row['High']) if not math.isnan(row['High']) else None
         lo = float(row['Low']) if not math.isnan(row['Low']) else None
         cl = float(row['Close']) if not math.isnan(row['Close']) else None
-        adj_cl = float(row.get('Adj Close', cl)) if not math.isnan(row.get('Adj Close', cl)) else None
+        adj_cl = cl # We use auto_adjust=True, so Close IS the adjusted close
         vol = int(row['Volume']) if not math.isnan(row['Volume']) else 0
         records.append((instrument_code, dt_str, op, hi, lo, cl, adj_cl, vol))
 
@@ -231,12 +252,22 @@ def save_ohlcv(conn, instrument_code, df):
     ''', records)
     conn.commit()
 
-def run_fetcher(db_path="test.db", start_date=None, end_date=None):
+def run_fetcher(db_path=None, start_date=None, end_date=None):
+    if db_path is None or start_date is None or end_date is None:
+        try:
+            with open("config.yaml", "r") as f:
+                config = yaml.safe_load(f)
+            db_path = db_path or config.get("database", {}).get("path", "test.db")
+            start_date = start_date or config.get("dates", {}).get("start")
+            end_date = end_date or config.get("dates", {}).get("end")
+        except Exception:
+            db_path = db_path or "test.db"
+
     conn = get_db_connection(db_path)
 
     # Authoritative Fetch from NSE
     nse_universe = fetch_all_constituents_from_nse()
-    if not nse_universe:
+    if nse_universe is None:
         print("Failed to fetch Nifty 50 from NSE. Using DB fallback.")
         nse_universe = get_universe_from_db(conn)
     else:
@@ -288,7 +319,7 @@ def run_fetcher(db_path="test.db", start_date=None, end_date=None):
     conn.close()
 
 if __name__ == "__main__":
-    run_fetcher(start_date="2024-05-01", end_date="2024-06-05")
+    run_fetcher()
 
     conn = get_db_connection()
     c = conn.cursor()

@@ -7,10 +7,10 @@ def main():
     print("Running Phase 1 Pipeline...")
     print("1. Fetching EOD data...")
     # Fetching data for a small range to keep it quick for testing
-    run_fetcher(db_path="test.db", start_date="2024-05-01", end_date="2024-06-05")
+    run_fetcher()
 
     print("2. Adjusting corporate actions...")
-    run_adjustments(db_path="test.db")
+    run_adjustments()
 
     print("Phase 1 data pipeline completed successfully.")
 

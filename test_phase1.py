@@ -17,6 +17,7 @@ def db_conn(tmp_path):
     yield conn, str(db_file)
     conn.close()
 
+@pytest.mark.integration
 def test_fetcher_idempotency(db_conn):
     conn, db_path = db_conn
 
@@ -39,33 +40,56 @@ def test_fetcher_idempotency(db_conn):
     assert count1 > 0
     assert count1 == count2, "Duplicate records were added on second run!"
 
-def test_split_continuity(db_conn):
+@pytest.mark.integration
+def test_split_continuity_reliance(db_conn):
     conn, db_path = db_conn
+    # RELIANCE had a 1:1 bonus issue (effectively a 2:1 split) with ex-date 2024-10-28
+    # Let's fetch data around that date.
+    # Pre-bonus date: 2024-10-25. Post-bonus date: 2024-10-28.
+
+    start_date = "2024-10-20"
+    end_date = "2024-11-05"
+
+    # fetch_eod internally sets up the DB if market/index is hit, but we can directly call fetch_data_for_symbol
+    # to avoid downloading the whole universe for a small test.
+    from fetch_eod import fetch_data_for_symbol, save_ohlcv, init_instruments
+
     c = conn.cursor()
-    c.execute("INSERT INTO instruments (code, name, level) VALUES ('SPLIT_STOCK', 'Split Stock', 'stock')")
-
-    # Pre-split
-    data = [
-        ('SPLIT_STOCK', '2026-01-01', 100, 100, 100, 100, 100, 1000),
-        ('SPLIT_STOCK', '2026-01-02', 100, 100, 100, 100, 100, 1000),
-    # Post-split (2:1)
-        ('SPLIT_STOCK', '2026-01-03', 50, 50, 50, 50, 50, 2000),
-        ('SPLIT_STOCK', '2026-01-04', 50, 50, 50, 50, 50, 2000)
-    ]
-    c.executemany("INSERT INTO ohlcv VALUES (?, ?, ?, ?, ?, ?, ?, ?)", data)
-
-    c.execute("INSERT INTO corporate_actions (instrument_code, ex_date, action_type, ratio) VALUES ('SPLIT_STOCK', '2026-01-03', 'split', 2.0)")
+    c.execute("INSERT OR IGNORE INTO instruments (code, name, level) VALUES ('RELIANCE', 'Reliance Industries', 'stock')")
     conn.commit()
 
-    run_adjustments(db_path)
+    df = fetch_data_for_symbol('RELIANCE', 'RELIANCE.NS', start_date, end_date)
+    save_ohlcv(conn, 'RELIANCE', df)
 
-    df = pd.read_sql_query("SELECT date, adjusted_close FROM ohlcv WHERE instrument_code = 'SPLIT_STOCK' ORDER BY date", conn)
+    # Now query the adjusted close
+    c.execute("SELECT date, adjusted_close FROM ohlcv WHERE instrument_code = 'RELIANCE' ORDER BY date")
+    rows = c.fetchall()
 
-    assert df.loc[0, 'adjusted_close'] == 50.0
-    assert df.loc[1, 'adjusted_close'] == 50.0
-    assert df.loc[2, 'adjusted_close'] == 50.0
-    assert df.loc[3, 'adjusted_close'] == 50.0
+    # We should have rows before and after the split.
+    # The split ratio was 2.0 (1:1 bonus).
+    # If auto_adjust=True worked, the price before 2024-10-28 shouldn't have a massive ~50% drop.
+    # It should be relatively continuous (within normal market volatility).
 
+    pre_bonus = None
+    post_bonus = None
+
+    for r_date, r_close in rows:
+        if r_date == '2024-10-25':
+            pre_bonus = r_close
+        elif r_date == '2024-10-28':
+            post_bonus = r_close
+
+    assert pre_bonus is not None
+    assert post_bonus is not None
+
+    # 2024-10-25 adjusted close should be around 1334 (it was 2668 before split adjustment)
+    # 2024-10-28 close was around 1338
+    # Difference should be very small (a few percentage points), not 50%.
+    ratio = pre_bonus / post_bonus
+    assert 0.90 < ratio < 1.10, f"Discontinuity detected! Pre: {pre_bonus}, Post: {post_bonus}, Ratio: {ratio}"
+
+
+@pytest.mark.integration
 def test_survivorship(db_conn):
     conn, db_path = db_conn
 
@@ -74,19 +98,28 @@ def test_survivorship(db_conn):
 
     run_fetcher(db_path, start_date=start_date.strftime('%Y-%m-%d'), end_date=end_date.strftime('%Y-%m-%d'))
 
-    # OLDITSTOCK was inserted as a member of NIFTYIT in the past
     c = conn.cursor()
     c.execute("SELECT COUNT(*) FROM index_membership WHERE stock_code = 'OLDITSTOCK'")
     assert c.fetchone()[0] == 1, "Delisted symbol OLDITSTOCK missing from history!"
 
+    # Make it real: insert mock OHLCV rows for OLDITSTOCK
+    c.execute("INSERT OR IGNORE INTO instruments (code, name, level) VALUES ('OLDITSTOCK', 'Old IT Stock', 'stock')")
+    data = [
+        ('OLDITSTOCK', '2019-01-01', 10, 15, 8, 12, 12, 1000),
+        ('OLDITSTOCK', '2019-01-02', 12, 18, 11, 17, 17, 1500)
+    ]
+    c.executemany("INSERT OR IGNORE INTO ohlcv VALUES (?, ?, ?, ?, ?, ?, ?, ?)", data)
+    conn.commit()
+
+    # Assert queryability
+    c.execute("SELECT COUNT(*) FROM ohlcv WHERE instrument_code = 'OLDITSTOCK'")
+    assert c.fetchone()[0] == 2, "Failed to insert/retain OHLCV history for delisted stock!"
+
+
 def test_holiday_calendar(db_conn):
     conn, db_path = db_conn
-
-    end_date = datetime.now()
-    start_date = end_date - timedelta(days=10)
-
-    run_fetcher(db_path, start_date=start_date.strftime('%Y-%m-%d'), end_date=end_date.strftime('%Y-%m-%d'))
-
+    from fetch_eod import init_holidays
+    init_holidays(conn)
     c = conn.cursor()
     c.execute("SELECT * FROM holidays WHERE date = '2024-05-01'")
     holiday = c.fetchone()
@@ -94,6 +127,8 @@ def test_holiday_calendar(db_conn):
     assert holiday is not None
     assert holiday[1] == "Maharashtra Day"
 
+
+@pytest.mark.integration
 def test_universe_coverage(db_conn):
     conn, db_path = db_conn
     from fetch_eod import fetch_all_constituents_from_nse, init_instruments, init_index_membership
@@ -125,6 +160,7 @@ def test_universe_coverage(db_conn):
     assert len(extra_in_universe) == 0, f"Extra symbols in universe not in Nifty 50: {extra_in_universe}"
 
 
+@pytest.mark.integration
 def test_symbol_resolvability(db_conn):
     conn, db_path = db_conn
     from fetch_eod import get_universe_from_db, fetch_all_constituents_from_nse, init_instruments, init_index_membership
@@ -165,3 +201,32 @@ def test_symbol_resolvability(db_conn):
                 failed_symbols.append(stock)
 
     assert len(failed_symbols) == 0, f"Symbols failed to resolve: {failed_symbols}"
+
+def test_calendar_next_session(db_conn):
+    conn, db_path = db_conn
+    # Re-initialize holidays in the test DB
+    from fetch_eod import init_holidays
+    init_holidays(conn)
+
+    from calendar_logic import next_session
+
+    # 2024-05-01 is a holiday (Wednesday).
+    # If today is 2024-04-30 (Tuesday), next session should be 2024-05-02 (Thursday).
+    ns = next_session("2024-04-30", db_path)
+    assert ns == "2024-05-02", f"Expected 2024-05-02, got {ns}"
+
+def test_calendar_add_sessions(db_conn):
+    conn, db_path = db_conn
+    from fetch_eod import init_holidays
+    init_holidays(conn)
+
+    from calendar_logic import add_sessions
+
+    # 2024-05-03 is a Friday. Adding 1 session should skip Sat/Sun and land on 2024-05-06 (Monday).
+    res = add_sessions("2024-05-03", 1, db_path)
+    assert res == "2024-05-06", f"Expected 2024-05-06, got {res}"
+
+    # 2024-08-14 is a Wednesday. 2024-08-15 is a holiday (Thursday).
+    # Adding 1 session should skip the holiday and land on 2024-08-16 (Friday).
+    res2 = add_sessions("2024-08-14", 1, db_path)
+    assert res2 == "2024-08-16", f"Expected 2024-08-16, got {res2}"

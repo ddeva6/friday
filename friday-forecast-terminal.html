@@ -141,7 +141,36 @@
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
 function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
 
-const UNIVERSE={code:"NIFTY 50",name:"Broad Market",base:24850,children:[
+
+let UNIVERSE = null;
+let REAL_DATA = {};
+
+async function loadRealData() {
+    try {
+        const res = await fetch('data/index.json');
+        if (res.ok) {
+            UNIVERSE = await res.json();
+            let codes = [(UNIVERSE || FALLBACK_UNIVERSE).code];
+            (UNIVERSE || FALLBACK_UNIVERSE).children.forEach(c => {
+                codes.push(c.code);
+                codes.push(...c.stocks);
+            });
+            await Promise.all(codes.map(async code => {
+                try {
+                    let r = await fetch(`data/${code}.json`);
+                    if (r.ok) {
+                        REAL_DATA[code] = await r.json();
+                    }
+                } catch(e) {}
+            }));
+            document.querySelector('.pill').textContent = "Real NSE Data";
+        }
+    } catch (e) {
+        console.log("Could not load real data, falling back to mock");
+    }
+}
+
+const FALLBACK_UNIVERSE={code:"NIFTY 50",name:"Broad Market",base:24850,children:[
   {code:"BANKNIFTY",name:"Nifty Bank",base:53120,stocks:[["HDFCBANK","HDFC Bank",1685],["ICICIBANK","ICICI Bank",1248],["SBIN","State Bank",842],["AXISBANK","Axis Bank",1156],["KOTAKBANK","Kotak Mahindra",1792],["INDUSINDBK","IndusInd",975]]},
   {code:"NIFTYIT",name:"Nifty IT",base:42380,stocks:[["TCS","Tata Consultancy",4120],["INFY","Infosys",1876],["HCLTECH","HCL Tech",1654],["WIPRO","Wipro",298],["TECHM","Tech Mahindra",1685],["LTIM","LTIMindtree",6240]]},
   {code:"NIFTYAUTO",name:"Nifty Auto",base:26740,stocks:[["MARUTI","Maruti Suzuki",12480],["TATAMOTORS","Tata Motors",986],["M&M","Mahindra",2945],["BAJAJ-AUTO","Bajaj Auto",9320],["EICHERMOT","Eicher Motors",4815],["HEROMOTOCO","Hero MotoCorp",4690]]},
@@ -152,6 +181,17 @@ const UNIVERSE={code:"NIFTY 50",name:"Broad Market",base:24850,children:[
 
 const HIST=60,FC=5;
 function series(code,base){
+  if (REAL_DATA[code]) {
+      let rd = REAL_DATA[code];
+      let med = rd.med, up = rd.up, lo = rd.lo;
+      if (!med || !med.length) {
+          med = Array(FC).fill(rd.last);
+          up = Array(FC).fill(rd.last);
+          lo = Array(FC).fill(rd.last);
+      }
+      return {hist: rd.hist.slice(-HIST), med: med, up: up, lo: lo, last: rd.last, ret: rd.ret};
+  }
+
   const r=mulberry32(hash(code));
   const drift=(r()-0.5)*0.0016,vol=0.006+r()*0.014;
   let px=base*(0.93+r()*0.08);const hist=[];
@@ -205,18 +245,18 @@ function renderDrill(){
   grid.innerHTML='';st.innerHTML='';
   let focus,children=[],childKind='';
   if(state.level==='market'){
-    focus={code:UNIVERSE.code,name:UNIVERSE.name,s:series(UNIVERSE.code,UNIVERSE.base)};
-    children=UNIVERSE.children;childKind='index';
+    focus={code:(UNIVERSE || FALLBACK_UNIVERSE).code,name:(UNIVERSE || FALLBACK_UNIVERSE).name,s:series((UNIVERSE || FALLBACK_UNIVERSE).code,UNIVERSE.base)};
+    children=(UNIVERSE || FALLBACK_UNIVERSE).children;childKind='index';
     crumb.innerHTML=`<span class="here">Market · NIFTY 50</span>`;
   }else if(state.level==='index'){
-    const ix=UNIVERSE.children[state.idx];
+    const ix=(UNIVERSE || FALLBACK_UNIVERSE).children[state.idx];
     focus={code:ix.code,name:ix.name,s:series(ix.code,ix.base)};
     children=ix.stocks;childKind='stock';
     crumb.innerHTML=`<button onclick="goMarket()">Market</button><span class="sep">›</span><span class="here">${ix.code}</span>`;
   }else{
-    const ix=UNIVERSE.children[state.idx],stk=ix.stocks[state.stock];
-    focus={code:stk[0],name:stk[1],s:series(stk[0],stk[2])};
-    crumb.innerHTML=`<button onclick="goMarket()">Market</button><span class="sep">›</span><button onclick="goIndex(${state.idx})">${ix.code}</button><span class="sep">›</span><span class="here">${stk[0]}</span>`;
+    const ix=(UNIVERSE || FALLBACK_UNIVERSE).children[state.idx],stk=ix.stocks[state.stock];
+    if(Array.isArray(stk)){if(Array.isArray(stk)){if(Array.isArray(stk)){focus={code:stk[0],name:stk[1],s:series(stk[0],stk[2])};}else{focus={code:stk,name:stk,s:series(stk,1000)};}}else{focus={code:stk,name:stk,s:series(stk,1000)};}}else{focus={code:stk,name:stk,s:series(stk,1000)};}
+    crumb.innerHTML=`<button onclick="goMarket()">Market</button><span class="sep">›</span><button onclick="goIndex(${state.idx})">${ix.code}</button><span class="sep">›</span><span class="here">${Array.isArray(stk) ? stk[0] : stk}</span>`;
   }
   const s=focus.s,up=s.ret>=0;
   hero.innerHTML=`<div class="hero-top">
@@ -248,11 +288,11 @@ function renderDrill(){
   }
   st.innerHTML=state.level==='market'
     ? `<h2>Sector indices</h2><span class="hint">tap to drill in</span>`
-    : `<h2>Constituents · ${UNIVERSE.children[state.idx].code}</h2><span class="hint">tap a stock</span>`;
+    : `<h2>Constituents · ${(UNIVERSE || FALLBACK_UNIVERSE).children[state.idx].code}</h2><span class="hint">tap a stock</span>`;
   children.forEach((c,i)=>{
     let code,nm,base,onclick;
     if(childKind==='index'){code=c.code;nm=c.name;base=c.base;onclick=`goIndex(${i})`;}
-    else{code=c[0];nm=c[1];base=c[2];onclick=`goStock(${state.idx},${i})`;}
+    else{if(Array.isArray(c)){code=c[0];nm=c[1];base=c[2];}else{code=c;nm=c;base=1000;}onclick=`goStock(${state.idx},${i})`;}
     const cs=series(code,base),up=cs.ret>=0;
     const card=document.createElement('div');card.className='card';card.setAttribute('onclick',onclick);
     card.innerHTML=`<span class="drillicon">→</span><div class="cn">${code}</div><div class="cc">${nm}</div>
@@ -267,11 +307,11 @@ let sortDir=-1;
 function setSort(){sortDir*=-1;renderScreener();}
 function renderScreener(){
   const fidx=document.getElementById('f-idx');
-  if(!fidx.options.length)fidx.innerHTML=`<option value="all">All indices</option>`+UNIVERSE.children.map(c=>`<option value="${c.code}">${c.code}</option>`).join('');
+  if(!fidx.options.length)fidx.innerHTML=`<option value="all">All indices</option>`+(UNIVERSE || FALLBACK_UNIVERSE).children.map(c=>`<option value="${c.code}">${c.code}</option>`).join('');
   const dir=document.getElementById('f-dir').value,idxf=fidx.value;
   let rows=[];
-  UNIVERSE.children.forEach((ix,ii)=>ix.stocks.forEach((stk,si)=>{
-    const s=series(stk[0],stk[2]);rows.push({code:stk[0],name:stk[1],idx:ix.code,ii,si,last:s.last,ret:s.ret});
+  (UNIVERSE || FALLBACK_UNIVERSE).children.forEach((ix,ii)=>ix.stocks.forEach((stk,si)=>{
+    let c=Array.isArray(stk)?stk[0]:stk; let n=Array.isArray(stk)?stk[1]:stk; const s=series(c,1000); rows.push({code:c,name:n,idx:ix.code,ii,si,last:s.last,ret:s.ret});
   }));
   rows=rows.filter(r=>{
     if(dir==='up'&&r.ret<0)return false;
@@ -291,7 +331,7 @@ function renderScreener(){
   html+=`</tbody>`;
   document.getElementById('screen-table').innerHTML=html;
 }
-renderDrill();
+loadRealData().then(() => renderDrill());
 </script>
 </body>
 </html>
