@@ -10,17 +10,17 @@ import io
 
 INDEX_MAP = {
     "NIFTY 50": "^NSEI",
-    "BANKNIFTY": "^NSEBANK",
+    "NIFTYBANK": "^NSEBANK",
     "NIFTYIT": "^CNXIT",
     "NIFTYAUTO": "^CNXAUTO",
     "NIFTYFMCG": "^CNXFMCG",
     "NIFTYPHARMA": "^CNXPHARMA",
-    "NIFTYFINSERVICE": None, # ^CNXFIN does not resolve on yfinance
+    "NIFTYFINSERVICE": None,
     "NIFTYMETAL": "^CNXMETAL",
     "NIFTYINFRA": "^CNXINFRA",
     "NIFTYCONSUMPTION": "^CNXCONSUM",
     "NIFTYCOMMODITIES": "^CNXCMDT",
-    "NIFTYENERGY": None, # ^CNXENERGY fails in some tests
+    "NIFTYENERGY": "^CNXENERGY",
 }
 
 def get_db_connection(db_path="test.db"):

@@ -72,9 +72,9 @@ def export_data(output_dir="data"):
             if (datetime.now() - updated_at).days < 30:
                 needs_fetch = False
 
-        if needs_fetch:
+        is_index = inst.startswith("NIFTY") or inst == "BANKNIFTY"
+        if needs_fetch and not is_index:
             try:
-                # yfinance is the fundamentals data source
                 ticker = yf.Ticker(inst + ".NS")
                 info = ticker.info
                 mcap_cr = info.get('marketCap', 0) / 1e7
@@ -168,7 +168,7 @@ def export_data(output_dir="data"):
             "cone_width_pct": cone_width_pct,
             "asof": last_date_str,
             "fundamentals": {
-                "mcap_cr": f_data[0] if f_data and f_data[0] is not None else "N/A",
+                "mcap_cr": f_data[0] if f_data and f_data[0] is not None and f_data[0] > 0 else "N/A",
                 "pe": f_data[1] if f_data and f_data[1] is not None else "N/A",
                 "roe": f_data[2] if f_data and f_data[2] is not None else "N/A",
                 "de": f_data[3] if f_data and f_data[3] is not None else "N/A",
