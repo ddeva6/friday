@@ -32,6 +32,8 @@ Most retail forecast tools give you a single number. FRIDAY gives you an **uncer
 ### Option 1: Just view the dashboard
 Visit [https://ddeva6.github.io/friday/](https://ddeva6.github.io/friday/). Data refreshes automatically every weekday.
 
+The dashboard supports dark/light mode and adapts automatically to your device theme. A theme toggle button is also available in the UI.
+
 ### Option 2: One-click Colab (GPU)
 1. Open the [Colab notebook](https://colab.research.google.com/github/ddeva6/friday/blob/main/friday_colab.ipynb)
 2. Set runtime to **T4 GPU**
@@ -43,18 +45,34 @@ pip install -r requirements.txt
 pip install -r requirements-gpu.txt  # for forecasts (GPU/CPU)
 
 python runner.py            # fetch → forecast → export
+python -m http.server 8000  # serve the dashboard locally
+```
+Then open:
+
+http://localhost:8000/friday-forecast-terminal.html
+
+To run the backtest instead:
+```bash
 python runner.py backtest   # walk-forward directional backtest
 ```
+
+## Screenshots
+
+### Dark mode
+![FRIDAY dark theme](docs/images/screenshot-dark.png)
+
+### Light mode
+![FRIDAY light theme](docs/images/screenshot-light.png)
 
 ## Architecture
 
 ```
-┌─────────────┐     ┌──────────────┐     ┌─────────────┐     ┌──────────────┐
-│  NSE India   │     │   yfinance   │     │   Kronos    │     │ GitHub Pages │
-│  (universe)  │────▶│  (OHLCV +    │────▶│  (forecast)  │────▶│ (dashboard)  │
-│              │     │  fundamentals)│     │              │     │              │
-└─────────────┘     └──────────────┘     └─────────────┘     └──────────────┘
-       Phase 1              Phase 1           Phase 2             Phase 3
+┌─────────────┐       ┌───────────────┐       ┌──────────────┐      ┌──────────────┐
+│  NSE India  │       │   yfinance    │       │   Kronos     │      │ GitHub Pages │
+│  (universe) │────>  │  (OHLCV +     │────>  │  (forecast)  │────> │ (dashboard)  │
+│             │       │  fundamentals)│       │              │      │              │
+└─────────────┘       └───────────────┘       └──────────────┘      └──────────────┘
+    Phase 1               Phase 1                  Phase 2              Phase 3
 ```
 
 | Phase | What it does | Key file |

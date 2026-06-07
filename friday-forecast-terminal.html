@@ -14,13 +14,18 @@
     --accent:#e8a13a;--up:#54c08a;--down:#e06a5a;--band:rgba(232,161,58,.10);
     --mono:'JetBrains Mono',ui-monospace,monospace;--disp:'Fraunces',Georgia,serif;--body:'Archivo',system-ui,sans-serif;
   }
+  html.light{
+    --bg:#f5f3ef;--panel:#ffffff;--panel-2:#f7f4ee;--line:#d7d2c5;
+    --ink:#1f1b16;--ink-dim:#6f6a5f;--ink-faint:#8c8472;
+    --accent:#c16f24;--up:#2d8a59;--down:#b64443;--band:rgba(193,111,36,.12);
+  }
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:radial-gradient(1200px 600px at 80% -10%,rgba(232,161,58,.06),transparent 60%),var(--bg);
     color:var(--ink);font-family:var(--body);line-height:1.45;min-height:100vh;-webkit-font-smoothing:antialiased}
   .wrap{max-width:1100px;margin:0 auto;padding:0 22px 70px}
   header{display:flex;align-items:center;gap:18px;padding:22px 0 18px;border-bottom:1px solid var(--line);
-    position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg),rgba(13,12,10,.86));backdrop-filter:blur(8px)}
-  .logo{font-family:var(--disp);font-weight:600;font-size:26px;letter-spacing:.5px;line-height:1}
+    position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg),var(--panel));backdrop-filter:blur(8px)}
+  .logo{font-family:var(--disp);font-weight:600;font-size:26px;letter-spacing:.5px;line-height:1;margin-left:12px;}
   .logo b{color:var(--accent)}
   .logo span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:2.5px;color:var(--ink-faint);font-weight:400;text-transform:uppercase;margin-top:4px}
   .spacer{flex:1}
@@ -29,6 +34,10 @@
   .tab:hover{color:var(--ink)}
   .tab.active{background:var(--panel-2);color:var(--accent)}
   .pill{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(232,161,58,.4);color:var(--accent);padding:5px 9px;border-radius:100px}
+  .theme-toggle{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:50%;background:var(--panel);color:var(--ink);cursor:pointer;transition:background .25s ease, color .25s ease, transform .2s ease, box-shadow .25s ease;margin-right:12px;}
+  .theme-toggle:hover{transform:translateY(-1px) scale(1.02);box-shadow:0 12px 28px rgba(0,0,0,.12)}
+  .theme-toggle span{font-size:24px;line-height:1;transition:transform .25s ease, opacity .25s ease;display:inline-flex;align-items:center;justify-content:center}
+  .theme-toggle[data-theme="light"] span{transform:rotate(0deg);}  .theme-toggle[data-theme="dark"] span{transform:rotate(360deg);}
   .crumb{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--ink-faint);padding:18px 0 4px;flex-wrap:wrap}
   .crumb button{font-family:var(--mono);font-size:12px;background:none;border:none;color:var(--ink-dim);cursor:pointer;padding:0;transition:.15s}
   .crumb button:hover{color:var(--accent)}
@@ -100,6 +109,40 @@
     .spacer{display:none}header{flex-wrap:wrap}
     .fund-grid{grid-template-columns:1fr 1fr}
   }
+  /* Firefox */
+  * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) var(--panel);
+  }
+
+  /* Chrome, Edge, Safari */
+  ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: var(--panel);
+      border-left: 1px solid var(--line);
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+          180deg,
+          var(--accent),
+          color-mix(in srgb, var(--accent) 70%, var(--panel))
+      );
+      border-radius: 999px;
+      border: 2px solid var(--panel);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+  }
+
+  ::-webkit-scrollbar-corner {
+      background: var(--panel);
+  }
 </style>
 </head>
 <body>
@@ -112,6 +155,7 @@
       <button class="tab" id="tab-screen" onclick="setView('screener')">Screener</button>
     </div>
     <div class="pill">Demo data</div>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span>🌙</span></button>
   </header>
   <div id="update-bar" style="display:flex;align-items:center;gap:12px;padding:10px 0 0;font-family:var(--mono);font-size:11px;color:var(--ink-faint)">
     <span id="last-updated">Loading...</span>
@@ -144,8 +188,26 @@
 <script>
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
 function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
-
-
+function applyTheme(theme){
+  const html=document.documentElement;
+  html.classList.toggle('light', theme==='light');
+  const btn=document.getElementById('theme-toggle');
+  if(btn){
+    btn.dataset.theme = theme;
+    btn.querySelector('span').textContent = theme==='light' ? '☀' : '🌙';
+  }
+  try{localStorage.setItem('fridayTheme', theme);}catch(e){}
+}
+function toggleTheme(){
+  const theme=document.documentElement.classList.contains('light') ? 'dark' : 'light';
+  applyTheme(theme);
+}
+function initTheme(){
+  let theme='dark';
+  try{const stored=localStorage.getItem('fridayTheme'); if(stored==='light' || stored==='dark') theme=stored;
+  else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) theme='light';}catch(e){}
+  applyTheme(theme);
+}
 let UNIVERSE = null;
 let REAL_DATA = {};
 
@@ -385,6 +447,7 @@ function renderScreener(){
   html+=`</tbody>`;
   document.getElementById('screen-table').innerHTML=html;
 }
+initTheme();
 loadRealData().then(() => renderDrill());
 </script>
 </body>
