@@ -69,7 +69,7 @@ python runner.py backtest # walk-forward backtest
 
 ```
 fetch_eod.py          Phase 1 — EOD data from yfinance + NSE
-forecast_batch.py     Phase 2 — Chronos time-series forecasts
+forecast_batch.py     Phase 2 — Kronos time-series forecasts
 export_json.py        Phase 3 — Export DB to static JSON
 runner.py             CLI orchestrator
 backtest.py           Walk-forward directional backtest
@@ -81,7 +81,7 @@ config.yaml           Runtime configuration
 
 ### Data Flow
 ```
-NSE/yfinance → SQLite → Chronos model → SQLite → JSON files → GitHub Pages
+NSE/yfinance → SQLite → Kronos model → SQLite → JSON files → GitHub Pages
 ```
 
 ## Good First Issues
