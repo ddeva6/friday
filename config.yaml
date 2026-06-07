@@ -1,13 +1,13 @@
-database:
-  path: "friday.db"
-dates:
-  start: "2024-05-01"
-  end: "2024-06-05"
-forecast:
-  lookback: 180
-  horizon: 5
-  sample_count: 30
-  model: "amazon/chronos-t5-base"
-  seed: 42
 backtest:
   step: 5
+database:
+  path: friday.db
+dates:
+  end: '2026-06-07'
+  start: '2025-06-07'
+forecast:
+  horizon: 5
+  lookback: 180
+  model: amazon/chronos-t5-tiny
+  sample_count: 20
+  seed: 42
