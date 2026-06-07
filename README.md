@@ -25,6 +25,15 @@ FRIDAY is a personal NSE equity research tool that generates hierarchical 5-day 
 - **VRAM:** ~0.8 GB
 - **Time:** ~1-2 min for 50 instruments
 
+## Backtesting
+Run a walk-forward directional hit-rate backtest to measure forecast signal quality:
+```bash
+python runner.py backtest
+```
+This replays history: at each step, it forecasts 5 sessions ahead using only past data, then checks if the predicted direction (up/down) matched reality. Results are compared against a naive baseline ("no change"). Results are stored in SQLite and printed as a summary report.
+
+**This is a sanity check, not a trading backtest.** A hit-rate near 50% is expected for a zero-shot model. Any edge over naive is a bonus, not a guarantee.
+
 ## Data Sources
 - **OHLCV & Fundamentals:** Yahoo Finance (`yfinance`)
 - **Index Constituents:** NSE India

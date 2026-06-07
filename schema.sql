@@ -56,6 +56,20 @@ CREATE TABLE IF NOT EXISTS forecasts (
     FOREIGN KEY (instrument_code) REFERENCES instruments(code)
 );
 
+CREATE TABLE IF NOT EXISTS backtest_results (
+    instrument_code TEXT,
+    run_date TEXT,
+    total_trials INTEGER,
+    model_hits INTEGER,
+    model_hit_rate REAL,
+    naive_hits INTEGER,
+    naive_hit_rate REAL,
+    edge REAL,
+    config_json TEXT,
+    trials_json TEXT,
+    PRIMARY KEY (instrument_code, run_date)
+);
+
 CREATE TABLE IF NOT EXISTS fundamentals (
     instrument_code TEXT PRIMARY KEY,
     mcap_cr REAL,

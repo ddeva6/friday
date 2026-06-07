@@ -32,5 +32,15 @@ def main():
 
     print("Pipeline completed successfully.")
 
+def run_backtest_cmd():
+    from backtest import run_backtest
+    config = load_config()
+    logging.info(f"Starting FRIDAY backtest with config: {config}")
+    run_backtest()
+
 if __name__ == "__main__":
-    main()
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "backtest":
+        run_backtest_cmd()
+    else:
+        main()
