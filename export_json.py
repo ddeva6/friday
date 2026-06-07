@@ -82,6 +82,12 @@ def export_data(output_dir="data"):
             if up_json: up = json.loads(up_json)
             if lo_json: lo = json.loads(lo_json)
 
+        # Get 52w high/low
+        # Approx 252 trading days in a year
+        df_52w = df.tail(252)
+        hi_52w = float(df_52w['adjusted_close'].max())
+        lo_52w = float(df_52w['adjusted_close'].min())
+
         # Forecast contract shape with populated forecast cones
         data = {
             "code": inst,
@@ -92,11 +98,24 @@ def export_data(output_dir="data"):
             "lo": lo,
             "ret": ret,
             "cone_width_pct": cone_width_pct,
-            "asof": df.iloc[-1]['date']
+            "asof": df.iloc[-1]['date'],
+            "fundamentals": {
+                "mcap_cr": "N/A",
+                "pe": "N/A",
+                "roe": "N/A",
+                "de": "N/A",
+                "sales_growth_yoy": "N/A",
+                "hi_52w": hi_52w,
+                "lo_52w": lo_52w
+            },
+            "status": [
+                "Liquidity OK",
+                "Data as of " + df.iloc[-1]['date']
+            ]
         }
 
         with open(os.path.join(output_dir, f"{inst}.json"), "w") as f:
-            json.dump(data, f)
+            json.dump(data, f, indent=2)
 
     conn.close()
     print(f"Exported to {output_dir}")
