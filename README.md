@@ -1,49 +1,147 @@
-# FRIDAY — Kronos Forecast Terminal
+# FRIDAY — AI-Powered Stock Forecast Terminal
 
-FRIDAY is a personal NSE equity research tool that generates hierarchical 5-day probabilistic forecasts for the Nifty 50, its sector indices, and constituent stocks. Powered by the Chronos time-series foundation model, it provides a drill-through dashboard and a risk-adjusted screener for research and visualization.
-
+[![CI](https://github.com/ddeva6/friday/actions/workflows/ci.yml/badge.svg)](https://github.com/ddeva6/friday/actions/workflows/ci.yml)
+[![Daily Refresh](https://github.com/ddeva6/friday/actions/workflows/refresh.yml/badge.svg)](https://github.com/ddeva6/friday/actions/workflows/refresh.yml)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ddeva6/friday/blob/main/friday_colab.ipynb)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-**Live Dashboard:** [https://ddeva6.github.io/friday/](https://ddeva6.github.io/friday/)
+**FRIDAY** generates 5-day probabilistic forecasts for 50+ NSE stocks using Amazon's [Chronos](https://github.com/amazon-science/chronos-forecasting) time-series foundation model. Zero-shot. No training. Just inference.
 
-## Quick Start (One-Click)
+**Live Dashboard:** [https://ddeva6.github.io/friday/](https://ddeva6.github.io/friday/) (auto-refreshes daily after market close)
+
+<p align="center">
+  <em>Hierarchical drill-down: Market → Sector → Stock, with uncertainty cones and a risk-adjusted screener</em>
+</p>
+
+---
+
+## Why FRIDAY?
+
+Most retail forecast tools give you a single number. FRIDAY gives you an **uncertainty cone** — the P10/P50/P90 range of possible outcomes. You see not just *where* the model thinks the price is going, but *how confident* it is.
+
+- **Zero-shot forecasting** — no training data, no overfitting. Chronos generalizes from pre-training on 27B time-series observations
+- **Hierarchical view** — drill from NIFTY 50 → sector indices → individual stocks
+- **Risk-adjusted screener** — rank stocks by return-per-unit-uncertainty, not just raw return
+- **Fully automated** — GitHub Actions fetches data and regenerates forecasts daily at 4:45 PM IST
+- **Single HTML file** — the entire dashboard is one self-contained file. No build tools. No framework.
+
+## Quick Start
+
+### Option 1: Just view the dashboard
+Visit [https://ddeva6.github.io/friday/](https://ddeva6.github.io/friday/). Data refreshes automatically every weekday.
+
+### Option 2: One-click Colab (GPU)
 1. Open the [Colab notebook](https://colab.research.google.com/github/ddeva6/friday/blob/main/friday_colab.ipynb)
 2. Set runtime to **T4 GPU**
-3. **Run All** (Runtime → Run all)
-4. Enter your GitHub token when prompted → dashboard auto-deploys
-5. Visit **https://ddeva6.github.io/friday/** — bookmark it
-1. **Install dependencies:**
-   ```bash
-   pip install yfinance pandas pyyaml requests numpy jsonschema torch chronos-forecasting
-   ```
-2. **Run the pipeline:**
-   ```bash
-   python runner.py
-   ```
-   *This fetches data, generates forecasts (requires GPU), and exports JSON.*
+3. **Run All** — forecasts generate in ~2 minutes
+
+### Option 3: Run locally
+```bash
+pip install yfinance pandas pyyaml requests numpy jsonschema
+pip install torch chronos-forecasting  # for forecasts
+
+python runner.py            # fetch → forecast → export
+python runner.py backtest   # walk-forward directional backtest
+```
 
 ## Architecture
-- **Phase 1 (Data):** Fetches EOD OHLCV and fundamentals from `yfinance`. Stores in SQLite with corporate-action adjustments.
-- **Phase 2 (Forecast):** Runs the `chronos-t5-base` model to generate 5-day uncertainty cones.
-- **Phase 3 (UI):** Exports static JSON files to `data/` and serves the HTML/JS dashboard.
 
-## Performance (T4 GPU)
-- **Model:** `chronos-t5-base` (~200M params)
-- **VRAM:** ~0.8 GB
-- **Time:** ~1-2 min for 50 instruments
+```
+┌─────────────┐     ┌──────────────┐     ┌─────────────┐     ┌──────────────┐
+│  NSE India   │     │   yfinance   │     │   Chronos   │     │ GitHub Pages │
+│  (universe)  │────▶│  (OHLCV +    │────▶│  (forecast)  │────▶│ (dashboard)  │
+│              │     │  fundamentals)│     │              │     │              │
+└─────────────┘     └──────────────┘     └─────────────┘     └──────────────┘
+       Phase 1              Phase 1           Phase 2             Phase 3
+```
+
+| Phase | What it does | Key file |
+|-------|-------------|----------|
+| **1 — Data** | Fetches EOD OHLCV + fundamentals from yfinance, index constituents from NSE | `fetch_eod.py` |
+| **2 — Forecast** | Runs Chronos-T5 to generate 5-day uncertainty cones (P10/P50/P90) | `forecast_batch.py` |
+| **3 — UI** | Exports SQLite → static JSON, serves single-file HTML dashboard | `export_json.py` |
+
+### Models
+
+| Model | Params | Runtime | Use case |
+|-------|--------|---------|----------|
+| `chronos-t5-base` | ~200M | ~2 min (T4 GPU) | Colab / GPU servers |
+| `chronos-t5-tiny` | ~8M | ~1 min (CPU) | Daily GitHub Actions refresh |
 
 ## Backtesting
-Run a walk-forward directional hit-rate backtest to measure forecast signal quality:
+
 ```bash
 python runner.py backtest
 ```
-This replays history: at each step, it forecasts 5 sessions ahead using only past data, then checks if the predicted direction (up/down) matched reality. Results are compared against a naive baseline ("no change"). Results are stored in SQLite and printed as a summary report.
 
-**This is a sanity check, not a trading backtest.** A hit-rate near 50% is expected for a zero-shot model. Any edge over naive is a bonus, not a guarantee.
+Walk-forward directional backtest: at each step, forecast 5 sessions ahead using only past data, then check if the predicted direction matched reality. Results compared against a naive "no change" baseline.
+
+**This is a sanity check, not a trading signal.** A hit-rate near 50% is expected for a zero-shot model.
+
+## Project Structure
+
+```
+friday/
+├── fetch_eod.py                  # Phase 1 — data fetching
+├── forecast_batch.py             # Phase 2 — Chronos inference
+├── export_json.py                # Phase 3 — JSON export
+├── runner.py                     # CLI orchestrator
+├── backtest.py                   # Walk-forward backtesting
+├── schema.sql                    # SQLite schema (8 tables)
+├── config.yaml                   # Runtime configuration
+├── friday-forecast-terminal.html # Single-file dashboard
+├── friday_colab.ipynb            # Google Colab notebook
+├── data/                         # Exported JSON (auto-generated)
+├── test_phase1.py                # Phase 1 tests (4)
+├── test_phase2.py                # Phase 2 tests (7)
+├── test_phase3.py                # Phase 3 tests (6)
+├── test_backtest.py              # Backtest tests (6)
+└── .github/workflows/
+    ├── ci.yml                    # Test suite on push/PR
+    ├── refresh.yml               # Daily data + forecast refresh
+    └── deploy.yml                # GitHub Pages deploy
+```
+
+## Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+**Good first issues:**
+- Add chart hover tooltips with price/date
+- Mobile-responsive dashboard layout
+- Support for additional markets (BSE, crypto, US equities)
+- Forecast accuracy tracking over time
+- Dark/light theme toggle
+
+Check [open issues](https://github.com/ddeva6/friday/issues) for more ideas.
+
+## Roadmap
+
+- [ ] Multi-market support (BSE, US equities, crypto)
+- [ ] Forecast accuracy dashboard (predicted vs actual)
+- [ ] Portfolio watchlist with alerts
+- [ ] Model comparison (Chronos vs statistical baselines)
+- [ ] Real-time intraday mode
+- [ ] REST API for programmatic access
+- [ ] PWA support (installable on mobile)
 
 ## Data Sources
-- **OHLCV & Fundamentals:** Yahoo Finance (`yfinance`)
-- **Index Constituents:** NSE India
+
+| Source | Data |
+|--------|------|
+| [Yahoo Finance](https://finance.yahoo.com/) (`yfinance`) | OHLCV, fundamentals (P/E, ROE, D/E, market cap) |
+| [NSE India](https://www.nseindia.com/) | Index constituents |
+| [Amazon Chronos](https://github.com/amazon-science/chronos-forecasting) | Time-series foundation model |
+
+## License
+
+[MIT](LICENSE) — use it, fork it, build on it.
 
 ## Disclaimer
-*FRIDAY is a research and visualization tool. Forecasts are probabilistic and shown as uncertainty cones. Nothing it outputs is investment advice. Not investment advice.*
+
+*FRIDAY is a research and visualization tool. Forecasts are probabilistic uncertainty cones, not predictions. Nothing it outputs is investment advice. Use at your own risk.*
+
+---
+
+**Star this repo** if you find it useful — it helps others discover it.

@@ -305,7 +305,7 @@ function renderDrill(){
     const f=getFundamentals(focus.code);
     st.innerHTML=`<h2>Fundamentals</h2><span class="hint">snapshot alongside the 5-day forecast</span>`;
     const cells=[
-      ['Market Cap', f.mcap_cr === 'N/A' ? 'N/A' : '₹'+f.mcap_cr.toLocaleString('en-IN')+' Cr',''],
+      ['Market Cap', (f.mcap_cr === 'N/A' || f.mcap_cr === 0 || !f.mcap_cr) ? 'N/A' : '₹'+f.mcap_cr.toLocaleString('en-IN')+' Cr',''],
       ['P/E', typeof f.pe === 'number' ? f.pe.toFixed(1) : 'N/A', typeof f.pe === 'number' ? (f.pe>40?'down':(f.pe<15?'up':'')) : ''],
       ['ROE', typeof f.roe === 'number' ? f.roe.toFixed(1)+'%' : 'N/A', typeof f.roe === 'number' ? (f.roe>18?'up':(f.roe<10?'down':'')) : ''],
       ['Debt / Equity', typeof f.de === 'number' ? f.de.toFixed(2) : 'N/A', typeof f.de === 'number' ? (f.de>1.1?'down':(f.de<0.4?'up':'')) : ''],
