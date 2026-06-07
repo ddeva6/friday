@@ -113,6 +113,10 @@
     </div>
     <div class="pill">Demo data</div>
   </header>
+  <div id="update-bar" style="display:flex;align-items:center;gap:12px;padding:10px 0 0;font-family:var(--mono);font-size:11px;color:var(--ink-faint)">
+    <span id="last-updated">Loading...</span>
+    <button onclick="refreshData()" style="font-family:var(--mono);font-size:11px;background:var(--panel);border:1px solid var(--line);color:var(--accent);padding:5px 12px;border-radius:7px;cursor:pointer">Refresh</button>
+  </div>
 
   <div id="drill-view">
     <nav class="crumb" id="crumb"></nav>
@@ -147,7 +151,7 @@ let REAL_DATA = {};
 
 async function loadRealData() {
     try {
-        const res = await fetch('data/index.json');
+        const res = await fetch('data/index.json', {cache: 'no-store'});
         if (res.ok) {
             UNIVERSE = await res.json();
             let codes = [UNIVERSE.code];
@@ -159,19 +163,42 @@ async function loadRealData() {
             });
             await Promise.all(codes.map(async code => {
                 try {
-                    let r = await fetch(`data/${code}.json`);
+                    let r = await fetch(`data/${code}.json`, {cache: 'no-store'});
                     if (r.ok) {
                         REAL_DATA[code] = await r.json();
                     }
                 } catch(e) {}
             }));
             document.querySelector('.pill').textContent = "Real NSE Data";
+            updateTimestamp();
         } else {
             showError("No data available. Run the pipeline first: python runner.py && python export_json.py");
         }
     } catch (e) {
         showError("Could not load real data: " + e.message);
     }
+}
+
+function updateTimestamp() {
+    let latest = null;
+    for (const code in REAL_DATA) {
+        const asof = REAL_DATA[code].asof;
+        if (asof && (!latest || asof > latest)) latest = asof;
+    }
+    const el = document.getElementById('last-updated');
+    if (latest) {
+        el.textContent = 'Data as of ' + latest + ' · loaded ' + new Date().toLocaleTimeString();
+    } else {
+        el.textContent = 'No data loaded';
+    }
+}
+
+async function refreshData() {
+    document.getElementById('last-updated').textContent = 'Refreshing...';
+    REAL_DATA = {};
+    UNIVERSE = null;
+    await loadRealData();
+    if (state.view === 'screener') renderScreener(); else renderDrill();
 }
 
 function showError(msg) {

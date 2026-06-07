@@ -1,0 +1,92 @@
+name: Daily Data Refresh
+
+on:
+  schedule:
+    # 11:15 UTC = 4:45 PM IST (after NSE market close at 3:30 PM)
+    - cron: '15 11 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "refresh"
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install yfinance pandas pyyaml requests numpy jsonschema
+
+      - name: Configure dates
+        run: |
+          python3 -c "
+          import yaml
+          from datetime import datetime, timedelta
+          end = datetime.now().strftime('%Y-%m-%d')
+          start = (datetime.now() - timedelta(days=365)).strftime('%Y-%m-%d')
+          config = {
+              'database': {'path': 'friday.db'},
+              'dates': {'start': start, 'end': end},
+              'forecast': {'lookback': 180, 'horizon': 5, 'sample_count': 30, 'model': 'amazon/chronos-t5-base', 'seed': 42},
+              'backtest': {'step': 5}
+          }
+          with open('config.yaml', 'w') as f:
+              yaml.dump(config, f)
+          print(f'Config: {start} to {end}')
+          "
+
+      - name: Fetch EOD data (Phase 1)
+        run: python -c "from fetch_eod import run_fetcher; run_fetcher()"
+
+      - name: Export JSON (Phase 3)
+        run: python -c "from export_json import export_data; export_data()"
+
+      - name: Commit and push data
+        run: |
+          git config user.name "FRIDAY Bot"
+          git config user.email "friday-bot@users.noreply.github.com"
+          git add data/ config.yaml
+          git diff --staged --quiet && echo "No changes" || (git commit -m "Update EOD data $(date +%Y-%m-%d)" && git push)
+
+  deploy:
+    needs: refresh
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Pull latest
+        run: git pull origin main
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Prepare site
+        run: |
+          mkdir _site
+          cp friday-forecast-terminal.html _site/index.html
+          cp -r data _site/data 2>/dev/null || echo "No data dir yet"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
