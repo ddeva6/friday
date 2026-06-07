@@ -39,8 +39,8 @@ Visit [https://ddeva6.github.io/friday/](https://ddeva6.github.io/friday/). Data
 
 ### Option 3: Run locally
 ```bash
-pip install yfinance pandas pyyaml requests numpy jsonschema
-pip install torch chronos-forecasting  # for forecasts
+pip install -r requirements.txt
+pip install -r requirements-gpu.txt  # for forecasts (GPU/CPU)
 
 python runner.py            # fetch → forecast → export
 python runner.py backtest   # walk-forward directional backtest
@@ -91,6 +91,8 @@ friday/
 ├── backtest.py                   # Walk-forward backtesting
 ├── schema.sql                    # SQLite schema (8 tables)
 ├── config.yaml                   # Runtime configuration
+├── requirements.txt              # Core dependencies
+├── requirements-gpu.txt          # GPU/forecast dependencies
 ├── friday-forecast-terminal.html # Single-file dashboard
 ├── friday_colab.ipynb            # Google Colab notebook
 ├── data/                         # Exported JSON (auto-generated)

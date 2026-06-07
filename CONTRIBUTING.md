@@ -22,12 +22,13 @@ cd friday
 ### 2. Install dependencies
 
 ```bash
-pip install yfinance pandas pyyaml requests numpy jsonschema pytest
+pip install -r requirements.txt
+pip install pytest
 ```
 
 For forecast generation (requires GPU or CPU with patience):
 ```bash
-pip install torch chronos-forecasting
+pip install -r requirements-gpu.txt
 ```
 
 ### 3. Run tests
