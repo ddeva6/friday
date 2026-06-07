@@ -55,3 +55,14 @@ CREATE TABLE IF NOT EXISTS forecasts (
     PRIMARY KEY (instrument_code, asof_date),
     FOREIGN KEY (instrument_code) REFERENCES instruments(code)
 );
+
+CREATE TABLE IF NOT EXISTS fundamentals (
+    instrument_code TEXT PRIMARY KEY,
+    mcap_cr REAL,
+    pe REAL,
+    roe REAL,
+    de REAL,
+    sales_growth_yoy REAL,
+    updated_at TEXT,
+    FOREIGN KEY (instrument_code) REFERENCES instruments(code)
+);

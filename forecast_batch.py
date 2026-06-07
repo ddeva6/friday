@@ -3,7 +3,10 @@ import pandas as pd
 import numpy as np
 import yaml
 import json
+import logging
 
+
+logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level=logging.INFO)
 
 def get_db_connection(db_path="test.db"):
     conn = sqlite3.connect(db_path)
@@ -49,9 +52,15 @@ def run_forecast_batch(db_path=None):
     horizon = forecast_config.get("horizon", 5)
     sample_count = forecast_config.get("sample_count", 30)
     model_name = forecast_config.get("model", "amazon/chronos-t5-base")
+    seed = forecast_config.get("seed", 42)
+
+    logging.info("FRIDAY forecast batch starting")
+    logging.info(f"Model: {model_name}")
+    logging.info(f"Config: lookback={lookback}, horizon={horizon}, sample_count={sample_count}")
+    logging.info(f"Seed: {seed}")
 
     # Chronos-t5-base: ~200M params, ~0.8 GB VRAM, ~1-2 min for 50 instruments on T4
-    print(f"Loading model: {model_name}...")
+    logging.info(f"Loading model: {model_name}...")
     pipeline = ChronosPipeline.from_pretrained(
         model_name,
         device_map="auto",
@@ -79,7 +88,7 @@ def run_forecast_batch(db_path=None):
 
         # Forecast
         # set manual seed for reproducibility
-        torch.manual_seed(42)
+        torch.manual_seed(seed)
         forecast = pipeline.predict(
             context,
             prediction_length=horizon,
@@ -118,8 +127,12 @@ def run_forecast_batch(db_path=None):
         print(f"Forecasted {inst}")
 
     conn.commit()
+
+    c.execute("SELECT MAX(asof_date) FROM forecasts")
+    max_asof = c.fetchone()[0]
+
     conn.close()
-    print("Forecast batch completed.")
+    logging.info(f"Forecast batch complete: {len(instruments)} instruments, as-of {max_asof}")
 
 if __name__ == "__main__":
     run_forecast_batch()

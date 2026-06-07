@@ -232,3 +232,53 @@ def test_calendar_add_sessions(db_conn):
     # Adding 1 session should skip the holiday and land on 2024-08-16 (Friday).
     res2 = add_sessions("2024-08-14", 1, db_path)
     assert res2 == "2024-08-16", f"Expected 2024-08-16, got {res2}"
+
+def test_ui_data_export_works(db_conn, tmp_path, monkeypatch):
+    from export_json import export_data
+    import json
+    import os
+    import yaml
+
+    conn, db_path = db_conn
+
+    # 1. Setup sample data
+    c = conn.cursor()
+    c.execute("INSERT INTO instruments (code, name, level) VALUES ('NIFTY 50', 'Market', 'market')")
+    c.execute("INSERT INTO instruments (code, name, level) VALUES ('NIFTYBANK', 'Bank', 'index')")
+    c.execute("INSERT INTO instruments (code, name, level) VALUES ('TCS', 'TCS', 'stock')")
+    c.execute("INSERT INTO index_membership (index_code, stock_code, start_date) VALUES ('NIFTYBANK', 'TCS', '2024-01-01')")
+
+    dates = pd.date_range(start="2024-01-01", periods=10).strftime('%Y-%m-%d')
+    for d in dates:
+        c.execute("INSERT INTO ohlcv (instrument_code, date, adjusted_close, volume) VALUES ('TCS', ?, 4000.0, 500000)", (d,))
+    conn.commit()
+
+    # 2. Setup mock config
+    config = {'database': {'path': str(db_path)}}
+    with open(tmp_path / "config.yaml", "w") as f:
+        yaml.dump(config, f)
+
+    # 3. Setup schema.sql for export_data to find
+    with open(os.path.join(os.path.dirname(__file__), "schema.sql"), "r") as f_in:
+        with open(tmp_path / "schema.sql", "w") as f_out:
+            f_out.write(f_in.read())
+
+    monkeypatch.chdir(tmp_path)
+    data_dir = tmp_path / "data"
+
+    # 4. Run export
+    export_data(output_dir=str(data_dir))
+
+    # 5. Assertions
+    assert (data_dir / "index.json").exists(), "index.json missing"
+    assert (data_dir / "TCS.json").exists(), "TCS.json missing"
+
+    with open(data_dir / "index.json", "r") as f:
+        idx = json.load(f)
+        assert idx["code"] == "NIFTY 50"
+
+    with open(data_dir / "TCS.json", "r") as f:
+        stk = json.load(f)
+        assert stk["code"] == "TCS"
+        assert "hist" in stk
+        assert "last" in stk

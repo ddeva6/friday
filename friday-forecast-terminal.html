@@ -167,21 +167,16 @@ async function loadRealData() {
             }));
             document.querySelector('.pill').textContent = "Real NSE Data";
         } else {
-            console.error("data/index.json not found");
+            showError("No data available. Run the pipeline first: python runner.py && python export_json.py");
         }
     } catch (e) {
-        console.error("Could not load real data", e);
+        showError("Could not load real data: " + e.message);
     }
 }
 
-const FALLBACK_UNIVERSE={code:"NIFTY 50",name:"Broad Market",base:24850,children:[
-  {code:"BANKNIFTY",name:"Nifty Bank",base:53120,stocks:[["HDFCBANK","HDFC Bank",1685],["ICICIBANK","ICICI Bank",1248],["SBIN","State Bank",842],["AXISBANK","Axis Bank",1156],["KOTAKBANK","Kotak Mahindra",1792],["INDUSINDBK","IndusInd",975]]},
-  {code:"NIFTYIT",name:"Nifty IT",base:42380,stocks:[["TCS","Tata Consultancy",4120],["INFY","Infosys",1876],["HCLTECH","HCL Tech",1654],["WIPRO","Wipro",298],["TECHM","Tech Mahindra",1685],["LTIM","LTIMindtree",6240]]},
-  {code:"NIFTYAUTO",name:"Nifty Auto",base:26740,stocks:[["MARUTI","Maruti Suzuki",12480],["TATAMOTORS","Tata Motors",986],["M&M","Mahindra",2945],["BAJAJ-AUTO","Bajaj Auto",9320],["EICHERMOT","Eicher Motors",4815],["HEROMOTOCO","Hero MotoCorp",4690]]},
-  {code:"NIFTYFMCG",name:"Nifty FMCG",base:58210,stocks:[["HINDUNILVR","HUL",2480],["ITC","ITC",458],["NESTLEIND","Nestle India",2310],["BRITANNIA","Britannia",5240],["TATACONSUM","Tata Consumer",1085],["DABUR","Dabur",512]]},
-  {code:"NIFTYPHARMA",name:"Nifty Pharma",base:22980,stocks:[["SUNPHARMA","Sun Pharma",1742],["CIPLA","Cipla",1538],["DRREDDY","Dr Reddy's",1295],["DIVISLAB","Divi's Labs",5980],["AUROPHARMA","Aurobindo",1248]]},
-  {code:"NIFTYENERGY",name:"Nifty Energy",base:38560,stocks:[["RELIANCE","Reliance",2945],["NTPC","NTPC",362],["POWERGRID","Power Grid",318],["ONGC","ONGC",248],["BPCL","BPCL",312]]},
-]};
+function showError(msg) {
+    document.getElementById('drill-view').innerHTML = `<div style="padding:40px; text-align:center; color:var(--ink-dim); font-family:var(--mono); border:1px dashed var(--line); border-radius:16px; margin-top:20px;">${msg}</div>`;
+}
 
 const HIST=60,FC=5;
 function series(code){
@@ -247,9 +242,10 @@ function fmt(n){return n.toLocaleString('en-IN',{maximumFractionDigits:n>500?0:2
 function signed(n){return (n>=0?'+':'')+n.toFixed(2)+'%';}
 
 function renderDrill(){
+  if (!UNIVERSE) return;
   const crumb=document.getElementById('crumb'),hero=document.getElementById('hero'),st=document.getElementById('sectitle'),grid=document.getElementById('grid');
   grid.innerHTML='';st.innerHTML='';
-  const univ = UNIVERSE || FALLBACK_UNIVERSE;
+  const univ = UNIVERSE;
   let focus,children=[],childKind='';
   if(state.level==='market'){
     focus={code:univ.code,name:univ.name,s:series(univ.code)};
@@ -303,7 +299,7 @@ function renderDrill(){
   }
   st.innerHTML=state.level==='market'
     ? `<h2>Sector indices</h2><span class="hint">tap to drill in</span>`
-    : `<h2>Constituents · ${(UNIVERSE || FALLBACK_UNIVERSE).children[state.idx].code}</h2><span class="hint">tap a stock</span>`;
+    : `<h2>Constituents · ${UNIVERSE.children[state.idx].code}</h2><span class="hint">tap a stock</span>`;
   children.forEach((c,i)=>{
     let code,nm,onclick;
     if(childKind==='index'){code=c.code;nm=c.name;onclick=`goIndex(${i})`;}
@@ -325,7 +321,8 @@ function setSort(key){
   renderScreener();
 }
 function renderScreener(){
-  const univ = UNIVERSE || FALLBACK_UNIVERSE;
+  if (!UNIVERSE) return;
+  const univ = UNIVERSE;
   const fidx=document.getElementById('f-idx');
   if(!fidx.options.length)fidx.innerHTML=`<option value="all">All indices</option>`+univ.children.map(c=>`<option value="${c.code}">${c.code}</option>`).join('');
   const dir=document.getElementById('f-dir').value,idxf=fidx.value;
