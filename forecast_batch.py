@@ -59,12 +59,17 @@ def run_forecast_batch(db_path=None):
     logging.info(f"Config: lookback={lookback}, horizon={horizon}, sample_count={sample_count}")
     logging.info(f"Seed: {seed}")
 
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    dtype = torch.bfloat16 if device == "cuda" else torch.float32
+    logging.info(f"Device: {device}")
+
     # Chronos-t5-base: ~200M params, ~0.8 GB VRAM, ~1-2 min for 50 instruments on T4
+    # Chronos-t5-tiny: ~8M params, runs on CPU, ~5-10 min for 50 instruments
     logging.info(f"Loading model: {model_name}...")
     pipeline = ChronosPipeline.from_pretrained(
         model_name,
-        device_map="auto",
-        dtype=torch.bfloat16,
+        device_map=device,
+        dtype=dtype,
     )
 
     conn = get_db_connection(db_path)
