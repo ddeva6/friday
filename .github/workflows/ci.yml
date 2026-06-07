@@ -15,4 +15,4 @@ jobs:
         python -m pip install --upgrade pip
         pip install yfinance pandas pytest pyyaml requests jsonschema numpy
     - name: Run offline unit tests
-      run: pytest -m "not integration" -v
+      run: pytest test_phase1.py test_phase2.py test_phase3.py -m "not integration" -v

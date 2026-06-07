@@ -3,6 +3,8 @@ import pandas as pd
 import json
 import os
 import yaml
+import yfinance as yf
+from datetime import datetime
 
 def get_db_connection(db_path="test.db"):
     conn = sqlite3.connect(db_path)
@@ -59,6 +61,48 @@ def export_data(output_dir="data"):
     instruments = [r[0] for r in c.fetchall()]
 
     for inst in instruments:
+        # Fetch fundamentals from yfinance if not in DB or stale
+        c.execute("SELECT mcap_cr, pe, roe, de, sales_growth_yoy, updated_at FROM fundamentals WHERE instrument_code = ?", (inst,))
+        f_data = c.fetchone()
+
+        # Simple caching: re-fetch if not found or updated > 30 days ago
+        needs_fetch = True
+        if f_data:
+            updated_at = datetime.strptime(f_data[5], '%Y-%m-%d')
+            if (datetime.now() - updated_at).days < 30:
+                needs_fetch = False
+
+        if needs_fetch:
+            try:
+                # yfinance is the fundamentals data source
+                ticker = yf.Ticker(inst + ".NS")
+                info = ticker.info
+                mcap_cr = info.get('marketCap', 0) / 1e7
+                pe = info.get('trailingPE')
+                roe = info.get('returnOnEquity')
+                if roe: roe *= 100
+                de = info.get('debtToEquity')
+                if de: de /= 100
+                sales_growth_yoy = info.get('revenueGrowth')
+                if sales_growth_yoy: sales_growth_yoy *= 100
+
+                updated_at_str = datetime.now().strftime('%Y-%m-%d')
+                c.execute("""
+                    INSERT INTO fundamentals (instrument_code, mcap_cr, pe, roe, de, sales_growth_yoy, updated_at)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                    ON CONFLICT(instrument_code) DO UPDATE SET
+                        mcap_cr=excluded.mcap_cr,
+                        pe=excluded.pe,
+                        roe=excluded.roe,
+                        de=excluded.de,
+                        sales_growth_yoy=excluded.sales_growth_yoy,
+                        updated_at=excluded.updated_at
+                """, (inst, mcap_cr, pe, roe, de, sales_growth_yoy, updated_at_str))
+                conn.commit()
+                f_data = (mcap_cr, pe, roe, de, sales_growth_yoy, updated_at_str)
+            except Exception as e:
+                print(f"Failed to fetch fundamentals for {inst}: {e}")
+
         df = pd.read_sql_query("SELECT date, adjusted_close FROM ohlcv WHERE instrument_code = ? ORDER BY date ASC", conn, params=(inst,))
         if df.empty:
             continue
@@ -88,6 +132,30 @@ def export_data(output_dir="data"):
         hi_52w = float(df_52w['adjusted_close'].max())
         lo_52w = float(df_52w['adjusted_close'].min())
 
+        # Real data-status flags
+        status_flags = []
+
+        # 1. Low liquidity: avg volume last 20 sessions < 100k
+        # We need volume from ohlcv table
+        df_vol = pd.read_sql_query("SELECT volume FROM ohlcv WHERE instrument_code = ? ORDER BY date DESC LIMIT 20", conn, params=(inst,))
+        if not df_vol.empty and df_vol['volume'].mean() < 100000:
+            status_flags.append("Low liquidity")
+
+        # 2. Data gap: last date > 3 calendar days ago
+        last_date_str = df.iloc[-1]['date']
+        last_date = datetime.strptime(last_date_str, '%Y-%m-%d')
+        if (datetime.now() - last_date).days > 3:
+            status_flags.append("Stale data")
+
+        # 3. Short history: < 60 data points
+        if len(df) < 60:
+            status_flags.append("Short history — forecast less reliable")
+
+        if not status_flags:
+            status_flags.append("Data OK")
+
+        status_flags.append("Data as of " + last_date_str)
+
         # Forecast contract shape with populated forecast cones
         data = {
             "code": inst,
@@ -98,20 +166,17 @@ def export_data(output_dir="data"):
             "lo": lo,
             "ret": ret,
             "cone_width_pct": cone_width_pct,
-            "asof": df.iloc[-1]['date'],
+            "asof": last_date_str,
             "fundamentals": {
-                "mcap_cr": "N/A",
-                "pe": "N/A",
-                "roe": "N/A",
-                "de": "N/A",
-                "sales_growth_yoy": "N/A",
+                "mcap_cr": f_data[0] if f_data and f_data[0] is not None else "N/A",
+                "pe": f_data[1] if f_data and f_data[1] is not None else "N/A",
+                "roe": f_data[2] if f_data and f_data[2] is not None else "N/A",
+                "de": f_data[3] if f_data and f_data[3] is not None else "N/A",
+                "sales_growth_yoy": f_data[4] if f_data and f_data[4] is not None else "N/A",
                 "hi_52w": hi_52w,
                 "lo_52w": lo_52w
             },
-            "status": [
-                "Liquidity OK",
-                "Data as of " + df.iloc[-1]['date']
-            ]
+            "status": status_flags
         }
 
         with open(os.path.join(output_dir, f"{inst}.json"), "w") as f:

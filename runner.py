@@ -1,11 +1,18 @@
 import subprocess
 import sys
+import logging
+import yaml
 from fetch_eod import run_fetcher
 from adjust_corporate_actions import run_adjustments
-from forecast_batch import run_forecast_batch
+from forecast_batch import run_forecast_batch, load_config
 from export_json import export_data
 
+logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level=logging.INFO)
+
 def main():
+    config = load_config()
+    logging.info(f"Starting FRIDAY pipeline with config: {config}")
+
     print("Running Phase 1 Pipeline...")
     print("1. Fetching EOD data...")
     # Fetching data for a small range to keep it quick for testing
