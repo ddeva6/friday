@@ -4,7 +4,14 @@ FRIDAY is a personal NSE equity research tool that generates hierarchical 5-day 
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ddeva6/friday/blob/main/friday_colab.ipynb)
 
-## Setup
+**Live Dashboard:** [https://ddeva6.github.io/friday/](https://ddeva6.github.io/friday/)
+
+## Quick Start (One-Click)
+1. Open the [Colab notebook](https://colab.research.google.com/github/ddeva6/friday/blob/main/friday_colab.ipynb)
+2. Set runtime to **T4 GPU**
+3. **Run All** (Runtime → Run all)
+4. Enter your GitHub token when prompted → dashboard auto-deploys
+5. Visit **https://ddeva6.github.io/friday/** — bookmark it
 1. **Install dependencies:**
    ```bash
    pip install yfinance pandas pyyaml requests numpy jsonschema torch chronos-forecasting
