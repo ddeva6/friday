@@ -133,8 +133,8 @@
     <table id="screen-table"></table>
   </div>
 
-  <div class="note"><b>Mockup with synthetic data.</b> Kronos isn't wired in — in the real build a nightly job runs Kronos per instrument and writes the forecast + cone to your DB, and this page just reads it. Each forecast is independent, so market, index and stock paths can disagree. The shaded cone is the forecast spread — wider means less certain.</div>
-  <footer>Synthetic illustrative data · forecasts shown as cones, not single predictions · not investment advice</footer>
+  <div class="note"><b>Data status:</b> <span id="data-status-text">Ready.</span><br><br>Kronos nightly job runs per instrument and writes the forecast + cone to the DB. Each forecast is independent, so market, index and stock paths can disagree. The shaded cone is the forecast spread — wider means less certain.</div>
+  <footer>Real NSE data · forecasts shown as cones, not single predictions · <b>Not investment advice</b></footer>
 </div>
 
 <script>
@@ -150,10 +150,12 @@ async function loadRealData() {
         const res = await fetch('data/index.json');
         if (res.ok) {
             UNIVERSE = await res.json();
-            let codes = [(UNIVERSE || FALLBACK_UNIVERSE).code];
-            (UNIVERSE || FALLBACK_UNIVERSE).children.forEach(c => {
+            let codes = [UNIVERSE.code];
+            UNIVERSE.children.forEach(c => {
                 codes.push(c.code);
-                codes.push(...c.stocks);
+                c.stocks.forEach(stk => {
+                    codes.push(Array.isArray(stk) ? stk[0] : stk);
+                });
             });
             await Promise.all(codes.map(async code => {
                 try {
@@ -164,9 +166,11 @@ async function loadRealData() {
                 } catch(e) {}
             }));
             document.querySelector('.pill').textContent = "Real NSE Data";
+        } else {
+            console.error("data/index.json not found");
         }
     } catch (e) {
-        console.log("Could not load real data, falling back to mock");
+        console.error("Could not load real data", e);
     }
 }
 
@@ -180,7 +184,7 @@ const FALLBACK_UNIVERSE={code:"NIFTY 50",name:"Broad Market",base:24850,children
 ]};
 
 const HIST=60,FC=5;
-function series(code,base){
+function series(code){
   if (REAL_DATA[code]) {
       let rd = REAL_DATA[code];
       let med = rd.med, up = rd.up, lo = rd.lo;
@@ -189,22 +193,24 @@ function series(code,base){
           up = Array(FC).fill(rd.last);
           lo = Array(FC).fill(rd.last);
       }
-      return {hist: rd.hist.slice(-HIST), med: med, up: up, lo: lo, last: rd.last, ret: rd.ret};
+      return {
+        hist: rd.hist.slice(-HIST),
+        med: med,
+        up: up,
+        lo: lo,
+        last: rd.last,
+        ret: rd.ret,
+        cone_width_pct: rd.cone_width_pct,
+        status: rd.status
+      };
   }
-
-  const r=mulberry32(hash(code));
-  const drift=(r()-0.5)*0.0016,vol=0.006+r()*0.014;
-  let px=base*(0.93+r()*0.08);const hist=[];
-  for(let i=0;i<HIST;i++){px=px*(1+drift+(r()-0.5)*vol*2);hist.push(px);}
-  const last=hist[hist.length-1];const fdrift=drift*1.1+(r()-0.5)*0.004;
-  const med=[],up=[],lo=[];let m=last;
-  for(let i=1;i<=FC;i++){m=m*(1+fdrift+(r()-0.5)*vol*0.4);const sp=last*vol*Math.sqrt(i)*1.9;med.push(m);up.push(m+sp);lo.push(m-sp);}
-  return {hist,med,up,lo,last,ret:(med[FC-1]/last-1)*100};
+  return {hist:[], med:[], up:[], lo:[], last:0, ret:0, cone_width_pct:0, status:[]};
 }
-function fundamentals(code,last){
-  const r=mulberry32(hash(code+'_f'));
-  return {mcapCr:Math.round(last*(40+r()*900)),pe:8+r()*42,roe:4+r()*30,de:r()*1.8,
-    salesG:-6+r()*34,hi:last*(1.05+r()*0.35),lo:last*(0.6+r()*0.25)};
+function getFundamentals(code){
+  if (REAL_DATA[code] && REAL_DATA[code].fundamentals) {
+      return REAL_DATA[code].fundamentals;
+  }
+  return {mcap_cr:'N/A', pe:'N/A', roe:'N/A', de:'N/A', sales_growth_yoy:'N/A', hi_52w:'N/A', lo_52w:'N/A'};
 }
 function chart(s,W,H,big){
   const all=[...s.hist,...s.up,...s.lo];let mn=Math.min(...all),mx=Math.max(...all);const pd=(mx-mn)*0.08;mn-=pd;mx+=pd;
@@ -243,20 +249,23 @@ function signed(n){return (n>=0?'+':'')+n.toFixed(2)+'%';}
 function renderDrill(){
   const crumb=document.getElementById('crumb'),hero=document.getElementById('hero'),st=document.getElementById('sectitle'),grid=document.getElementById('grid');
   grid.innerHTML='';st.innerHTML='';
+  const univ = UNIVERSE || FALLBACK_UNIVERSE;
   let focus,children=[],childKind='';
   if(state.level==='market'){
-    focus={code:(UNIVERSE || FALLBACK_UNIVERSE).code,name:(UNIVERSE || FALLBACK_UNIVERSE).name,s:series((UNIVERSE || FALLBACK_UNIVERSE).code,UNIVERSE.base)};
-    children=(UNIVERSE || FALLBACK_UNIVERSE).children;childKind='index';
-    crumb.innerHTML=`<span class="here">Market · NIFTY 50</span>`;
+    focus={code:univ.code,name:univ.name,s:series(univ.code)};
+    children=univ.children;childKind='index';
+    crumb.innerHTML=`<span class="here">Market · ${univ.code}</span>`;
   }else if(state.level==='index'){
-    const ix=(UNIVERSE || FALLBACK_UNIVERSE).children[state.idx];
-    focus={code:ix.code,name:ix.name,s:series(ix.code,ix.base)};
+    const ix=univ.children[state.idx];
+    focus={code:ix.code,name:ix.name,s:series(ix.code)};
     children=ix.stocks;childKind='stock';
     crumb.innerHTML=`<button onclick="goMarket()">Market</button><span class="sep">›</span><span class="here">${ix.code}</span>`;
   }else{
-    const ix=(UNIVERSE || FALLBACK_UNIVERSE).children[state.idx],stk=ix.stocks[state.stock];
-    if(Array.isArray(stk)){if(Array.isArray(stk)){if(Array.isArray(stk)){focus={code:stk[0],name:stk[1],s:series(stk[0],stk[2])};}else{focus={code:stk,name:stk,s:series(stk,1000)};}}else{focus={code:stk,name:stk,s:series(stk,1000)};}}else{focus={code:stk,name:stk,s:series(stk,1000)};}
-    crumb.innerHTML=`<button onclick="goMarket()">Market</button><span class="sep">›</span><button onclick="goIndex(${state.idx})">${ix.code}</button><span class="sep">›</span><span class="here">${Array.isArray(stk) ? stk[0] : stk}</span>`;
+    const ix=univ.children[state.idx],stk=ix.stocks[state.stock];
+    const code = Array.isArray(stk) ? stk[0] : stk;
+    const name = Array.isArray(stk) ? stk[1] : stk;
+    focus={code:code,name:name,s:series(code)};
+    crumb.innerHTML=`<button onclick="goMarket()">Market</button><span class="sep">›</span><button onclick="goIndex(${state.idx})">${ix.code}</button><span class="sep">›</span><span class="here">${code}</span>`;
   }
   const s=focus.s,up=s.ret>=0;
   hero.innerHTML=`<div class="hero-top">
@@ -270,30 +279,36 @@ function renderDrill(){
         <span><i class="dash"></i>Forecast</span><span><i class="bandkey"></i>Uncertainty cone</span></div></div>`;
 
   if(state.level==='stock'){
-    const f=fundamentals(focus.code,s.last);
+    const f=getFundamentals(focus.code);
     st.innerHTML=`<h2>Fundamentals</h2><span class="hint">snapshot alongside the 5-day forecast</span>`;
     const cells=[
-      ['Market Cap','₹'+f.mcapCr.toLocaleString('en-IN')+' Cr',''],
-      ['P/E',f.pe.toFixed(1),f.pe>40?'down':(f.pe<15?'up':'')],
-      ['ROE',f.roe.toFixed(1)+'%',f.roe>18?'up':(f.roe<10?'down':'')],
-      ['Debt / Equity',f.de.toFixed(2),f.de>1.1?'down':(f.de<0.4?'up':'')],
-      ['Sales gr. YoY',signed(f.salesG),f.salesG>=0?'up':'down'],
-      ['52w range',fmt(f.lo)+' – '+fmt(f.hi),''],
+      ['Market Cap', f.mcap_cr === 'N/A' ? 'N/A' : '₹'+f.mcap_cr.toLocaleString('en-IN')+' Cr',''],
+      ['P/E', typeof f.pe === 'number' ? f.pe.toFixed(1) : 'N/A', typeof f.pe === 'number' ? (f.pe>40?'down':(f.pe<15?'up':'')) : ''],
+      ['ROE', typeof f.roe === 'number' ? f.roe.toFixed(1)+'%' : 'N/A', typeof f.roe === 'number' ? (f.roe>18?'up':(f.roe<10?'down':'')) : ''],
+      ['Debt / Equity', typeof f.de === 'number' ? f.de.toFixed(2) : 'N/A', typeof f.de === 'number' ? (f.de>1.1?'down':(f.de<0.4?'up':'')) : ''],
+      ['Sales gr. YoY', typeof f.sales_growth_yoy === 'number' ? signed(f.sales_growth_yoy) : 'N/A', typeof f.sales_growth_yoy === 'number' ? (f.sales_growth_yoy>=0?'up':'down') : ''],
+      ['52w range', (typeof f.lo_52w === 'number' ? fmt(f.lo_52w) : 'N/A')+' – '+(typeof f.hi_52w === 'number' ? fmt(f.hi_52w) : 'N/A'),''],
     ];
     grid.innerHTML=`<div class="fund">
       <div class="fund-h">Key fundamentals</div>
       <div class="fund-grid">${cells.map(([k,v,c])=>`<div class="fcell"><div class="fk">${k}</div><div class="fv ${c}">${v}</div></div>`).join('')}</div>
-      <div class="fund-foot">Synthetic snapshot — in the live build these come from a fundamentals data source, refreshed on a quarterly cadence.</div></div>`;
+      <div class="fund-foot">Fundamentals are point-in-time and refreshed on a quarterly cadence. 52w range derived from history.</div></div>`;
+
+    if (s.status && s.status.length) {
+        document.getElementById('data-status-text').textContent = s.status.join(' · ');
+    } else {
+        document.getElementById('data-status-text').textContent = "Ready.";
+    }
     return;
   }
   st.innerHTML=state.level==='market'
     ? `<h2>Sector indices</h2><span class="hint">tap to drill in</span>`
     : `<h2>Constituents · ${(UNIVERSE || FALLBACK_UNIVERSE).children[state.idx].code}</h2><span class="hint">tap a stock</span>`;
   children.forEach((c,i)=>{
-    let code,nm,base,onclick;
-    if(childKind==='index'){code=c.code;nm=c.name;base=c.base;onclick=`goIndex(${i})`;}
-    else{if(Array.isArray(c)){code=c[0];nm=c[1];base=c[2];}else{code=c;nm=c;base=1000;}onclick=`goStock(${state.idx},${i})`;}
-    const cs=series(code,base),up=cs.ret>=0;
+    let code,nm,onclick;
+    if(childKind==='index'){code=c.code;nm=c.name;onclick=`goIndex(${i})`;}
+    else{code=Array.isArray(c)?c[0]:c; nm=Array.isArray(c)?c[1]:c; onclick=`goStock(${state.idx},${i})`;}
+    const cs=series(code),up=cs.ret>=0;
     const card=document.createElement('div');card.className='card';card.setAttribute('onclick',onclick);
     card.innerHTML=`<span class="drillicon">→</span><div class="cn">${code}</div><div class="cc">${nm}</div>
       ${chart(cs,220,38,false)}
@@ -303,30 +318,45 @@ function renderDrill(){
   });
 }
 
-let sortDir=-1;
-function setSort(){sortDir*=-1;renderScreener();}
+let sortDir=-1, sortKey='risk';
+function setSort(key){
+  if(sortKey===key) sortDir*=-1;
+  else { sortKey=key; sortDir=-1; }
+  renderScreener();
+}
 function renderScreener(){
+  const univ = UNIVERSE || FALLBACK_UNIVERSE;
   const fidx=document.getElementById('f-idx');
-  if(!fidx.options.length)fidx.innerHTML=`<option value="all">All indices</option>`+(UNIVERSE || FALLBACK_UNIVERSE).children.map(c=>`<option value="${c.code}">${c.code}</option>`).join('');
+  if(!fidx.options.length)fidx.innerHTML=`<option value="all">All indices</option>`+univ.children.map(c=>`<option value="${c.code}">${c.code}</option>`).join('');
   const dir=document.getElementById('f-dir').value,idxf=fidx.value;
   let rows=[];
-  (UNIVERSE || FALLBACK_UNIVERSE).children.forEach((ix,ii)=>ix.stocks.forEach((stk,si)=>{
-    let c=Array.isArray(stk)?stk[0]:stk; let n=Array.isArray(stk)?stk[1]:stk; const s=series(c,1000); rows.push({code:c,name:n,idx:ix.code,ii,si,last:s.last,ret:s.ret});
+  univ.children.forEach((ix,ii)=>ix.stocks.forEach((stk,si)=>{
+    let c=Array.isArray(stk)?stk[0]:stk; let n=Array.isArray(stk)?stk[1]:stk;
+    const s=series(c);
+    const riskAdj = s.cone_width_pct > 0 ? (s.ret / s.cone_width_pct) : 0;
+    rows.push({code:c,name:n,idx:ix.code,ii,si,last:s.last,ret:s.ret,riskAdj});
   }));
   rows=rows.filter(r=>{
     if(dir==='up'&&r.ret<0)return false;
     if(dir==='down'&&r.ret>=0)return false;
     if(idxf!=='all'&&r.idx!==idxf)return false;
     return true;
-  }).sort((a,b)=>(a.ret-b.ret)*sortDir);
+  }).sort((a,b)=>{
+    const va = sortKey==='risk'?a.riskAdj:a.ret;
+    const vb = sortKey==='risk'?b.riskAdj:b.ret;
+    return (va-vb)*sortDir;
+  });
   let html=`<thead><tr><th>Symbol</th><th>Index</th><th>Last</th>
-    <th onclick="setSort()">Fcst 5d <span class="arr">${sortDir<0?'▼':'▲'}</span></th><th>Signal</th></tr></thead><tbody>`;
-  if(!rows.length)html+=`<tr><td colspan="5" style="text-align:center;padding:36px;color:var(--ink-faint)">No matches.</td></tr>`;
+    <th onclick="setSort('ret')">Fcst 5d ${sortKey==='ret'?`<span class="arr">${sortDir<0?'▼':'▲'}</span>`:''}</th>
+    <th onclick="setSort('risk')">Risk-Adj ${sortKey==='risk'?`<span class="arr">${sortDir<0?'▼':'▲'}</span>`:''}</th>
+    <th>Signal</th></tr></thead><tbody>`;
+  if(!rows.length)html+=`<tr><td colspan="6" style="text-align:center;padding:36px;color:var(--ink-faint)">No matches.</td></tr>`;
   rows.forEach(r=>{const up=r.ret>=0;
     html+=`<tr onclick="setView('drill');goStock(${r.ii},${r.si})">
       <td><span class="nm">${r.code}</span><br><span class="sub">${r.name}</span></td>
       <td>${r.idx}</td><td>${fmt(r.last)}</td>
       <td class="${up?'up':'down'}">${signed(r.ret)}</td>
+      <td>${r.riskAdj.toFixed(2)}</td>
       <td><span class="tag ${up?'up':'down'}">${up?'WATCH ↑':'AVOID ↓'}</span></td></tr>`;});
   html+=`</tbody>`;
   document.getElementById('screen-table').innerHTML=html;
