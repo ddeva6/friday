@@ -3,8 +3,7 @@ import pandas as pd
 import numpy as np
 import yaml
 import json
-import torch
-from chronos import ChronosPipeline
+
 
 def get_db_connection(db_path="test.db"):
     conn = sqlite3.connect(db_path)
@@ -27,18 +26,32 @@ def calculate_metrics(last_price, med, up, lo):
         cone_width_pct = ((up[-1] - lo[-1]) / last_price) * 100
     return round(ret, 2), round(cone_width_pct, 2)
 
+def ensure_monotonic_widening(med, up, lo, horizon):
+    if len(up) > 1 and len(lo) > 1:
+        diff_d1 = up[0] - lo[0]
+        diff_d5 = up[-1] - lo[-1]
+        if diff_d5 <= diff_d1:
+            spread = (up[-1] - lo[-1]) / horizon
+            for i in range(horizon):
+                up[i] = round(med[i] + (spread * (i + 1) / 2), 2)
+                lo[i] = round(med[i] - (spread * (i + 1) / 2), 2)
+    return up, lo
+
 def run_forecast_batch(db_path=None):
+    import torch
+    from chronos import ChronosPipeline
+
     config = load_config()
     db_path = db_path or config.get("database", {}).get("path", "test.db")
     forecast_config = config.get("forecast", {})
 
-    # Defaults
     lookback = forecast_config.get("lookback", 180)
     horizon = forecast_config.get("horizon", 5)
     sample_count = forecast_config.get("sample_count", 30)
     model_name = forecast_config.get("model", "amazon/chronos-t5-base")
 
-    print(f"Loading Kronos model: {model_name}...")
+    # Chronos-t5-base: ~200M params, ~0.8 GB VRAM, ~1-2 min for 50 instruments on T4
+    print(f"Loading model: {model_name}...")
     pipeline = ChronosPipeline.from_pretrained(
         model_name,
         device_map="auto",
@@ -88,19 +101,9 @@ def run_forecast_batch(db_path=None):
 
         ret, cone_width_pct = calculate_metrics(last_price, med, up, lo)
 
-        # Check monotonic widening
-        if len(up) > 1 and len(lo) > 1:
-            diff_d1 = up[0] - lo[0]
-            diff_d5 = up[-1] - lo[-1]
-            if diff_d5 <= diff_d1:
-                # Fallback to simple expanding cone if model is weird
-                spread = (up[-1] - lo[-1]) / horizon
-                for i in range(horizon):
-                    up[i] = med[i] + (spread * (i + 1) / 2)
-                    lo[i] = med[i] - (spread * (i + 1) / 2)
-                    up[i] = round(up[i], 2)
-                    lo[i] = round(lo[i], 2)
-                cone_width_pct = calculate_metrics(last_price, med, up, lo)[1]
+        up, lo = ensure_monotonic_widening(med, up, lo, horizon)
+        if up != lo:
+            cone_width_pct = calculate_metrics(last_price, med, up, lo)[1]
 
 
         c.execute("""
