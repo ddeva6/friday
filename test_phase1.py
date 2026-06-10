@@ -116,6 +116,34 @@ def test_survivorship(db_conn):
     assert c.fetchone()[0] == 2, "Failed to insert/retain OHLCV history for delisted stock!"
 
 
+def test_gold_etf_group_added(monkeypatch):
+    import requests
+    from fetch_eod import fetch_all_constituents_from_nse, INDEX_MAP
+
+    class FakeResponse:
+        def __init__(self, text, status_code=200):
+            self.text = text
+            self.status_code = status_code
+
+    def fake_get(url, headers=None):
+        if 'nifty50list' in url:
+            return FakeResponse("Symbol\nRELIANCE\nTCS\n", 200)
+        return FakeResponse("Error 404", 404)
+
+    monkeypatch.setattr(requests, "get", fake_get)
+
+    universe = fetch_all_constituents_from_nse()
+    assert universe is not None
+
+    gold_group = next((c for c in universe["children"] if c["code"] == "GOLDETF"), None)
+    assert gold_group is not None, "GOLDETF group missing from universe"
+    assert gold_group["name"] == "Gold ETFs"
+    assert "GOLDBEES" in gold_group["stocks"]
+
+    # No NSE index series for the group itself - only constituent ETFs are fetched
+    assert INDEX_MAP.get("GOLDETF") is None
+
+
 def test_holiday_calendar(db_conn):
     conn, db_path = db_conn
     from fetch_eod import init_holidays
@@ -148,6 +176,8 @@ def test_universe_coverage(db_conn):
 
     universe_symbols = set()
     for child in UNIVERSE["children"]:
+        if child["code"] == "GOLDETF":
+            continue
         for stock in child["stocks"]:
             universe_symbols.add(stock)
 

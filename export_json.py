@@ -6,6 +6,8 @@ import yaml
 import yfinance as yf
 from datetime import datetime
 
+GOLD_ETF_SYMBOLS = {"GOLDBEES", "HDFCGOLD", "SETFGOLD", "AXISGOLD", "KOTAKGOLD", "IVZINGOLD", "QGOLDHALF"}
+
 def get_db_connection(db_path="test.db"):
     conn = sqlite3.connect(db_path)
     import os
@@ -72,7 +74,7 @@ def export_data(output_dir="data"):
             if (datetime.now() - updated_at).days < 30:
                 needs_fetch = False
 
-        is_index = inst.startswith("NIFTY") or inst == "BANKNIFTY"
+        is_index = inst.startswith("NIFTY") or inst == "BANKNIFTY" or inst in GOLD_ETF_SYMBOLS
         if needs_fetch and not is_index:
             try:
                 ticker = yf.Ticker(inst + ".NS")
