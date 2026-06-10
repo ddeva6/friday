@@ -274,11 +274,13 @@ def save_ohlcv(conn, instrument_code, df):
     cursor = conn.cursor()
     records = []
     for date, row in df.iterrows():
+        if math.isnan(row['Close']):
+            continue
         dt_str = date.strftime('%Y-%m-%d')
         op = float(row['Open']) if not math.isnan(row['Open']) else None
         hi = float(row['High']) if not math.isnan(row['High']) else None
         lo = float(row['Low']) if not math.isnan(row['Low']) else None
-        cl = float(row['Close']) if not math.isnan(row['Close']) else None
+        cl = float(row['Close'])
         adj_cl = cl # We use auto_adjust=True, so Close IS the adjusted close
         vol = int(row['Volume']) if not math.isnan(row['Volume']) else 0
         records.append((instrument_code, dt_str, op, hi, lo, cl, adj_cl, vol))
