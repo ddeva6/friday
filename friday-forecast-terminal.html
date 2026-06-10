@@ -187,7 +187,14 @@ function updateTimestamp() {
     }
     const el = document.getElementById('last-updated');
     if (latest) {
-        el.textContent = 'Data as of ' + latest + ' · loaded ' + new Date().toLocaleTimeString();
+        let refreshStr = '';
+        if (UNIVERSE && UNIVERSE.generated_at) {
+            const d = new Date(UNIVERSE.generated_at);
+            refreshStr = ' · Refreshed ' + d.toLocaleDateString() + ' ' + d.toLocaleTimeString();
+        } else {
+            refreshStr = ' · loaded ' + new Date().toLocaleTimeString();
+        }
+        el.textContent = 'Data as of ' + latest + refreshStr;
     } else {
         el.textContent = 'No data loaded';
     }

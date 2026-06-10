@@ -4,7 +4,7 @@ import json
 import os
 import yaml
 import yfinance as yf
-from datetime import datetime
+from datetime import datetime, timezone
 
 GOLD_ETF_SYMBOLS = {"GOLDBEES", "HDFCGOLD", "SETFGOLD", "AXISGOLD", "GOLD1", "IVZINGOLD", "QGOLDHALF"}
 
@@ -54,6 +54,8 @@ def export_data(output_dir="data"):
                 "name": idx_name,
                 "stocks": stocks
             })
+
+    universe["generated_at"] = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
     with open(os.path.join(output_dir, "index.json"), "w") as f:
         json.dump(universe, f, indent=2)
