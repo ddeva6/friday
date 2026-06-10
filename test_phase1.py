@@ -144,6 +144,31 @@ def test_gold_etf_group_added(monkeypatch):
     assert INDEX_MAP.get("GOLDETF") is None
 
 
+def test_save_ohlcv_skips_nan_close(db_conn):
+    # yfinance occasionally returns a row with NaN OHLC for the latest session
+    # (e.g. low-volume Gold ETFs). Such rows must not be persisted, since a NULL
+    # adjusted_close later becomes a bare `NaN` token in the JSON export and
+    # breaks JSON.parse() in the dashboard.
+    conn, db_path = db_conn
+    from fetch_eod import save_ohlcv
+
+    df = pd.DataFrame({
+        "Open": [100.0, float("nan")],
+        "High": [101.0, float("nan")],
+        "Low": [99.0, float("nan")],
+        "Close": [100.5, float("nan")],
+        "Volume": [1000, 0],
+    }, index=pd.to_datetime(["2024-04-09", "2024-04-10"]))
+
+    save_ohlcv(conn, "GOLDBEES", df)
+
+    c = conn.cursor()
+    c.execute("SELECT date, adjusted_close FROM ohlcv WHERE instrument_code = 'GOLDBEES' ORDER BY date")
+    rows = c.fetchall()
+
+    assert rows == [("2024-04-09", 100.5)]
+
+
 def test_holiday_calendar(db_conn):
     conn, db_path = db_conn
     from fetch_eod import init_holidays

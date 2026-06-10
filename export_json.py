@@ -106,6 +106,7 @@ def export_data(output_dir="data"):
                 print(f"Failed to fetch fundamentals for {inst}: {e}")
 
         df = pd.read_sql_query("SELECT date, adjusted_close FROM ohlcv WHERE instrument_code = ? ORDER BY date ASC", conn, params=(inst,))
+        df = df.dropna(subset=['adjusted_close'])
         if df.empty:
             continue
 

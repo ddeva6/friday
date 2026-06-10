@@ -89,6 +89,38 @@ def test_gold_etf_skips_fundamentals_fetch(gold_etf_db, tmp_path, monkeypatch):
     assert "GOLDBEES" in gold_group["stocks"]
 
 
+def test_gold_etf_handles_null_adjusted_close(gold_etf_db, tmp_path, monkeypatch):
+    # Simulate yfinance returning a NaN/NULL close for the most recent session,
+    # which previously leaked into the JSON export as a bare `NaN` token and
+    # broke JSON.parse() in the dashboard.
+    conn = sqlite3.connect(gold_etf_db)
+    conn.execute("INSERT INTO ohlcv (instrument_code, date, adjusted_close, volume) VALUES ('GOLDBEES', '2024-04-10', NULL, 500000)")
+    conn.commit()
+    conn.close()
+
+    data_dir = tmp_path / "data"
+
+    config = {'database': {'path': str(gold_etf_db)}}
+    import yaml
+    with open(tmp_path / "config.yaml", "w") as f:
+        yaml.dump(config, f)
+
+    monkeypatch.chdir(tmp_path)
+    with open(os.path.join(os.path.dirname(__file__), "schema.sql"), "r") as f_in:
+        with open(tmp_path / "schema.sql", "w") as f_out:
+            f_out.write(f_in.read())
+
+    export_data(output_dir=str(data_dir))
+
+    raw = (data_dir / "GOLDBEES.json").read_text()
+    assert "NaN" not in raw
+
+    data = json.loads(raw)
+    assert data["last"] == 65.0
+    assert data["asof"] == "2024-04-09"
+    assert all(v == 65.0 for v in data["hist"])
+
+
 def test_no_synthetic_fallback():
     with open("friday-forecast-terminal.html", "r") as f:
         content = f.read()
