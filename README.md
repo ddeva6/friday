@@ -23,6 +23,7 @@ Most retail forecast tools give you a single number. FRIDAY gives you an **uncer
 
 - **Zero-shot forecasting** — no training data, no overfitting. Kronos generalizes from pre-training on 27B time-series observations
 - **Hierarchical view** — drill from NIFTY 50 → sector indices → individual stocks
+- **Gold ETFs** — track domestic gold prices via NSE-listed Gold ETFs (GOLDBEES, HDFCGOLD, SETFGOLD, AXISGOLD, KOTAKGOLD, IVZINGOLD, QGOLDHALF) with the same forecast cones
 - **Risk-adjusted screener** — rank stocks by return-per-unit-uncertainty, not just raw return
 - **Fully automated** — GitHub Actions fetches data and regenerates forecasts daily at 4:45 PM IST
 - **Single HTML file** — the entire dashboard is one self-contained file. No build tools. No framework.

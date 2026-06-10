@@ -37,6 +37,58 @@ def sample_db(tmp_path):
     conn.close()
     return db_path
 
+@pytest.fixture
+def gold_etf_db(tmp_path):
+    db_path = tmp_path / "test_gold.db"
+    conn = sqlite3.connect(db_path)
+    with open("schema.sql", "r") as f:
+        conn.executescript(f.read())
+
+    conn.execute("INSERT INTO instruments (code, name, level) VALUES ('NIFTY 50', 'Broad Market', 'market')")
+    conn.execute("INSERT INTO instruments (code, name, level) VALUES ('GOLDETF', 'Gold ETFs', 'index')")
+    conn.execute("INSERT INTO instruments (code, name, level) VALUES ('GOLDBEES', 'GOLDBEES', 'stock')")
+    conn.execute("INSERT INTO index_membership (index_code, stock_code, start_date) VALUES ('GOLDETF', 'GOLDBEES', '2024-01-01')")
+
+    dates = pd.date_range(start="2024-01-01", periods=100).strftime('%Y-%m-%d')
+    for d in dates:
+        conn.execute("INSERT INTO ohlcv (instrument_code, date, adjusted_close, volume) VALUES ('GOLDBEES', ?, 65.0, 500000)", (d,))
+
+    conn.commit()
+    conn.close()
+    return db_path
+
+
+def test_gold_etf_skips_fundamentals_fetch(gold_etf_db, tmp_path, monkeypatch):
+    data_dir = tmp_path / "data"
+
+    config = {'database': {'path': str(gold_etf_db)}}
+    import yaml
+    with open(tmp_path / "config.yaml", "w") as f:
+        yaml.dump(config, f)
+
+    monkeypatch.chdir(tmp_path)
+    with open(os.path.join(os.path.dirname(__file__), "schema.sql"), "r") as f_in:
+        with open(tmp_path / "schema.sql", "w") as f_out:
+            f_out.write(f_in.read())
+
+    # No yfinance mock needed: GOLDBEES is treated as an index-like instrument,
+    # so the fundamentals fetch (and any network call) is skipped entirely.
+    export_data(output_dir=str(data_dir))
+
+    assert (data_dir / "GOLDBEES.json").exists()
+    with open(data_dir / "GOLDBEES.json", "r") as f:
+        data = json.load(f)
+
+    assert data["fundamentals"]["mcap_cr"] == "N/A"
+    assert data["fundamentals"]["pe"] == "N/A"
+
+    with open(data_dir / "index.json", "r") as f:
+        idx = json.load(f)
+    gold_group = next((c for c in idx["children"] if c["code"] == "GOLDETF"), None)
+    assert gold_group is not None
+    assert "GOLDBEES" in gold_group["stocks"]
+
+
 def test_no_synthetic_fallback():
     with open("friday-forecast-terminal.html", "r") as f:
         content = f.read()

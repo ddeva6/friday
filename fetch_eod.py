@@ -21,6 +21,7 @@ INDEX_MAP = {
     "NIFTYCONSUMPTION": "^CNXCONSUM",
     "NIFTYCOMMODITIES": "^CNXCMDT",
     "NIFTYENERGY": "^CNXENERGY",
+    "GOLDETF": None,
 }
 
 def get_db_connection(db_path="test.db"):
@@ -196,6 +197,12 @@ def fetch_all_constituents_from_nse():
     children = [child for child in universe_children.values() if child['stocks']]
     for child in children:
         child['stocks'] = sorted(list(set(child['stocks'])))
+
+    children.append({
+        "code": "GOLDETF",
+        "name": "Gold ETFs",
+        "stocks": ["GOLDBEES", "HDFCGOLD", "SETFGOLD", "AXISGOLD", "KOTAKGOLD", "IVZINGOLD", "QGOLDHALF"]
+    })
 
     return {"code": "NIFTY 50", "name": "Broad Market", "children": children}
 
