@@ -201,7 +201,7 @@ def fetch_all_constituents_from_nse():
     children.append({
         "code": "GOLDETF",
         "name": "Gold ETFs",
-        "stocks": ["GOLDBEES", "HDFCGOLD", "SETFGOLD", "AXISGOLD", "KOTAKGOLD", "IVZINGOLD", "QGOLDHALF"]
+        "stocks": ["GOLDBEES", "HDFCGOLD", "SETFGOLD", "AXISGOLD", "GOLD1", "IVZINGOLD", "QGOLDHALF"]
     })
 
     return {"code": "NIFTY 50", "name": "Broad Market", "children": children}
