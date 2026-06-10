@@ -6,7 +6,7 @@ import yaml
 import yfinance as yf
 from datetime import datetime
 
-GOLD_ETF_SYMBOLS = {"GOLDBEES", "HDFCGOLD", "SETFGOLD", "AXISGOLD", "KOTAKGOLD", "IVZINGOLD", "QGOLDHALF"}
+GOLD_ETF_SYMBOLS = {"GOLDBEES", "HDFCGOLD", "SETFGOLD", "AXISGOLD", "GOLD1", "IVZINGOLD", "QGOLDHALF"}
 
 def get_db_connection(db_path="test.db"):
     conn = sqlite3.connect(db_path)
