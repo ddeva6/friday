@@ -52,6 +52,26 @@ CREATE TABLE IF NOT EXISTS forecasts (
     med_json TEXT, -- JSON array of median forecast
     up_json TEXT,  -- JSON array of upper cone
     lo_json TEXT,  -- JSON array of lower cone
+    calibration_json TEXT, -- JSON: {"bias_pct", "cone_scale", "coverage", "n"} applied to this forecast
+    PRIMARY KEY (instrument_code, asof_date),
+    FOREIGN KEY (instrument_code) REFERENCES instruments(code)
+);
+
+-- Tracks predicted-vs-actual outcomes for each forecast, evaluated once
+-- `horizon` trading sessions of real OHLCV data are available past asof_date.
+CREATE TABLE IF NOT EXISTS forecast_accuracy (
+    instrument_code TEXT,
+    asof_date TEXT,      -- the date the forecast was made
+    target_date TEXT,    -- the actual trading date the forecast targeted
+    horizon INTEGER,      -- trading sessions ahead (e.g. 5)
+    last_price REAL,      -- price as of asof_date
+    predicted_med REAL,
+    predicted_up REAL,
+    predicted_lo REAL,
+    actual_close REAL,
+    error_pct REAL,        -- (actual - predicted_med) / predicted_med * 100
+    in_cone INTEGER,        -- 1 if predicted_lo <= actual_close <= predicted_up
+    direction_correct INTEGER, -- 1 if sign(predicted_med - last_price) == sign(actual_close - last_price)
     PRIMARY KEY (instrument_code, asof_date),
     FOREIGN KEY (instrument_code) REFERENCES instruments(code)
 );
