@@ -315,8 +315,9 @@ function renderDrill(){
   }else{
     const ix=univ.children[state.idx],stk=ix.stocks[state.stock];
     const code = Array.isArray(stk) ? stk[0] : stk;
-    const name = Array.isArray(stk) ? stk[1] : stk;
-    focus={code:code,name:name,s:series(code)};
+    const s_data = series(code);
+    const name = s_data.name || (Array.isArray(stk) ? stk[1] : stk);
+    focus={code:code,name:name,s:s_data};
     crumb.innerHTML=`<button onclick="goMarket()">Market</button><span class="sep">›</span><button onclick="goIndex(${state.idx})">${ix.code}</button><span class="sep">›</span><span class="here">${code}</span>`;
   }
   const s=focus.s,up=s.ret>=0;
@@ -389,7 +390,12 @@ function renderDrill(){
   children.forEach((c,i)=>{
     let code,nm,onclick;
     if(childKind==='index'){code=c.code;nm=c.name;onclick=`goIndex(${i})`;}
-    else{code=Array.isArray(c)?c[0]:c; nm=Array.isArray(c)?c[1]:c; onclick=`goStock(${state.idx},${i})`;}
+    else{
+        code=Array.isArray(c)?c[0]:c;
+        const s_data = series(code);
+        nm=s_data.name || (Array.isArray(c)?c[1]:c);
+        onclick=`goStock(${state.idx},${i})`;
+    }
     const cs=series(code),up=cs.ret>=0;
     const card=document.createElement('div');card.className='card';card.setAttribute('onclick',onclick);
     card.innerHTML=`<span class="drillicon">→</span><div class="cn">${code}</div><div class="cc">${nm}</div>
@@ -414,8 +420,9 @@ function renderScreener(){
   const dir=document.getElementById('f-dir').value,idxf=fidx.value;
   let rows=[];
   univ.children.forEach((ix,ii)=>ix.stocks.forEach((stk,si)=>{
-    let c=Array.isArray(stk)?stk[0]:stk; let n=Array.isArray(stk)?stk[1]:stk;
+    let c=Array.isArray(stk)?stk[0]:stk;
     const s=series(c);
+    let n=s.name || (Array.isArray(stk)?stk[1]:stk);
     const riskAdj = s.cone_width_pct > 0 ? (s.ret / s.cone_width_pct) : 0;
     rows.push({code:c,name:n,idx:ix.code,ii,si,last:s.last,ret:s.ret,riskAdj});
   }));

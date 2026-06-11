@@ -107,12 +107,17 @@ def export_data(output_dir="data"):
             except Exception as e:
                 print(f"Failed to fetch fundamentals for {inst}: {e}")
 
+        # Get instrument name
+        c.execute("SELECT name FROM instruments WHERE code = ?", (inst,))
+        name_row = c.fetchone()
+        inst_name = name_row[0] if name_row else inst
+
         df = pd.read_sql_query("SELECT date, adjusted_close FROM ohlcv WHERE instrument_code = ? ORDER BY date ASC", conn, params=(inst,))
         df = df.dropna(subset=['adjusted_close'])
         if df.empty:
             continue
 
-        hist = df['adjusted_close'].tolist()
+        hist = [round(x, 2) for x in df['adjusted_close'].tolist()]
         last = hist[-1]
 
         # Get forecast from DB
@@ -178,14 +183,22 @@ def export_data(output_dir="data"):
 
         # 1. Low liquidity: avg volume last 20 sessions < 100k
         # We need volume from ohlcv table
+        is_index = inst.startswith("NIFTY") or inst == "BANKNIFTY"
         df_vol = pd.read_sql_query("SELECT volume FROM ohlcv WHERE instrument_code = ? ORDER BY date DESC LIMIT 20", conn, params=(inst,))
-        if not df_vol.empty and df_vol['volume'].mean() < 100000:
+        if not is_index and not df_vol.empty and df_vol['volume'].mean() < 100000:
             status_flags.append("Low liquidity")
 
-        # 2. Data gap: last date > 3 calendar days ago
+        # 2. Data gap: last date > 3 calendar days ago. Use business days or check against the holidays table instead.
         last_date_str = df.iloc[-1]['date']
-        last_date = datetime.strptime(last_date_str, '%Y-%m-%d')
-        if (datetime.now() - last_date).days > 3:
+        last_date = datetime.strptime(last_date_str, '%Y-%m-%d').date()
+
+        # Calculate business days diff taking holidays into account
+        import numpy as np
+        c.execute("SELECT date FROM holidays")
+        holidays_list = [r[0] for r in c.fetchall()]
+        bus_days_diff = np.busday_count(last_date, datetime.now().date(), holidays=holidays_list)
+
+        if bus_days_diff > 3:
             status_flags.append("Stale data")
 
         # 3. Short history: < 60 data points
@@ -200,6 +213,7 @@ def export_data(output_dir="data"):
         # Forecast contract shape with populated forecast cones
         data = {
             "code": inst,
+            "name": inst_name,
             "last": last,
             "hist": hist,
             "med": med,
