@@ -116,7 +116,7 @@ def export_data(output_dir="data"):
         last = hist[-1]
 
         # Get forecast from DB
-        c.execute("SELECT ret, cone_width_pct, med_json, up_json, lo_json FROM forecasts WHERE instrument_code = ? ORDER BY asof_date DESC LIMIT 1", (inst,))
+        c.execute("SELECT ret, cone_width_pct, med_json, up_json, lo_json, calibration_json FROM forecasts WHERE instrument_code = ? ORDER BY asof_date DESC LIMIT 1", (inst,))
         f_row = c.fetchone()
 
         med = []
@@ -124,12 +124,48 @@ def export_data(output_dir="data"):
         lo = []
         ret = 0.0
         cone_width_pct = 0.0
+        calibration = {"bias_pct": 0.0, "coverage": None, "cone_scale": 1.0, "n": 0}
 
         if f_row:
-            ret, cone_width_pct, med_json, up_json, lo_json = f_row
+            ret, cone_width_pct, med_json, up_json, lo_json, calibration_json = f_row
             if med_json: med = json.loads(med_json)
             if up_json: up = json.loads(up_json)
             if lo_json: lo = json.loads(lo_json)
+            if calibration_json: calibration = json.loads(calibration_json)
+
+        # Get accuracy history: predicted-vs-actual outcomes for past forecasts
+        c.execute("""
+            SELECT asof_date, target_date, predicted_med, actual_close, error_pct, in_cone, direction_correct
+            FROM forecast_accuracy WHERE instrument_code = ? ORDER BY asof_date DESC LIMIT 20
+        """, (inst,))
+        acc_rows = c.fetchall()
+
+        accuracy_history = [{
+            "asof_date": r[0],
+            "target_date": r[1],
+            "predicted_med": r[2],
+            "actual_close": r[3],
+            "error_pct": r[4],
+            "in_cone": bool(r[5]),
+            "direction_correct": bool(r[6])
+        } for r in acc_rows]
+
+        if acc_rows:
+            mae_pct = sum(abs(r[4]) for r in acc_rows) / len(acc_rows)
+            directional_accuracy_pct = sum(r[6] for r in acc_rows) / len(acc_rows) * 100
+            calibration_pct = sum(r[5] for r in acc_rows) / len(acc_rows) * 100
+        else:
+            mae_pct = None
+            directional_accuracy_pct = None
+            calibration_pct = None
+
+        accuracy = {
+            "history": accuracy_history,
+            "n": len(acc_rows),
+            "mae_pct": round(mae_pct, 2) if mae_pct is not None else None,
+            "directional_accuracy_pct": round(directional_accuracy_pct, 1) if directional_accuracy_pct is not None else None,
+            "calibration_pct": round(calibration_pct, 1) if calibration_pct is not None else None
+        }
 
         # Get 52w high/low
         # Approx 252 trading days in a year
@@ -181,7 +217,9 @@ def export_data(output_dir="data"):
                 "hi_52w": hi_52w,
                 "lo_52w": lo_52w
             },
-            "status": status_flags
+            "status": status_flags,
+            "calibration": calibration,
+            "accuracy": accuracy
         }
 
         with open(os.path.join(output_dir, f"{inst}.json"), "w") as f:

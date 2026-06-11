@@ -241,6 +241,28 @@ function getFundamentals(code){
   }
   return {mcap_cr:'N/A', pe:'N/A', roe:'N/A', de:'N/A', sales_growth_yoy:'N/A', hi_52w:'N/A', lo_52w:'N/A'};
 }
+function getCalibration(code){
+  if (REAL_DATA[code] && REAL_DATA[code].calibration) {
+      return REAL_DATA[code].calibration;
+  }
+  return {bias_pct:0, coverage:null, cone_scale:1.0, n:0};
+}
+function getAccuracy(code){
+  if (REAL_DATA[code] && REAL_DATA[code].accuracy) {
+      return REAL_DATA[code].accuracy;
+  }
+  return {history:[], n:0, mae_pct:null, directional_accuracy_pct:null, calibration_pct:null};
+}
+function calibrationText(cal){
+  if (!cal || cal.n < 5) return 'Cold start — not enough accuracy history yet for adaptive calibration.';
+  const bias = 'Bias ' + signed(cal.bias_pct);
+  let scale;
+  if (cal.cone_scale > 1.0) scale = `cone widened ${cal.cone_scale.toFixed(2)}×`;
+  else if (cal.cone_scale < 1.0) scale = `cone narrowed ${cal.cone_scale.toFixed(2)}×`;
+  else scale = 'cone unchanged';
+  const cov = cal.coverage != null ? ` (coverage ${(cal.coverage*100).toFixed(0)}%)` : '';
+  return `${bias} · ${scale}${cov} · n=${cal.n}`;
+}
 function chart(s,W,H,big){
   const all=[...s.hist,...s.up,...s.lo];let mn=Math.min(...all),mx=Math.max(...all);const pd=(mx-mn)*0.08;mn-=pd;mx+=pd;
   const N=HIST+FC,padL=big?6:0,padR=big?6:0,padT=6,padB=6;
@@ -323,6 +345,36 @@ function renderDrill(){
       <div class="fund-h">Key fundamentals</div>
       <div class="fund-grid">${cells.map(([k,v,c])=>`<div class="fcell"><div class="fk">${k}</div><div class="fv ${c}">${v}</div></div>`).join('')}</div>
       <div class="fund-foot">Fundamentals are point-in-time and refreshed on a quarterly cadence. 52w range derived from history.</div></div>`;
+
+    const acc=getAccuracy(focus.code), cal=getCalibration(focus.code);
+    if (acc.n > 0) {
+      const accCells=[
+        ['MAE', acc.mae_pct != null ? acc.mae_pct.toFixed(2)+'%' : 'N/A', ''],
+        ['Directional accuracy', acc.directional_accuracy_pct != null ? acc.directional_accuracy_pct.toFixed(0)+'%' : 'N/A', ''],
+        ['In-cone (P10–P90)', acc.calibration_pct != null ? acc.calibration_pct.toFixed(0)+'%' : 'N/A', ''],
+      ];
+      const histRows=acc.history.map(h=>`<tr>
+          <td><span class="nm">${h.asof_date}</span></td>
+          <td>${h.target_date}</td>
+          <td>${fmt(h.predicted_med)}</td>
+          <td>${fmt(h.actual_close)}</td>
+          <td class="${h.error_pct>=0?'up':'down'}">${signed(h.error_pct)}</td>
+          <td><span class="tag ${h.in_cone?'up':'down'}">${h.in_cone?'IN CONE':'MISS'}</span></td>
+          <td><span class="tag ${h.direction_correct?'up':'down'}">${h.direction_correct?'CORRECT':'WRONG'}</span></td>
+        </tr>`).join('');
+      grid.innerHTML+=`<div class="fund">
+        <div class="fund-h">Forecast accuracy</div>
+        <div class="fund-grid">${accCells.map(([k,v,c])=>`<div class="fcell"><div class="fk">${k}</div><div class="fv ${c}">${v}</div></div>`).join('')}</div>
+        <div class="fund-foot">Active calibration: ${calibrationText(cal)}<br>Based on the last ${acc.n} forecast(s) evaluated ${FC} trading days after they were made.</div>
+        <table><thead><tr><th>As of</th><th>Target</th><th>Pred. P50</th><th>Actual</th><th>Error</th><th>Cone</th><th>Direction</th></tr></thead>
+          <tbody>${histRows}</tbody></table>
+        </div>`;
+    } else {
+      grid.innerHTML+=`<div class="fund">
+        <div class="fund-h">Forecast accuracy</div>
+        <div class="fund-foot">No evaluated forecasts yet — each forecast is compared against the actual close ${FC} trading days later. ${calibrationText(cal)}</div>
+        </div>`;
+    }
 
     if (s.status && s.status.length) {
         document.getElementById('data-status-text').textContent = s.status.join(' · ');

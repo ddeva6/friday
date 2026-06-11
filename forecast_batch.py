@@ -40,6 +40,23 @@ def ensure_monotonic_widening(med, up, lo, horizon):
                 lo[i] = round(med[i] - (spread * (i + 1) / 2), 2)
     return up, lo
 
+def apply_calibration(med, up, lo, last_price, calibration):
+    """Shift med/up/lo by the calibration's bias_pct (relative to last_price)
+    and scale the up/lo half-widths by cone_scale. Neutral calibration
+    (bias_pct=0, cone_scale=1.0) leaves the cone unchanged."""
+    bias_pct = calibration.get("bias_pct", 0.0)
+    cone_scale = calibration.get("cone_scale", 1.0)
+
+    half_up = [u - m for u, m in zip(up, med)]
+    half_lo = [m - l for m, l in zip(med, lo)]
+    shift = last_price * (bias_pct / 100.0)
+
+    new_med = [round(m + shift, 2) for m in med]
+    new_up = [round(new_med[i] + half_up[i] * cone_scale, 2) for i in range(len(med))]
+    new_lo = [round(new_med[i] - half_lo[i] * cone_scale, 2) for i in range(len(med))]
+
+    return new_med, new_up, new_lo
+
 def run_forecast_batch(db_path=None):
     import torch
     from chronos import ChronosPipeline
@@ -74,6 +91,15 @@ def run_forecast_batch(db_path=None):
 
     conn = get_db_connection(db_path)
     c = conn.cursor()
+
+    # *.db is recreated fresh on every pipeline run, so restore pending
+    # forecasts and accuracy history from the git-tracked log before
+    # comparing past forecasts vs actuals. This keeps calibration below
+    # informed by the freshest accuracy history.
+    from accuracy import evaluate_pending_forecasts, get_calibration, load_forecast_log, seed_from_log, save_forecast_log
+    seed_from_log(conn, load_forecast_log())
+    n_evaluated = evaluate_pending_forecasts(conn, horizon=horizon)
+    logging.info(f"Evaluated {n_evaluated} pending forecasts against actuals")
 
     # Get all instruments
     c.execute("SELECT DISTINCT instrument_code FROM ohlcv")
@@ -119,19 +145,26 @@ def run_forecast_batch(db_path=None):
         if up != lo:
             cone_width_pct = calculate_metrics(last_price, med, up, lo)[1]
 
+        # Adaptive calibration: shift/scale the cone based on this
+        # instrument's recent forecast accuracy (neutral on cold start).
+        calibration = get_calibration(conn, inst)
+        med, up, lo = apply_calibration(med, up, lo, last_price, calibration)
+        ret, cone_width_pct = calculate_metrics(last_price, med, up, lo)
 
         c.execute("""
             INSERT OR REPLACE INTO forecasts
-            (instrument_code, asof_date, last_price, ret, cone_width_pct, hist_json, med_json, up_json, lo_json)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (instrument_code, asof_date, last_price, ret, cone_width_pct, hist_json, med_json, up_json, lo_json, calibration_json)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             inst, asof_date, last_price, ret, cone_width_pct,
-            json.dumps(hist), json.dumps(med), json.dumps(up), json.dumps(lo)
+            json.dumps(hist), json.dumps(med), json.dumps(up), json.dumps(lo), json.dumps(calibration)
         ))
 
         print(f"Forecasted {inst}")
 
     conn.commit()
+
+    save_forecast_log(conn, horizon=horizon)
 
     c.execute("SELECT MAX(asof_date) FROM forecasts")
     max_asof = c.fetchone()[0]
