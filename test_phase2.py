@@ -78,7 +78,7 @@ def test_config_has_forecast_params():
     config = load_config()
     fc = config.get("forecast", {})
     assert fc.get("lookback") == 180
-    assert fc.get("horizon") == 5
+    assert fc.get("horizon") == 1
     assert fc.get("sample_count") in (20, 30)
     assert fc.get("model") is not None
 

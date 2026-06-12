@@ -24,7 +24,7 @@ def run_backtest(db_path=None, start_date=None, end_date=None):
     backtest_config = config.get("backtest", {})
 
     lookback = forecast_config.get("lookback", 180)
-    horizon = forecast_config.get("horizon", 5)
+    horizon = forecast_config.get("horizon", 1)
     sample_count = forecast_config.get("sample_count", 30)
     model_name = forecast_config.get("model", "amazon/chronos-t5-base")
     seed = forecast_config.get("seed", 42)

@@ -126,7 +126,7 @@
   </div>
 
   <div id="screener-view" class="hidden">
-    <div class="sectitle"><h2>Screener</h2><span class="hint">every stock ranked by its 5-day forecast — a watchlist, not a buy list</span></div>
+    <div class="sectitle"><h2>Screener</h2><span class="hint">every stock ranked by its 1-day forecast — a watchlist, not a buy list</span></div>
     <div class="filters">
       <div class="fld"><label>Direction</label>
         <select id="f-dir" onchange="renderScreener()">
@@ -205,7 +205,7 @@ function showError(msg) {
     document.getElementById('drill-view').innerHTML = `<div style="padding:40px; text-align:center; color:var(--ink-dim); font-family:var(--mono); border:1px dashed var(--line); border-radius:16px; margin-top:20px;">${msg}</div>`;
 }
 
-const HIST=60,FC=5;
+const HIST=60,FC=1;
 function series(code){
   if (REAL_DATA[code]) {
       let rd = REAL_DATA[code];
@@ -325,7 +325,7 @@ function renderDrill(){
 
   if(state.level==='stock'){
     const f=getFundamentals(focus.code);
-    st.innerHTML=`<h2>Fundamentals</h2><span class="hint">snapshot alongside the 5-day forecast</span>`;
+    st.innerHTML=`<h2>Fundamentals</h2><span class="hint">snapshot alongside the ${FC}-day forecast</span>`;
     const cells=[
       ['Market Cap', (f.mcap_cr === 'N/A' || f.mcap_cr === 0 || !f.mcap_cr) ? 'N/A' : '₹'+f.mcap_cr.toLocaleString('en-IN')+' Cr',''],
       ['P/E', typeof f.pe === 'number' ? f.pe.toFixed(1) : 'N/A', typeof f.pe === 'number' ? (f.pe>40?'down':(f.pe<15?'up':'')) : ''],
@@ -358,14 +358,14 @@ function renderDrill(){
       grid.innerHTML+=`<div class="fund">
         <div class="fund-h">Forecast accuracy</div>
         <div class="fund-grid">${accCells.map(([k,v,c])=>`<div class="fcell"><div class="fk">${k}</div><div class="fv ${c}">${v}</div></div>`).join('')}</div>
-        <div class="fund-foot">Active calibration: ${calibrationText(cal)}<br>Based on the last ${acc.n} forecast(s) evaluated ${FC} trading days after they were made.</div>
+        <div class="fund-foot">Active calibration: ${calibrationText(cal)}<br>Based on the last ${acc.n} forecast(s) evaluated ${FC} trading day${FC===1?'':'s'} after they were made.</div>
         <table><thead><tr><th>As of</th><th>Target</th><th>Pred. P50</th><th>Actual</th><th>Error</th><th>Cone</th><th>Direction</th></tr></thead>
           <tbody>${histRows}</tbody></table>
         </div>`;
     } else {
       grid.innerHTML+=`<div class="fund">
         <div class="fund-h">Forecast accuracy</div>
-        <div class="fund-foot">No evaluated forecasts yet — each forecast is compared against the actual close ${FC} trading days later. ${calibrationText(cal)}</div>
+        <div class="fund-foot">No evaluated forecasts yet — each forecast is compared against the actual close ${FC} trading day${FC===1?'':'s'} later. ${calibrationText(cal)}</div>
         </div>`;
     }
 

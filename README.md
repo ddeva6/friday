@@ -7,7 +7,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![GitHub](https://img.shields.io/github/stars/ddeva6/friday?style=social)](https://github.com/ddeva6/friday)
 
-**FRIDAY** generates 5-day probabilistic forecasts for 50+ NSE stocks using the [Kronos](https://github.com/amazon-science/chronos-forecasting) (Chronos) time-series foundation model. Zero-shot. No training. Just inference.
+**FRIDAY** generates 1-day probabilistic forecasts for 50+ NSE stocks using the [Kronos](https://github.com/amazon-science/chronos-forecasting) (Chronos) time-series foundation model. Zero-shot. No training. Just inference.
 
 **Live Dashboard:** [https://ddeva6.github.io/friday/](https://ddeva6.github.io/friday/) (auto-refreshes daily after market close)
 
@@ -61,7 +61,7 @@ python runner.py backtest   # walk-forward directional backtest
 | Phase | What it does | Key file |
 |-------|-------------|----------|
 | **1 — Data** | Fetches EOD OHLCV + fundamentals from yfinance, index constituents from NSE | `fetch_eod.py` |
-| **2 — Forecast** | Runs Kronos-T5 to generate 5-day uncertainty cones (P10/P50/P90) | `forecast_batch.py` |
+| **2 — Forecast** | Runs Kronos-T5 to generate 1-day uncertainty cones (P10/P50/P90) | `forecast_batch.py` |
 | **3 — UI** | Exports SQLite → static JSON, serves single-file HTML dashboard | `export_json.py` |
 
 ### Models

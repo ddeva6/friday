@@ -14,7 +14,7 @@ def get_db_connection(db_path="test.db"):
     return sqlite3.connect(db_path)
 
 
-def evaluate_pending_forecasts(conn, horizon=5):
+def evaluate_pending_forecasts(conn, horizon=1):
     """Compare archived forecasts against actuals once `horizon` trading
     sessions of OHLCV data exist past asof_date, writing results into
     forecast_accuracy. Returns the number of forecasts evaluated."""
@@ -140,14 +140,14 @@ def seed_from_log(conn, log):
                 (instrument_code, asof_date, target_date, horizon, last_price, predicted_med, predicted_up, predicted_lo, actual_close, error_pct, in_cone, direction_correct)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
-                inst, a["asof_date"], a["target_date"], a.get("horizon", 5), a.get("last_price", 0),
+                inst, a["asof_date"], a["target_date"], a.get("horizon", 1), a.get("last_price", 0),
                 a["predicted_med"], a.get("predicted_up", a["predicted_med"]), a.get("predicted_lo", a["predicted_med"]),
                 a["actual_close"], a["error_pct"], int(a["in_cone"]), int(a["direction_correct"])
             ))
     conn.commit()
 
 
-def save_forecast_log(conn, path=DEFAULT_LOG_PATH, horizon=5, lookback_n=20):
+def save_forecast_log(conn, path=DEFAULT_LOG_PATH, horizon=1, lookback_n=20):
     """Persist not-yet-evaluated forecasts (so they get a chance to be
     scored once `horizon` sessions pass) and recent accuracy history (for
     get_calibration's lookback) to a git-tracked JSON file."""
@@ -198,7 +198,8 @@ if __name__ == "__main__":
     from forecast_batch import load_config
     config = load_config()
     db_path = config.get("database", {}).get("path", "test.db")
+    horizon = config.get("forecast", {}).get("horizon", 1)
     conn = get_db_connection(db_path)
-    n = evaluate_pending_forecasts(conn)
+    n = evaluate_pending_forecasts(conn, horizon=horizon)
     logging.info(f"Evaluated {n} pending forecasts")
     conn.close()

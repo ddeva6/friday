@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS forecast_accuracy (
     instrument_code TEXT,
     asof_date TEXT,      -- the date the forecast was made
     target_date TEXT,    -- the actual trading date the forecast targeted
-    horizon INTEGER,      -- trading sessions ahead (e.g. 5)
+    horizon INTEGER,      -- trading sessions ahead (e.g. 1)
     last_price REAL,      -- price as of asof_date
     predicted_med REAL,
     predicted_up REAL,
