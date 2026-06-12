@@ -43,7 +43,7 @@ jobs:
           config = {
               'database': {'path': 'friday.db'},
               'dates': {'start': start, 'end': end},
-              'forecast': {'lookback': 180, 'horizon': 5, 'sample_count': 20, 'model': 'amazon/chronos-t5-tiny', 'seed': 42},
+              'forecast': {'lookback': 180, 'horizon': 1, 'sample_count': 20, 'model': 'amazon/chronos-t5-tiny', 'seed': 42},
               'backtest': {'step': 5}
           }
           with open('config.yaml', 'w') as f:
