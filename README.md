@@ -116,7 +116,7 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 - Mobile-responsive dashboard layout
 - Support for additional markets (BSE, crypto, US equities)
 - Forecast accuracy tracking over time
-- Dark/light theme toggle
+- ~~Dark/light theme toggle~~
 
 Check [open issues](https://github.com/ddeva6/friday/issues) for more ideas.
 
