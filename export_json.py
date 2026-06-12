@@ -11,7 +11,7 @@ from forecast_batch import calculate_metrics
 GOLD_ETF_SYMBOLS = {"GOLDBEES", "HDFCGOLD", "SETFGOLD", "AXISGOLD", "GOLD1", "IVZINGOLD", "QGOLDHALF"}
 
 
-def build_synthetic_index(code, stock_codes, cache):
+def build_synthetic_index(code, name, stock_codes, cache):
     """Build an equal-weighted synthetic index from constituent stock data,
     for index-level instruments (e.g. NIFTYFINSERVICE, GOLDETF) that have no
     OHLCV/forecast of their own. Each constituent's history and forecast are
@@ -53,6 +53,7 @@ def build_synthetic_index(code, stock_codes, cache):
 
     return {
         "code": code,
+        "name": name,
         "last": last,
         "hist": hist,
         "med": med,
@@ -315,7 +316,7 @@ def export_data(output_dir="data"):
     for child in universe["children"]:
         if child["code"] in inst_data_cache:
             continue
-        synthetic = build_synthetic_index(child["code"], child["stocks"], inst_data_cache)
+        synthetic = build_synthetic_index(child["code"], child["name"], child["stocks"], inst_data_cache)
         if synthetic:
             with open(os.path.join(output_dir, f"{child['code']}.json"), "w") as f:
                 json.dump(synthetic, f, indent=2)
