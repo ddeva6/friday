@@ -6,7 +6,72 @@ import yaml
 import yfinance as yf
 from datetime import datetime
 
+from forecast_batch import calculate_metrics
+
 GOLD_ETF_SYMBOLS = {"GOLDBEES", "HDFCGOLD", "SETFGOLD", "AXISGOLD", "GOLD1", "IVZINGOLD", "QGOLDHALF"}
+
+
+def build_synthetic_index(code, stock_codes, cache):
+    """Build an equal-weighted synthetic index from constituent stock data,
+    for index-level instruments (e.g. NIFTYFINSERVICE, GOLDETF) that have no
+    OHLCV/forecast of their own. Each constituent's history and forecast are
+    rebased to a common scale before averaging."""
+    constituents = [cache[s] for s in stock_codes if s in cache and cache[s]['hist']]
+    if not constituents:
+        return None
+
+    min_len = min(len(c['hist']) for c in constituents)
+    if min_len == 0:
+        return None
+
+    rebased_hists = [
+        [v / c['hist'][-min_len] * 100 for v in c['hist'][-min_len:]]
+        for c in constituents if c['hist'][-min_len] != 0
+    ]
+    if not rebased_hists:
+        return None
+
+    hist = [round(sum(vals) / len(vals), 2) for vals in zip(*rebased_hists)]
+    last = hist[-1]
+
+    rebased_meds, rebased_ups, rebased_los = [], [], []
+    for c in constituents:
+        if c['med'] and c['up'] and c['lo'] and c['last']:
+            rebased_meds.append([last * (v / c['last']) for v in c['med']])
+            rebased_ups.append([last * (v / c['last']) for v in c['up']])
+            rebased_los.append([last * (v / c['last']) for v in c['lo']])
+
+    if rebased_meds:
+        med = [round(sum(vals) / len(vals), 2) for vals in zip(*rebased_meds)]
+        up = [round(sum(vals) / len(vals), 2) for vals in zip(*rebased_ups)]
+        lo = [round(sum(vals) / len(vals), 2) for vals in zip(*rebased_los)]
+    else:
+        med, up, lo = [], [], []
+
+    ret, cone_width_pct = calculate_metrics(last, med, up, lo)
+    asof = max(c['asof'] for c in constituents)
+
+    return {
+        "code": code,
+        "last": last,
+        "hist": hist,
+        "med": med,
+        "up": up,
+        "lo": lo,
+        "ret": ret,
+        "cone_width_pct": cone_width_pct,
+        "asof": asof,
+        "fundamentals": {
+            "mcap_cr": "N/A", "pe": "N/A", "roe": "N/A", "de": "N/A",
+            "sales_growth_yoy": "N/A", "hi_52w": max(hist), "lo_52w": min(hist)
+        },
+        "status": [
+            f"Synthetic index — equal-weighted average of {len(constituents)} constituent(s)",
+            "Data as of " + asof
+        ],
+        "calibration": {"bias_pct": 0.0, "coverage": None, "cone_scale": 1.0, "n": 0},
+        "accuracy": {"history": [], "n": 0, "mae_pct": None, "directional_accuracy_pct": None, "calibration_pct": None}
+    }
 
 def get_db_connection(db_path="test.db"):
     conn = sqlite3.connect(db_path)
@@ -61,6 +126,8 @@ def export_data(output_dir="data"):
     # Dump instrument data
     c.execute("SELECT DISTINCT instrument_code FROM ohlcv")
     instruments = [r[0] for r in c.fetchall()]
+
+    inst_data_cache = {}
 
     for inst in instruments:
         # Fetch fundamentals from yfinance if not in DB or stale
@@ -220,8 +287,22 @@ def export_data(output_dir="data"):
             "accuracy": accuracy
         }
 
+        inst_data_cache[inst] = data
+
         with open(os.path.join(output_dir, f"{inst}.json"), "w") as f:
             json.dump(data, f, indent=2)
+
+    # Index-level instruments with no OHLCV/forecast of their own (e.g.
+    # NIFTYFINSERVICE, GOLDETF) get a synthetic equal-weighted index built
+    # from their constituents, so they render alongside other sectors
+    # instead of showing blank/zero cards.
+    for child in universe["children"]:
+        if child["code"] in inst_data_cache:
+            continue
+        synthetic = build_synthetic_index(child["code"], child["stocks"], inst_data_cache)
+        if synthetic:
+            with open(os.path.join(output_dir, f"{child['code']}.json"), "w") as f:
+                json.dump(synthetic, f, indent=2)
 
     conn.close()
     print(f"Exported to {output_dir}")

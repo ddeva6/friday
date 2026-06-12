@@ -121,6 +121,67 @@ def test_gold_etf_handles_null_adjusted_close(gold_etf_db, tmp_path, monkeypatch
     assert all(v == 65.0 for v in data["hist"])
 
 
+@pytest.fixture
+def synthetic_index_db(tmp_path):
+    db_path = tmp_path / "test_synth.db"
+    conn = sqlite3.connect(db_path)
+    with open("schema.sql", "r") as f:
+        conn.executescript(f.read())
+
+    conn.execute("INSERT INTO instruments (code, name, level) VALUES ('NIFTY 50', 'Broad Market', 'market')")
+    conn.execute("INSERT INTO instruments (code, name, level) VALUES ('GOLDETF', 'Gold ETFs', 'index')")
+    conn.execute("INSERT INTO instruments (code, name, level) VALUES ('GOLDBEES', 'GOLDBEES', 'stock')")
+    conn.execute("INSERT INTO instruments (code, name, level) VALUES ('AXISGOLD', 'AXISGOLD', 'stock')")
+    conn.execute("INSERT INTO index_membership (index_code, stock_code, start_date) VALUES ('GOLDETF', 'GOLDBEES', '2024-01-01')")
+    conn.execute("INSERT INTO index_membership (index_code, stock_code, start_date) VALUES ('GOLDETF', 'AXISGOLD', '2024-01-01')")
+
+    dates = pd.date_range(start="2024-01-01", periods=100).strftime('%Y-%m-%d')
+    for d in dates:
+        conn.execute("INSERT INTO ohlcv (instrument_code, date, adjusted_close, volume) VALUES ('GOLDBEES', ?, 65.0, 500000)", (d,))
+        conn.execute("INSERT INTO ohlcv (instrument_code, date, adjusted_close, volume) VALUES ('AXISGOLD', ?, 100.0, 500000)", (d,))
+
+    conn.execute("""
+        INSERT INTO forecasts (instrument_code, asof_date, last_price, ret, cone_width_pct, med_json, up_json, lo_json)
+        VALUES ('GOLDBEES', '2024-04-09', 65.0, 2.0, 5.0, '[66.3]', '[67.0]', '[64.0]')
+    """)
+    conn.execute("""
+        INSERT INTO forecasts (instrument_code, asof_date, last_price, ret, cone_width_pct, med_json, up_json, lo_json)
+        VALUES ('AXISGOLD', '2024-04-09', 100.0, 2.0, 5.0, '[102.0]', '[103.0]', '[101.0]')
+    """)
+
+    conn.commit()
+    conn.close()
+    return db_path
+
+
+def test_synthetic_index_built_from_constituents(synthetic_index_db, tmp_path, monkeypatch):
+    data_dir = tmp_path / "data"
+
+    config = {'database': {'path': str(synthetic_index_db)}}
+    import yaml
+    with open(tmp_path / "config.yaml", "w") as f:
+        yaml.dump(config, f)
+
+    monkeypatch.chdir(tmp_path)
+    with open(os.path.join(os.path.dirname(__file__), "schema.sql"), "r") as f_in:
+        with open(tmp_path / "schema.sql", "w") as f_out:
+            f_out.write(f_in.read())
+
+    export_data(output_dir=str(data_dir))
+
+    assert (data_dir / "GOLDETF.json").exists()
+    with open(data_dir / "GOLDETF.json", "r") as f:
+        data = json.load(f)
+
+    # Both constituents are rebased to 100 and have an identical 2% forecast
+    # move, so the synthetic index should also be at 100 with a ~2% forecast.
+    assert data["last"] == 100.0
+    assert data["med"] == [102.0]
+    assert data["ret"] == pytest.approx(2.0)
+    assert data["fundamentals"]["pe"] == "N/A"
+    assert any("Synthetic index" in s for s in data["status"])
+
+
 def test_no_synthetic_fallback():
     with open("friday-forecast-terminal.html", "r") as f:
         content = f.read()
