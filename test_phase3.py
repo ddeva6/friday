@@ -226,6 +226,21 @@ def test_export_json_structure(sample_db, tmp_path, monkeypatch):
     assert "ret" in data
     assert "cone_width_pct" in data
 
+    # test_export_json_has_generated_at
+    with open(data_dir / "index.json", "r") as f:
+        idx_data = json.load(f)
+    assert "generated_at" in idx_data
+
+    # Check if generated_at is a valid ISO 8601 string ending in 'Z'
+    dt_str = idx_data["generated_at"]
+    assert dt_str.endswith("Z")
+
+    from datetime import datetime
+    try:
+        datetime.strptime(dt_str, '%Y-%m-%dT%H:%M:%SZ')
+    except ValueError:
+        pytest.fail(f"generated_at '{dt_str}' is not in valid ISO-8601 format.")
+
 def test_screener_risk_adjusted_default():
     with open("friday-forecast-terminal.html", "r") as f:
         content = f.read()
