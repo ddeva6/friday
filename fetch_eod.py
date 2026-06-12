@@ -335,16 +335,8 @@ def run_fetcher(db_path=None, start_date=None, end_date=None):
         idx_code = child["code"]
         print(f"Fetching {idx_code}...")
         idx_yf = INDEX_MAP.get(idx_code)
-        if idx_yf:
-            df = fetch_data_for_symbol(idx_code, idx_yf, start_date, end_date)
-            if df is None or df.empty:
-                unresolved.append(idx_code)
-            else:
-                save_ohlcv(conn, idx_code, df)
-        else:
-            print(f"  Skipping {idx_code} (no yfinance symbol mapped)")
-            unresolved.append(idx_code)
 
+        # We need to fetch stocks first so we can synthesize NIFTYFINSERVICE
         for stock in child["stocks"]:
             print(f"Fetching {stock}...")
             yf_sym = f"{stock}.NS"
@@ -353,6 +345,44 @@ def run_fetcher(db_path=None, start_date=None, end_date=None):
                 unresolved.append(stock)
             else:
                 save_ohlcv(conn, stock, df)
+
+        if idx_code == "NIFTYFINSERVICE":
+            print(f"Synthesizing {idx_code}...")
+            dfs = []
+            for stock in child["stocks"]:
+                stock_df = pd.read_sql_query(
+                    "SELECT date, close FROM ohlcv WHERE instrument_code = ?",
+                    conn, params=(stock,), index_col="date", parse_dates=["date"]
+                )
+                if not stock_df.empty:
+                    dfs.append(stock_df["close"].rename(stock))
+            if dfs:
+                combined_df = pd.concat(dfs, axis=1)
+                # Forward fill missing data, then compute equal weighted average
+                combined_df.ffill(inplace=True)
+                synth_close = combined_df.mean(axis=1)
+
+                synth_df = pd.DataFrame({
+                    "Open": synth_close,
+                    "High": synth_close,
+                    "Low": synth_close,
+                    "Close": synth_close,
+                    "Volume": 0
+                })
+                # save_ohlcv expects dates as index or column, here date is index
+                save_ohlcv(conn, idx_code, synth_df)
+            else:
+                unresolved.append(idx_code)
+        elif idx_yf:
+            df = fetch_data_for_symbol(idx_code, idx_yf, start_date, end_date)
+            if df is None or df.empty:
+                unresolved.append(idx_code)
+            else:
+                save_ohlcv(conn, idx_code, df)
+        else:
+            if idx_code != "GOLDETF":
+                print(f"  Skipping {idx_code} (no yfinance symbol mapped)")
+                unresolved.append(idx_code)
 
     if unresolved:
         print(f"VALIDATION REPORT: The following symbols failed to resolve data or were skipped:")
