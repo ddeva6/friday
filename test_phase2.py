@@ -1,7 +1,10 @@
 import sqlite3
 import json
 import pytest
-from forecast_batch import calculate_metrics, ensure_monotonic_widening, load_config
+from forecast_batch import (calculate_metrics, ensure_monotonic_widening, load_config,
+                            prices_to_log_returns, log_returns_to_prices,
+                            compute_adaptive_lookback, ema_forecast, drift_forecast,
+                            ensemble_with_baselines)
 from jsonschema import validate
 
 
@@ -79,7 +82,7 @@ def test_config_has_forecast_params():
     fc = config.get("forecast", {})
     assert fc.get("lookback") == 180
     assert fc.get("horizon") == 1
-    assert fc.get("sample_count") in (20, 30)
+    assert fc.get("sample_count") in (20, 30, 50)
     assert fc.get("model") is not None
 
 
@@ -135,6 +138,82 @@ def test_forecast_json_contract(db_conn):
         }
     }
     validate(instance=data, schema=schema)
+
+
+def test_log_returns_roundtrip():
+    prices = [100.0, 102.0, 101.0, 103.0, 105.0]
+    lr = prices_to_log_returns(prices)
+    assert len(lr) == 4
+    recovered = log_returns_to_prices(prices[0], lr)
+    for orig, rec in zip(prices[1:], recovered):
+        assert abs(orig - rec) < 0.01
+
+
+def test_log_returns_empty():
+    lr = prices_to_log_returns([100.0])
+    assert len(lr) == 0
+
+
+def test_log_returns_with_zeros():
+    lr = prices_to_log_returns([0, 100.0, 200.0])
+    assert len(lr) == 1
+
+
+def test_adaptive_lookback_high_vol():
+    import numpy as np
+    np.random.seed(42)
+    prices = [100.0]
+    for _ in range(100):
+        prices.append(prices[-1] * (1 + np.random.normal(0, 0.04)))
+    lb = compute_adaptive_lookback(prices)
+    assert lb <= 120
+
+
+def test_adaptive_lookback_low_vol():
+    prices = [100.0 + i * 0.1 for i in range(200)]
+    lb = compute_adaptive_lookback(prices)
+    assert lb >= 180
+
+
+def test_adaptive_lookback_short_history():
+    prices = [100.0 + i for i in range(30)]
+    lb = compute_adaptive_lookback(prices)
+    assert lb == 30
+
+
+def test_ema_forecast():
+    prices = [100.0 + i for i in range(50)]
+    fc = ema_forecast(prices, 5)
+    assert len(fc) == 5
+    assert all(isinstance(x, float) for x in fc)
+
+
+def test_drift_forecast():
+    prices = [100.0 * (1.001 ** i) for i in range(100)]
+    fc = drift_forecast(prices, 5)
+    assert len(fc) == 5
+    assert fc[-1] > prices[-1]
+
+
+def test_drift_forecast_short():
+    fc = drift_forecast([100.0, 101.0], 5)
+    assert len(fc) == 5
+
+
+def test_ensemble_with_baselines():
+    prices = [100.0 + i * 0.5 for i in range(100)]
+    chronos_med = [150.5, 151.0, 151.5, 152.0, 152.5]
+    ensembled = ensemble_with_baselines(chronos_med, prices, 5, chronos_weight=0.6)
+    assert len(ensembled) == 5
+    for v in ensembled:
+        assert v > 0
+
+
+def test_ensemble_weight_bounds():
+    prices = [100.0] * 50
+    chronos = [110.0] * 5
+    result = ensemble_with_baselines(chronos, prices, 5, chronos_weight=1.0)
+    assert all(abs(r - 110.0) < 0.01 for r in result)
 
 
 # --- Integration tests (require torch + chronos + GPU) ---
