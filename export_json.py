@@ -278,6 +278,23 @@ def export_data(output_dir="data"):
 
         status_flags.append("Data as of " + last_date_str)
 
+        # Compute trading signals from forecast
+        entry_price = last
+        exit_price = round(med[-1], 2) if med else last
+        stop_loss = round(lo[-1], 2) if lo else last
+        risk = round(entry_price - stop_loss, 2)
+        reward = round(exit_price - entry_price, 2)
+        risk_reward = round(reward / risk, 2) if risk > 0 else 0.0
+
+        trading = {
+            "entry": entry_price,
+            "stop_loss": stop_loss,
+            "exit": exit_price,
+            "risk": risk,
+            "reward": reward,
+            "risk_reward": risk_reward,
+        }
+
         # Forecast contract shape with populated forecast cones
         data = {
             "code": inst,
@@ -290,6 +307,7 @@ def export_data(output_dir="data"):
             "ret": ret,
             "cone_width_pct": cone_width_pct,
             "asof": last_date_str,
+            "trading": trading,
             "fundamentals": {
                 "mcap_cr": f_data[0] if f_data and f_data[0] is not None and f_data[0] > 0 else "N/A",
                 "pe": f_data[1] if f_data and f_data[1] is not None else "N/A",
