@@ -57,6 +57,74 @@ def apply_calibration(med, up, lo, last_price, calibration):
 
     return new_med, new_up, new_lo
 
+
+def prices_to_log_returns(prices):
+    prices = np.array(prices, dtype=np.float64)
+    prices = prices[prices > 0]
+    if len(prices) < 2:
+        return np.array([])
+    return np.diff(np.log(prices))
+
+
+def log_returns_to_prices(last_price, log_return_forecasts):
+    prices = []
+    p = last_price
+    for lr in log_return_forecasts:
+        p = p * np.exp(lr)
+        prices.append(p)
+    return prices
+
+
+def compute_adaptive_lookback(prices, min_lb=60, max_lb=365):
+    if len(prices) < min_lb:
+        return len(prices)
+    recent = prices[-60:]
+    daily_returns = np.diff(recent) / recent[:-1]
+    vol = np.std(daily_returns) * np.sqrt(252)
+    if vol > 0.45:
+        return min_lb
+    elif vol > 0.30:
+        return 120
+    elif vol > 0.15:
+        return 180
+    else:
+        return min(max_lb, len(prices))
+
+
+def ema_forecast(prices, horizon, span=20):
+    series = pd.Series(prices)
+    ema = series.ewm(span=span, adjust=False).mean().iloc[-1]
+    last = prices[-1]
+    forecasts = []
+    for i in range(1, horizon + 1):
+        blend = last + (ema - last) * (i / horizon)
+        forecasts.append(blend)
+    return forecasts
+
+
+def drift_forecast(prices, horizon):
+    prices = np.array(prices, dtype=np.float64)
+    log_ret = np.diff(np.log(prices))
+    if len(log_ret) < 5:
+        return [prices[-1]] * horizon
+    mu = np.mean(log_ret)
+    last = prices[-1]
+    return [last * np.exp(mu * i) for i in range(1, horizon + 1)]
+
+
+def ensemble_with_baselines(chronos_med, prices, horizon, chronos_weight=0.6):
+    ema = ema_forecast(prices, horizon)
+    drift = drift_forecast(prices, horizon)
+    baseline_weight = (1.0 - chronos_weight) / 2.0
+    ensembled = []
+    for i in range(horizon):
+        val = (chronos_weight * chronos_med[i] +
+               baseline_weight * ema[i] +
+               baseline_weight * drift[i])
+        ensembled.append(round(val, 2))
+    return ensembled
+
+
 def run_forecast_batch(db_path=None):
     import torch
     from chronos import ChronosPipeline
@@ -67,13 +135,17 @@ def run_forecast_batch(db_path=None):
 
     lookback = forecast_config.get("lookback", 180)
     horizon = forecast_config.get("horizon", 1)
-    sample_count = forecast_config.get("sample_count", 30)
+    sample_count = forecast_config.get("sample_count", 50)
     model_name = forecast_config.get("model", "amazon/chronos-t5-base")
     seed = forecast_config.get("seed", 42)
+    use_log_returns = forecast_config.get("use_log_returns", True)
+    ensemble_lookbacks = forecast_config.get("ensemble_lookbacks", None)
+    adaptive = forecast_config.get("adaptive_lookback", False)
 
     logging.info("FRIDAY forecast batch starting")
     logging.info(f"Model: {model_name}")
     logging.info(f"Config: lookback={lookback}, horizon={horizon}, sample_count={sample_count}")
+    logging.info(f"Log-returns: {use_log_returns}, Adaptive: {adaptive}, Ensemble: {ensemble_lookbacks}")
     logging.info(f"Seed: {seed}")
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -106,7 +178,9 @@ def run_forecast_batch(db_path=None):
     instruments = [r[0] for r in c.fetchall()]
 
     for inst in instruments:
-        df = pd.read_sql_query("SELECT date, adjusted_close FROM ohlcv WHERE instrument_code = ? ORDER BY date ASC", conn, params=(inst,))
+        df = pd.read_sql_query(
+            "SELECT date, adjusted_close FROM ohlcv WHERE instrument_code = ? ORDER BY date ASC",
+            conn, params=(inst,))
         if df.empty or len(df) < 5:
             continue
 
@@ -114,26 +188,57 @@ def run_forecast_batch(db_path=None):
         asof_date = df.iloc[-1]['date']
         last_price = hist[-1]
 
-        # Prepare input context
-        context = torch.tensor(hist[-lookback:])
+        if adaptive:
+            effective_lookback = compute_adaptive_lookback(hist, min_lb=60, max_lb=lookback)
+        else:
+            effective_lookback = lookback
 
-        # Forecast
-        # set manual seed for reproducibility
-        torch.manual_seed(seed)
-        forecast = pipeline.predict(
-            context,
-            prediction_length=horizon,
-            num_samples=sample_count,
-        )
+        lookbacks_to_run = [effective_lookback]
+        if ensemble_lookbacks and len(hist) > min(ensemble_lookbacks):
+            lookbacks_to_run = [lb for lb in ensemble_lookbacks if lb <= len(hist)]
+            if not lookbacks_to_run:
+                lookbacks_to_run = [effective_lookback]
 
-        # Extract med, up, lo (P50, P90, P10)
-        # forecast is shape (num_samples, prediction_length)
-        forecast_np = forecast[0].cpu().numpy()
-        med = np.percentile(forecast_np, 50, axis=0).tolist()
-        up = np.percentile(forecast_np, 90, axis=0).tolist()
-        lo = np.percentile(forecast_np, 10, axis=0).tolist()
+        all_samples = []
 
-        # Round lists
+        for lb in lookbacks_to_run:
+            window = hist[-lb:] if lb <= len(hist) else hist
+
+            if use_log_returns and len(window) > 3:
+                context_data = prices_to_log_returns(window)
+                use_lr_this = len(context_data) >= 3
+            else:
+                context_data = np.array(window, dtype=np.float32)
+                use_lr_this = False
+
+            if not use_lr_this:
+                context_data = np.array(window, dtype=np.float32)
+
+            context = torch.tensor(context_data)
+            torch.manual_seed(seed)
+            forecast = pipeline.predict(
+                context,
+                prediction_length=horizon,
+                num_samples=sample_count,
+            )
+            forecast_np = forecast[0].cpu().numpy()
+
+            if use_lr_this:
+                price_samples = np.zeros_like(forecast_np)
+                for s in range(forecast_np.shape[0]):
+                    price_samples[s] = log_returns_to_prices(last_price, forecast_np[s])
+                all_samples.append(price_samples)
+            else:
+                all_samples.append(forecast_np)
+
+        combined = np.concatenate(all_samples, axis=0)
+
+        med = np.percentile(combined, 50, axis=0).tolist()
+        up = np.percentile(combined, 90, axis=0).tolist()
+        lo = np.percentile(combined, 10, axis=0).tolist()
+
+        med = ensemble_with_baselines(med, hist, horizon, chronos_weight=0.6)
+
         med = [round(x, 2) for x in med]
         up = [round(x, 2) for x in up]
         lo = [round(x, 2) for x in lo]
@@ -145,8 +250,6 @@ def run_forecast_batch(db_path=None):
         if up != lo:
             cone_width_pct = calculate_metrics(last_price, med, up, lo)[1]
 
-        # Adaptive calibration: shift/scale the cone based on this
-        # instrument's recent forecast accuracy (neutral on cold start).
         calibration = get_calibration(conn, inst)
         med, up, lo = apply_calibration(med, up, lo, last_price, calibration)
         ret, cone_width_pct = calculate_metrics(last_price, med, up, lo)

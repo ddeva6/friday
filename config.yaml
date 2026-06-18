@@ -9,5 +9,8 @@ forecast:
   horizon: 1
   lookback: 180
   model: amazon/chronos-t5-tiny
-  sample_count: 20
+  sample_count: 50
   seed: 42
+  use_log_returns: true
+  ensemble_lookbacks: [90, 180, 365]
+  adaptive_lookback: true
