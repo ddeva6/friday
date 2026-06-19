@@ -263,7 +263,7 @@ def export_data(output_dir="data"):
         # Calculate business days diff taking holidays into account
         import numpy as np
         c.execute("SELECT date FROM holidays")
-        holidays_list = [r[0] for r in c.fetchall()]
+        holidays_list = np.array([r[0] for r in c.fetchall()], dtype='datetime64')
         bus_days_diff = np.busday_count(last_date, datetime.now().date(), holidays=holidays_list)
 
         if bus_days_diff > 3:
