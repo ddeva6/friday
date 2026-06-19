@@ -311,6 +311,19 @@ function getFundamentals(code){
   }
   return {mcap_cr:'N/A', pe:'N/A', roe:'N/A', de:'N/A', sales_growth_yoy:'N/A', hi_52w:'N/A', lo_52w:'N/A'};
 }
+function getTrading(code){
+  if (REAL_DATA[code] && REAL_DATA[code].trading) {
+      return REAL_DATA[code].trading;
+  }
+  const s = series(code);
+  const entry = s.last;
+  const exit = s.med.length ? s.med[s.med.length-1] : entry;
+  const sl = s.lo.length ? s.lo[s.lo.length-1] : entry;
+  const risk = Math.round((entry - sl)*100)/100;
+  const reward = Math.round((exit - entry)*100)/100;
+  return {entry, stop_loss:sl, exit, risk, reward, risk_reward: risk>0?Math.round(reward/risk*100)/100:0,
+    conviction:50, volume:{latest:0,avg_20d:0,ratio:0,confirmed:false}, trend:{ema_50:null,ema_200:null,label:'N/A'}};
+}
 function getCalibration(code){
   if (REAL_DATA[code] && REAL_DATA[code].calibration) {
       return REAL_DATA[code].calibration;
@@ -396,14 +409,57 @@ function renderDrill(){
         <div class="lastpx">Last ${fmt(s.last)} · ${HIST}d history → ${FC}d forecast</div></div>
       <div class="stats">
         <div class="stat"><div class="k">Forecast ${FC}d</div><div class="v ${up?'up':'down'}">${signed(s.ret)}</div></div>
-        <div class="stat"><div class="k">Target</div><div class="v">${fmt(s.med[FC-1])}</div></div></div></div>
+        <div class="stat"><div class="k">Entry</div><div class="v">${fmt(s.last)}</div></div>
+        <div class="stat"><div class="k">Stop Loss</div><div class="v down">${fmt(s.lo.length?s.lo[FC-1]:s.last)}</div></div>
+        <div class="stat"><div class="k">Target</div><div class="v ${up?'up':'down'}">${fmt(s.med[FC-1])}</div></div>
+        </div></div>
     <div class="chartbox">${chart(s,900,250,true)}
       <div class="legend"><span><i style="background:${up?'var(--up)':'var(--down)'}"></i>History</span>
         <span><i class="dash"></i>Forecast</span><span><i class="bandkey"></i>Uncertainty cone</span></div></div>`;
 
   if(state.level==='stock'){
+    const t=getTrading(focus.code);
     const f=getFundamentals(focus.code);
-    st.innerHTML=`<h2>Fundamentals</h2><span class="hint">snapshot alongside the ${FC}-day forecast</span>`;
+    const tUp = t.reward >= 0;
+    const rrClass = t.risk_reward >= 2 ? 'up' : (t.risk_reward >= 1 ? '' : 'down');
+    const conv = t.conviction || 50;
+    const convClass = conv >= 70 ? 'up' : (conv >= 40 ? '' : 'down');
+    const convLabel = conv >= 70 ? 'HIGH' : (conv >= 40 ? 'MEDIUM' : 'LOW');
+    const vol = t.volume || {};
+    const trend = t.trend || {};
+    const trendClass = trend.label === 'BULLISH' ? 'up' : (trend.label === 'BEARISH' ? 'down' : '');
+
+    st.innerHTML=`<h2>Trading Signals</h2><span class="hint">${FC}-day forecast-derived levels</span>`;
+    const tCells=[
+      ['Entry Price', fmt(t.entry), ''],
+      ['Stop Loss (P10)', fmt(t.stop_loss), 'down'],
+      ['Exit / Target (P50)', fmt(t.exit), tUp?'up':'down'],
+      ['Risk (₹)', fmt(t.risk), ''],
+      ['Reward (₹)', fmt(t.reward), tUp?'up':'down'],
+      ['Risk : Reward', t.risk_reward > 0 ? '1 : '+t.risk_reward.toFixed(2) : 'N/A', rrClass],
+      ['Conviction', conv+'/100 · '+convLabel, convClass],
+      ['Trend', trend.label || 'N/A', trendClass],
+    ];
+    grid.innerHTML=`<div class="fund">
+      <div class="fund-h">Signal levels</div>
+      <div class="fund-grid">${tCells.map(([k,v,c])=>`<div class="fcell"><div class="fk">${k}</div><div class="fv ${c}">${v}</div></div>`).join('')}</div>
+      <div class="fund-foot">Entry = last close. Stop loss = P10 lower bound. Target = P50 median forecast. Risk:Reward ≥ 2 is favorable. Conviction combines R:R, accuracy, volume, and trend.</div></div>`;
+
+    // Volume & Trend section
+    const volCells=[
+      ['Latest Volume', vol.latest ? vol.latest.toLocaleString('en-IN') : 'N/A', ''],
+      ['20d Avg Volume', vol.avg_20d ? vol.avg_20d.toLocaleString('en-IN') : 'N/A', ''],
+      ['Vol Ratio', vol.ratio ? vol.ratio.toFixed(2)+'×' : 'N/A', vol.ratio >= 1.5 ? 'up' : (vol.ratio < 0.7 ? 'down' : '')],
+      ['Volume Signal', vol.confirmed ? 'CONFIRMED' : 'WEAK', vol.confirmed ? 'up' : 'down'],
+      ['EMA 50', trend.ema_50 ? fmt(trend.ema_50) : 'N/A', trend.ema_50 ? (focus.s.last > trend.ema_50 ? 'up' : 'down') : ''],
+      ['EMA 200', trend.ema_200 ? fmt(trend.ema_200) : 'N/A', trend.ema_200 ? (focus.s.last > trend.ema_200 ? 'up' : 'down') : ''],
+    ];
+    grid.innerHTML+=`<div class="fund">
+      <div class="fund-h">Volume & Trend</div>
+      <div class="fund-grid">${volCells.map(([k,v,c])=>`<div class="fcell"><div class="fk">${k}</div><div class="fv ${c}">${v}</div></div>`).join('')}</div>
+      <div class="fund-foot">Volume confirmed = latest ≥ 20d avg. Trend: BULLISH = price > EMA50 > EMA200. BEARISH = price < EMA50 < EMA200.</div></div>`;
+
+    st.innerHTML+=`<h2>Fundamentals</h2><span class="hint">snapshot alongside the ${FC}-day forecast</span>`;
     const cells=[
       ['Market Cap', (f.mcap_cr === 'N/A' || f.mcap_cr === 0 || !f.mcap_cr) ? 'N/A' : '₹'+f.mcap_cr.toLocaleString('en-IN')+' Cr',''],
       ['P/E', typeof f.pe === 'number' ? f.pe.toFixed(1) : 'N/A', typeof f.pe === 'number' ? (f.pe>40?'down':(f.pe<15?'up':'')) : ''],
@@ -494,7 +550,9 @@ function renderScreener(){
     const s=series(c);
     let n=s.name || (Array.isArray(stk)?stk[1]:stk);
     const riskAdj = s.cone_width_pct > 0 ? (s.ret / s.cone_width_pct) : 0;
-    rows.push({code:c,name:n,idx:ix.code,ii,si,last:s.last,ret:s.ret,riskAdj});
+    const tr = getTrading(c);
+    rows.push({code:c,name:n,idx:ix.code,ii,si,last:s.last,ret:s.ret,riskAdj,entry:tr.entry,sl:tr.stop_loss,exit:tr.exit,rr:tr.risk_reward,
+      conv:tr.conviction||50,trend:(tr.trend||{}).label||'N/A',volOk:(tr.volume||{}).confirmed||false});
   }));
   rows=rows.filter(r=>{
     if(dir==='up'&&r.ret<0)return false;
@@ -502,21 +560,28 @@ function renderScreener(){
     if(idxf!=='all'&&r.idx!==idxf)return false;
     return true;
   }).sort((a,b)=>{
-    const va = sortKey==='risk'?a.riskAdj:a.ret;
-    const vb = sortKey==='risk'?b.riskAdj:b.ret;
+    const va = sortKey==='conv'?a.conv:(sortKey==='risk'?a.rr:a.ret);
+    const vb = sortKey==='conv'?b.conv:(sortKey==='risk'?b.rr:b.ret);
     return (va-vb)*sortDir;
   });
-  let html=`<thead><tr><th>Symbol</th><th>Index</th><th>Last</th>
-    <th onclick="setSort('ret')">Fcst 5d ${sortKey==='ret'?`<span class="arr">${sortDir<0?'▼':'▲'}</span>`:''}</th>
-    <th onclick="setSort('risk')">Risk-Adj ${sortKey==='risk'?`<span class="arr">${sortDir<0?'▼':'▲'}</span>`:''}</th>
+  let html=`<thead><tr><th>Symbol</th><th>Entry</th><th>Stop Loss</th><th>Target</th>
+    <th onclick="setSort('ret')">Fcst ${FC}d ${sortKey==='ret'?`<span class="arr">${sortDir<0?'▼':'▲'}</span>`:''}</th>
+    <th onclick="setSort('risk')">R:R ${sortKey==='risk'?`<span class="arr">${sortDir<0?'▼':'▲'}</span>`:''}</th>
+    <th>Trend</th><th>Vol</th>
+    <th onclick="setSort('conv')">Score ${sortKey==='conv'?`<span class="arr">${sortDir<0?'▼':'▲'}</span>`:''}</th>
     <th>Signal</th></tr></thead><tbody>`;
-  if(!rows.length)html+=`<tr><td colspan="6" style="text-align:center;padding:36px;color:var(--ink-faint)">No matches.</td></tr>`;
-  rows.forEach(r=>{const up=r.ret>=0;
+  if(!rows.length)html+=`<tr><td colspan="10" style="text-align:center;padding:36px;color:var(--ink-faint)">No matches.</td></tr>`;
+  rows.forEach(r=>{const up=r.ret>=0;const rrC=r.rr>=2?'up':(r.rr>=1?'':'down');
+    const tC=r.trend==='BULLISH'?'up':(r.trend==='BEARISH'?'down':'');
+    const cC=r.conv>=70?'up':(r.conv>=40?'':'down');
     html+=`<tr onclick="setView('drill');goStock(${r.ii},${r.si})">
       <td><span class="nm">${r.code}</span><br><span class="sub">${r.name}</span></td>
-      <td>${r.idx}</td><td>${fmt(r.last)}</td>
+      <td>${fmt(r.entry)}</td><td class="down">${fmt(r.sl)}</td><td class="${up?'up':'down'}">${fmt(r.exit)}</td>
       <td class="${up?'up':'down'}">${signed(r.ret)}</td>
-      <td>${r.riskAdj.toFixed(2)}</td>
+      <td class="${rrC}">${r.rr>0?'1:'+r.rr.toFixed(1):'N/A'}</td>
+      <td class="${tC}">${r.trend}</td>
+      <td><span class="tag ${r.volOk?'up':'down'}">${r.volOk?'✓':'✗'}</span></td>
+      <td class="${cC}">${r.conv}</td>
       <td><span class="tag ${up?'up':'down'}">${up?'WATCH ↑':'AVOID ↓'}</span></td></tr>`;});
   html+=`</tbody>`;
   document.getElementById('screen-table').innerHTML=html;

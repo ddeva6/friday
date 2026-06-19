@@ -278,6 +278,113 @@ def export_data(output_dir="data"):
 
         status_flags.append("Data as of " + last_date_str)
 
+        # Compute trading signals from forecast
+        entry_price = last
+        exit_price = round(med[-1], 2) if med else last
+        stop_loss = round(lo[-1], 2) if lo else last
+        risk = round(entry_price - stop_loss, 2)
+        reward = round(exit_price - entry_price, 2)
+        risk_reward = round(reward / risk, 2) if risk > 0 else 0.0
+
+        # Volume confirmation
+        import numpy as np
+        df_vol_full = pd.read_sql_query(
+            "SELECT volume FROM ohlcv WHERE instrument_code = ? ORDER BY date DESC LIMIT 21",
+            conn, params=(inst,))
+        df_vol_full = df_vol_full.dropna(subset=['volume'])
+        if not df_vol_full.empty and len(df_vol_full) >= 2:
+            latest_vol = int(df_vol_full.iloc[0]['volume'])
+            avg_vol_20 = int(df_vol_full.iloc[1:21]['volume'].mean())
+            vol_ratio = round(latest_vol / avg_vol_20, 2) if avg_vol_20 > 0 else 0
+            vol_confirmed = vol_ratio >= 1.0
+        else:
+            latest_vol = 0
+            avg_vol_20 = 0
+            vol_ratio = 0
+            vol_confirmed = False
+
+        volume = {
+            "latest": latest_vol,
+            "avg_20d": avg_vol_20,
+            "ratio": vol_ratio,
+            "confirmed": vol_confirmed,
+        }
+
+        # Trend filter — EMA 50 & EMA 200
+        prices_arr = df['adjusted_close']
+        ema_50 = round(float(prices_arr.ewm(span=50, adjust=False).mean().iloc[-1]), 2) if len(prices_arr) >= 50 else None
+        ema_200 = round(float(prices_arr.ewm(span=200, adjust=False).mean().iloc[-1]), 2) if len(prices_arr) >= 200 else None
+
+        if ema_50 and ema_200:
+            if last > ema_50 > ema_200:
+                trend_label = "BULLISH"
+            elif last < ema_50 < ema_200:
+                trend_label = "BEARISH"
+            elif ema_50 > ema_200:
+                trend_label = "WEAKENING"
+            else:
+                trend_label = "RECOVERING"
+        elif ema_50:
+            trend_label = "ABOVE EMA50" if last > ema_50 else "BELOW EMA50"
+        else:
+            trend_label = "N/A"
+
+        trend = {
+            "ema_50": ema_50,
+            "ema_200": ema_200,
+            "label": trend_label,
+        }
+
+        # Conviction score (0-100)
+        score = 50
+        if risk_reward >= 2:
+            score += 15
+        elif risk_reward >= 1:
+            score += 5
+        else:
+            score -= 10
+
+        if acc_rows:
+            dir_acc = sum(r[6] for r in acc_rows) / len(acc_rows) * 100
+            if dir_acc >= 70:
+                score += 15
+            elif dir_acc >= 55:
+                score += 5
+            else:
+                score -= 10
+            in_cone_pct = sum(r[5] for r in acc_rows) / len(acc_rows) * 100
+            if in_cone_pct >= 70:
+                score += 10
+            elif in_cone_pct < 50:
+                score -= 5
+
+        if vol_confirmed:
+            score += 5
+
+        if trend_label == "BULLISH" and ret > 0:
+            score += 10
+        elif trend_label == "BEARISH" and ret < 0:
+            score += 10
+        elif trend_label in ("BULLISH", "BEARISH"):
+            score -= 10
+
+        if abs(ret) > 2:
+            score += 5
+
+        conviction = max(0, min(100, score))
+
+        trading = {
+            "entry": entry_price,
+            "stop_loss": stop_loss,
+            "exit": exit_price,
+            "risk": risk,
+            "reward": reward,
+            "risk_reward": risk_reward,
+            "conviction": conviction,
+            "volume": volume,
+            "trend": trend,
+        }
+
         # Forecast contract shape with populated forecast cones
         data = {
             "code": inst,
@@ -290,6 +397,7 @@ def export_data(output_dir="data"):
             "ret": ret,
             "cone_width_pct": cone_width_pct,
             "asof": last_date_str,
+            "trading": trading,
             "fundamentals": {
                 "mcap_cr": f_data[0] if f_data and f_data[0] is not None and f_data[0] > 0 else "N/A",
                 "pe": f_data[1] if f_data and f_data[1] is not None else "N/A",
