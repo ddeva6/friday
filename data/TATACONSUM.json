@@ -1,9 +1,8 @@
 {
   "code": "TATACONSUM",
   "name": "TATACONSUM",
-  "last": 1124.5,
+  "last": 1111.4,
   "hist": [
-    1056.26,
     1079.17,
     1090.97,
     1100.09,
@@ -251,23 +250,44 @@
     1100.7,
     1100.4,
     1130.9,
-    1124.5
+    1124.5,
+    1111.4
   ],
   "med": [
-    1130.48
+    1108.87
   ],
   "up": [
-    1152.77
+    1107.13
   ],
   "lo": [
-    1108.2
+    1101.24
   ],
-  "ret": 0.53,
-  "cone_width_pct": 3.96,
-  "asof": "2026-06-17",
+  "ret": -0.23,
+  "cone_width_pct": 0.53,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 1111.4,
+    "stop_loss": 1101.24,
+    "exit": 1108.87,
+    "risk": 10.16,
+    "reward": -2.53,
+    "risk_reward": -0.25,
+    "conviction": 30,
+    "volume": {
+      "latest": 871582,
+      "avg_20d": 1926035,
+      "ratio": 0.45,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 1141.17,
+      "ema_200": 1128.25,
+      "label": "WEAKENING"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 109989.1736576,
-    "pe": 71.10685,
+    "mcap_cr": 109721.9637248,
+    "pe": 70.9341,
     "roe": 6.94,
     "de": 0.12159,
     "sales_growth_yoy": 17.9,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": -0.5218,
-    "coverage": 0.6,
-    "cone_scale": 1.3333333333333335,
-    "n": 5
+    "bias_pct": -0.7161,
+    "coverage": 0.6667,
+    "cone_scale": 1.2000000000000002,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 1130.48,
+        "actual_close": 1111.4000244140625,
+        "error_pct": -1.6878,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": true
       }
     ],
-    "n": 5,
-    "mae_pct": 1.23,
-    "directional_accuracy_pct": 40.0,
-    "calibration_pct": 60.0
+    "n": 6,
+    "mae_pct": 1.31,
+    "directional_accuracy_pct": 33.3,
+    "calibration_pct": 66.7
   }
 }

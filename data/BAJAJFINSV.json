@@ -1,9 +1,8 @@
 {
   "code": "BAJAJFINSV",
   "name": "BAJAJFINSV",
-  "last": 1764.6,
+  "last": 1771.7,
   "hist": [
-    1980.44,
     1966.64,
     1985.23,
     1996.63,
@@ -251,23 +250,44 @@
     1689.1,
     1750.2,
     1787.3,
-    1764.6
+    1764.6,
+    1771.7
   ],
   "med": [
-    1785.91
+    1786.07
   ],
   "up": [
-    1884.97
+    1808.42
   ],
   "lo": [
-    1712.31
+    1793.53
   ],
-  "ret": 1.21,
-  "cone_width_pct": 9.78,
-  "asof": "2026-06-17",
+  "ret": 0.81,
+  "cone_width_pct": 0.84,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 1771.7,
+    "stop_loss": 1793.53,
+    "exit": 1786.07,
+    "risk": -21.83,
+    "reward": 14.37,
+    "risk_reward": 0.0,
+    "conviction": 60,
+    "volume": {
+      "latest": 1011360,
+      "avg_20d": 847394,
+      "ratio": 1.19,
+      "confirmed": true
+    },
+    "trend": {
+      "ema_50": 1766.18,
+      "ema_200": 1884.19,
+      "label": "RECOVERING"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 283207.7160448,
-    "pe": 29.068087,
+    "mcap_cr": 282616.266752,
+    "pe": 29.007383,
     "roe": 14.602,
     "de": 2.5636,
     "sales_growth_yoy": 5.3,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 1.359,
-    "coverage": 0.4,
-    "cone_scale": 2.0,
-    "n": 5
+    "bias_pct": 0.9999,
+    "coverage": 0.5,
+    "cone_scale": 1.6,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 1785.91,
+        "actual_close": 1771.699951171875,
+        "error_pct": -0.7957,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": true
       }
     ],
-    "n": 5,
-    "mae_pct": 2.09,
-    "directional_accuracy_pct": 80.0,
-    "calibration_pct": 40.0
+    "n": 6,
+    "mae_pct": 1.88,
+    "directional_accuracy_pct": 83.3,
+    "calibration_pct": 50.0
   }
 }

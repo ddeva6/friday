@@ -1,9 +1,8 @@
 {
   "code": "ONGC",
   "name": "ONGC",
-  "last": 245.0,
+  "last": 245.3,
   "hist": [
-    237.51,
     238.64,
     238.96,
     238.47,
@@ -251,41 +250,71 @@
     246.2,
     243.65,
     248.2,
-    245.0
+    245.0,
+    245.3
   ],
   "med": [
-    243.0
+    247.3
   ],
   "up": [
-    248.03
+    244.18
   ],
   "lo": [
-    240.24
+    243.09
   ],
-  "ret": -0.82,
-  "cone_width_pct": 3.18,
-  "asof": "2026-06-17",
+  "ret": 0.82,
+  "cone_width_pct": 0.44,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 245.3,
+    "stop_loss": 243.09,
+    "exit": 247.3,
+    "risk": 2.21,
+    "reward": 2.0,
+    "risk_reward": 0.9,
+    "conviction": 30,
+    "volume": {
+      "latest": 13816485,
+      "avg_20d": 17201236,
+      "ratio": 0.8,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 271.05,
+      "ema_200": 259.9,
+      "label": "WEAKENING"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 308594.2652928,
-    "pe": 7.4468737,
+    "mcap_cr": 307839.4216448,
+    "pe": 7.4286585,
     "roe": 12.703000000000001,
     "de": 0.42548,
     "sales_growth_yoy": 1.9,
     "hi_52w": 301.3999938964844,
-    "lo_52w": 220.60568237304688
+    "lo_52w": 220.6056671142578
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": -0.8116,
-    "coverage": 0.6,
-    "cone_scale": 1.3333333333333335,
-    "n": 5
+    "bias_pct": -0.5185,
+    "coverage": 0.6667,
+    "cone_scale": 1.2000000000000002,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 243.0,
+        "actual_close": 245.3000030517578,
+        "error_pct": 0.9465,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": true
       }
     ],
-    "n": 5,
-    "mae_pct": 1.53,
-    "directional_accuracy_pct": 40.0,
-    "calibration_pct": 60.0
+    "n": 6,
+    "mae_pct": 1.43,
+    "directional_accuracy_pct": 33.3,
+    "calibration_pct": 66.7
   }
 }

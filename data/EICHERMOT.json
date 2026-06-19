@@ -1,9 +1,8 @@
 {
   "code": "EICHERMOT",
   "name": "EICHERMOT",
-  "last": 7509.0,
+  "last": 7601.0,
   "hist": [
-    5323.97,
     5423.18,
     5454.28,
     5481.42,
@@ -251,23 +250,44 @@
     7312.0,
     7624.5,
     7560.5,
-    7509.0
+    7509.0,
+    7601.0
   ],
   "med": [
-    7538.07
+    7600.95
   ],
   "up": [
-    7678.48
+    7694.43
   ],
   "lo": [
-    7327.46
+    7639.72
   ],
-  "ret": 0.39,
-  "cone_width_pct": 4.67,
-  "asof": "2026-06-17",
+  "ret": 0.0,
+  "cone_width_pct": 0.72,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 7601.0,
+    "stop_loss": 7639.72,
+    "exit": 7600.95,
+    "risk": -38.72,
+    "reward": -0.05,
+    "risk_reward": 0.0,
+    "conviction": 35,
+    "volume": {
+      "latest": 485856,
+      "avg_20d": 530599,
+      "ratio": 0.92,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 7222.68,
+      "ema_200": 6964.64,
+      "label": "BULLISH"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 208645.5738368,
-    "pe": 37.938606,
+    "mcap_cr": 208618.12736,
+    "pe": 37.933617,
     "roe": 23.774,
     "de": 0.02048,
     "sales_growth_yoy": 19.1,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 0.814,
-    "coverage": 0.6,
-    "cone_scale": 1.3333333333333335,
-    "n": 5
+    "bias_pct": 0.8175,
+    "coverage": 0.6667,
+    "cone_scale": 1.2000000000000002,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 7538.07,
+        "actual_close": 7601.0,
+        "error_pct": 0.8348,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": true
       }
     ],
-    "n": 5,
-    "mae_pct": 1.52,
-    "directional_accuracy_pct": 60.0,
-    "calibration_pct": 60.0
+    "n": 6,
+    "mae_pct": 1.41,
+    "directional_accuracy_pct": 66.7,
+    "calibration_pct": 66.7
   }
 }

@@ -1,9 +1,8 @@
 {
   "code": "SBILIFE",
   "name": "SBILIFE",
-  "last": 1793.6,
+  "last": 1807.6,
   "hist": [
-    1794.71,
     1786.92,
     1808.39,
     1816.08,
@@ -251,23 +250,44 @@
     1706.0,
     1759.5,
     1767.6,
-    1793.6
+    1793.6,
+    1807.6
   ],
   "med": [
-    1818.36
+    1821.82
   ],
   "up": [
-    1846.68
+    1835.23
   ],
   "lo": [
-    1790.04
+    1821.81
   ],
-  "ret": 1.38,
-  "cone_width_pct": 3.16,
-  "asof": "2026-06-17",
+  "ret": 0.79,
+  "cone_width_pct": 0.74,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 1807.6,
+    "stop_loss": 1821.81,
+    "exit": 1821.82,
+    "risk": -14.21,
+    "reward": 14.22,
+    "risk_reward": 0.0,
+    "conviction": 30,
+    "volume": {
+      "latest": 784096,
+      "avg_20d": 936057,
+      "ratio": 0.84,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 1832.96,
+      "ema_200": 1889.29,
+      "label": "BEARISH"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 181333.2754432,
-    "pe": 73.5694,
+    "mcap_cr": 180199.6992512,
+    "pe": 73.10949,
     "roe": 13.697000000000001,
     "de": "N/A",
     "sales_growth_yoy": -82.19999999999999,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 1.1232,
-    "coverage": 0.8,
+    "bias_pct": 0.8374,
+    "coverage": 0.8333,
     "cone_scale": 1.0,
-    "n": 5
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 1818.36,
+        "actual_close": 1807.5999755859375,
+        "error_pct": -0.5917,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": false
       }
     ],
-    "n": 5,
-    "mae_pct": 1.57,
-    "directional_accuracy_pct": 20.0,
-    "calibration_pct": 80.0
+    "n": 6,
+    "mae_pct": 1.4,
+    "directional_accuracy_pct": 33.3,
+    "calibration_pct": 83.3
   }
 }

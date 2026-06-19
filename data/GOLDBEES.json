@@ -1,9 +1,8 @@
 {
   "code": "GOLDBEES",
   "name": "GOLDBEES",
-  "last": 123.75,
+  "last": 122.12,
   "hist": [
-    82.79,
     82.79,
     82.23,
     82.66,
@@ -250,20 +249,41 @@
     121.92,
     124.11,
     124.14,
-    123.75
+    123.75,
+    122.12
   ],
   "med": [
-    124.56
+    123.01
   ],
   "up": [
-    128.18
+    122.67
   ],
   "lo": [
-    119.22
+    121.89
   ],
-  "ret": 0.65,
-  "cone_width_pct": 7.24,
-  "asof": "2026-06-17",
+  "ret": 0.73,
+  "cone_width_pct": 0.64,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 122.12,
+    "stop_loss": 121.89,
+    "exit": 123.01,
+    "risk": 0.23,
+    "reward": 0.89,
+    "risk_reward": 3.87,
+    "conviction": 55,
+    "volume": {
+      "latest": 20275168,
+      "avg_20d": 21776869,
+      "ratio": 0.93,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 125.48,
+      "ema_200": 115.53,
+      "label": "WEAKENING"
+    }
+  },
   "fundamentals": {
     "mcap_cr": "N/A",
     "pe": "N/A",
@@ -275,16 +295,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 0.4619,
-    "coverage": 0.4,
-    "cone_scale": 2.0,
-    "n": 5
+    "bias_pct": 0.0585,
+    "coverage": 0.5,
+    "cone_scale": 1.6,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 124.56,
+        "actual_close": 122.12000274658203,
+        "error_pct": -1.9589,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -331,9 +360,9 @@
         "direction_correct": false
       }
     ],
-    "n": 5,
-    "mae_pct": 1.3,
-    "directional_accuracy_pct": 60.0,
-    "calibration_pct": 40.0
+    "n": 6,
+    "mae_pct": 1.41,
+    "directional_accuracy_pct": 50.0,
+    "calibration_pct": 50.0
   }
 }

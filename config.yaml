@@ -3,14 +3,17 @@ backtest:
 database:
   path: friday.db
 dates:
-  end: '2026-06-18'
-  start: '2025-06-18'
+  end: '2026-06-19'
+  start: '2025-06-19'
 forecast:
+  adaptive_lookback: true
+  ensemble_lookbacks:
+  - 90
+  - 180
+  - 365
   horizon: 1
   lookback: 180
   model: amazon/chronos-t5-tiny
   sample_count: 50
   seed: 42
   use_log_returns: true
-  ensemble_lookbacks: [90, 180, 365]
-  adaptive_lookback: true

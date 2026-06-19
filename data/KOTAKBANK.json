@@ -1,9 +1,8 @@
 {
   "code": "KOTAKBANK",
   "name": "KOTAKBANK",
-  "last": 404.5,
+  "last": 402.95,
   "hist": [
-    425.99,
     428.79,
     433.46,
     436.32,
@@ -251,23 +250,44 @@
     403.3,
     405.75,
     407.85,
-    404.5
+    404.5,
+    402.95
   ],
   "med": [
-    409.87
+    401.06
   ],
   "up": [
-    413.15
+    405.0
   ],
   "lo": [
-    403.61
+    403.33
   ],
-  "ret": 1.33,
-  "cone_width_pct": 2.36,
-  "asof": "2026-06-17",
+  "ret": -0.47,
+  "cone_width_pct": 0.41,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 402.95,
+    "stop_loss": 403.33,
+    "exit": 401.06,
+    "risk": -0.38,
+    "reward": -1.89,
+    "risk_reward": 0.0,
+    "conviction": 30,
+    "volume": {
+      "latest": 9342524,
+      "avg_20d": 14241268,
+      "ratio": 0.66,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 387.53,
+      "ema_200": 401.3,
+      "label": "RECOVERING"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 400792.8266752,
-    "pe": 20.802788,
+    "mcap_cr": 398355.9360512,
+    "pe": 20.676302,
     "roe": 11.389000000000001,
     "de": "N/A",
     "sales_growth_yoy": -11.0,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 0.3319,
-    "coverage": 0.8,
-    "cone_scale": 1.0,
-    "n": 5
+    "bias_pct": -0.0048,
+    "coverage": 0.6667,
+    "cone_scale": 1.2000000000000002,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 409.87,
+        "actual_close": 402.95001220703125,
+        "error_pct": -1.6883,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": false
       }
     ],
-    "n": 5,
-    "mae_pct": 1.08,
-    "directional_accuracy_pct": 60.0,
-    "calibration_pct": 80.0
+    "n": 6,
+    "mae_pct": 1.18,
+    "directional_accuracy_pct": 50.0,
+    "calibration_pct": 66.7
   }
 }

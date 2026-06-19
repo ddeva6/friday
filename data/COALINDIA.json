@@ -1,9 +1,8 @@
 {
   "code": "COALINDIA",
   "name": "COALINDIA",
-  "last": 455.75,
+  "last": 452.0,
   "hist": [
-    364.71,
     359.01,
     363.49,
     366.72,
@@ -251,23 +250,44 @@
     443.5,
     444.05,
     450.95,
-    455.75
+    455.75,
+    452.0
   ],
   "med": [
-    451.53
+    453.54
   ],
   "up": [
-    460.75
+    453.7
   ],
   "lo": [
-    447.23
+    451.72
   ],
-  "ret": -0.93,
-  "cone_width_pct": 2.97,
-  "asof": "2026-06-17",
+  "ret": 0.34,
+  "cone_width_pct": 0.44,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 452.0,
+    "stop_loss": 451.72,
+    "exit": 453.54,
+    "risk": 0.28,
+    "reward": 1.54,
+    "risk_reward": 5.5,
+    "conviction": 80,
+    "volume": {
+      "latest": 5364436,
+      "avg_20d": 22110675,
+      "ratio": 0.24,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 456.31,
+      "ema_200": 423.77,
+      "label": "WEAKENING"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 278555.3154048,
-    "pe": 8.95759,
+    "mcap_cr": 277014.642688,
+    "pe": 8.908046,
     "roe": 28.124001999999997,
     "de": 0.11628999999999999,
     "sales_growth_yoy": 16.2,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": -0.0283,
-    "coverage": 0.8,
+    "bias_pct": -0.0063,
+    "coverage": 0.8333,
     "cone_scale": 1.0,
-    "n": 5
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 451.53,
+        "actual_close": 452.0,
+        "error_pct": 0.1041,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": false
       }
     ],
-    "n": 5,
-    "mae_pct": 1.0,
-    "directional_accuracy_pct": 60.0,
-    "calibration_pct": 80.0
+    "n": 6,
+    "mae_pct": 0.85,
+    "directional_accuracy_pct": 66.7,
+    "calibration_pct": 83.3
   }
 }

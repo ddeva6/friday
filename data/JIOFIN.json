@@ -1,9 +1,8 @@
 {
   "code": "JIOFIN",
   "name": "JIOFIN",
-  "last": 242.98,
+  "last": 244.1,
   "hist": [
-    287.7,
     283.66,
     293.79,
     292.69,
@@ -251,23 +250,44 @@
     235.89,
     239.52,
     241.95,
-    242.98
+    242.98,
+    244.1
   ],
   "med": [
-    243.45
+    245.22
   ],
   "up": [
-    247.41
+    247.8
   ],
   "lo": [
-    237.52
+    246.06
   ],
-  "ret": 0.19,
-  "cone_width_pct": 4.07,
-  "asof": "2026-06-17",
+  "ret": 0.46,
+  "cone_width_pct": 0.71,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 244.1,
+    "stop_loss": 246.06,
+    "exit": 245.22,
+    "risk": -1.96,
+    "reward": 1.12,
+    "risk_reward": 0.0,
+    "conviction": 55,
+    "volume": {
+      "latest": 9457087,
+      "avg_20d": 11584542,
+      "ratio": 0.82,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 240.33,
+      "ema_200": 263.64,
+      "label": "RECOVERING"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 161182.6855936,
-    "pe": 100.86777,
+    "mcap_cr": 160786.4942592,
+    "pe": 100.619835,
     "roe": 1.2130001,
     "de": 0.16286,
     "sales_growth_yoy": 39.4,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 0.9162,
-    "coverage": 0.8,
+    "bias_pct": 0.808,
+    "coverage": 0.8333,
     "cone_scale": 1.0,
-    "n": 5
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 243.45,
+        "actual_close": 244.10000610351562,
+        "error_pct": 0.267,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": false
       }
     ],
-    "n": 5,
-    "mae_pct": 1.46,
-    "directional_accuracy_pct": 60.0,
-    "calibration_pct": 80.0
+    "n": 6,
+    "mae_pct": 1.26,
+    "directional_accuracy_pct": 66.7,
+    "calibration_pct": 83.3
   }
 }

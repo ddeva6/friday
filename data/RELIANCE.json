@@ -1,9 +1,8 @@
 {
   "code": "RELIANCE",
   "name": "RELIANCE",
-  "last": 1332.7,
+  "last": 1328.1,
   "hist": [
-    1417.86,
     1421.03,
     1453.65,
     1444.33,
@@ -17,7 +16,7 @@
     1504.8,
     1514.22,
     1528.3,
-    1524.44,
+    1524.43,
     1505.99,
     1504.21,
     1482.4,
@@ -251,23 +250,44 @@
     1293.0,
     1307.0,
     1328.8,
-    1332.7
+    1332.7,
+    1328.1
   ],
   "med": [
-    1361.89
+    1335.54
   ],
   "up": [
-    1403.55
+    1346.0
   ],
   "lo": [
-    1299.41
+    1336.87
   ],
-  "ret": 2.19,
-  "cone_width_pct": 7.81,
-  "asof": "2026-06-17",
+  "ret": 0.56,
+  "cone_width_pct": 0.69,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 1328.1,
+    "stop_loss": 1336.87,
+    "exit": 1335.54,
+    "risk": -8.77,
+    "reward": 7.44,
+    "risk_reward": 0.0,
+    "conviction": 20,
+    "volume": {
+      "latest": 15494549,
+      "avg_20d": 16465531,
+      "ratio": 0.94,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 1339.58,
+      "ema_200": 1395.96,
+      "label": "BEARISH"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 1797247.5199488,
-    "pe": 22.261147,
+    "mcap_cr": 1776542.9673984,
+    "pe": 22.004694,
     "roe": 9.139,
     "de": 0.36652999999999997,
     "sales_growth_yoy": 12.5,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 1.3806,
-    "coverage": 0.4,
-    "cone_scale": 2.0,
-    "n": 5
+    "bias_pct": 0.7369,
+    "coverage": 0.5,
+    "cone_scale": 1.6,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 1361.89,
+        "actual_close": 1328.0999755859375,
+        "error_pct": -2.4811,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": true
       }
     ],
-    "n": 5,
-    "mae_pct": 1.4,
-    "directional_accuracy_pct": 40.0,
-    "calibration_pct": 40.0
+    "n": 6,
+    "mae_pct": 1.58,
+    "directional_accuracy_pct": 33.3,
+    "calibration_pct": 50.0
   }
 }

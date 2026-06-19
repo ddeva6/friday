@@ -1,9 +1,8 @@
 {
   "code": "AXISGOLD",
   "name": "AXISGOLD",
-  "last": 124.66,
+  "last": 122.86,
   "hist": [
-    83.37,
     83.3,
     82.76,
     83.26,
@@ -250,20 +249,41 @@
     123.24,
     125.36,
     125.25,
-    124.66
+    124.66,
+    122.86
   ],
   "med": [
-    125.34
+    123.64
   ],
   "up": [
-    127.16
+    123.48
   ],
   "lo": [
-    122.65
+    122.86
   ],
-  "ret": 0.55,
-  "cone_width_pct": 3.62,
-  "asof": "2026-06-17",
+  "ret": 0.63,
+  "cone_width_pct": 0.5,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 122.86,
+    "stop_loss": 122.86,
+    "exit": 123.64,
+    "risk": 0.0,
+    "reward": 0.78,
+    "risk_reward": 0.0,
+    "conviction": 40,
+    "volume": {
+      "latest": 1325933,
+      "avg_20d": 1920885,
+      "ratio": 0.69,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 126.38,
+      "ema_200": 116.39,
+      "label": "WEAKENING"
+    }
+  },
   "fundamentals": {
     "mcap_cr": "N/A",
     "pe": "N/A",
@@ -275,16 +295,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 0.3072,
-    "coverage": 0.8,
+    "bias_pct": -0.0738,
+    "coverage": 0.8333,
     "cone_scale": 1.0,
-    "n": 5
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 125.34,
+        "actual_close": 122.86000061035156,
+        "error_pct": -1.9786,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -331,9 +360,9 @@
         "direction_correct": false
       }
     ],
-    "n": 5,
-    "mae_pct": 1.38,
-    "directional_accuracy_pct": 20.0,
-    "calibration_pct": 80.0
+    "n": 6,
+    "mae_pct": 1.48,
+    "directional_accuracy_pct": 16.7,
+    "calibration_pct": 83.3
   }
 }

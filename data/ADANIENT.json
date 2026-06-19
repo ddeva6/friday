@@ -1,9 +1,8 @@
 {
   "code": "ADANIENT",
   "name": "ADANIENT",
-  "last": 2951.9,
+  "last": 3013.4,
   "hist": [
-    2458.0,
     2419.52,
     2447.31,
     2470.9,
@@ -251,23 +250,44 @@
     2921.6,
     2942.5,
     2943.6,
-    2951.9
+    2951.9,
+    3013.4
   ],
   "med": [
-    2947.05
+    2994.03
   ],
   "up": [
-    2981.35
+    3026.01
   ],
   "lo": [
-    2912.75
+    3010.64
   ],
-  "ret": -0.16,
-  "cone_width_pct": 2.32,
-  "asof": "2026-06-17",
+  "ret": -0.64,
+  "cone_width_pct": 0.51,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 3013.4,
+    "stop_loss": 3010.64,
+    "exit": 2994.03,
+    "risk": 2.76,
+    "reward": -19.37,
+    "risk_reward": -7.02,
+    "conviction": 45,
+    "volume": {
+      "latest": 1774394,
+      "avg_20d": 2194765,
+      "ratio": 0.81,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 2672.81,
+      "ema_200": 2404.86,
+      "label": "BULLISH"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 413434.7210752,
-    "pe": 40.948498,
+    "mcap_cr": 416123.846656,
+    "pe": 41.21484,
     "roe": 13.664000000000001,
     "de": 1.1956,
     "sales_growth_yoy": 20.3,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": -0.3761,
-    "coverage": 1.0,
-    "cone_scale": 0.8,
-    "n": 5
+    "bias_pct": 0.0618,
+    "coverage": 0.8333,
+    "cone_scale": 1.0,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 2947.05,
+        "actual_close": 3013.39990234375,
+        "error_pct": 2.2514,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": false
       }
     ],
-    "n": 5,
-    "mae_pct": 0.6,
-    "directional_accuracy_pct": 80.0,
-    "calibration_pct": 100.0
+    "n": 6,
+    "mae_pct": 0.88,
+    "directional_accuracy_pct": 66.7,
+    "calibration_pct": 83.3
   }
 }

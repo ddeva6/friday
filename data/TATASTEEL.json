@@ -1,9 +1,8 @@
 {
   "code": "TATASTEEL",
   "name": "TATASTEEL",
-  "last": 199.01,
+  "last": 200.52,
   "hist": [
-    149.04,
     147.95,
     148.9,
     149.35,
@@ -251,23 +250,44 @@
     197.86,
     197.28,
     196.0,
-    199.01
+    199.01,
+    200.52
   ],
   "med": [
-    198.75
+    201.25
   ],
   "up": [
-    202.4
+    201.84
   ],
   "lo": [
-    191.26
+    200.46
   ],
-  "ret": -0.13,
-  "cone_width_pct": 5.6,
-  "asof": "2026-06-17",
+  "ret": 0.36,
+  "cone_width_pct": 0.69,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 200.52,
+    "stop_loss": 200.46,
+    "exit": 201.25,
+    "risk": 0.06,
+    "reward": 0.73,
+    "risk_reward": 12.17,
+    "conviction": 55,
+    "volume": {
+      "latest": 22111931,
+      "avg_20d": 28840113,
+      "ratio": 0.77,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 202.14,
+      "ema_200": 187.32,
+      "label": "WEAKENING"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 250085.507072,
-    "pe": 23.208332,
+    "mcap_cr": 247603.6063232,
+    "pe": 22.978008,
     "roe": 11.156998999999999,
     "de": 0.8901699999999999,
     "sales_growth_yoy": 12.5,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": -0.0426,
-    "coverage": 0.6,
-    "cone_scale": 1.3333333333333335,
-    "n": 5
+    "bias_pct": 0.1129,
+    "coverage": 0.6667,
+    "cone_scale": 1.2000000000000002,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 198.75,
+        "actual_close": 200.52000427246094,
+        "error_pct": 0.8906,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": false
       }
     ],
-    "n": 5,
-    "mae_pct": 1.6,
-    "directional_accuracy_pct": 40.0,
-    "calibration_pct": 60.0
+    "n": 6,
+    "mae_pct": 1.48,
+    "directional_accuracy_pct": 33.3,
+    "calibration_pct": 66.7
   }
 }

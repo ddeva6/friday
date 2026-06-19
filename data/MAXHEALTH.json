@@ -1,9 +1,8 @@
 {
   "code": "MAXHEALTH",
   "name": "MAXHEALTH",
-  "last": 1026.15,
+  "last": 1090.45,
   "hist": [
-    1180.34,
     1161.66,
     1212.4,
     1188.83,
@@ -251,23 +250,44 @@
     1012.45,
     1028.9,
     1024.1,
-    1026.15
+    1026.15,
+    1090.45
   ],
   "med": [
-    1034.44
+    1088.26
   ],
   "up": [
-    1062.26
+    1106.28
   ],
   "lo": [
-    1018.99
+    1101.96
   ],
-  "ret": 0.81,
-  "cone_width_pct": 4.22,
-  "asof": "2026-06-17",
+  "ret": -0.2,
+  "cone_width_pct": 0.4,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 1090.45,
+    "stop_loss": 1101.96,
+    "exit": 1088.26,
+    "risk": -11.51,
+    "reward": -2.19,
+    "risk_reward": 0.0,
+    "conviction": 45,
+    "volume": {
+      "latest": 6871544,
+      "avg_20d": 3533006,
+      "ratio": 1.94,
+      "confirmed": true
+    },
+    "trend": {
+      "ema_50": 1010.87,
+      "ema_200": 1057.02,
+      "label": "RECOVERING"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 106127.36,
-    "pe": 73.92881,
+    "mcap_cr": 105587.2188416,
+    "pe": 73.55254,
     "roe": 14.333001000000001,
     "de": 0.32366999999999996,
     "sales_growth_yoy": 12.2,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 0.2788,
-    "coverage": 1.0,
-    "cone_scale": 0.8,
-    "n": 5
+    "bias_pct": 1.1347,
+    "coverage": 0.8333,
+    "cone_scale": 1.0,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 1034.44,
+        "actual_close": 1090.449951171875,
+        "error_pct": 5.4145,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": true
       }
     ],
-    "n": 5,
-    "mae_pct": 0.62,
-    "directional_accuracy_pct": 40.0,
-    "calibration_pct": 100.0
+    "n": 6,
+    "mae_pct": 1.42,
+    "directional_accuracy_pct": 50.0,
+    "calibration_pct": 83.3
   }
 }

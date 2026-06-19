@@ -1,9 +1,8 @@
 {
   "code": "M&M",
   "name": "M&M",
-  "last": 3132.9,
+  "last": 3136.5,
   "hist": [
-    3016.86,
     3070.13,
     3159.02,
     3110.01,
@@ -251,23 +250,44 @@
     3042.9,
     3134.3,
     3137.9,
-    3132.9
+    3132.9,
+    3136.5
   ],
   "med": [
-    3168.76
+    3152.19
   ],
   "up": [
-    3231.14
+    3172.15
   ],
   "lo": [
-    3078.93
+    3158.11
   ],
-  "ret": 1.14,
-  "cone_width_pct": 4.86,
-  "asof": "2026-06-17",
+  "ret": 0.5,
+  "cone_width_pct": 0.45,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 3136.5,
+    "stop_loss": 3158.11,
+    "exit": 3152.19,
+    "risk": -21.61,
+    "reward": 15.69,
+    "risk_reward": 0.0,
+    "conviction": 55,
+    "volume": {
+      "latest": 2432013,
+      "avg_20d": 3234500,
+      "ratio": 0.75,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 3120.5,
+      "ema_200": 3278.41,
+      "label": "RECOVERING"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 376619.0866432,
-    "pe": 20.609106,
+    "mcap_cr": 370519.2054784,
+    "pe": 20.275312,
     "roe": 18.754,
     "de": 1.25066,
     "sales_growth_yoy": 30.9,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 1.1854,
-    "coverage": 0.8,
+    "bias_pct": 0.8182,
+    "coverage": 0.8333,
     "cone_scale": 1.0,
-    "n": 5
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 3168.76,
+        "actual_close": 3136.5,
+        "error_pct": -1.0181,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": true
       }
     ],
-    "n": 5,
-    "mae_pct": 1.36,
-    "directional_accuracy_pct": 60.0,
-    "calibration_pct": 80.0
+    "n": 6,
+    "mae_pct": 1.3,
+    "directional_accuracy_pct": 66.7,
+    "calibration_pct": 83.3
   }
 }

@@ -1,9 +1,8 @@
 {
   "code": "HDFCGOLD",
   "name": "HDFCGOLD",
-  "last": 127.84,
+  "last": 126.09,
   "hist": [
-    85.45,
     85.34,
     84.91,
     85.23,
@@ -248,20 +247,41 @@
     125.86,
     128.18,
     128.28,
-    127.84
+    127.84,
+    126.09
   ],
   "med": [
-    128.16
+    127.18
   ],
   "up": [
-    131.88
+    126.86
   ],
   "lo": [
-    122.66
+    125.92
   ],
-  "ret": 0.25,
-  "cone_width_pct": 7.21,
-  "asof": "2026-06-17",
+  "ret": 0.86,
+  "cone_width_pct": 0.75,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 126.09,
+    "stop_loss": 125.92,
+    "exit": 127.18,
+    "risk": 0.17,
+    "reward": 1.09,
+    "risk_reward": 6.41,
+    "conviction": 55,
+    "volume": {
+      "latest": 2834779,
+      "avg_20d": 3732196,
+      "ratio": 0.76,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 129.57,
+      "ema_200": 119.02,
+      "label": "WEAKENING"
+    }
+  },
   "fundamentals": {
     "mcap_cr": "N/A",
     "pe": "N/A",
@@ -273,16 +293,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 0.4703,
-    "coverage": 0.4,
-    "cone_scale": 2.0,
-    "n": 5
+    "bias_pct": 0.1227,
+    "coverage": 0.5,
+    "cone_scale": 1.6,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 128.16,
+        "actual_close": 126.08999633789062,
+        "error_pct": -1.6152,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -329,9 +358,9 @@
         "direction_correct": true
       }
     ],
-    "n": 5,
-    "mae_pct": 1.11,
-    "directional_accuracy_pct": 60.0,
-    "calibration_pct": 40.0
+    "n": 6,
+    "mae_pct": 1.19,
+    "directional_accuracy_pct": 50.0,
+    "calibration_pct": 50.0
   }
 }

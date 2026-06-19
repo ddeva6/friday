@@ -1,9 +1,8 @@
 {
   "code": "INDIGO",
   "name": "INDIGO",
-  "last": 4878.4,
+  "last": 5011.8,
   "hist": [
-    5264.1,
     5262.11,
     5380.91,
     5457.78,
@@ -250,22 +249,43 @@
     4709.7,
     4880.4,
     4840.0,
-    4878.4
+    4878.4,
+    5011.8
   ],
   "med": [
-    4992.46
+    4995.11
   ],
   "up": [
-    5144.7
+    5155.33
   ],
   "lo": [
-    4847.46
+    5098.02
   ],
-  "ret": 2.34,
-  "cone_width_pct": 6.09,
-  "asof": "2026-06-17",
+  "ret": -0.33,
+  "cone_width_pct": 1.14,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 5011.8,
+    "stop_loss": 5098.02,
+    "exit": 4995.11,
+    "risk": -86.22,
+    "reward": -16.69,
+    "risk_reward": 0.0,
+    "conviction": 45,
+    "volume": {
+      "latest": 1129087,
+      "avg_20d": 1140986,
+      "ratio": 0.99,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 4535.8,
+      "ema_200": 4856.87,
+      "label": "RECOVERING"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 193784.9974784,
+    "mcap_cr": 193750.2109696,
     "pe": "N/A",
     "roe": "N/A",
     "de": 8.66462,
@@ -275,16 +295,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 1.2853,
-    "coverage": 0.4,
-    "cone_scale": 2.0,
-    "n": 5
+    "bias_pct": 1.1357,
+    "coverage": 0.5,
+    "cone_scale": 1.6,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 4992.46,
+        "actual_close": 5011.7998046875,
+        "error_pct": 0.3874,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -331,9 +360,9 @@
         "direction_correct": true
       }
     ],
-    "n": 5,
-    "mae_pct": 2.11,
-    "directional_accuracy_pct": 60.0,
-    "calibration_pct": 40.0
+    "n": 6,
+    "mae_pct": 1.82,
+    "directional_accuracy_pct": 66.7,
+    "calibration_pct": 50.0
   }
 }

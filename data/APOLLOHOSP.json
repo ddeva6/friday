@@ -1,9 +1,8 @@
 {
   "code": "APOLLOHOSP",
   "name": "APOLLOHOSP",
-  "last": 8427.5,
+  "last": 8411.5,
   "hist": [
-    6915.46,
     6991.26,
     7045.12,
     6989.26,
@@ -251,23 +250,44 @@
     8498.0,
     8468.5,
     8390.5,
-    8427.5
+    8427.5,
+    8411.5
   ],
   "med": [
-    8491.66
+    8389.23
   ],
   "up": [
-    8536.04
+    8418.03
   ],
   "lo": [
-    8398.46
+    8395.88
   ],
-  "ret": 0.76,
-  "cone_width_pct": 1.63,
-  "asof": "2026-06-17",
+  "ret": -0.26,
+  "cone_width_pct": 0.26,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 8411.5,
+    "stop_loss": 8395.88,
+    "exit": 8389.23,
+    "risk": 15.62,
+    "reward": -22.27,
+    "risk_reward": -1.43,
+    "conviction": 30,
+    "volume": {
+      "latest": 304242,
+      "avg_20d": 463806,
+      "ratio": 0.66,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 8083.33,
+      "ema_200": 7635.23,
+      "label": "BULLISH"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 120944.459776,
-    "pe": 62.2659,
+    "mcap_cr": 121404.5749248,
+    "pe": 62.502777,
     "roe": 21.503,
     "de": 0.85146,
     "sales_growth_yoy": 18.099999999999998,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 0.0485,
+    "bias_pct": -0.1169,
     "coverage": 1.0,
     "cone_scale": 0.8,
-    "n": 5
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 8491.66,
+        "actual_close": 8411.5,
+        "error_pct": -0.944,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": false
       }
     ],
-    "n": 5,
-    "mae_pct": 0.49,
-    "directional_accuracy_pct": 20.0,
+    "n": 6,
+    "mae_pct": 0.56,
+    "directional_accuracy_pct": 16.7,
     "calibration_pct": 100.0
   }
 }

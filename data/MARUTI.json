@@ -1,9 +1,8 @@
 {
   "code": "MARUTI",
   "name": "MARUTI",
-  "last": 13630.0,
+  "last": 13484.0,
   "hist": [
-    12611.5,
     12668.88,
     12654.04,
     12563.03,
@@ -251,23 +250,44 @@
     13366.0,
     13805.0,
     13691.0,
-    13630.0
+    13630.0,
+    13484.0
   ],
   "med": [
-    13650.27
+    13541.18
   ],
   "up": [
-    14026.84
+    13636.4
   ],
   "lo": [
-    13273.7
+    13572.43
   ],
-  "ret": 0.15,
-  "cone_width_pct": 5.53,
-  "asof": "2026-06-17",
+  "ret": 0.42,
+  "cone_width_pct": 0.47,
+  "asof": "2026-06-18",
+  "trading": {
+    "entry": 13484.0,
+    "stop_loss": 13572.43,
+    "exit": 13541.18,
+    "risk": -88.43,
+    "reward": 57.18,
+    "risk_reward": 0.0,
+    "conviction": 30,
+    "volume": {
+      "latest": 373512,
+      "avg_20d": 383927,
+      "ratio": 0.97,
+      "confirmed": false
+    },
+    "trend": {
+      "ema_50": 13354.36,
+      "ema_200": 14027.52,
+      "label": "RECOVERING"
+    }
+  },
   "fundamentals": {
-    "mcap_cr": 423940.4040192,
-    "pe": 28.88232,
+    "mcap_cr": 422116.8779264,
+    "pe": 28.758087,
     "roe": 14.434,
     "de": 0.00096,
     "sales_growth_yoy": 28.199999999999996,
@@ -276,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-17"
+    "Data as of 2026-06-18"
   ],
   "calibration": {
-    "bias_pct": 0.9267,
-    "coverage": 0.6,
-    "cone_scale": 1.3333333333333335,
-    "n": 5
+    "bias_pct": 0.5693,
+    "coverage": 0.6667,
+    "cone_scale": 1.2000000000000002,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-17",
+        "target_date": "2026-06-18",
+        "predicted_med": 13650.27,
+        "actual_close": 13484.0,
+        "error_pct": -1.2181,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-16",
         "target_date": "2026-06-17",
@@ -332,9 +361,9 @@
         "direction_correct": true
       }
     ],
-    "n": 5,
-    "mae_pct": 1.51,
-    "directional_accuracy_pct": 20.0,
-    "calibration_pct": 60.0
+    "n": 6,
+    "mae_pct": 1.46,
+    "directional_accuracy_pct": 16.7,
+    "calibration_pct": 66.7
   }
 }
