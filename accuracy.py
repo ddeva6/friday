@@ -53,7 +53,9 @@ def evaluate_pending_forecasts(conn, horizon=1):
 
         error_pct = ((actual_close - predicted_med) / predicted_med) * 100 if predicted_med else 0.0
         in_cone = 1 if predicted_lo <= actual_close <= predicted_up else 0
-        direction_correct = 1 if (predicted_med - last_price >= 0) == (actual_close - last_price >= 0) else 0
+        pred_dir = 1 if predicted_med > last_price else (-1 if predicted_med < last_price else 0)
+        actual_dir = 1 if actual_close > last_price else (-1 if actual_close < last_price else 0)
+        direction_correct = 1 if (pred_dir == actual_dir and pred_dir != 0) else 0
 
         c.execute("""
             INSERT OR REPLACE INTO forecast_accuracy
