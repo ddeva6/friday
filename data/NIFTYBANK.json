@@ -1,10 +1,8 @@
 {
   "code": "NIFTYBANK",
   "name": "Nifty Bank",
-  "last": 57963.8,
+  "last": 57685.75,
   "hist": [
-    55577.45,
-    56252.85,
     56059.35,
     56461.9,
     56621.15,
@@ -248,37 +246,38 @@
     57198.8,
     57297.15,
     57585.05,
-    57963.8
+    57963.8,
+    57685.75
   ],
   "med": [
-    58137.79
+    57780.55
   ],
   "up": [
-    58790.09
+    58459.52
   ],
   "lo": [
-    58533.74
+    58165.94
   ],
-  "ret": 0.3,
-  "cone_width_pct": 0.44,
-  "asof": "2026-06-18",
+  "ret": 0.16,
+  "cone_width_pct": 0.51,
+  "asof": "2026-06-19",
   "trading": {
-    "entry": 57963.8,
-    "stop_loss": 58533.74,
-    "exit": 58137.79,
-    "risk": -569.94,
-    "reward": 173.99,
+    "entry": 57685.75,
+    "stop_loss": 58165.94,
+    "exit": 57780.55,
+    "risk": -480.19,
+    "reward": 94.8,
     "risk_reward": 0.0,
-    "conviction": 70,
+    "conviction": 45,
     "volume": {
-      "latest": 409600,
-      "avg_20d": 369015,
-      "ratio": 1.11,
-      "confirmed": true
+      "latest": 285800,
+      "avg_20d": 378425,
+      "ratio": 0.76,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 55425.27,
-      "ema_200": 56460.39,
+      "ema_50": 55513.94,
+      "ema_200": 56513.58,
       "label": "RECOVERING"
     }
   },
@@ -293,16 +292,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-18"
+    "Data as of 2026-06-19"
   ],
   "calibration": {
-    "bias_pct": 0.8974,
-    "coverage": 0.8,
-    "cone_scale": 1.0,
-    "n": 5
+    "bias_pct": 0.6182,
+    "coverage": 0.6667,
+    "cone_scale": 1.2000000000000002,
+    "n": 6
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-18",
+        "target_date": "2026-06-19",
+        "predicted_med": 58137.79,
+        "actual_close": 57685.75,
+        "error_pct": -0.7775,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-17",
         "target_date": "2026-06-18",
@@ -349,9 +357,9 @@
         "direction_correct": false
       }
     ],
-    "n": 5,
-    "mae_pct": 0.9,
-    "directional_accuracy_pct": 80.0,
-    "calibration_pct": 80.0
+    "n": 6,
+    "mae_pct": 0.88,
+    "directional_accuracy_pct": 66.7,
+    "calibration_pct": 66.7
   }
 }
