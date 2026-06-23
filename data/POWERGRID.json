@@ -1,7 +1,7 @@
 {
   "code": "POWERGRID",
   "name": "POWERGRID",
-  "last": 292.25,
+  "last": 289.75,
   "hist": [
     281.06,
     276.9,
@@ -250,43 +250,44 @@
     285.15,
     286.35,
     288.7,
-    292.25
+    292.25,
+    289.75
   ],
   "med": [
-    292.43
+    290.23
   ],
   "up": [
-    293.46
+    290.97
   ],
   "lo": [
-    292.45
+    289.71
   ],
-  "ret": 0.06,
-  "cone_width_pct": 0.35,
-  "asof": "2026-06-19",
+  "ret": 0.17,
+  "cone_width_pct": 0.43,
+  "asof": "2026-06-22",
   "trading": {
-    "entry": 292.25,
-    "stop_loss": 292.45,
-    "exit": 292.43,
-    "risk": -0.2,
-    "reward": 0.18,
-    "risk_reward": 0.0,
-    "conviction": 65,
+    "entry": 289.75,
+    "stop_loss": 289.71,
+    "exit": 290.23,
+    "risk": 0.04,
+    "reward": 0.48,
+    "risk_reward": 12.0,
+    "conviction": 80,
     "volume": {
-      "latest": 10295261,
-      "avg_20d": 12872247,
-      "ratio": 0.8,
+      "latest": 11678414,
+      "avg_20d": 12631745,
+      "ratio": 0.92,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 295.18,
-      "ema_200": 288.47,
+      "ema_50": 294.97,
+      "ema_200": 288.48,
       "label": "WEAKENING"
     }
   },
   "fundamentals": {
-    "mcap_cr": 269485.0019328,
-    "pe": 14.408255,
+    "mcap_cr": 271531.1407104,
+    "pe": 14.517653,
     "roe": 16.492,
     "de": 1.50993,
     "sales_growth_yoy": -5.0,
@@ -295,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-19"
+    "Data as of 2026-06-22"
   ],
   "calibration": {
-    "bias_pct": 0.1807,
-    "coverage": 0.7143,
-    "cone_scale": 1.12,
-    "n": 7
+    "bias_pct": 0.0435,
+    "coverage": 0.625,
+    "cone_scale": 1.28,
+    "n": 8
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-19",
+        "target_date": "2026-06-22",
+        "predicted_med": 292.43,
+        "actual_close": 289.75,
+        "error_pct": -0.9165,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-18",
         "target_date": "2026-06-19",
@@ -369,9 +379,9 @@
         "direction_correct": true
       }
     ],
-    "n": 7,
-    "mae_pct": 0.48,
-    "directional_accuracy_pct": 85.7,
-    "calibration_pct": 71.4
+    "n": 8,
+    "mae_pct": 0.53,
+    "directional_accuracy_pct": 75.0,
+    "calibration_pct": 62.5
   }
 }

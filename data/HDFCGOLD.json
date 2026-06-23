@@ -1,7 +1,7 @@
 {
   "code": "HDFCGOLD",
   "name": "HDFCGOLD",
-  "last": 123.79,
+  "last": 124.95,
   "hist": [
     85.23,
     83.64,
@@ -247,37 +247,38 @@
     128.28,
     127.84,
     126.09,
-    123.79
+    123.79,
+    124.95
   ],
   "med": [
-    124.55
+    125.48
   ],
   "up": [
-    123.49
+    124.76
   ],
   "lo": [
-    121.02
+    123.46
   ],
-  "ret": 0.61,
-  "cone_width_pct": 2.0,
-  "asof": "2026-06-19",
+  "ret": 0.42,
+  "cone_width_pct": 1.04,
+  "asof": "2026-06-22",
   "trading": {
-    "entry": 123.79,
-    "stop_loss": 121.02,
-    "exit": 124.55,
-    "risk": 2.77,
-    "reward": 0.76,
-    "risk_reward": 0.27,
+    "entry": 124.95,
+    "stop_loss": 123.46,
+    "exit": 125.48,
+    "risk": 1.49,
+    "reward": 0.53,
+    "risk_reward": 0.36,
     "conviction": 30,
     "volume": {
-      "latest": 6302699,
-      "avg_20d": 3695913,
-      "ratio": 1.71,
+      "latest": 4321284,
+      "avg_20d": 3910697,
+      "ratio": 1.1,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 129.34,
-      "ema_200": 119.06,
+      "ema_50": 129.17,
+      "ema_200": 119.12,
       "label": "WEAKENING"
     }
   },
@@ -292,16 +293,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-19"
+    "Data as of 2026-06-22"
   ],
   "calibration": {
-    "bias_pct": -0.2756,
-    "coverage": 0.4286,
-    "cone_scale": 1.866666666666667,
-    "n": 7
+    "bias_pct": -0.201,
+    "coverage": 0.375,
+    "cone_scale": 2.0,
+    "n": 8
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-19",
+        "target_date": "2026-06-22",
+        "predicted_med": 124.55,
+        "actual_close": 124.94999694824219,
+        "error_pct": 0.3212,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-18",
         "target_date": "2026-06-19",
@@ -366,9 +376,9 @@
         "direction_correct": true
       }
     ],
-    "n": 7,
-    "mae_pct": 1.41,
-    "directional_accuracy_pct": 42.9,
-    "calibration_pct": 42.9
+    "n": 8,
+    "mae_pct": 1.27,
+    "directional_accuracy_pct": 50.0,
+    "calibration_pct": 37.5
   }
 }

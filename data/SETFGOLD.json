@@ -1,7 +1,7 @@
 {
   "code": "SETFGOLD",
   "name": "SETFGOLD",
-  "last": 123.52,
+  "last": 124.95,
   "hist": [
     85.25,
     83.43,
@@ -249,37 +249,38 @@
     128.0,
     127.6,
     125.96,
-    123.52
+    123.52,
+    124.95
   ],
   "med": [
-    124.2
+    125.32
   ],
   "up": [
-    122.91
+    124.52
   ],
   "lo": [
-    120.63
+    123.46
   ],
-  "ret": 0.55,
-  "cone_width_pct": 1.85,
-  "asof": "2026-06-19",
+  "ret": 0.3,
+  "cone_width_pct": 0.85,
+  "asof": "2026-06-22",
   "trading": {
-    "entry": 123.52,
-    "stop_loss": 120.63,
-    "exit": 124.2,
-    "risk": 2.89,
-    "reward": 0.68,
-    "risk_reward": 0.24,
+    "entry": 124.95,
+    "stop_loss": 123.46,
+    "exit": 125.32,
+    "risk": 1.49,
+    "reward": 0.37,
+    "risk_reward": 0.25,
     "conviction": 30,
     "volume": {
-      "latest": 5371067,
-      "avg_20d": 4166780,
-      "ratio": 1.29,
+      "latest": 5372390,
+      "avg_20d": 4335406,
+      "ratio": 1.24,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 129.19,
-      "ema_200": 119.19,
+      "ema_50": 129.02,
+      "ema_200": 119.25,
       "label": "WEAKENING"
     }
   },
@@ -294,16 +295,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-19"
+    "Data as of 2026-06-22"
   ],
   "calibration": {
-    "bias_pct": -0.3303,
-    "coverage": 0.4286,
-    "cone_scale": 1.866666666666667,
-    "n": 7
+    "bias_pct": -0.2135,
+    "coverage": 0.375,
+    "cone_scale": 2.0,
+    "n": 8
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-19",
+        "target_date": "2026-06-22",
+        "predicted_med": 124.2,
+        "actual_close": 124.94999694824219,
+        "error_pct": 0.6039,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-18",
         "target_date": "2026-06-19",
@@ -368,9 +378,9 @@
         "direction_correct": false
       }
     ],
-    "n": 7,
-    "mae_pct": 1.61,
-    "directional_accuracy_pct": 28.6,
-    "calibration_pct": 42.9
+    "n": 8,
+    "mae_pct": 1.48,
+    "directional_accuracy_pct": 37.5,
+    "calibration_pct": 37.5
   }
 }
