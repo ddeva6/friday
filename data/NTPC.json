@@ -1,9 +1,8 @@
 {
   "code": "NTPC",
   "name": "NTPC",
-  "last": 364.6,
+  "last": 357.05,
   "hist": [
-    321.47,
     322.34,
     328.48,
     329.6,
@@ -42,7 +41,7 @@
     331.21,
     330.62,
     327.41,
-    326.43,
+    326.44,
     333.21,
     330.09,
     328.33,
@@ -251,43 +250,44 @@
     361.95,
     365.8,
     367.05,
-    364.6
+    364.6,
+    357.05
   ],
   "med": [
-    365.95
+    358.49
   ],
   "up": [
-    366.89
+    357.16
   ],
   "lo": [
-    364.84
+    355.1
   ],
-  "ret": 0.37,
-  "cone_width_pct": 0.56,
-  "asof": "2026-06-23",
+  "ret": 0.4,
+  "cone_width_pct": 0.58,
+  "asof": "2026-06-24",
   "trading": {
-    "entry": 364.6,
-    "stop_loss": 364.84,
-    "exit": 365.95,
-    "risk": -0.24,
-    "reward": 1.35,
-    "risk_reward": 0.0,
+    "entry": 357.05,
+    "stop_loss": 355.1,
+    "exit": 358.49,
+    "risk": 1.95,
+    "reward": 1.44,
+    "risk_reward": 0.74,
     "conviction": 45,
     "volume": {
-      "latest": 11696171,
-      "avg_20d": 13125718,
-      "ratio": 0.89,
+      "latest": 12770898,
+      "avg_20d": 13257416,
+      "ratio": 0.96,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 374.39,
-      "ema_200": 359.81,
+      "ema_50": 373.71,
+      "ema_200": 359.85,
       "label": "WEAKENING"
     }
   },
   "fundamentals": {
-    "mcap_cr": 346219.47904,
-    "pe": 11.729631,
+    "mcap_cr": 341371.12576,
+    "pe": 11.55778,
     "roe": 13.694999999999999,
     "de": 1.18127,
     "sales_growth_yoy": 8.0,
@@ -296,16 +296,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-23"
+    "Data as of 2026-06-24"
   ],
   "calibration": {
-    "bias_pct": 0.1311,
-    "coverage": 0.5556,
-    "cone_scale": 1.44,
-    "n": 9
+    "bias_pct": -0.1252,
+    "coverage": 0.5,
+    "cone_scale": 1.6,
+    "n": 10
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-23",
+        "target_date": "2026-06-24",
+        "predicted_med": 365.95,
+        "actual_close": 357.04998779296875,
+        "error_pct": -2.432,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-22",
         "target_date": "2026-06-23",
@@ -388,9 +397,9 @@
         "direction_correct": true
       }
     ],
-    "n": 9,
-    "mae_pct": 0.87,
-    "directional_accuracy_pct": 66.7,
-    "calibration_pct": 55.6
+    "n": 10,
+    "mae_pct": 1.03,
+    "directional_accuracy_pct": 60.0,
+    "calibration_pct": 50.0
   }
 }
