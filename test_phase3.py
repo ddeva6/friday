@@ -308,3 +308,114 @@ def test_data_contract_schema(sample_db, tmp_path, monkeypatch):
     }
 
     validate(instance=data, schema=schema)
+
+
+def test_rsi_bounds(sample_db, tmp_path, monkeypatch):
+    # sample_db's HDFCBANK history is a flat 1500.0 for every session, so RSI
+    # has no price movement to measure and must come back as None, not NaN.
+    data_dir = tmp_path / "data"
+    config = {'database': {'path': str(sample_db)}}
+    import yaml
+    with open(tmp_path / "config.yaml", "w") as f:
+        yaml.dump(config, f)
+
+    monkeypatch.chdir(tmp_path)
+    with open(os.path.join(os.path.dirname(__file__), "schema.sql"), "r") as f_in:
+        with open(tmp_path / "schema.sql", "w") as f_out:
+            f_out.write(f_in.read())
+
+    export_data(output_dir=str(data_dir))
+
+    with open(data_dir / "HDFCBANK.json", "r") as f:
+        data = json.load(f)
+
+    rsi = data["trading"]["momentum"]["rsi_14"]
+    assert rsi is None or (isinstance(rsi, (int, float)) and 0 <= rsi <= 100)
+
+
+@pytest.fixture
+def favorable_short_history_db(tmp_path):
+    """A stock with a <60-row (short) history but otherwise favorable signals:
+    a high risk:reward forecast, a large expected move, and volume well above
+    its own average. Without the data-quality override, conviction would land
+    in the HIGH tier and the verdict would be FAVORABLE — this fixture exists
+    to prove the short-history flag forces CAUTION anyway."""
+    db_path = tmp_path / "test_favorable_short.db"
+    conn = sqlite3.connect(db_path)
+    with open("schema.sql", "r") as f:
+        conn.executescript(f.read())
+
+    conn.execute("INSERT INTO instruments (code, name, level) VALUES ('NIFTY 50', 'Broad Market', 'market')")
+    conn.execute("INSERT INTO instruments (code, name, level) VALUES ('NIFTYBANK', 'Nifty Bank', 'index')")
+    conn.execute("INSERT INTO instruments (code, name, level) VALUES ('NEWBANK', 'New Bank', 'stock')")
+    conn.execute("INSERT INTO index_membership (index_code, stock_code, start_date) VALUES ('NIFTYBANK', 'NEWBANK', '2024-01-01')")
+
+    dates = pd.date_range(start="2024-01-01", periods=55).strftime('%Y-%m-%d')
+    for i, d in enumerate(dates):
+        is_last = i == len(dates) - 1
+        conn.execute(
+            "INSERT INTO ohlcv (instrument_code, date, adjusted_close, volume) VALUES ('NEWBANK', ?, 1500.0, ?)",
+            (d, 200000 if is_last else 100000),
+        )
+        conn.execute("INSERT INTO ohlcv (instrument_code, date, adjusted_close) VALUES ('NIFTYBANK', ?, 45000.0)", (d,))
+        conn.execute("INSERT INTO ohlcv (instrument_code, date, adjusted_close) VALUES ('NIFTY 50', ?, 22000.0)", (d,))
+
+    conn.execute("""
+        INSERT INTO forecasts (instrument_code, asof_date, last_price, ret, cone_width_pct, med_json, up_json, lo_json)
+        VALUES ('NEWBANK', ?, 1500.0, 3.0, 5.0, '[1525]', '[1530]', '[1490]')
+    """, (dates[-1],))
+
+    conn.commit()
+    conn.close()
+    return db_path
+
+
+def test_verdict_stale_data_forces_caution(favorable_short_history_db, tmp_path, monkeypatch):
+    data_dir = tmp_path / "data"
+    config = {'database': {'path': str(favorable_short_history_db)}}
+    import yaml
+    with open(tmp_path / "config.yaml", "w") as f:
+        yaml.dump(config, f)
+
+    monkeypatch.chdir(tmp_path)
+    with open(os.path.join(os.path.dirname(__file__), "schema.sql"), "r") as f_in:
+        with open(tmp_path / "schema.sql", "w") as f_out:
+            f_out.write(f_in.read())
+
+    export_data(output_dir=str(data_dir))
+
+    with open(data_dir / "NEWBANK.json", "r") as f:
+        data = json.load(f)
+
+    trading = data["trading"]
+    # Confirm the fixture really is otherwise favorable, so the CAUTION below
+    # can only be coming from the data-quality override, not from weak inputs.
+    assert trading["conviction"] >= 70
+    assert trading["risk_reward"] >= 2
+    assert any(s.startswith("Short history") for s in data["status"])
+
+    assert trading["verdict"]["label"] == "CAUTION"
+    assert any(r.startswith(("Stale data", "Short history")) for r in trading["verdict"]["reasons"])
+
+
+def test_verdict_label_values(sample_db, gold_etf_db, tmp_path, monkeypatch):
+    for db, code in [(sample_db, "HDFCBANK"), (gold_etf_db, "GOLDBEES")]:
+        data_dir = tmp_path / f"data_{code}"
+        config = {'database': {'path': str(db)}}
+        import yaml
+        with open(tmp_path / "config.yaml", "w") as f:
+            yaml.dump(config, f)
+
+        monkeypatch.chdir(tmp_path)
+        with open(os.path.join(os.path.dirname(__file__), "schema.sql"), "r") as f_in:
+            with open(tmp_path / "schema.sql", "w") as f_out:
+                f_out.write(f_in.read())
+
+        export_data(output_dir=str(data_dir))
+
+        with open(data_dir / f"{code}.json", "r") as f:
+            data = json.load(f)
+
+        label = data["trading"]["verdict"]["label"]
+        assert label in ("FAVORABLE", "NEUTRAL", "CAUTION")
+        assert "BUY" not in label and "SELL" not in label

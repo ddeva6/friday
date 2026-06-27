@@ -102,6 +102,18 @@
   .tag.down{background:rgba(224,106,90,.13);color:var(--down)}
   .note{font-family:var(--mono);font-size:11px;color:var(--ink-faint);line-height:1.6;border:1px dashed var(--line);border-radius:10px;padding:14px 16px;margin-top:28px}
   .note b{color:var(--ink-dim)}
+  .hero.hero-caution{border-color:rgba(224,106,90,.55);box-shadow:0 0 0 1px rgba(224,106,90,.3) inset}
+  .verdict-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .verdict-badge{font-family:var(--mono);font-weight:700;font-size:12.5px;letter-spacing:1.5px;padding:8px 16px;border-radius:100px;text-transform:uppercase;white-space:nowrap}
+  .verdict-badge.up{background:rgba(84,192,138,.16);color:var(--up);border:1px solid rgba(84,192,138,.4)}
+  .verdict-badge.down{background:rgba(224,106,90,.16);color:var(--down);border:1px solid rgba(224,106,90,.4)}
+  .verdict-badge.neutral{background:rgba(154,147,132,.14);color:var(--ink-dim);border:1px solid var(--line)}
+  .verdict-reasons{margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--ink-dim);line-height:1.9;list-style:none}
+  .verdict-reasons li{display:flex;gap:8px}
+  details.fund summary{cursor:pointer;list-style:none}
+  details.fund summary::-webkit-details-marker{display:none}
+  details.fund summary.fund-h::after{content:' ▾';color:var(--ink-faint);font-size:11px}
+  details.fund[open] summary.fund-h::after{content:' ▴'}
   footer{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);text-align:center;margin-top:30px;line-height:1.7}
   .hidden{display:none!important}
   @media(max-width:560px){
@@ -178,6 +190,10 @@
           <option value="all">All</option><option value="up">Forecast up</option><option value="down">Forecast down</option>
         </select></div>
       <div class="fld"><label>Index</label><select id="f-idx" onchange="renderScreener()"></select></div>
+      <div class="fld"><label title="Combines conviction, trend alignment, risk:reward and volume into one read">Setup</label>
+        <select id="f-setup" onchange="renderScreener()">
+          <option value="all">All</option><option value="FAVORABLE">Favorable</option><option value="CAUTION">Caution</option>
+        </select></div>
     </div>
     <table id="screen-table"></table>
   </div>
@@ -322,7 +338,8 @@ function getTrading(code){
   const risk = Math.round((entry - sl)*100)/100;
   const reward = Math.round((exit - entry)*100)/100;
   return {entry, stop_loss:sl, exit, risk, reward, risk_reward: risk>0?Math.round(reward/risk*100)/100:0,
-    conviction:50, volume:{latest:0,avg_20d:0,ratio:0,confirmed:false}, trend:{ema_50:null,ema_200:null,label:'N/A'}};
+    conviction:50, volume:{latest:0,avg_20d:0,ratio:0,confirmed:false}, trend:{ema_50:null,ema_200:null,label:'N/A'},
+    momentum:{rsi_14:null,label:'N/A'}, verdict:{label:'NEUTRAL',reasons:['No verdict data — re-run the export pipeline to compute one.']}};
 }
 function getCalibration(code){
   if (REAL_DATA[code] && REAL_DATA[code].calibration) {
@@ -379,6 +396,16 @@ function goIndex(i){state.level='index';state.idx=i;renderDrill();}
 function goStock(i,s){state.level='stock';state.idx=i;state.stock=s;renderDrill();}
 function fmt(n){return n.toLocaleString('en-IN',{maximumFractionDigits:n>500?0:2});}
 function signed(n){return (n>=0?'+':'')+n.toFixed(2)+'%';}
+function fcells(cells){
+  return cells.map(([k,v,c,ti])=>`<div class="fcell"><div class="fk"${ti?` title="${ti}"`:''}>${k}</div><div class="fv ${c}">${v}</div></div>`).join('');
+}
+function reasonIcon(r){
+  const neg=['conflicts','unfavorable','does not confirm','LOW)','Stale','Short history'];
+  const pos=['agrees','favorable (','confirms the move','HIGH)'];
+  if(neg.some(k=>r.includes(k)))return '✗';
+  if(pos.some(k=>r.includes(k)))return '✓';
+  return '⚠';
+}
 
 function renderDrill(){
   if (!UNIVERSE) return;
@@ -404,6 +431,9 @@ function renderDrill(){
     crumb.innerHTML=`<button onclick="goMarket()">Market</button><span class="sep">›</span><button onclick="goIndex(${state.idx})">${ix.code}</button><span class="sep">›</span><span class="here">${code}</span>`;
   }
   const s=focus.s,up=s.ret>=0;
+  const t = state.level==='stock' ? getTrading(focus.code) : null;
+  const verdict = t ? (t.verdict || {label:'NEUTRAL', reasons:[]}) : null;
+  hero.className = verdict && verdict.label==='CAUTION' ? 'hero hero-caution' : 'hero';
   hero.innerHTML=`<div class="hero-top">
       <div><h1>${focus.code}</h1><div class="sub">${focus.name} · ${state.level} level</div>
         <div class="lastpx">Last ${fmt(s.last)} · ${HIST}d history → ${FC}d forecast</div></div>
@@ -418,7 +448,6 @@ function renderDrill(){
         <span><i class="dash"></i>Forecast</span><span><i class="bandkey"></i>Uncertainty cone</span></div></div>`;
 
   if(state.level==='stock'){
-    const t=getTrading(focus.code);
     const f=getFundamentals(focus.code);
     const tUp = t.reward >= 0;
     const rrClass = t.risk_reward >= 2 ? 'up' : (t.risk_reward >= 1 ? '' : 'down');
@@ -427,37 +456,32 @@ function renderDrill(){
     const convLabel = conv >= 70 ? 'HIGH' : (conv >= 40 ? 'MEDIUM' : 'LOW');
     const vol = t.volume || {};
     const trend = t.trend || {};
+    const mom = t.momentum || {};
     const trendClass = trend.label === 'BULLISH' ? 'up' : (trend.label === 'BEARISH' ? 'down' : '');
+    const vTone = verdict.label==='FAVORABLE' ? 'up' : (verdict.label==='CAUTION' ? 'down' : 'neutral');
 
-    st.innerHTML=`<h2>Trading Signals</h2><span class="hint">${FC}-day forecast-derived levels</span>`;
+    st.innerHTML=`<h2>Decision Summary</h2><span class="hint">the one-line takeaway — not advice, just a readout of the signals below</span>`;
+    grid.innerHTML=`<div class="fund">
+      <div class="verdict-top"><span class="verdict-badge ${vTone}">${verdict.label}</span>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--ink-faint)">based on conviction, trend, risk:reward &amp; volume</span></div>
+      <ul class="verdict-reasons">${verdict.reasons.map(r=>`<li><span>${reasonIcon(r)}</span><span>${r}</span></li>`).join('')}</ul>
+    </div>`;
+
+    st.innerHTML+=`<h2>Trading Signals</h2><span class="hint">${FC}-day forecast-derived levels</span>`;
     const tCells=[
-      ['Entry Price', fmt(t.entry), ''],
-      ['Stop Loss (P10)', fmt(t.stop_loss), 'down'],
-      ['Exit / Target (P50)', fmt(t.exit), tUp?'up':'down'],
+      ['Entry Price', fmt(t.entry), '', 'The reference price the signal is measured from — today\'s last close.'],
+      ['Stop Loss (P10)', fmt(t.stop_loss), 'down', 'P10 = the forecast\'s lower bound. Only a 10% chance the price falls below this.'],
+      ['Exit / Target (P50)', fmt(t.exit), tUp?'up':'down', 'P50 = the median forecast — the single most likely outcome.'],
       ['Risk (₹)', fmt(t.risk), ''],
       ['Reward (₹)', fmt(t.reward), tUp?'up':'down'],
-      ['Risk : Reward', t.risk_reward > 0 ? '1 : '+t.risk_reward.toFixed(2) : 'N/A', rrClass],
-      ['Conviction', conv+'/100 · '+convLabel, convClass],
+      ['Risk : Reward', t.risk_reward > 0 ? '1 : '+t.risk_reward.toFixed(2) : 'N/A', rrClass, 'How much upside is on offer per unit of downside risk. 2 or higher is generally considered favorable.'],
+      ['Conviction', conv+'/100 · '+convLabel, convClass, 'A 0-100 score blending risk:reward, past forecast accuracy, volume, and trend.'],
       ['Trend', trend.label || 'N/A', trendClass],
     ];
-    grid.innerHTML=`<div class="fund">
-      <div class="fund-h">Signal levels</div>
-      <div class="fund-grid">${tCells.map(([k,v,c])=>`<div class="fcell"><div class="fk">${k}</div><div class="fv ${c}">${v}</div></div>`).join('')}</div>
-      <div class="fund-foot">Entry = last close. Stop loss = P10 lower bound. Target = P50 median forecast. Risk:Reward ≥ 2 is favorable. Conviction combines R:R, accuracy, volume, and trend.</div></div>`;
-
-    // Volume & Trend section
-    const volCells=[
-      ['Latest Volume', vol.latest ? vol.latest.toLocaleString('en-IN') : 'N/A', ''],
-      ['20d Avg Volume', vol.avg_20d ? vol.avg_20d.toLocaleString('en-IN') : 'N/A', ''],
-      ['Vol Ratio', vol.ratio ? vol.ratio.toFixed(2)+'×' : 'N/A', vol.ratio >= 1.5 ? 'up' : (vol.ratio < 0.7 ? 'down' : '')],
-      ['Volume Signal', vol.confirmed ? 'CONFIRMED' : 'WEAK', vol.confirmed ? 'up' : 'down'],
-      ['EMA 50', trend.ema_50 ? fmt(trend.ema_50) : 'N/A', trend.ema_50 ? (focus.s.last > trend.ema_50 ? 'up' : 'down') : ''],
-      ['EMA 200', trend.ema_200 ? fmt(trend.ema_200) : 'N/A', trend.ema_200 ? (focus.s.last > trend.ema_200 ? 'up' : 'down') : ''],
-    ];
     grid.innerHTML+=`<div class="fund">
-      <div class="fund-h">Volume & Trend</div>
-      <div class="fund-grid">${volCells.map(([k,v,c])=>`<div class="fcell"><div class="fk">${k}</div><div class="fv ${c}">${v}</div></div>`).join('')}</div>
-      <div class="fund-foot">Volume confirmed = latest ≥ 20d avg. Trend: BULLISH = price > EMA50 > EMA200. BEARISH = price < EMA50 < EMA200.</div></div>`;
+      <div class="fund-h">Signal levels</div>
+      <div class="fund-grid">${fcells(tCells)}</div>
+      <div class="fund-foot">Entry = last close. Stop loss = P10 lower bound. Target = P50 median forecast. Risk:Reward ≥ 2 is favorable. Conviction combines R:R, accuracy, volume, and trend.</div></div>`;
 
     st.innerHTML+=`<h2>Fundamentals</h2><span class="hint">snapshot alongside the ${FC}-day forecast</span>`;
     const cells=[
@@ -468,10 +492,26 @@ function renderDrill(){
       ['Sales gr. YoY', typeof f.sales_growth_yoy === 'number' ? signed(f.sales_growth_yoy) : 'N/A', typeof f.sales_growth_yoy === 'number' ? (f.sales_growth_yoy>=0?'up':'down') : ''],
       ['52w range', (typeof f.lo_52w === 'number' ? fmt(f.lo_52w) : 'N/A')+' – '+(typeof f.hi_52w === 'number' ? fmt(f.hi_52w) : 'N/A'),''],
     ];
-    grid.innerHTML=`<div class="fund">
+    grid.innerHTML+=`<div class="fund">
       <div class="fund-h">Key fundamentals</div>
-      <div class="fund-grid">${cells.map(([k,v,c])=>`<div class="fcell"><div class="fk">${k}</div><div class="fv ${c}">${v}</div></div>`).join('')}</div>
+      <div class="fund-grid">${fcells(cells)}</div>
       <div class="fund-foot">Fundamentals are point-in-time and refreshed on a quarterly cadence. 52w range derived from history.</div></div>`;
+
+    // Momentum, Volume & Trend — secondary detail, collapsed by default
+    const volCells=[
+      ['RSI (14)', mom.rsi_14 != null ? mom.rsi_14.toFixed(1) : 'N/A', mom.label==='OVERBOUGHT'?'down':(mom.label==='OVERSOLD'?'up':''), 'Relative Strength Index: above 70 = overbought, below 30 = oversold.'],
+      ['Momentum', mom.label || 'N/A', mom.label==='OVERBOUGHT'?'down':(mom.label==='OVERSOLD'?'up':'')],
+      ['Latest Volume', vol.latest ? vol.latest.toLocaleString('en-IN') : 'N/A', ''],
+      ['20d Avg Volume', vol.avg_20d ? vol.avg_20d.toLocaleString('en-IN') : 'N/A', ''],
+      ['Vol Ratio', vol.ratio ? vol.ratio.toFixed(2)+'×' : 'N/A', vol.ratio >= 1.5 ? 'up' : (vol.ratio < 0.7 ? 'down' : '')],
+      ['Volume Signal', vol.confirmed ? 'CONFIRMED' : 'WEAK', vol.confirmed ? 'up' : 'down'],
+      ['EMA 50', trend.ema_50 ? fmt(trend.ema_50) : 'N/A', trend.ema_50 ? (focus.s.last > trend.ema_50 ? 'up' : 'down') : '', 'Exponential Moving Average over 50 sessions — a medium-term trend reference.'],
+      ['EMA 200', trend.ema_200 ? fmt(trend.ema_200) : 'N/A', trend.ema_200 ? (focus.s.last > trend.ema_200 ? 'up' : 'down') : '', 'Exponential Moving Average over 200 sessions — a long-term trend reference.'],
+    ];
+    grid.innerHTML+=`<details class="fund">
+      <summary class="fund-h">Momentum, Volume &amp; Trend</summary>
+      <div class="fund-grid">${fcells(volCells)}</div>
+      <div class="fund-foot">Volume confirmed = latest ≥ 20d avg. Trend: BULLISH = price > EMA50 > EMA200. BEARISH = price < EMA50 < EMA200.</div></details>`;
 
     const acc=getAccuracy(focus.code), cal=getCalibration(focus.code);
     if (acc.n > 0) {
@@ -489,18 +529,18 @@ function renderDrill(){
           <td><span class="tag ${h.in_cone?'up':'down'}">${h.in_cone?'IN CONE':'MISS'}</span></td>
           <td><span class="tag ${h.direction_correct?'up':'down'}">${h.direction_correct?'CORRECT':'WRONG'}</span></td>
         </tr>`).join('');
-      grid.innerHTML+=`<div class="fund">
-        <div class="fund-h">Forecast accuracy</div>
-        <div class="fund-grid">${accCells.map(([k,v,c])=>`<div class="fcell"><div class="fk">${k}</div><div class="fv ${c}">${v}</div></div>`).join('')}</div>
+      grid.innerHTML+=`<details class="fund">
+        <summary class="fund-h">Forecast accuracy</summary>
+        <div class="fund-grid">${fcells(accCells)}</div>
         <div class="fund-foot">Active calibration: ${calibrationText(cal)}<br>Based on the last ${acc.n} forecast(s) evaluated ${FC} trading day${FC===1?'':'s'} after they were made.</div>
         <table><thead><tr><th>As of</th><th>Target</th><th>Pred. P50</th><th>Actual</th><th>Error</th><th>Cone</th><th>Direction</th></tr></thead>
           <tbody>${histRows}</tbody></table>
-        </div>`;
+        </details>`;
     } else {
-      grid.innerHTML+=`<div class="fund">
-        <div class="fund-h">Forecast accuracy</div>
+      grid.innerHTML+=`<details class="fund">
+        <summary class="fund-h">Forecast accuracy</summary>
         <div class="fund-foot">No evaluated forecasts yet — each forecast is compared against the actual close ${FC} trading day${FC===1?'':'s'} later. ${calibrationText(cal)}</div>
-        </div>`;
+        </details>`;
     }
 
     if (s.status && s.status.length) {
@@ -543,7 +583,7 @@ function renderScreener(){
   const univ = UNIVERSE;
   const fidx=document.getElementById('f-idx');
   if(!fidx.options.length)fidx.innerHTML=`<option value="all">All indices</option>`+univ.children.map(c=>`<option value="${c.code}">${c.code}</option>`).join('');
-  const dir=document.getElementById('f-dir').value,idxf=fidx.value;
+  const dir=document.getElementById('f-dir').value,idxf=fidx.value,setupf=document.getElementById('f-setup').value;
   let rows=[];
   univ.children.forEach((ix,ii)=>ix.stocks.forEach((stk,si)=>{
     let c=Array.isArray(stk)?stk[0]:stk;
@@ -552,12 +592,14 @@ function renderScreener(){
     const riskAdj = s.cone_width_pct > 0 ? (s.ret / s.cone_width_pct) : 0;
     const tr = getTrading(c);
     rows.push({code:c,name:n,idx:ix.code,ii,si,last:s.last,ret:s.ret,riskAdj,entry:tr.entry,sl:tr.stop_loss,exit:tr.exit,rr:tr.risk_reward,
-      conv:tr.conviction||50,trend:(tr.trend||{}).label||'N/A',volOk:(tr.volume||{}).confirmed||false});
+      conv:tr.conviction||50,trend:(tr.trend||{}).label||'N/A',volOk:(tr.volume||{}).confirmed||false,
+      setup:(tr.verdict||{}).label||'NEUTRAL'});
   }));
   rows=rows.filter(r=>{
     if(dir==='up'&&r.ret<0)return false;
     if(dir==='down'&&r.ret>=0)return false;
     if(idxf!=='all'&&r.idx!==idxf)return false;
+    if(setupf!=='all'&&r.setup!==setupf)return false;
     return true;
   }).sort((a,b)=>{
     const va = sortKey==='conv'?a.conv:(sortKey==='risk'?a.rr:a.ret);
@@ -566,14 +608,15 @@ function renderScreener(){
   });
   let html=`<thead><tr><th>Symbol</th><th>Entry</th><th>Stop Loss</th><th>Target</th>
     <th onclick="setSort('ret')">Fcst ${FC}d ${sortKey==='ret'?`<span class="arr">${sortDir<0?'▼':'▲'}</span>`:''}</th>
-    <th onclick="setSort('risk')">R:R ${sortKey==='risk'?`<span class="arr">${sortDir<0?'▼':'▲'}</span>`:''}</th>
-    <th>Trend</th><th>Vol</th>
-    <th onclick="setSort('conv')">Score ${sortKey==='conv'?`<span class="arr">${sortDir<0?'▼':'▲'}</span>`:''}</th>
-    <th>Signal</th></tr></thead><tbody>`;
-  if(!rows.length)html+=`<tr><td colspan="10" style="text-align:center;padding:36px;color:var(--ink-faint)">No matches.</td></tr>`;
+    <th onclick="setSort('risk')" title="Reward per unit of risk; ≥2 is favorable">R:R ${sortKey==='risk'?`<span class="arr">${sortDir<0?'▼':'▲'}</span>`:''}</th>
+    <th title="EMA50/EMA200 crossover direction">Trend</th><th title="Is latest volume ≥ 20-day average?">Vol</th>
+    <th onclick="setSort('conv')" title="0-100 composite confidence score">Score ${sortKey==='conv'?`<span class="arr">${sortDir<0?'▼':'▲'}</span>`:''}</th>
+    <th>Signal</th><th title="Composite read combining conviction, trend, R:R and volume">Setup</th></tr></thead><tbody>`;
+  if(!rows.length)html+=`<tr><td colspan="11" style="text-align:center;padding:36px;color:var(--ink-faint)">No matches.</td></tr>`;
   rows.forEach(r=>{const up=r.ret>=0;const rrC=r.rr>=2?'up':(r.rr>=1?'':'down');
     const tC=r.trend==='BULLISH'?'up':(r.trend==='BEARISH'?'down':'');
     const cC=r.conv>=70?'up':(r.conv>=40?'':'down');
+    const setupC=r.setup==='FAVORABLE'?'up':(r.setup==='CAUTION'?'down':'');
     html+=`<tr onclick="setView('drill');goStock(${r.ii},${r.si})">
       <td><span class="nm">${r.code}</span><br><span class="sub">${r.name}</span></td>
       <td>${fmt(r.entry)}</td><td class="down">${fmt(r.sl)}</td><td class="${up?'up':'down'}">${fmt(r.exit)}</td>
@@ -582,7 +625,8 @@ function renderScreener(){
       <td class="${tC}">${r.trend}</td>
       <td><span class="tag ${r.volOk?'up':'down'}">${r.volOk?'✓':'✗'}</span></td>
       <td class="${cC}">${r.conv}</td>
-      <td><span class="tag ${up?'up':'down'}">${up?'WATCH ↑':'AVOID ↓'}</span></td></tr>`;});
+      <td><span class="tag ${up?'up':'down'}">${up?'WATCH ↑':'AVOID ↓'}</span></td>
+      <td><span class="tag ${setupC}">${r.setup}</span></td></tr>`;});
   html+=`</tbody>`;
   document.getElementById('screen-table').innerHTML=html;
 }
