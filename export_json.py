@@ -10,6 +10,77 @@ from forecast_batch import calculate_metrics
 
 GOLD_ETF_SYMBOLS = {"GOLDBEES", "HDFCGOLD", "SETFGOLD", "AXISGOLD", "GOLD1", "IVZINGOLD", "QGOLDHALF"}
 
+# Status flags whose presence must force a CAUTION verdict regardless of how
+# favorable every other signal looks — the data itself can't be trusted.
+DATA_QUALITY_PREFIXES = ("Stale data", "Short history")
+
+
+def calculate_rsi(prices, period=14):
+    """Wilder's RSI from a price series. Returns (rsi_value, label); rsi_value
+    is None when there isn't enough history or the price hasn't moved at all
+    (flat series), avoiding a NaN/divide-by-zero result."""
+    if len(prices) < period + 1:
+        return None, "N/A"
+
+    delta = prices.diff().dropna()
+    gain = delta.clip(lower=0)
+    loss = -delta.clip(upper=0)
+    avg_gain = gain.ewm(alpha=1 / period, min_periods=period, adjust=False).mean().iloc[-1]
+    avg_loss = loss.ewm(alpha=1 / period, min_periods=period, adjust=False).mean().iloc[-1]
+
+    if pd.isna(avg_gain) or pd.isna(avg_loss):
+        return None, "N/A"
+    if avg_loss == 0:
+        if avg_gain == 0:
+            return None, "N/A"
+        return 100.0, "OVERBOUGHT"
+
+    rs = avg_gain / avg_loss
+    rsi = round(float(100 - (100 / (1 + rs))), 1)
+    if rsi >= 70:
+        label = "OVERBOUGHT"
+    elif rsi <= 30:
+        label = "OVERSOLD"
+    else:
+        label = "NEUTRAL"
+    return rsi, label
+
+
+def compute_verdict(conviction, risk_reward, trend_label, ret, vol_confirmed, status_flags):
+    """Composite, plain-English decision verdict combining conviction, trend
+    alignment, risk:reward and volume. Data-quality issues are checked first
+    and always win — no combination of favorable signals can override them."""
+    data_quality_reason = next(
+        (f for f in status_flags if f.startswith(DATA_QUALITY_PREFIXES)), None
+    )
+    if data_quality_reason:
+        return {"label": "CAUTION", "reasons": [data_quality_reason]}
+
+    high_conviction = conviction >= 70
+    low_conviction = conviction < 40
+    conv_tier = "HIGH" if high_conviction else ("LOW" if low_conviction else "MEDIUM")
+
+    trend_aligned = (trend_label == "BULLISH" and ret > 0) or (trend_label == "BEARISH" and ret < 0)
+    trend_conflicts = (trend_label == "BULLISH" and ret < 0) or (trend_label == "BEARISH" and ret > 0)
+    good_rr = risk_reward >= 1
+
+    reasons = [f"Conviction {conviction}/100 ({conv_tier})"]
+    if trend_aligned:
+        reasons.append(f"Trend ({trend_label}) agrees with the forecast")
+    elif trend_conflicts:
+        reasons.append(f"Trend ({trend_label}) conflicts with the forecast")
+    reasons.append(f"R:R {'favorable' if good_rr else 'unfavorable'} (1:{risk_reward:.2f})" if risk_reward else "R:R not available")
+    reasons.append("Volume confirms the move" if vol_confirmed else "Volume does not confirm the move")
+
+    if high_conviction and not trend_conflicts and good_rr:
+        label = "FAVORABLE"
+    elif low_conviction or trend_conflicts or not good_rr:
+        label = "CAUTION"
+    else:
+        label = "NEUTRAL"
+
+    return {"label": label, "reasons": reasons}
+
 
 def build_synthetic_index(code, name, stock_codes, cache):
     """Build an equal-weighted synthetic index from constituent stock data,
@@ -335,6 +406,13 @@ def export_data(output_dir="data"):
             "label": trend_label,
         }
 
+        # Momentum filter — RSI(14)
+        rsi_14, rsi_label = calculate_rsi(prices_arr)
+        momentum = {
+            "rsi_14": rsi_14,
+            "label": rsi_label,
+        }
+
         # Conviction score (0-100)
         score = 50
         if risk_reward >= 2:
@@ -373,6 +451,8 @@ def export_data(output_dir="data"):
 
         conviction = max(0, min(100, score))
 
+        verdict = compute_verdict(conviction, risk_reward, trend_label, ret, vol_confirmed, status_flags)
+
         trading = {
             "entry": entry_price,
             "stop_loss": stop_loss,
@@ -383,6 +463,8 @@ def export_data(output_dir="data"):
             "conviction": conviction,
             "volume": volume,
             "trend": trend,
+            "momentum": momentum,
+            "verdict": verdict,
         }
 
         # Forecast contract shape with populated forecast cones
