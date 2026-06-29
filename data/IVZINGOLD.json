@@ -3,8 +3,6 @@
   "name": "IVZINGOLD",
   "last": 120.9,
   "hist": [
-    8511.65,
-    8381.3,
     8389.95,
     8493.0,
     8507.9,
@@ -250,38 +248,52 @@
     127.7,
     124.9,
     123.2,
+    120.9,
     120.9
   ],
   "med": [
-    137.45
+    134.41
   ],
   "up": [
-    73.65
+    76.53
   ],
   "lo": [
-    70.27
+    73.41
   ],
-  "ret": 13.69,
-  "cone_width_pct": 2.8,
-  "asof": "2026-06-25",
+  "ret": 11.17,
+  "cone_width_pct": 2.58,
+  "asof": "2026-06-26",
   "trading": {
     "entry": 120.9,
-    "stop_loss": 70.27,
-    "exit": 137.45,
-    "risk": 50.63,
-    "reward": 16.55,
-    "risk_reward": 0.33,
-    "conviction": 25,
+    "stop_loss": 73.41,
+    "exit": 134.41,
+    "risk": 47.49,
+    "reward": 13.51,
+    "risk_reward": 0.28,
+    "conviction": 20,
     "volume": {
-      "latest": 29781,
-      "avg_20d": 28604,
-      "ratio": 1.04,
-      "confirmed": true
+      "latest": 0,
+      "avg_20d": 30093,
+      "ratio": 0.0,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 2349.44,
-      "ema_200": 7509.21,
+      "ema_50": 2262.04,
+      "ema_200": 7425.51,
       "label": "BEARISH"
+    },
+    "momentum": {
+      "rsi_14": 8.3,
+      "label": "OVERSOLD"
+    },
+    "verdict": {
+      "label": "CAUTION",
+      "reasons": [
+        "Conviction 20/100 (LOW)",
+        "Trend (BEARISH) conflicts with the forecast",
+        "R:R unfavorable (1:0.28)",
+        "Volume does not confirm the move"
+      ]
     }
   },
   "fundamentals": {
@@ -295,16 +307,25 @@
   },
   "status": [
     "Low liquidity",
-    "Data as of 2026-06-25"
+    "Data as of 2026-06-26"
   ],
   "calibration": {
-    "bias_pct": -13.2377,
+    "bias_pct": -13.138,
     "coverage": 0.0,
     "cone_scale": 2.0,
-    "n": 11
+    "n": 12
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-25",
+        "target_date": "2026-06-26",
+        "predicted_med": 137.45,
+        "actual_close": 120.9000015258789,
+        "error_pct": -12.0407,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-24",
         "target_date": "2026-06-25",
@@ -405,9 +426,9 @@
         "direction_correct": false
       }
     ],
-    "n": 11,
-    "mae_pct": 13.29,
-    "directional_accuracy_pct": 36.4,
+    "n": 12,
+    "mae_pct": 13.19,
+    "directional_accuracy_pct": 33.3,
     "calibration_pct": 0.0
   }
 }

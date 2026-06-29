@@ -1,10 +1,8 @@
 {
   "code": "NIFTYMETAL",
   "name": "Nifty Metal",
-  "last": 13020.8,
+  "last": 12445.65,
   "hist": [
-    9544.55,
-    9578.2,
     9534.8,
     9564.55,
     9699.2,
@@ -243,38 +241,54 @@
     12881.5,
     13011.4,
     13010.4,
-    13020.8
+    13020.8,
+    13091.2,
+    12669.1,
+    12618.75,
+    12445.65
   ],
   "med": [
-    13047.4
+    12560.96
   ],
   "up": [
-    13075.39
+    12496.84
   ],
   "lo": [
-    13015.46
+    12448.54
   ],
-  "ret": 0.2,
-  "cone_width_pct": 0.46,
-  "asof": "2026-06-19",
+  "ret": 0.93,
+  "cone_width_pct": 0.39,
+  "asof": "2026-06-25",
   "trading": {
-    "entry": 13020.8,
-    "stop_loss": 13015.46,
-    "exit": 13047.4,
-    "risk": 5.34,
-    "reward": 26.6,
-    "risk_reward": 4.98,
-    "conviction": 85,
+    "entry": 12445.65,
+    "stop_loss": 12448.54,
+    "exit": 12560.96,
+    "risk": -2.89,
+    "reward": 115.31,
+    "risk_reward": 0.0,
+    "conviction": 55,
     "volume": {
-      "latest": 3541700,
-      "avg_20d": 1770960,
-      "ratio": 2.0,
-      "confirmed": true
+      "latest": 1688400,
+      "avg_20d": 2164765,
+      "ratio": 0.78,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 12880.2,
-      "ema_200": 11663.82,
-      "label": "BULLISH"
+      "ema_50": 12853.0,
+      "ema_200": 11703.7,
+      "label": "WEAKENING"
+    },
+    "momentum": {
+      "rsi_14": 35.6,
+      "label": "NEUTRAL"
+    },
+    "verdict": {
+      "label": "CAUTION",
+      "reasons": [
+        "Conviction 55/100 (MEDIUM)",
+        "R:R not available",
+        "Volume does not confirm the move"
+      ]
     }
   },
   "fundamentals": {
@@ -287,17 +301,26 @@
     "lo_52w": 9102.349609375
   },
   "status": [
-    "Stale data",
-    "Data as of 2026-06-19"
+    "Data OK",
+    "Data as of 2026-06-25"
   ],
   "calibration": {
     "bias_pct": 0.0,
     "coverage": null,
     "cone_scale": 1.0,
-    "n": 3
+    "n": 4
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-19",
+        "target_date": "2026-06-22",
+        "predicted_med": 13047.4,
+        "actual_close": 13091.2001953125,
+        "error_pct": 0.3357,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-12",
         "target_date": "2026-06-15",
@@ -326,9 +349,9 @@
         "direction_correct": true
       }
     ],
-    "n": 3,
-    "mae_pct": 0.88,
-    "directional_accuracy_pct": 66.7,
-    "calibration_pct": 66.7
+    "n": 4,
+    "mae_pct": 0.75,
+    "directional_accuracy_pct": 75.0,
+    "calibration_pct": 50.0
   }
 }
