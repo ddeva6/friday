@@ -1,7 +1,7 @@
 {
   "code": "ULTRACEMCO",
   "name": "ULTRACEMCO",
-  "last": 11489.0,
+  "last": 11336.0,
   "hist": [
     12016.83,
     12133.09,
@@ -249,55 +249,57 @@
     11402.0,
     11307.0,
     11430.0,
-    11489.0
+    11489.0,
+    11336.0
   ],
   "med": [
-    11499.75
+    11361.32
   ],
   "up": [
-    11590.39
+    11419.75
   ],
   "lo": [
-    11521.94
+    11341.91
   ],
-  "ret": 0.09,
-  "cone_width_pct": 0.6,
-  "asof": "2026-06-25",
+  "ret": 0.22,
+  "cone_width_pct": 0.69,
+  "asof": "2026-06-29",
   "trading": {
-    "entry": 11489.0,
-    "stop_loss": 11521.94,
-    "exit": 11499.75,
-    "risk": -32.94,
-    "reward": 10.75,
+    "entry": 11336.0,
+    "stop_loss": 11341.91,
+    "exit": 11361.32,
+    "risk": -5.91,
+    "reward": 25.32,
     "risk_reward": 0.0,
-    "conviction": 35,
+    "conviction": 20,
     "volume": {
-      "latest": 402451,
-      "avg_20d": 391745,
-      "ratio": 1.03,
-      "confirmed": true
+      "latest": 230886,
+      "avg_20d": 411868,
+      "ratio": 0.56,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 11443.59,
-      "ema_200": 11794.22,
-      "label": "RECOVERING"
+      "ema_50": 11439.37,
+      "ema_200": 11789.66,
+      "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 55.0,
+      "rsi_14": 49.5,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
+        "Conviction 20/100 (LOW)",
+        "Trend (BEARISH) conflicts with the forecast",
         "R:R not available",
-        "Volume confirms the move"
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 333470.6823168,
-    "pe": 40.941925,
+    "mcap_cr": 331029.0993152,
+    "pe": 40.51777,
     "roe": 10.593,
     "de": 0.29431999999999997,
     "sales_growth_yoy": 3.0,
@@ -306,16 +308,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-25"
+    "Data as of 2026-06-29"
   ],
   "calibration": {
-    "bias_pct": 0.2913,
-    "coverage": 0.5455,
-    "cone_scale": 1.4666666666666668,
-    "n": 11
+    "bias_pct": 0.1484,
+    "coverage": 0.5,
+    "cone_scale": 1.6,
+    "n": 12
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-25",
+        "target_date": "2026-06-29",
+        "predicted_med": 11499.75,
+        "actual_close": 11336.0,
+        "error_pct": -1.4239,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-24",
         "target_date": "2026-06-25",
@@ -416,9 +427,9 @@
         "direction_correct": true
       }
     ],
-    "n": 11,
-    "mae_pct": 1.06,
-    "directional_accuracy_pct": 54.5,
-    "calibration_pct": 54.5
+    "n": 12,
+    "mae_pct": 1.09,
+    "directional_accuracy_pct": 50.0,
+    "calibration_pct": 50.0
   }
 }

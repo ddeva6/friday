@@ -1,7 +1,7 @@
 {
   "code": "AXISGOLD",
   "name": "AXISGOLD",
-  "last": 115.34,
+  "last": 117.36,
   "hist": [
     80.52,
     81.72,
@@ -249,49 +249,50 @@
     119.32,
     118.21,
     115.34,
-    115.34
+    115.34,
+    117.36
   ],
   "med": [
-    115.8
+    117.43
   ],
   "up": [
-    113.86
+    116.16
   ],
   "lo": [
-    113.02
+    115.0
   ],
-  "ret": 0.4,
-  "cone_width_pct": 0.73,
-  "asof": "2026-06-26",
+  "ret": 0.06,
+  "cone_width_pct": 0.99,
+  "asof": "2026-06-29",
   "trading": {
-    "entry": 115.34,
-    "stop_loss": 113.02,
-    "exit": 115.8,
-    "risk": 2.32,
-    "reward": 0.46,
-    "risk_reward": 0.2,
+    "entry": 117.36,
+    "stop_loss": 115.0,
+    "exit": 117.43,
+    "risk": 2.36,
+    "reward": 0.07,
+    "risk_reward": 0.03,
     "conviction": 30,
     "volume": {
-      "latest": 0,
-      "avg_20d": 2700439,
-      "ratio": 0.0,
-      "confirmed": false
+      "latest": 2990033,
+      "avg_20d": 2540929,
+      "ratio": 1.18,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 124.65,
-      "ema_200": 116.28,
+      "ema_50": 124.37,
+      "ema_200": 116.29,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 31.1,
+      "rsi_14": 37.1,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 30/100 (LOW)",
-        "R:R unfavorable (1:0.20)",
-        "Volume does not confirm the move"
+        "R:R unfavorable (1:0.03)",
+        "Volume confirms the move"
       ]
     }
   },
@@ -306,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-26"
+    "Data as of 2026-06-29"
   ],
   "calibration": {
-    "bias_pct": -0.7883,
-    "coverage": 0.5,
-    "cone_scale": 1.6,
-    "n": 12
+    "bias_pct": -0.624,
+    "coverage": 0.4615,
+    "cone_scale": 1.7333333333333334,
+    "n": 13
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-26",
+        "target_date": "2026-06-29",
+        "predicted_med": 115.8,
+        "actual_close": 117.36000061035156,
+        "error_pct": 1.3472,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-25",
         "target_date": "2026-06-26",
@@ -425,9 +435,9 @@
         "direction_correct": false
       }
     ],
-    "n": 12,
-    "mae_pct": 1.63,
-    "directional_accuracy_pct": 16.7,
-    "calibration_pct": 50.0
+    "n": 13,
+    "mae_pct": 1.61,
+    "directional_accuracy_pct": 23.1,
+    "calibration_pct": 46.2
   }
 }

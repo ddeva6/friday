@@ -1,7 +1,7 @@
 {
   "code": "HDFCGOLD",
   "name": "HDFCGOLD",
-  "last": 118.55,
+  "last": 120.34,
   "hist": [
     82.53,
     83.66,
@@ -246,49 +246,50 @@
     124.95,
     122.91,
     121.41,
-    118.55
+    118.55,
+    120.34
   ],
   "med": [
-    119.23
+    120.79
   ],
   "up": [
-    116.79
+    119.11
   ],
   "lo": [
-    113.79
+    117.99
   ],
-  "ret": 0.57,
-  "cone_width_pct": 2.53,
-  "asof": "2026-06-25",
+  "ret": 0.37,
+  "cone_width_pct": 0.93,
+  "asof": "2026-06-29",
   "trading": {
-    "entry": 118.55,
-    "stop_loss": 113.79,
-    "exit": 119.23,
-    "risk": 4.76,
-    "reward": 0.68,
-    "risk_reward": 0.14,
-    "conviction": 30,
+    "entry": 120.34,
+    "stop_loss": 117.99,
+    "exit": 120.79,
+    "risk": 2.35,
+    "reward": 0.45,
+    "risk_reward": 0.19,
+    "conviction": 25,
     "volume": {
-      "latest": 8645570,
-      "avg_20d": 4135243,
-      "ratio": 2.09,
-      "confirmed": true
+      "latest": 3821652,
+      "avg_20d": 4435684,
+      "ratio": 0.86,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 128.24,
-      "ema_200": 118.95,
+      "ema_50": 127.93,
+      "ema_200": 118.96,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 29.7,
-      "label": "OVERSOLD"
+      "rsi_14": 35.2,
+      "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 30/100 (LOW)",
-        "R:R unfavorable (1:0.14)",
-        "Volume confirms the move"
+        "Conviction 25/100 (LOW)",
+        "R:R unfavorable (1:0.19)",
+        "Volume does not confirm the move"
       ]
     }
   },
@@ -303,16 +304,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-25"
+    "Data as of 2026-06-29"
   ],
   "calibration": {
-    "bias_pct": -0.7491,
-    "coverage": 0.3636,
+    "bias_pct": -0.6091,
+    "coverage": 0.3333,
     "cone_scale": 2.0,
-    "n": 11
+    "n": 12
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-25",
+        "target_date": "2026-06-29",
+        "predicted_med": 119.23,
+        "actual_close": 120.33999633789062,
+        "error_pct": 0.931,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-24",
         "target_date": "2026-06-25",
@@ -413,9 +423,9 @@
         "direction_correct": true
       }
     ],
-    "n": 11,
-    "mae_pct": 1.53,
-    "directional_accuracy_pct": 36.4,
-    "calibration_pct": 36.4
+    "n": 12,
+    "mae_pct": 1.48,
+    "directional_accuracy_pct": 41.7,
+    "calibration_pct": 33.3
   }
 }

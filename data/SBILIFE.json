@@ -1,7 +1,7 @@
 {
   "code": "SBILIFE",
   "name": "SBILIFE",
-  "last": 1744.9,
+  "last": 1755.4,
   "hist": [
     1835.75,
     1859.91,
@@ -249,56 +249,58 @@
     1805.5,
     1786.2,
     1767.7,
-    1744.9
+    1744.9,
+    1744.9,
+    1755.4
   ],
   "med": [
-    1746.11
+    1758.87
   ],
   "up": [
-    1744.6
+    1756.91
   ],
   "lo": [
-    1718.83
+    1745.76
   ],
-  "ret": 0.07,
-  "cone_width_pct": 1.48,
-  "asof": "2026-06-25",
+  "ret": 0.2,
+  "cone_width_pct": 0.64,
+  "asof": "2026-06-29",
   "trading": {
-    "entry": 1744.9,
-    "stop_loss": 1718.83,
-    "exit": 1746.11,
-    "risk": 26.07,
-    "reward": 1.21,
-    "risk_reward": 0.05,
-    "conviction": 15,
+    "entry": 1755.4,
+    "stop_loss": 1745.76,
+    "exit": 1758.87,
+    "risk": 9.64,
+    "reward": 3.47,
+    "risk_reward": 0.36,
+    "conviction": 20,
     "volume": {
-      "latest": 933399,
-      "avg_20d": 985053,
-      "ratio": 0.95,
-      "confirmed": false
+      "latest": 3910884,
+      "avg_20d": 926977,
+      "ratio": 4.22,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 1823.31,
-      "ema_200": 1887.88,
+      "ema_50": 1817.69,
+      "ema_200": 1885.16,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 39.4,
+      "rsi_14": 42.2,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 15/100 (LOW)",
+        "Conviction 20/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.05)",
-        "Volume does not confirm the move"
+        "R:R unfavorable (1:0.36)",
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 176108.8372736,
-    "pe": 71.35773,
+    "mcap_cr": 177142.1696,
+    "pe": 71.83482,
     "roe": 13.697000000000001,
     "de": "N/A",
     "sales_growth_yoy": -82.19999999999999,
@@ -307,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-25"
+    "Data as of 2026-06-29"
   ],
   "calibration": {
-    "bias_pct": -0.0745,
-    "coverage": 0.4545,
-    "cone_scale": 1.7600000000000002,
-    "n": 11
+    "bias_pct": -0.074,
+    "coverage": 0.4167,
+    "cone_scale": 1.92,
+    "n": 12
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-25",
+        "target_date": "2026-06-26",
+        "predicted_med": 1746.11,
+        "actual_close": 1744.9000244140625,
+        "error_pct": -0.0693,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-24",
         "target_date": "2026-06-25",
@@ -417,9 +428,9 @@
         "direction_correct": false
       }
     ],
-    "n": 11,
-    "mae_pct": 1.3,
-    "directional_accuracy_pct": 27.3,
-    "calibration_pct": 45.5
+    "n": 12,
+    "mae_pct": 1.19,
+    "directional_accuracy_pct": 25.0,
+    "calibration_pct": 41.7
   }
 }
