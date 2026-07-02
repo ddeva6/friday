@@ -1,10 +1,8 @@
 {
   "code": "DRREDDY",
   "name": "DRREDDY",
-  "last": 1375.7,
+  "last": 1339.9,
   "hist": [
-    1275.21,
-    1268.75,
     1262.79,
     1283.16,
     1299.16,
@@ -251,56 +249,58 @@
     1328.4,
     1350.5,
     1350.5,
-    1375.7
+    1375.7,
+    1357.1,
+    1339.9
   ],
   "med": [
-    1369.29
+    1341.57
   ],
   "up": [
-    1395.16
+    1356.56
   ],
   "lo": [
-    1388.28
+    1346.01
   ],
-  "ret": -0.47,
-  "cone_width_pct": 0.5,
-  "asof": "2026-06-29",
+  "ret": 0.12,
+  "cone_width_pct": 0.79,
+  "asof": "2026-07-01",
   "trading": {
-    "entry": 1375.7,
-    "stop_loss": 1388.28,
-    "exit": 1369.29,
-    "risk": -12.58,
-    "reward": -6.41,
+    "entry": 1339.9,
+    "stop_loss": 1346.01,
+    "exit": 1341.57,
+    "risk": -6.11,
+    "reward": 1.67,
     "risk_reward": 0.0,
-    "conviction": 40,
+    "conviction": 50,
     "volume": {
-      "latest": 8857211,
-      "avg_20d": 1293956,
-      "ratio": 6.85,
-      "confirmed": true
+      "latest": 1423120,
+      "avg_20d": 1689097,
+      "ratio": 0.84,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 1294.47,
-      "ema_200": 1274.44,
+      "ema_50": 1298.61,
+      "ema_200": 1274.88,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 74.5,
-      "label": "OVERBOUGHT"
+      "rsi_14": 59.7,
+      "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 40/100 (MEDIUM)",
-        "Trend (BULLISH) conflicts with the forecast",
+        "Conviction 50/100 (MEDIUM)",
+        "Trend (BULLISH) agrees with the forecast",
         "R:R not available",
-        "Volume confirms the move"
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 113007.1064576,
-    "pe": 26.377064,
+    "mcap_cr": 112057.8043904,
+    "pe": 26.155489,
     "roe": 11.834999999999999,
     "de": 0.20328,
     "sales_growth_yoy": -11.600000000000001,
@@ -309,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-29"
+    "Data as of 2026-07-01"
   ],
   "calibration": {
-    "bias_pct": 0.5379,
-    "coverage": 0.5,
-    "cone_scale": 1.6,
-    "n": 12
+    "bias_pct": 0.428,
+    "coverage": 0.4615,
+    "cone_scale": 1.7333333333333334,
+    "n": 13
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-29",
+        "target_date": "2026-06-30",
+        "predicted_med": 1369.29,
+        "actual_close": 1357.0999755859375,
+        "error_pct": -0.8902,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-25",
         "target_date": "2026-06-26",
@@ -428,9 +437,9 @@
         "direction_correct": false
       }
     ],
-    "n": 12,
-    "mae_pct": 0.72,
-    "directional_accuracy_pct": 58.3,
-    "calibration_pct": 50.0
+    "n": 13,
+    "mae_pct": 0.74,
+    "directional_accuracy_pct": 61.5,
+    "calibration_pct": 46.2
   }
 }

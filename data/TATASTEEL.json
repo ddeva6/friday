@@ -1,10 +1,8 @@
 {
   "code": "TATASTEEL",
   "name": "TATASTEEL",
-  "last": 189.57,
+  "last": 185.17,
   "hist": [
-    156.53,
-    156.83,
     162.53,
     162.56,
     159.72,
@@ -251,55 +249,57 @@
     190.16,
     188.71,
     188.71,
-    189.57
+    189.57,
+    188.06,
+    185.17
   ],
   "med": [
-    189.95
+    185.85
   ],
   "up": [
-    188.65
+    183.77
   ],
   "lo": [
-    187.17
+    181.32
   ],
-  "ret": 0.2,
-  "cone_width_pct": 0.78,
-  "asof": "2026-06-29",
+  "ret": 0.37,
+  "cone_width_pct": 1.32,
+  "asof": "2026-07-01",
   "trading": {
-    "entry": 189.57,
-    "stop_loss": 187.17,
-    "exit": 189.95,
-    "risk": 2.4,
-    "reward": 0.38,
-    "risk_reward": 0.16,
-    "conviction": 35,
+    "entry": 185.17,
+    "stop_loss": 181.32,
+    "exit": 185.85,
+    "risk": 3.85,
+    "reward": 0.68,
+    "risk_reward": 0.18,
+    "conviction": 30,
     "volume": {
-      "latest": 62549132,
-      "avg_20d": 28796881,
-      "ratio": 2.17,
-      "confirmed": true
+      "latest": 20614036,
+      "avg_20d": 30954028,
+      "ratio": 0.67,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 199.75,
-      "ema_200": 188.36,
+      "ema_50": 198.74,
+      "ema_200": 188.82,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 33.7,
-      "label": "NEUTRAL"
+      "rsi_14": 28.7,
+      "label": "OVERSOLD"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
-        "R:R unfavorable (1:0.16)",
-        "Volume confirms the move"
+        "Conviction 30/100 (LOW)",
+        "R:R unfavorable (1:0.18)",
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 234545.5583232,
-    "pe": 21.766203,
+    "mcap_cr": 234059.1763456,
+    "pe": 21.695955,
     "roe": 11.156998999999999,
     "de": 0.8901699999999999,
     "sales_growth_yoy": 12.5,
@@ -308,16 +308,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-06-29"
+    "Data as of 2026-07-01"
   ],
   "calibration": {
-    "bias_pct": -0.6204,
-    "coverage": 0.5,
-    "cone_scale": 1.6,
-    "n": 12
+    "bias_pct": -0.6492,
+    "coverage": 0.5385,
+    "cone_scale": 1.4857142857142858,
+    "n": 13
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-29",
+        "target_date": "2026-06-30",
+        "predicted_med": 189.95,
+        "actual_close": 188.05999755859375,
+        "error_pct": -0.995,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-06-25",
         "target_date": "2026-06-26",
@@ -427,9 +436,9 @@
         "direction_correct": false
       }
     ],
-    "n": 12,
-    "mae_pct": 1.42,
-    "directional_accuracy_pct": 25.0,
-    "calibration_pct": 50.0
+    "n": 13,
+    "mae_pct": 1.39,
+    "directional_accuracy_pct": 23.1,
+    "calibration_pct": 53.8
   }
 }
