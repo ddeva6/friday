@@ -1,9 +1,8 @@
 {
   "code": "GRASIM",
   "name": "GRASIM",
-  "last": 3140.4,
+  "last": 3169.2,
   "hist": [
-    2839.47,
     2807.39,
     2795.73,
     2769.03,
@@ -251,55 +250,57 @@
     3126.6,
     3080.2,
     3100.0,
-    3140.4
+    3140.4,
+    3169.2
   ],
   "med": [
-    3140.53
+    3167.33
   ],
   "up": [
-    3162.77
+    3205.15
   ],
   "lo": [
-    3142.57
+    3178.63
   ],
-  "ret": 0.0,
-  "cone_width_pct": 0.64,
-  "asof": "2026-07-01",
+  "ret": -0.06,
+  "cone_width_pct": 0.84,
+  "asof": "2026-07-02",
   "trading": {
-    "entry": 3140.4,
-    "stop_loss": 3142.57,
-    "exit": 3140.53,
-    "risk": -2.17,
-    "reward": 0.13,
+    "entry": 3169.2,
+    "stop_loss": 3178.63,
+    "exit": 3167.33,
+    "risk": -9.43,
+    "reward": -1.87,
     "risk_reward": 0.0,
     "conviction": 15,
     "volume": {
-      "latest": 490262,
-      "avg_20d": 666443,
-      "ratio": 0.74,
+      "latest": 449711,
+      "avg_20d": 667938,
+      "ratio": 0.67,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 3032.71,
-      "ema_200": 2882.83,
+      "ema_50": 3038.06,
+      "ema_200": 2883.02,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 57.4,
+      "rsi_14": 61.2,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 15/100 (LOW)",
+        "Trend (BULLISH) conflicts with the forecast",
         "R:R not available",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 214926.5178624,
-    "pe": 43.31283,
+    "mcap_cr": 215719.9753216,
+    "pe": 43.448982,
     "roe": 6.287,
     "de": 1.34138,
     "sales_growth_yoy": 10.5,
@@ -308,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-01"
+    "Data as of 2026-07-02"
   ],
   "calibration": {
-    "bias_pct": 0.1536,
-    "coverage": 0.3846,
+    "bias_pct": 0.2078,
+    "coverage": 0.3571,
     "cone_scale": 2.0,
-    "n": 13
+    "n": 14
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-01",
+        "target_date": "2026-07-02",
+        "predicted_med": 3140.53,
+        "actual_close": 3169.199951171875,
+        "error_pct": 0.9129,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-29",
         "target_date": "2026-06-30",
@@ -436,9 +446,9 @@
         "direction_correct": false
       }
     ],
-    "n": 13,
-    "mae_pct": 0.82,
-    "directional_accuracy_pct": 30.8,
-    "calibration_pct": 38.5
+    "n": 14,
+    "mae_pct": 0.83,
+    "directional_accuracy_pct": 35.7,
+    "calibration_pct": 35.7
   }
 }

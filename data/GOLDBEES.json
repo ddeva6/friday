@@ -1,9 +1,8 @@
 {
   "code": "GOLDBEES",
   "name": "GOLDBEES",
-  "last": 115.46,
+  "last": 117.69,
   "hist": [
-    81.11,
     81.01,
     80.89,
     80.53,
@@ -250,49 +249,50 @@
     114.96,
     116.43,
     115.97,
-    115.46
+    115.46,
+    117.69
   ],
   "med": [
-    115.68
+    117.59
   ],
   "up": [
-    114.12
+    117.19
   ],
   "lo": [
-    113.2
+    116.07
   ],
-  "ret": 0.19,
-  "cone_width_pct": 0.8,
-  "asof": "2026-07-01",
+  "ret": -0.08,
+  "cone_width_pct": 0.95,
+  "asof": "2026-07-02",
   "trading": {
-    "entry": 115.46,
-    "stop_loss": 113.2,
-    "exit": 115.68,
-    "risk": 2.26,
-    "reward": 0.22,
-    "risk_reward": 0.1,
-    "conviction": 30,
+    "entry": 117.69,
+    "stop_loss": 116.07,
+    "exit": 117.59,
+    "risk": 1.62,
+    "reward": -0.1,
+    "risk_reward": -0.06,
+    "conviction": 25,
     "volume": {
-      "latest": 29075022,
-      "avg_20d": 27267209,
-      "ratio": 1.07,
-      "confirmed": true
+      "latest": 19578444,
+      "avg_20d": 27537172,
+      "ratio": 0.71,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 122.94,
-      "ema_200": 115.54,
+      "ema_50": 122.73,
+      "ema_200": 115.55,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 33.1,
+      "rsi_14": 40.8,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 30/100 (LOW)",
-        "R:R unfavorable (1:0.10)",
-        "Volume confirms the move"
+        "Conviction 25/100 (LOW)",
+        "R:R unfavorable (1:-0.06)",
+        "Volume does not confirm the move"
       ]
     }
   },
@@ -307,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-01"
+    "Data as of 2026-07-02"
   ],
   "calibration": {
-    "bias_pct": -0.596,
-    "coverage": 0.2857,
+    "bias_pct": -0.4404,
+    "coverage": 0.2667,
     "cone_scale": 2.0,
-    "n": 14
+    "n": 15
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-01",
+        "target_date": "2026-07-02",
+        "predicted_med": 115.68,
+        "actual_close": 117.69000244140625,
+        "error_pct": 1.7376,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-29",
         "target_date": "2026-06-30",
@@ -444,9 +453,9 @@
         "direction_correct": false
       }
     ],
-    "n": 14,
-    "mae_pct": 1.42,
-    "directional_accuracy_pct": 35.7,
-    "calibration_pct": 28.6
+    "n": 15,
+    "mae_pct": 1.45,
+    "directional_accuracy_pct": 40.0,
+    "calibration_pct": 26.7
   }
 }
