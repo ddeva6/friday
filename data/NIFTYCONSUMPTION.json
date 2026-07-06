@@ -1,10 +1,8 @@
 {
   "code": "NIFTYCONSUMPTION",
   "name": "Nifty Consumption",
-  "last": 11592.9,
+  "last": 11795.7,
   "hist": [
-    11835.2,
-    11776.75,
     11827.85,
     11788.35,
     11805.05,
@@ -242,28 +240,33 @@
     11607.85,
     11509.95,
     11509.2,
-    11592.9
+    11592.9,
+    11491.4,
+    11514.9,
+    11692.6,
+    11767.95,
+    11795.7
   ],
   "med": [
-    11561.78
+    11791.28
   ],
   "up": [
-    11613.45
+    11963.38
   ],
   "lo": [
-    11587.33
+    11887.0
   ],
-  "ret": -0.27,
-  "cone_width_pct": 0.23,
-  "asof": "2026-06-25",
+  "ret": -0.04,
+  "cone_width_pct": 0.65,
+  "asof": "2026-07-03",
   "trading": {
-    "entry": 11592.9,
-    "stop_loss": 11587.33,
-    "exit": 11561.78,
-    "risk": 5.57,
-    "reward": -31.12,
-    "risk_reward": -5.59,
-    "conviction": 25,
+    "entry": 11795.7,
+    "stop_loss": 11887.0,
+    "exit": 11791.28,
+    "risk": -91.3,
+    "reward": -4.42,
+    "risk_reward": 0.0,
+    "conviction": 40,
     "volume": {
       "latest": 0,
       "avg_20d": 0,
@@ -271,18 +274,20 @@
       "confirmed": false
     },
     "trend": {
-      "ema_50": 11353.33,
-      "ema_200": 11595.43,
+      "ema_50": 11408.81,
+      "ema_200": 11597.7,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 60.9,
+      "rsi_14": 66.6,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Stale data"
+        "Conviction 40/100 (MEDIUM)",
+        "R:R not available",
+        "Volume does not confirm the move"
       ]
     }
   },
@@ -296,17 +301,26 @@
     "lo_52w": 10334.349609375
   },
   "status": [
-    "Stale data",
-    "Data as of 2026-06-25"
+    "Data OK",
+    "Data as of 2026-07-03"
   ],
   "calibration": {
-    "bias_pct": 0.0,
-    "coverage": null,
-    "cone_scale": 1.0,
-    "n": 4
+    "bias_pct": 0.3361,
+    "coverage": 0.0,
+    "cone_scale": 2.0,
+    "n": 5
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-25",
+        "target_date": "2026-06-29",
+        "predicted_med": 11561.78,
+        "actual_close": 11491.400390625,
+        "error_pct": -0.6087,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-19",
         "target_date": "2026-06-22",
@@ -344,9 +358,9 @@
         "direction_correct": false
       }
     ],
-    "n": 4,
-    "mae_pct": 1.02,
-    "directional_accuracy_pct": 50.0,
+    "n": 5,
+    "mae_pct": 0.94,
+    "directional_accuracy_pct": 60.0,
     "calibration_pct": 0.0
   }
 }

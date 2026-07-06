@@ -1,10 +1,8 @@
 {
   "code": "NIFTYFMCG",
   "name": "Nifty FMCG",
-  "last": 49419.25,
+  "last": 50096.4,
   "hist": [
-    54515.75,
-    54735.6,
     55652.85,
     55504.0,
     55946.2,
@@ -242,47 +240,54 @@
     49355.1,
     49059.05,
     49085.1,
-    49419.25
+    49419.25,
+    49127.65,
+    48794.2,
+    49806.8,
+    50084.7,
+    50096.4
   ],
   "med": [
-    49379.08
+    49973.91
   ],
   "up": [
-    49498.04
+    50553.23
   ],
   "lo": [
-    49352.64
+    50133.65
   ],
-  "ret": -0.08,
-  "cone_width_pct": 0.29,
-  "asof": "2026-06-25",
+  "ret": -0.24,
+  "cone_width_pct": 0.84,
+  "asof": "2026-07-03",
   "trading": {
-    "entry": 49419.25,
-    "stop_loss": 49352.64,
-    "exit": 49379.08,
-    "risk": 66.61,
-    "reward": -40.17,
-    "risk_reward": -0.6,
-    "conviction": 60,
+    "entry": 50096.4,
+    "stop_loss": 50133.65,
+    "exit": 49973.91,
+    "risk": -37.25,
+    "reward": -122.49,
+    "risk_reward": 0.0,
+    "conviction": 50,
     "volume": {
-      "latest": 34300,
-      "avg_20d": 40095,
-      "ratio": 0.86,
+      "latest": 26600,
+      "avg_20d": 34420,
+      "ratio": 0.77,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 49542.0,
-      "ema_200": 51530.59,
-      "label": "BEARISH"
+      "ema_50": 49553.99,
+      "ema_200": 51535.78,
+      "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 51.0,
+      "rsi_14": 58.3,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Stale data"
+        "Conviction 50/100 (MEDIUM)",
+        "R:R not available",
+        "Volume does not confirm the move"
       ]
     }
   },
@@ -296,17 +301,26 @@
     "lo_52w": 45538.6484375
   },
   "status": [
-    "Stale data",
-    "Data as of 2026-06-25"
+    "Data OK",
+    "Data as of 2026-07-03"
   ],
   "calibration": {
-    "bias_pct": 0.0,
-    "coverage": null,
-    "cone_scale": 1.0,
-    "n": 4
+    "bias_pct": -0.0341,
+    "coverage": 0.2,
+    "cone_scale": 2.0,
+    "n": 5
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-06-25",
+        "target_date": "2026-06-29",
+        "predicted_med": 49379.08,
+        "actual_close": 49127.6484375,
+        "error_pct": -0.5092,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-06-19",
         "target_date": "2026-06-22",
@@ -344,9 +358,9 @@
         "direction_correct": true
       }
     ],
-    "n": 4,
-    "mae_pct": 0.53,
-    "directional_accuracy_pct": 75.0,
-    "calibration_pct": 25.0
+    "n": 5,
+    "mae_pct": 0.52,
+    "directional_accuracy_pct": 80.0,
+    "calibration_pct": 20.0
   }
 }
