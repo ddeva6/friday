@@ -1,7 +1,7 @@
 {
   "code": "GOLD1",
   "name": "GOLD1",
-  "last": 121.44,
+  "last": 120.68,
   "hist": [
     81.13,
     81.43,
@@ -246,48 +246,49 @@
     117.06,
     116.58,
     118.8,
-    121.44
+    121.44,
+    120.68
   ],
   "med": [
-    121.09
+    120.48
   ],
   "up": [
-    121.47
+    120.54
   ],
   "lo": [
-    120.25
+    119.58
   ],
-  "ret": -0.29,
-  "cone_width_pct": 1.0,
-  "asof": "2026-07-03",
+  "ret": -0.17,
+  "cone_width_pct": 0.8,
+  "asof": "2026-07-06",
   "trading": {
-    "entry": 121.44,
-    "stop_loss": 120.25,
-    "exit": 121.09,
-    "risk": 1.19,
-    "reward": -0.35,
-    "risk_reward": -0.29,
+    "entry": 120.68,
+    "stop_loss": 119.58,
+    "exit": 120.48,
+    "risk": 1.1,
+    "reward": -0.2,
+    "risk_reward": -0.18,
     "conviction": 25,
     "volume": {
-      "latest": 2395576,
-      "avg_20d": 2747927,
-      "ratio": 0.87,
+      "latest": 1180280,
+      "avg_20d": 2842243,
+      "ratio": 0.42,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 123.94,
-      "ema_200": 116.23,
+      "ema_50": 123.81,
+      "ema_200": 116.27,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 47.8,
+      "rsi_14": 46.1,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 25/100 (LOW)",
-        "R:R unfavorable (1:-0.29)",
+        "R:R unfavorable (1:-0.18)",
         "Volume does not confirm the move"
       ]
     }
@@ -303,16 +304,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-03"
+    "Data as of 2026-07-06"
   ],
   "calibration": {
-    "bias_pct": -0.2535,
-    "coverage": 0.3333,
+    "bias_pct": -0.2588,
+    "coverage": 0.375,
     "cone_scale": 2.0,
-    "n": 15
+    "n": 16
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-03",
+        "target_date": "2026-07-06",
+        "predicted_med": 121.09,
+        "actual_close": 120.68000030517578,
+        "error_pct": -0.3386,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-02",
         "target_date": "2026-07-03",
@@ -449,9 +459,9 @@
         "direction_correct": true
       }
     ],
-    "n": 15,
-    "mae_pct": 1.58,
-    "directional_accuracy_pct": 46.7,
-    "calibration_pct": 33.3
+    "n": 16,
+    "mae_pct": 1.5,
+    "directional_accuracy_pct": 50.0,
+    "calibration_pct": 37.5
   }
 }

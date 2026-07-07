@@ -1,7 +1,7 @@
 {
   "code": "TMPV",
   "name": "TMPV",
-  "last": 344.1,
+  "last": 347.05,
   "hist": [
     683.18,
     687.5,
@@ -250,41 +250,42 @@
     352.2,
     347.8,
     345.95,
-    344.1
+    344.1,
+    347.05
   ],
   "med": [
-    345.14
+    347.51
   ],
   "up": [
-    342.43
+    345.86
   ],
   "lo": [
-    339.12
+    342.55
   ],
-  "ret": 0.3,
-  "cone_width_pct": 0.96,
-  "asof": "2026-07-03",
+  "ret": 0.13,
+  "cone_width_pct": 0.95,
+  "asof": "2026-07-06",
   "trading": {
-    "entry": 344.1,
-    "stop_loss": 339.12,
-    "exit": 345.14,
-    "risk": 4.98,
-    "reward": 1.04,
-    "risk_reward": 0.21,
+    "entry": 347.05,
+    "stop_loss": 342.55,
+    "exit": 347.51,
+    "risk": 4.5,
+    "reward": 0.46,
+    "risk_reward": 0.1,
     "conviction": 15,
     "volume": {
-      "latest": 12651872,
-      "avg_20d": 13150749,
-      "ratio": 0.96,
+      "latest": 4980867,
+      "avg_20d": 13305640,
+      "ratio": 0.37,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 360.49,
-      "ema_200": 410.65,
+      "ema_50": 359.97,
+      "ema_200": 410.02,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 38.4,
+      "rsi_14": 40.9,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -292,13 +293,13 @@
       "reasons": [
         "Conviction 15/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.21)",
+        "R:R unfavorable (1:0.10)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 127804.0342528,
+    "mcap_cr": 126054.7997696,
     "pe": "N/A",
     "roe": -1.118,
     "de": 0.70364,
@@ -308,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-03"
+    "Data as of 2026-07-06"
   ],
   "calibration": {
-    "bias_pct": -0.5431,
-    "coverage": 0.4667,
-    "cone_scale": 1.7142857142857144,
-    "n": 15
+    "bias_pct": -0.4746,
+    "coverage": 0.4375,
+    "cone_scale": 1.8285714285714287,
+    "n": 16
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-03",
+        "target_date": "2026-07-06",
+        "predicted_med": 345.14,
+        "actual_close": 347.04998779296875,
+        "error_pct": 0.5534,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-02",
         "target_date": "2026-07-03",
@@ -454,9 +464,9 @@
         "direction_correct": true
       }
     ],
-    "n": 15,
-    "mae_pct": 1.79,
-    "directional_accuracy_pct": 40.0,
-    "calibration_pct": 46.7
+    "n": 16,
+    "mae_pct": 1.71,
+    "directional_accuracy_pct": 43.8,
+    "calibration_pct": 43.8
   }
 }
