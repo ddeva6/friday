@@ -1,9 +1,8 @@
 {
   "code": "NIFTYFINSERVICE",
   "name": "Nifty Financial Services",
-  "last": 1075.73,
+  "last": 1089.57,
   "hist": [
-    1092.48,
     1091.3,
     1086.33,
     1084.41,
@@ -251,28 +250,29 @@
     1097.72,
     1092.33,
     1107.07,
-    1075.73
+    1075.73,
+    1089.57
   ],
   "med": [
-    1076.03
+    1089.36
   ],
   "up": [
-    1083.57
+    1102.18
   ],
   "lo": [
-    1063.31
+    1094.2
   ],
-  "ret": 0.03,
-  "cone_width_pct": 1.88,
-  "asof": "2026-07-08",
+  "ret": -0.02,
+  "cone_width_pct": 0.73,
+  "asof": "2026-07-09",
   "trading": {
-    "entry": 1075.73,
-    "stop_loss": 1063.31,
-    "exit": 1076.03,
-    "risk": 12.42,
-    "reward": 0.3,
-    "risk_reward": 0.02,
-    "conviction": 25,
+    "entry": 1089.57,
+    "stop_loss": 1094.2,
+    "exit": 1089.36,
+    "risk": -4.63,
+    "reward": -0.21,
+    "risk_reward": 0.0,
+    "conviction": 40,
     "volume": {
       "latest": 0,
       "avg_20d": 0,
@@ -280,19 +280,19 @@
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1060.35,
-      "ema_200": 1089.02,
+      "ema_50": 1061.49,
+      "ema_200": 1088.92,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 54.7,
+      "rsi_14": 58.8,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 25/100 (LOW)",
-        "R:R unfavorable (1:0.02)",
+        "Conviction 40/100 (MEDIUM)",
+        "R:R not available",
         "Volume does not confirm the move"
       ]
     }
@@ -308,16 +308,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-08"
+    "Data as of 2026-07-09"
   ],
   "calibration": {
-    "bias_pct": 0.2929,
-    "coverage": 0.3529,
+    "bias_pct": 0.3465,
+    "coverage": 0.3333,
     "cone_scale": 2.0,
-    "n": 17
+    "n": 18
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-08",
+        "target_date": "2026-07-09",
+        "predicted_med": 1076.03,
+        "actual_close": 1089.5699768066406,
+        "error_pct": 1.2583,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-07",
         "target_date": "2026-07-08",
@@ -472,9 +481,9 @@
         "direction_correct": true
       }
     ],
-    "n": 17,
+    "n": 18,
     "mae_pct": 1.19,
-    "directional_accuracy_pct": 52.9,
-    "calibration_pct": 35.3
+    "directional_accuracy_pct": 55.6,
+    "calibration_pct": 33.3
   }
 }
