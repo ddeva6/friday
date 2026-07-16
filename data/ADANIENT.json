@@ -1,9 +1,8 @@
 {
   "code": "ADANIENT",
   "name": "ADANIENT",
-  "last": 3188.9,
+  "last": 3150.6,
   "hist": [
-    2597.04,
     2607.33,
     2615.43,
     2594.94,
@@ -251,56 +250,57 @@
     3083.6,
     3157.3,
     3177.5,
-    3188.9
+    3188.9,
+    3150.6
   ],
   "med": [
-    3188.73
+    3155.04
   ],
   "up": [
-    3256.69
+    3203.68
   ],
   "lo": [
-    3221.11
+    3169.26
   ],
-  "ret": -0.01,
-  "cone_width_pct": 1.12,
-  "asof": "2026-07-14",
+  "ret": 0.14,
+  "cone_width_pct": 1.09,
+  "asof": "2026-07-15",
   "trading": {
-    "entry": 3188.9,
-    "stop_loss": 3221.11,
-    "exit": 3188.73,
-    "risk": -32.21,
-    "reward": -0.17,
+    "entry": 3150.6,
+    "stop_loss": 3169.26,
+    "exit": 3155.04,
+    "risk": -18.66,
+    "reward": 4.44,
     "risk_reward": 0.0,
-    "conviction": 15,
+    "conviction": 35,
     "volume": {
-      "latest": 1932879,
-      "avg_20d": 2114520,
-      "ratio": 0.91,
+      "latest": 1035101,
+      "avg_20d": 2118572,
+      "ratio": 0.49,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 2894.67,
-      "ema_200": 2531.67,
+      "ema_50": 2904.71,
+      "ema_200": 2538.68,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 62.5,
+      "rsi_14": 58.7,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 15/100 (LOW)",
-        "Trend (BULLISH) conflicts with the forecast",
+        "Conviction 35/100 (LOW)",
+        "Trend (BULLISH) agrees with the forecast",
         "R:R not available",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 448322.0242432,
-    "pe": 42.772194,
+    "mcap_cr": 448435.847168,
+    "pe": 42.748234,
     "roe": 13.664000000000001,
     "de": 1.1956,
     "sales_growth_yoy": 20.3,
@@ -309,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-14"
+    "Data as of 2026-07-15"
   ],
   "calibration": {
-    "bias_pct": 0.5153,
-    "coverage": 0.35,
+    "bias_pct": 0.4274,
+    "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-14",
+        "target_date": "2026-07-15",
+        "predicted_med": 3188.73,
+        "actual_close": 3150.60009765625,
+        "error_pct": -1.1958,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-13",
         "target_date": "2026-07-14",
@@ -489,20 +498,11 @@
         "error_pct": -0.3497,
         "in_cone": true,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-06-12",
-        "target_date": "2026-06-15",
-        "predicted_med": 2926.05,
-        "actual_close": 2942.5,
-        "error_pct": 0.5622,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.42,
+    "mae_pct": 1.45,
     "directional_accuracy_pct": 50.0,
-    "calibration_pct": 35.0
+    "calibration_pct": 30.0
   }
 }

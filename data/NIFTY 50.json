@@ -1,9 +1,8 @@
 {
   "code": "NIFTY 50",
   "name": "Broad Market",
-  "last": 24211.0,
+  "last": 24078.5,
   "hist": [
-    25195.8,
     25212.05,
     25111.45,
     24968.4,
@@ -246,41 +245,43 @@
     23882.05,
     23962.8,
     24206.9,
-    24211.0
+    24211.0,
+    24052.05,
+    24078.5
   ],
   "med": [
-    24214.19
+    24106.31
   ],
   "up": [
-    24384.37
+    24229.75
   ],
   "lo": [
-    24248.25
+    24100.91
   ],
-  "ret": 0.01,
-  "cone_width_pct": 0.56,
-  "asof": "2026-07-13",
+  "ret": 0.12,
+  "cone_width_pct": 0.54,
+  "asof": "2026-07-15",
   "trading": {
-    "entry": 24211.0,
-    "stop_loss": 24248.25,
-    "exit": 24214.19,
-    "risk": -37.25,
-    "reward": 3.19,
+    "entry": 24078.5,
+    "stop_loss": 24100.91,
+    "exit": 24106.31,
+    "risk": -22.41,
+    "reward": 27.81,
     "risk_reward": 0.0,
     "conviction": 25,
     "volume": {
-      "latest": 322700,
-      "avg_20d": 380275,
-      "ratio": 0.85,
+      "latest": 306900,
+      "avg_20d": 376660,
+      "ratio": 0.81,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 23945.91,
-      "ema_200": 24507.0,
+      "ema_50": 23955.11,
+      "ema_200": 24499.66,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 55.9,
+      "rsi_14": 52.3,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -303,16 +304,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-13"
+    "Data as of 2026-07-15"
   ],
   "calibration": {
-    "bias_pct": 0.1036,
-    "coverage": 0.35,
+    "bias_pct": 0.0846,
+    "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-13",
+        "target_date": "2026-07-14",
+        "predicted_med": 24214.19,
+        "actual_close": 24052.05078125,
+        "error_pct": -0.6696,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-07-10",
         "target_date": "2026-07-13",
@@ -483,20 +493,11 @@
         "error_pct": 1.7404,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-06-10",
-        "target_date": "2026-06-11",
-        "predicted_med": 23228.67,
-        "actual_close": 23161.599609375,
-        "error_pct": -0.2887,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.67,
+    "mae_pct": 0.69,
     "directional_accuracy_pct": 45.0,
-    "calibration_pct": 35.0
+    "calibration_pct": 30.0
   }
 }

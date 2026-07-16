@@ -1,9 +1,8 @@
 {
   "code": "ITC",
   "name": "ITC",
-  "last": 275.55,
+  "last": 276.65,
   "hist": [
-    402.47,
     404.85,
     404.23,
     403.09,
@@ -251,56 +250,57 @@
     282.05,
     281.75,
     279.65,
-    275.55
+    275.55,
+    276.65
   ],
   "med": [
-    276.6
+    277.06
   ],
   "up": [
-    273.88
+    274.84
   ],
   "lo": [
-    272.38
+    273.36
   ],
-  "ret": 0.38,
-  "cone_width_pct": 0.54,
-  "asof": "2026-07-14",
+  "ret": 0.15,
+  "cone_width_pct": 0.53,
+  "asof": "2026-07-15",
   "trading": {
-    "entry": 275.55,
-    "stop_loss": 272.38,
-    "exit": 276.6,
-    "risk": 3.17,
-    "reward": 1.05,
-    "risk_reward": 0.33,
-    "conviction": 20,
+    "entry": 276.65,
+    "stop_loss": 273.36,
+    "exit": 277.06,
+    "risk": 3.29,
+    "reward": 0.41,
+    "risk_reward": 0.12,
+    "conviction": 15,
     "volume": {
-      "latest": 15018851,
-      "avg_20d": 12116197,
-      "ratio": 1.24,
-      "confirmed": true
+      "latest": 8523722,
+      "avg_20d": 12143765,
+      "ratio": 0.7,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 289.5,
-      "ema_200": 321.21,
+      "ema_50": 288.99,
+      "ema_200": 320.97,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 30.0,
-      "label": "OVERSOLD"
+      "rsi_14": 32.7,
+      "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 20/100 (LOW)",
+        "Conviction 15/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.33)",
-        "Volume confirms the move"
+        "R:R unfavorable (1:0.12)",
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 346627.7421056,
-    "pe": 16.75651,
+    "mcap_cr": 350010.7104256,
+    "pe": 16.909805,
     "roe": 29.34,
     "de": 0.03293,
     "sales_growth_yoy": -5.0,
@@ -309,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-14"
+    "Data as of 2026-07-15"
   ],
   "calibration": {
-    "bias_pct": -0.3516,
+    "bias_pct": -0.4154,
     "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-14",
+        "target_date": "2026-07-15",
+        "predicted_med": 276.6,
+        "actual_close": 276.6499938964844,
+        "error_pct": 0.0181,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-13",
         "target_date": "2026-07-14",
@@ -489,20 +498,11 @@
         "error_pct": 1.0428,
         "in_cone": true,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-06-12",
-        "target_date": "2026-06-15",
-        "predicted_med": 284.22,
-        "actual_close": 287.8999938964844,
-        "error_pct": 1.2948,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.63,
-    "directional_accuracy_pct": 45.0,
+    "mae_pct": 0.57,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 25.0
   }
 }

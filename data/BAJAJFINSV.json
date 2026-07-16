@@ -1,9 +1,8 @@
 {
   "code": "BAJAJFINSV",
   "name": "BAJAJFINSV",
-  "last": 1869.2,
+  "last": 1849.6,
   "hist": [
-    2034.76,
     2034.26,
     2024.77,
     2027.87,
@@ -251,55 +250,56 @@
     1895.0,
     1916.0,
     1908.1,
-    1869.2
+    1869.2,
+    1849.6
   ],
   "med": [
-    1870.39
+    1852.14
   ],
   "up": [
-    1895.47
+    1872.22
   ],
   "lo": [
-    1877.65
+    1846.6
   ],
-  "ret": 0.06,
-  "cone_width_pct": 0.95,
-  "asof": "2026-07-14",
+  "ret": 0.14,
+  "cone_width_pct": 1.39,
+  "asof": "2026-07-15",
   "trading": {
-    "entry": 1869.2,
-    "stop_loss": 1877.65,
-    "exit": 1870.39,
-    "risk": -8.45,
-    "reward": 1.19,
-    "risk_reward": 0.0,
-    "conviction": 30,
+    "entry": 1849.6,
+    "stop_loss": 1846.6,
+    "exit": 1852.14,
+    "risk": 3.0,
+    "reward": 2.54,
+    "risk_reward": 0.85,
+    "conviction": 25,
     "volume": {
-      "latest": 1811978,
-      "avg_20d": 1266098,
-      "ratio": 1.43,
-      "confirmed": true
+      "latest": 595343,
+      "avg_20d": 1254535,
+      "ratio": 0.47,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 1802.57,
-      "ema_200": 1879.15,
+      "ema_50": 1804.41,
+      "ema_200": 1878.81,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 58.1,
+      "rsi_14": 54.6,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 30/100 (LOW)",
-        "R:R not available",
-        "Volume confirms the move"
+        "Conviction 25/100 (LOW)",
+        "R:R unfavorable (1:0.85)",
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 295701.7088,
-    "pe": 30.351166,
+    "mcap_cr": 293943.115776,
+    "pe": 30.121231,
     "roe": 14.602,
     "de": 2.56404,
     "sales_growth_yoy": 6.1,
@@ -308,16 +308,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-14"
+    "Data as of 2026-07-15"
   ],
   "calibration": {
-    "bias_pct": 0.4293,
+    "bias_pct": 0.2344,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-14",
+        "target_date": "2026-07-15",
+        "predicted_med": 1870.39,
+        "actual_close": 1849.5999755859375,
+        "error_pct": -1.1115,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-07-13",
         "target_date": "2026-07-14",
@@ -488,20 +497,11 @@
         "error_pct": 3.3396,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-06-12",
-        "target_date": "2026-06-15",
-        "predicted_med": 1702.75,
-        "actual_close": 1750.199951171875,
-        "error_pct": 2.7867,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.43,
-    "directional_accuracy_pct": 50.0,
+    "mae_pct": 1.35,
+    "directional_accuracy_pct": 45.0,
     "calibration_pct": 20.0
   }
 }
