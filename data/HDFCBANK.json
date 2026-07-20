@@ -1,10 +1,8 @@
 {
   "code": "HDFCBANK",
   "name": "HDFCBANK",
-  "last": 808.3,
+  "last": 819.6,
   "hist": [
-    974.86,
-    960.39,
     981.53,
     984.77,
     993.21,
@@ -251,73 +249,83 @@
     817.95,
     809.4,
     815.45,
-    808.3
+    808.3,
+    819.6
   ],
   "med": [
-    808.8
+    818.26
   ],
   "up": [
-    814.76
+    827.84
   ],
   "lo": [
-    809.38
+    819.14
   ],
-  "ret": 0.06,
-  "cone_width_pct": 0.67,
-  "asof": "2026-07-16",
+  "ret": -0.16,
+  "cone_width_pct": 1.06,
+  "asof": "2026-07-17",
   "trading": {
-    "entry": 808.3,
-    "stop_loss": 809.38,
-    "exit": 808.8,
-    "risk": -1.08,
-    "reward": 0.5,
-    "risk_reward": 0.0,
+    "entry": 819.6,
+    "stop_loss": 819.14,
+    "exit": 818.26,
+    "risk": 0.46,
+    "reward": -1.34,
+    "risk_reward": -2.91,
     "conviction": 25,
     "volume": {
-      "latest": 18698186,
-      "avg_20d": 34033077,
-      "ratio": 0.55,
+      "latest": 17415322,
+      "avg_20d": 32893383,
+      "ratio": 0.53,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 788.63,
-      "ema_200": 846.88,
+      "ema_50": 789.84,
+      "ema_200": 847.18,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 55.9,
+      "rsi_14": 60.4,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 25/100 (LOW)",
-        "R:R not available",
+        "R:R unfavorable (1:-2.91)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 1262282.9191168,
-    "pe": 18.302814,
-    "roe": 13.818,
+    "mcap_cr": 1197597.8385408,
+    "pe": 17.345526,
+    "roe": 13.838000000000001,
     "de": "N/A",
-    "sales_growth_yoy": -1.7999999999999998,
+    "sales_growth_yoy": 16.6,
     "hi_52w": 996.4197998046875,
     "lo_52w": 719.6473999023438
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-16"
+    "Data as of 2026-07-17"
   ],
   "calibration": {
-    "bias_pct": 0.1859,
-    "coverage": 0.35,
+    "bias_pct": 0.2928,
+    "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-16",
+        "target_date": "2026-07-17",
+        "predicted_med": 808.8,
+        "actual_close": 819.5999755859375,
+        "error_pct": 1.3353,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-15",
         "target_date": "2026-07-16",
@@ -488,20 +496,11 @@
         "error_pct": -1.5815,
         "in_cone": true,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-06-16",
-        "target_date": "2026-06-17",
-        "predicted_med": 793.47,
-        "actual_close": 787.0999755859375,
-        "error_pct": -0.8028,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.05,
+    "mae_pct": 1.07,
     "directional_accuracy_pct": 50.0,
-    "calibration_pct": 35.0
+    "calibration_pct": 30.0
   }
 }

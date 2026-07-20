@@ -1,10 +1,8 @@
 {
   "code": "JSWSTEEL",
   "name": "JSWSTEEL",
-  "last": 1221.0,
+  "last": 1237.3,
   "hist": [
-    1028.29,
-    1028.49,
     1028.89,
     1024.81,
     1027.9,
@@ -251,73 +249,83 @@
     1237.4,
     1247.7,
     1226.9,
-    1221.0
+    1221.0,
+    1237.3
   ],
   "med": [
-    1222.03
+    1234.47
   ],
   "up": [
-    1222.71
+    1242.49
   ],
   "lo": [
-    1212.45
+    1230.05
   ],
-  "ret": 0.08,
-  "cone_width_pct": 0.84,
-  "asof": "2026-07-16",
+  "ret": -0.23,
+  "cone_width_pct": 1.01,
+  "asof": "2026-07-17",
   "trading": {
-    "entry": 1221.0,
-    "stop_loss": 1212.45,
-    "exit": 1222.03,
-    "risk": 8.55,
-    "reward": 1.03,
-    "risk_reward": 0.12,
-    "conviction": 25,
+    "entry": 1237.3,
+    "stop_loss": 1230.05,
+    "exit": 1234.47,
+    "risk": 7.25,
+    "reward": -2.83,
+    "risk_reward": -0.39,
+    "conviction": 45,
     "volume": {
-      "latest": 1342230,
-      "avg_20d": 1351374,
-      "ratio": 0.99,
-      "confirmed": false
+      "latest": 2800390,
+      "avg_20d": 1384194,
+      "ratio": 2.02,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 1244.86,
-      "ema_200": 1195.99,
+      "ema_50": 1244.56,
+      "ema_200": 1196.45,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 43.1,
+      "rsi_14": 48.7,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 25/100 (LOW)",
-        "R:R unfavorable (1:0.12)",
-        "Volume does not confirm the move"
+        "Conviction 45/100 (MEDIUM)",
+        "R:R unfavorable (1:-0.39)",
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 302003.519488,
-    "pe": 13.5549965,
-    "roe": 27.261000000000003,
+    "mcap_cr": 306811.9482368,
+    "pe": 12.405013,
+    "roe": "N/A",
     "de": 0.9537399999999999,
-    "sales_growth_yoy": 14.2,
+    "sales_growth_yoy": 9.8,
     "hi_52w": 1305.4019775390625,
     "lo_52w": 1020.7369995117188
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-16"
+    "Data as of 2026-07-17"
   ],
   "calibration": {
-    "bias_pct": -0.3313,
-    "coverage": 0.2,
+    "bias_pct": -0.321,
+    "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-16",
+        "target_date": "2026-07-17",
+        "predicted_med": 1222.03,
+        "actual_close": 1237.300048828125,
+        "error_pct": 1.2496,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-15",
         "target_date": "2026-07-16",
@@ -488,20 +496,11 @@
         "error_pct": 0.3397,
         "in_cone": true,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-06-16",
-        "target_date": "2026-06-17",
-        "predicted_med": 1273.91,
-        "actual_close": 1287.199951171875,
-        "error_pct": 1.0432,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.93,
-    "directional_accuracy_pct": 50.0,
-    "calibration_pct": 20.0
+    "mae_pct": 0.94,
+    "directional_accuracy_pct": 55.0,
+    "calibration_pct": 15.0
   }
 }

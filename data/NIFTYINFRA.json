@@ -1,10 +1,8 @@
 {
   "code": "NIFTYINFRA",
   "name": "Nifty Infrastructure",
-  "last": 9429.45,
+  "last": 9377.35,
   "hist": [
-    9265.95,
-    9216.9,
     9197.3,
     9141.55,
     9209.8,
@@ -242,47 +240,55 @@
     9454.0,
     9249.95,
     9325.7,
-    9429.45
+    9429.45,
+    9381.15,
+    9350.75,
+    9337.8,
+    9331.3,
+    9377.35
   ],
   "med": [
-    9476.33
+    9407.53
   ],
   "up": [
-    9519.39
+    9430.67
   ],
   "lo": [
-    9470.47
+    9386.73
   ],
-  "ret": 0.5,
-  "cone_width_pct": 0.52,
-  "asof": "2026-07-10",
+  "ret": 0.32,
+  "cone_width_pct": 0.47,
+  "asof": "2026-07-17",
   "trading": {
-    "entry": 9429.45,
-    "stop_loss": 9470.47,
-    "exit": 9476.33,
-    "risk": -41.02,
-    "reward": 46.88,
+    "entry": 9377.35,
+    "stop_loss": 9386.73,
+    "exit": 9407.53,
+    "risk": -9.38,
+    "reward": 30.18,
     "risk_reward": 0.0,
-    "conviction": 35,
+    "conviction": 40,
     "volume": {
-      "latest": 1667400,
-      "avg_20d": 2859350,
-      "ratio": 0.58,
-      "confirmed": false
+      "latest": 2541500,
+      "avg_20d": 2517490,
+      "ratio": 1.01,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 9345.28,
-      "ema_200": 9300.94,
+      "ema_50": 9347.12,
+      "ema_200": 9297.61,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 52.8,
+      "rsi_14": 50.3,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Stale data"
+        "Conviction 40/100 (MEDIUM)",
+        "Trend (BULLISH) agrees with the forecast",
+        "R:R not available",
+        "Volume confirms the move"
       ]
     }
   },
@@ -296,17 +302,26 @@
     "lo_52w": 8560.9501953125
   },
   "status": [
-    "Stale data",
-    "Data as of 2026-07-10"
+    "Data OK",
+    "Data as of 2026-07-17"
   ],
   "calibration": {
-    "bias_pct": 0.5351,
-    "coverage": 0.1667,
+    "bias_pct": 0.3152,
+    "coverage": 0.1429,
     "cone_scale": 2.0,
-    "n": 6
+    "n": 7
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-10",
+        "target_date": "2026-07-13",
+        "predicted_med": 9476.33,
+        "actual_close": 9381.150390625,
+        "error_pct": -1.0044,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-07-03",
         "target_date": "2026-07-06",
@@ -362,9 +377,9 @@
         "direction_correct": false
       }
     ],
-    "n": 6,
+    "n": 7,
     "mae_pct": 1.01,
-    "directional_accuracy_pct": 33.3,
-    "calibration_pct": 16.7
+    "directional_accuracy_pct": 28.6,
+    "calibration_pct": 14.3
   }
 }

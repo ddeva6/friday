@@ -1,10 +1,8 @@
 {
   "code": "NIFTYMETAL",
   "name": "Nifty Metal",
-  "last": 12688.9,
+  "last": 12436.95,
   "hist": [
-    9423.35,
-    9458.2,
     9555.5,
     9533.3,
     9579.05,
@@ -242,47 +240,54 @@
     12582.75,
     12468.7,
     12503.3,
-    12688.9
+    12688.9,
+    12601.45,
+    12677.7,
+    12536.9,
+    12495.9,
+    12436.95
   ],
   "med": [
-    12758.1
+    12511.8
   ],
   "up": [
-    12800.98
+    12499.22
   ],
   "lo": [
-    12711.54
+    12396.4
   ],
-  "ret": 0.55,
-  "cone_width_pct": 0.7,
-  "asof": "2026-07-10",
+  "ret": 0.6,
+  "cone_width_pct": 0.83,
+  "asof": "2026-07-17",
   "trading": {
-    "entry": 12688.9,
-    "stop_loss": 12711.54,
-    "exit": 12758.1,
-    "risk": -22.64,
-    "reward": 69.2,
-    "risk_reward": 0.0,
-    "conviction": 55,
+    "entry": 12436.95,
+    "stop_loss": 12396.4,
+    "exit": 12511.8,
+    "risk": 40.55,
+    "reward": 74.85,
+    "risk_reward": 1.85,
+    "conviction": 65,
     "volume": {
-      "latest": 954500,
-      "avg_20d": 1956980,
-      "ratio": 0.49,
+      "latest": 1083400,
+      "avg_20d": 1753505,
+      "ratio": 0.62,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 12755.25,
-      "ema_200": 11774.97,
+      "ema_50": 12717.27,
+      "ema_200": 11824.32,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 48.0,
+      "rsi_14": 41.2,
       "label": "NEUTRAL"
     },
     "verdict": {
-      "label": "CAUTION",
+      "label": "NEUTRAL",
       "reasons": [
-        "Stale data"
+        "Conviction 65/100 (MEDIUM)",
+        "R:R favorable (1:1.85)",
+        "Volume does not confirm the move"
       ]
     }
   },
@@ -296,17 +301,26 @@
     "lo_52w": 9102.349609375
   },
   "status": [
-    "Stale data",
-    "Data as of 2026-07-10"
+    "Data OK",
+    "Data as of 2026-07-17"
   ],
   "calibration": {
-    "bias_pct": 0.4054,
-    "coverage": 0.5,
-    "cone_scale": 1.6,
-    "n": 6
+    "bias_pct": 0.1721,
+    "coverage": 0.4286,
+    "cone_scale": 1.866666666666667,
+    "n": 7
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-10",
+        "target_date": "2026-07-13",
+        "predicted_med": 12758.1,
+        "actual_close": 12601.4501953125,
+        "error_pct": -1.2278,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-07-03",
         "target_date": "2026-07-06",
@@ -362,9 +376,9 @@
         "direction_correct": true
       }
     ],
-    "n": 6,
-    "mae_pct": 0.53,
-    "directional_accuracy_pct": 83.3,
-    "calibration_pct": 50.0
+    "n": 7,
+    "mae_pct": 0.63,
+    "directional_accuracy_pct": 71.4,
+    "calibration_pct": 42.9
   }
 }

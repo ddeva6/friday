@@ -1,10 +1,8 @@
 {
   "code": "NIFTYAUTO",
   "name": "Nifty Auto",
-  "last": 26860.75,
+  "last": 27099.75,
   "hist": [
-    24002.5,
-    23894.35,
     24055.0,
     23875.85,
     24079.4,
@@ -242,47 +240,55 @@
     27343.5,
     26733.4,
     26676.35,
-    26860.75
+    26860.75,
+    26981.5,
+    26547.5,
+    26645.1,
+    26767.55,
+    27099.75
   ],
   "med": [
-    27032.38
+    27188.92
   ],
   "up": [
-    27168.68
+    27431.23
   ],
   "lo": [
-    27009.29
+    27201.39
   ],
-  "ret": 0.64,
-  "cone_width_pct": 0.59,
-  "asof": "2026-07-10",
+  "ret": 0.33,
+  "cone_width_pct": 0.85,
+  "asof": "2026-07-17",
   "trading": {
-    "entry": 26860.75,
-    "stop_loss": 27009.29,
-    "exit": 27032.38,
-    "risk": -148.54,
-    "reward": 171.63,
+    "entry": 27099.75,
+    "stop_loss": 27201.39,
+    "exit": 27188.92,
+    "risk": -101.64,
+    "reward": 89.17,
     "risk_reward": 0.0,
-    "conviction": 55,
+    "conviction": 60,
     "volume": {
-      "latest": 510800,
-      "avg_20d": 773610,
-      "ratio": 0.66,
+      "latest": 438400,
+      "avg_20d": 693855,
+      "ratio": 0.63,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 26503.07,
-      "ema_200": 26318.17,
+      "ema_50": 26559.11,
+      "ema_200": 26346.83,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 53.2,
+      "rsi_14": 56.3,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Stale data"
+        "Conviction 60/100 (MEDIUM)",
+        "Trend (BULLISH) agrees with the forecast",
+        "R:R not available",
+        "Volume does not confirm the move"
       ]
     }
   },
@@ -296,17 +302,26 @@
     "lo_52w": 23410.94921875
   },
   "status": [
-    "Stale data",
-    "Data as of 2026-07-10"
+    "Data OK",
+    "Data as of 2026-07-17"
   ],
   "calibration": {
-    "bias_pct": 0.7088,
-    "coverage": 0.5,
-    "cone_scale": 1.6,
-    "n": 6
+    "bias_pct": 0.5807,
+    "coverage": 0.4286,
+    "cone_scale": 1.866666666666667,
+    "n": 7
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-10",
+        "target_date": "2026-07-13",
+        "predicted_med": 27032.38,
+        "actual_close": 26981.5,
+        "error_pct": -0.1882,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-03",
         "target_date": "2026-07-06",
@@ -362,9 +377,9 @@
         "direction_correct": true
       }
     ],
-    "n": 6,
-    "mae_pct": 1.29,
-    "directional_accuracy_pct": 66.7,
-    "calibration_pct": 50.0
+    "n": 7,
+    "mae_pct": 1.13,
+    "directional_accuracy_pct": 71.4,
+    "calibration_pct": 42.9
   }
 }

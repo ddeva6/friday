@@ -1,10 +1,8 @@
 {
   "code": "INDIGO",
   "name": "INDIGO",
-  "last": 5265.5,
+  "last": 5248.5,
   "hist": [
-    5786.72,
-    5851.11,
     5868.08,
     5937.97,
     5887.05,
@@ -250,54 +248,55 @@
     5229.5,
     5108.0,
     5171.0,
-    5265.5
+    5265.5,
+    5248.5
   ],
   "med": [
-    5266.8
+    5252.33
   ],
   "up": [
-    5336.36
+    5312.85
   ],
   "lo": [
-    5279.48
+    5256.03
   ],
-  "ret": 0.02,
+  "ret": 0.07,
   "cone_width_pct": 1.08,
-  "asof": "2026-07-16",
+  "asof": "2026-07-17",
   "trading": {
-    "entry": 5265.5,
-    "stop_loss": 5279.48,
-    "exit": 5266.8,
-    "risk": -13.98,
-    "reward": 1.3,
+    "entry": 5248.5,
+    "stop_loss": 5256.03,
+    "exit": 5252.33,
+    "risk": -7.53,
+    "reward": 3.83,
     "risk_reward": 0.0,
-    "conviction": 40,
+    "conviction": 25,
     "volume": {
-      "latest": 996192,
-      "avg_20d": 1220079,
-      "ratio": 0.82,
+      "latest": 609593,
+      "avg_20d": 1213434,
+      "ratio": 0.5,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 4938.94,
-      "ema_200": 4967.45,
+      "ema_50": 4951.09,
+      "ema_200": 4977.07,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 57.0,
+      "rsi_14": 56.1,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 40/100 (MEDIUM)",
+        "Conviction 25/100 (LOW)",
         "R:R not available",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 202941.9626496,
+    "mcap_cr": 202187.9578624,
     "pe": "N/A",
     "roe": "N/A",
     "de": 8.66462,
@@ -307,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-16"
+    "Data as of 2026-07-17"
   ],
   "calibration": {
-    "bias_pct": 0.3208,
-    "coverage": 0.2,
+    "bias_pct": 0.3051,
+    "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-16",
+        "target_date": "2026-07-17",
+        "predicted_med": 5266.8,
+        "actual_close": 5248.5,
+        "error_pct": -0.3475,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-07-15",
         "target_date": "2026-07-16",
@@ -487,20 +495,11 @@
         "error_pct": 0.3874,
         "in_cone": true,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-06-16",
-        "target_date": "2026-06-17",
-        "predicted_med": 4880.06,
-        "actual_close": 4878.39990234375,
-        "error_pct": -0.034,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.5,
-    "directional_accuracy_pct": 55.0,
-    "calibration_pct": 20.0
+    "mae_pct": 1.52,
+    "directional_accuracy_pct": 50.0,
+    "calibration_pct": 15.0
   }
 }

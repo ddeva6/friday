@@ -1,10 +1,8 @@
 {
   "code": "NIFTYCONSUMPTION",
   "name": "Nifty Consumption",
-  "last": 11737.75,
+  "last": 11705.0,
   "hist": [
-    11772.2,
-    11699.15,
     11747.1,
     11801.5,
     11839.1,
@@ -242,26 +240,31 @@
     11874.35,
     11628.6,
     11700.4,
-    11737.75
+    11737.75,
+    11667.2,
+    11611.4,
+    11634.95,
+    11660.1,
+    11705.0
   ],
   "med": [
-    11768.24
+    11719.81
   ],
   "up": [
-    11873.46
+    11782.35
   ],
   "lo": [
-    11801.8
+    11728.01
   ],
-  "ret": 0.26,
-  "cone_width_pct": 0.61,
-  "asof": "2026-07-10",
+  "ret": 0.13,
+  "cone_width_pct": 0.46,
+  "asof": "2026-07-17",
   "trading": {
-    "entry": 11737.75,
-    "stop_loss": 11801.8,
-    "exit": 11768.24,
-    "risk": -64.05,
-    "reward": 30.49,
+    "entry": 11705.0,
+    "stop_loss": 11728.01,
+    "exit": 11719.81,
+    "risk": -23.01,
+    "reward": 14.81,
     "risk_reward": 0.0,
     "conviction": 25,
     "volume": {
@@ -271,18 +274,20 @@
       "confirmed": false
     },
     "trend": {
-      "ema_50": 11472.36,
-      "ema_200": 11601.23,
+      "ema_50": 11505.79,
+      "ema_200": 11601.75,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 58.7,
+      "rsi_14": 56.5,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Stale data"
+        "Conviction 25/100 (LOW)",
+        "R:R not available",
+        "Volume does not confirm the move"
       ]
     }
   },
@@ -296,17 +301,26 @@
     "lo_52w": 10334.349609375
   },
   "status": [
-    "Stale data",
-    "Data as of 2026-07-10"
+    "Data OK",
+    "Data as of 2026-07-17"
   ],
   "calibration": {
-    "bias_pct": 0.3958,
+    "bias_pct": 0.2166,
     "coverage": 0.0,
     "cone_scale": 2.0,
-    "n": 6
+    "n": 7
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-10",
+        "target_date": "2026-07-13",
+        "predicted_med": 11768.24,
+        "actual_close": 11667.2001953125,
+        "error_pct": -0.8586,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-07-03",
         "target_date": "2026-07-06",
@@ -362,9 +376,9 @@
         "direction_correct": false
       }
     ],
-    "n": 6,
-    "mae_pct": 0.9,
-    "directional_accuracy_pct": 50.0,
+    "n": 7,
+    "mae_pct": 0.89,
+    "directional_accuracy_pct": 42.9,
     "calibration_pct": 0.0
   }
 }

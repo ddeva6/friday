@@ -1,10 +1,8 @@
 {
   "code": "NIFTYENERGY",
   "name": "Nifty Energy",
-  "last": 39242.05,
+  "last": 39277.0,
   "hist": [
-    36438.25,
-    36231.65,
     36248.55,
     36198.5,
     36302.95,
@@ -242,47 +240,54 @@
     39188.45,
     38695.65,
     38838.1,
-    39242.05
+    39242.05,
+    39220.35,
+    39203.15,
+    39381.25,
+    39345.8,
+    39277.0
   ],
   "med": [
-    39522.94
+    39435.04
   ],
   "up": [
-    39586.64
+    39474.7
   ],
   "lo": [
-    39314.2
+    39271.3
   ],
-  "ret": 0.72,
-  "cone_width_pct": 0.69,
-  "asof": "2026-07-10",
+  "ret": 0.4,
+  "cone_width_pct": 0.52,
+  "asof": "2026-07-17",
   "trading": {
-    "entry": 39242.05,
-    "stop_loss": 39314.2,
-    "exit": 39522.94,
-    "risk": -72.15,
-    "reward": 280.89,
-    "risk_reward": 0.0,
-    "conviction": 40,
+    "entry": 39277.0,
+    "stop_loss": 39271.3,
+    "exit": 39435.04,
+    "risk": 5.7,
+    "reward": 158.04,
+    "risk_reward": 27.73,
+    "conviction": 65,
     "volume": {
-      "latest": 2688300,
-      "avg_20d": 4378275,
-      "ratio": 0.61,
+      "latest": 3725300,
+      "avg_20d": 3905450,
+      "ratio": 0.95,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 39445.77,
-      "ema_200": 37606.01,
+      "ema_50": 39417.06,
+      "ema_200": 37671.42,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 45.2,
+      "rsi_14": 46.0,
       "label": "NEUTRAL"
     },
     "verdict": {
-      "label": "CAUTION",
+      "label": "NEUTRAL",
       "reasons": [
-        "Stale data"
+        "Conviction 65/100 (MEDIUM)",
+        "R:R favorable (1:27.73)",
+        "Volume does not confirm the move"
       ]
     }
   },
@@ -296,17 +301,26 @@
     "lo_52w": 33098.30078125
   },
   "status": [
-    "Stale data",
-    "Data as of 2026-07-10"
+    "Data OK",
+    "Data as of 2026-07-17"
   ],
   "calibration": {
-    "bias_pct": 0.4809,
-    "coverage": 0.3333,
+    "bias_pct": 0.3028,
+    "coverage": 0.2857,
     "cone_scale": 2.0,
-    "n": 6
+    "n": 7
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-10",
+        "target_date": "2026-07-13",
+        "predicted_med": 39522.94,
+        "actual_close": 39220.3515625,
+        "error_pct": -0.7656,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-07-03",
         "target_date": "2026-07-06",
@@ -362,9 +376,9 @@
         "direction_correct": true
       }
     ],
-    "n": 6,
-    "mae_pct": 0.63,
-    "directional_accuracy_pct": 66.7,
-    "calibration_pct": 33.3
+    "n": 7,
+    "mae_pct": 0.65,
+    "directional_accuracy_pct": 57.1,
+    "calibration_pct": 28.6
   }
 }
