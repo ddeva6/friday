@@ -1,7 +1,7 @@
 {
   "code": "NIFTYFINSERVICE",
   "name": "Nifty Financial Services",
-  "last": 1096.87,
+  "last": 1098.16,
   "hist": [
     1085.23,
     1082.45,
@@ -250,27 +250,28 @@
     1086.86,
     1096.07,
     1087.66,
-    1096.87
+    1096.87,
+    1098.16
   ],
   "med": [
-    1094.45
+    1096.63
   ],
   "up": [
-    1107.33
+    1108.27
   ],
   "lo": [
-    1096.73
+    1100.13
   ],
-  "ret": -0.22,
-  "cone_width_pct": 0.97,
-  "asof": "2026-07-17",
+  "ret": -0.14,
+  "cone_width_pct": 0.74,
+  "asof": "2026-07-20",
   "trading": {
-    "entry": 1096.87,
-    "stop_loss": 1096.73,
-    "exit": 1094.45,
-    "risk": 0.14,
-    "reward": -2.42,
-    "risk_reward": -17.29,
+    "entry": 1098.16,
+    "stop_loss": 1100.13,
+    "exit": 1096.63,
+    "risk": -1.97,
+    "reward": -1.53,
+    "risk_reward": 0.0,
     "conviction": 25,
     "volume": {
       "latest": 0,
@@ -279,19 +280,19 @@
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1069.08,
-      "ema_200": 1088.95,
+      "ema_50": 1070.22,
+      "ema_200": 1089.04,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 57.3,
+      "rsi_14": 57.6,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 25/100 (LOW)",
-        "R:R unfavorable (1:-17.29)",
+        "R:R not available",
         "Volume does not confirm the move"
       ]
     }
@@ -307,16 +308,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-17"
+    "Data as of 2026-07-20"
   ],
   "calibration": {
-    "bias_pct": 0.0152,
+    "bias_pct": 0.0418,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-17",
+        "target_date": "2026-07-20",
+        "predicted_med": 1094.45,
+        "actual_close": 1098.1616744995117,
+        "error_pct": 0.3391,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-07-16",
         "target_date": "2026-07-17",
@@ -487,20 +497,11 @@
         "error_pct": -1.1444,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-06-17",
-        "target_date": "2026-06-18",
-        "predicted_med": 1064.4,
-        "actual_close": 1062.3583221435547,
-        "error_pct": -0.1918,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.95,
-    "directional_accuracy_pct": 50.0,
+    "mae_pct": 0.96,
+    "directional_accuracy_pct": 45.0,
     "calibration_pct": 20.0
   }
 }

@@ -1,7 +1,7 @@
 {
   "code": "BAJFINANCE",
   "name": "BAJFINANCE",
-  "last": 1056.3,
+  "last": 1064.0,
   "hist": [
     942.66,
     946.73,
@@ -250,42 +250,43 @@
     1006.6,
     1021.3,
     1037.6,
-    1056.3
+    1056.3,
+    1064.0
   ],
   "med": [
-    1051.42
+    1061.42
   ],
   "up": [
-    1079.3
+    1090.48
   ],
   "lo": [
-    1068.32
+    1079.62
   ],
-  "ret": -0.46,
-  "cone_width_pct": 1.04,
-  "asof": "2026-07-17",
+  "ret": -0.24,
+  "cone_width_pct": 1.02,
+  "asof": "2026-07-20",
   "trading": {
-    "entry": 1056.3,
-    "stop_loss": 1068.32,
-    "exit": 1051.42,
-    "risk": -12.02,
-    "reward": -4.88,
+    "entry": 1064.0,
+    "stop_loss": 1079.62,
+    "exit": 1061.42,
+    "risk": -15.62,
+    "reward": -2.58,
     "risk_reward": 0.0,
     "conviction": 20,
     "volume": {
-      "latest": 12882360,
-      "avg_20d": 8658285,
-      "ratio": 1.49,
+      "latest": 9348760,
+      "avg_20d": 8655314,
+      "ratio": 1.08,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 967.98,
-      "ema_200": 949.74,
+      "ema_50": 971.74,
+      "ema_200": 950.88,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 68.8,
-      "label": "NEUTRAL"
+      "rsi_14": 70.2,
+      "label": "OVERBOUGHT"
     },
     "verdict": {
       "label": "CAUTION",
@@ -298,8 +299,8 @@
     }
   },
   "fundamentals": {
-    "mcap_cr": 661582.0402688,
-    "pe": 34.850964,
+    "mcap_cr": 664815.3243648,
+    "pe": 35.00982,
     "roe": 17.907,
     "de": 3.14833,
     "sales_growth_yoy": 28.199999999999996,
@@ -308,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-17"
+    "Data as of 2026-07-20"
   ],
   "calibration": {
-    "bias_pct": 0.398,
-    "coverage": 0.05,
+    "bias_pct": 0.5526,
+    "coverage": 0.0,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-17",
+        "target_date": "2026-07-20",
+        "predicted_med": 1051.42,
+        "actual_close": 1064.0,
+        "error_pct": 1.1965,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-07-16",
         "target_date": "2026-07-17",
@@ -488,20 +498,11 @@
         "error_pct": -0.0353,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-06-17",
-        "target_date": "2026-06-18",
-        "predicted_med": 977.37,
-        "actual_close": 958.8499755859375,
-        "error_pct": -1.8949,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.33,
-    "directional_accuracy_pct": 50.0,
-    "calibration_pct": 5.0
+    "mae_pct": 1.3,
+    "directional_accuracy_pct": 45.0,
+    "calibration_pct": 0.0
   }
 }
