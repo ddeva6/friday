@@ -1,9 +1,8 @@
 {
   "code": "KOTAKBANK",
   "name": "KOTAKBANK",
-  "last": 382.05,
+  "last": 385.95,
   "hist": [
-    432.29,
     431.3,
     433.33,
     427.68,
@@ -251,56 +250,57 @@
     377.75,
     376.5,
     389.95,
-    382.05
+    382.05,
+    385.95
   ],
   "med": [
-    382.25
-  ],
-  "up": [
     385.47
   ],
-  "lo": [
-    380.17
+  "up": [
+    388.09
   ],
-  "ret": 0.05,
-  "cone_width_pct": 1.39,
-  "asof": "2026-07-20",
+  "lo": [
+    384.75
+  ],
+  "ret": -0.12,
+  "cone_width_pct": 0.87,
+  "asof": "2026-07-21",
   "trading": {
-    "entry": 382.05,
-    "stop_loss": 380.17,
-    "exit": 382.25,
-    "risk": 1.88,
-    "reward": 0.2,
-    "risk_reward": 0.11,
-    "conviction": 20,
+    "entry": 385.95,
+    "stop_loss": 384.75,
+    "exit": 385.47,
+    "risk": 1.2,
+    "reward": -0.48,
+    "risk_reward": -0.4,
+    "conviction": 35,
     "volume": {
-      "latest": 32539419,
-      "avg_20d": 17519624,
-      "ratio": 1.86,
-      "confirmed": true
+      "latest": 17152911,
+      "avg_20d": 18788647,
+      "ratio": 0.91,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 387.31,
-      "ema_200": 398.6,
+      "ema_50": 387.25,
+      "ema_200": 398.39,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 46.7,
+      "rsi_14": 49.6,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 20/100 (LOW)",
-        "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.11)",
-        "Volume confirms the move"
+        "Conviction 35/100 (LOW)",
+        "Trend (BEARISH) agrees with the forecast",
+        "R:R unfavorable (1:-0.40)",
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 383883.8308864,
-    "pe": 18.919119,
+    "mcap_cr": 379109.507072,
+    "pe": 18.665524,
     "roe": "N/A",
     "de": "N/A",
     "sales_growth_yoy": 21.0,
@@ -309,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-20"
+    "Data as of 2026-07-21"
   ],
   "calibration": {
-    "bias_pct": -0.2645,
+    "bias_pct": -0.1936,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-20",
+        "target_date": "2026-07-21",
+        "predicted_med": 382.25,
+        "actual_close": 385.95001220703125,
+        "error_pct": 0.968,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-17",
         "target_date": "2026-07-20",
@@ -489,19 +498,10 @@
         "error_pct": 1.0453,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-06-18",
-        "target_date": "2026-06-19",
-        "predicted_med": 401.06,
-        "actual_close": 399.25,
-        "error_pct": -0.4513,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.25,
+    "mae_pct": 1.28,
     "directional_accuracy_pct": 35.0,
     "calibration_pct": 15.0
   }
