@@ -1,9 +1,8 @@
 {
   "code": "NIFTYFINSERVICE",
   "name": "Nifty Financial Services",
-  "last": 1098.35,
+  "last": 1098.77,
   "hist": [
-    1091.38,
     1078.58,
     1066.82,
     1065.1,
@@ -251,26 +250,27 @@
     1096.87,
     1098.16,
     1110.04,
-    1098.35
+    1098.35,
+    1098.77
   ],
   "med": [
-    1098.63
+    1099.7
   ],
   "up": [
-    1109.53
+    1110.1
   ],
   "lo": [
-    1100.39
+    1101.48
   ],
-  "ret": 0.03,
-  "cone_width_pct": 0.83,
-  "asof": "2026-07-22",
+  "ret": 0.08,
+  "cone_width_pct": 0.78,
+  "asof": "2026-07-23",
   "trading": {
-    "entry": 1098.35,
-    "stop_loss": 1100.39,
-    "exit": 1098.63,
-    "risk": -2.04,
-    "reward": 0.28,
+    "entry": 1098.77,
+    "stop_loss": 1101.48,
+    "exit": 1099.7,
+    "risk": -2.71,
+    "reward": 0.93,
     "risk_reward": 0.0,
     "conviction": 25,
     "volume": {
@@ -280,12 +280,12 @@
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1072.83,
-      "ema_200": 1089.85,
+      "ema_50": 1073.84,
+      "ema_200": 1088.88,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 56.2,
+      "rsi_14": 56.4,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -308,16 +308,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-22"
+    "Data as of 2026-07-23"
   ],
   "calibration": {
-    "bias_pct": 0.1279,
+    "bias_pct": 0.1873,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-22",
+        "target_date": "2026-07-23",
+        "predicted_med": 1098.63,
+        "actual_close": 1098.7683563232422,
+        "error_pct": 0.0126,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-21",
         "target_date": "2026-07-22",
@@ -488,20 +497,11 @@
         "error_pct": 0.3359,
         "in_cone": true,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-06-22",
-        "target_date": "2026-06-23",
-        "predicted_med": 1069.61,
-        "actual_close": 1057.0349934895833,
-        "error_pct": -1.1757,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.0,
-    "directional_accuracy_pct": 45.0,
+    "mae_pct": 0.94,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 20.0
   }
 }

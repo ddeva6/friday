@@ -1,9 +1,8 @@
 {
   "code": "TATASTEEL",
   "name": "TATASTEEL",
-  "last": 186.53,
+  "last": 184.23,
   "hist": [
-    159.48,
     160.18,
     158.17,
     156.45,
@@ -251,55 +250,56 @@
     185.89,
     186.41,
     187.24,
-    186.53
+    186.53,
+    184.23
   ],
   "med": [
-    186.37
+    184.65
   ],
   "up": [
-    186.17
+    183.65
   ],
   "lo": [
-    184.61
+    182.13
   ],
-  "ret": -0.09,
-  "cone_width_pct": 0.84,
-  "asof": "2026-07-22",
+  "ret": 0.23,
+  "cone_width_pct": 0.83,
+  "asof": "2026-07-23",
   "trading": {
-    "entry": 186.53,
-    "stop_loss": 184.61,
-    "exit": 186.37,
-    "risk": 1.92,
-    "reward": -0.16,
-    "risk_reward": -0.08,
+    "entry": 184.23,
+    "stop_loss": 182.13,
+    "exit": 184.65,
+    "risk": 2.1,
+    "reward": 0.42,
+    "risk_reward": 0.2,
     "conviction": 25,
     "volume": {
-      "latest": 16643117,
-      "avg_20d": 26104243,
-      "ratio": 0.64,
+      "latest": 20581098,
+      "avg_20d": 24371110,
+      "ratio": 0.84,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 193.73,
-      "ema_200": 188.48,
+      "ema_50": 193.36,
+      "ema_200": 188.49,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 40.6,
+      "rsi_14": 36.6,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 25/100 (LOW)",
-        "R:R unfavorable (1:-0.08)",
+        "R:R unfavorable (1:0.20)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 229768.8489984,
-    "pe": 21.298265,
+    "mcap_cr": 227823.2424448,
+    "pe": 21.093534,
     "roe": 11.156998999999999,
     "de": 0.8901699999999999,
     "sales_growth_yoy": 12.5,
@@ -308,16 +308,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-22"
+    "Data as of 2026-07-23"
   ],
   "calibration": {
-    "bias_pct": -0.3972,
+    "bias_pct": -0.3055,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-22",
+        "target_date": "2026-07-23",
+        "predicted_med": 186.37,
+        "actual_close": 184.22999572753906,
+        "error_pct": -1.1483,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-21",
         "target_date": "2026-07-22",
@@ -488,20 +497,11 @@
         "error_pct": -2.1156,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-06-22",
-        "target_date": "2026-06-23",
-        "predicted_med": 199.51,
-        "actual_close": 193.55999755859375,
-        "error_pct": -2.9823,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.95,
-    "directional_accuracy_pct": 45.0,
+    "mae_pct": 0.86,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 20.0
   }
 }
