@@ -1,10 +1,8 @@
 {
   "code": "HDFCGOLD",
   "name": "HDFCGOLD",
-  "last": 122.68,
+  "last": 121.79,
   "hist": [
-    84.93,
-    84.7,
     84.56,
     84.49,
     85.18,
@@ -247,48 +245,49 @@
     120.79,
     121.71,
     123.04,
-    122.68
+    122.68,
+    121.79
   ],
   "med": [
-    122.59
+    122.02
   ],
   "up": [
-    123.27
+    122.56
   ],
   "lo": [
-    122.21
+    121.36
   ],
-  "ret": -0.07,
-  "cone_width_pct": 0.86,
-  "asof": "2026-07-23",
+  "ret": 0.19,
+  "cone_width_pct": 0.99,
+  "asof": "2026-07-24",
   "trading": {
-    "entry": 122.68,
-    "stop_loss": 122.21,
-    "exit": 122.59,
-    "risk": 0.47,
-    "reward": -0.09,
-    "risk_reward": -0.19,
+    "entry": 121.79,
+    "stop_loss": 121.36,
+    "exit": 122.02,
+    "risk": 0.43,
+    "reward": 0.23,
+    "risk_reward": 0.53,
     "conviction": 40,
     "volume": {
-      "latest": 1631333,
-      "avg_20d": 3213725,
-      "ratio": 0.51,
+      "latest": 1769262,
+      "avg_20d": 3054810,
+      "ratio": 0.58,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 124.6,
-      "ema_200": 119.55,
+      "ema_50": 124.49,
+      "ema_200": 119.54,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 49.4,
+      "rsi_14": 46.6,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 40/100 (MEDIUM)",
-        "R:R unfavorable (1:-0.19)",
+        "R:R unfavorable (1:0.53)",
         "Volume does not confirm the move"
       ]
     }
@@ -304,16 +303,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-23"
+    "Data as of 2026-07-24"
   ],
   "calibration": {
-    "bias_pct": -0.0636,
-    "coverage": 0.35,
+    "bias_pct": -0.0117,
+    "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-23",
+        "target_date": "2026-07-24",
+        "predicted_med": 122.59,
+        "actual_close": 121.79000091552734,
+        "error_pct": -0.6526,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-22",
         "target_date": "2026-07-23",
@@ -484,20 +492,11 @@
         "error_pct": -2.8915,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-06-23",
-        "target_date": "2026-06-24",
-        "predicted_med": 123.5,
-        "actual_close": 121.41000366210938,
-        "error_pct": -1.6923,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.95,
-    "directional_accuracy_pct": 55.0,
-    "calibration_pct": 35.0
+    "mae_pct": 0.9,
+    "directional_accuracy_pct": 60.0,
+    "calibration_pct": 30.0
   }
 }

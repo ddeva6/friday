@@ -1,10 +1,8 @@
 {
   "code": "SUNPHARMA",
   "name": "SUNPHARMA",
-  "last": 1954.0,
+  "last": 1941.1,
   "hist": [
-    1676.69,
-    1683.62,
     1686.79,
     1695.02,
     1718.11,
@@ -251,56 +249,57 @@
     1956.4,
     1961.9,
     1943.0,
-    1954.0
+    1954.0,
+    1941.1
   ],
   "med": [
-    1953.83
+    1942.62
   ],
   "up": [
-    1977.53
+    1959.76
   ],
   "lo": [
-    1966.01
+    1948.28
   ],
-  "ret": -0.01,
+  "ret": 0.08,
   "cone_width_pct": 0.59,
-  "asof": "2026-07-23",
+  "asof": "2026-07-24",
   "trading": {
-    "entry": 1954.0,
-    "stop_loss": 1966.01,
-    "exit": 1953.83,
-    "risk": -12.01,
-    "reward": -0.17,
+    "entry": 1941.1,
+    "stop_loss": 1948.28,
+    "exit": 1942.62,
+    "risk": -7.18,
+    "reward": 1.52,
     "risk_reward": 0.0,
-    "conviction": 35,
+    "conviction": 50,
     "volume": {
-      "latest": 2057288,
-      "avg_20d": 1902573,
-      "ratio": 1.08,
-      "confirmed": true
+      "latest": 1578929,
+      "avg_20d": 1914615,
+      "ratio": 0.82,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 1869.0,
-      "ema_200": 1774.14,
+      "ema_50": 1871.83,
+      "ema_200": 1776.64,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 64.5,
+      "rsi_14": 60.0,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
-        "Trend (BULLISH) conflicts with the forecast",
+        "Conviction 50/100 (MEDIUM)",
+        "Trend (BULLISH) agrees with the forecast",
         "R:R not available",
-        "Volume confirms the move"
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 465734.8870144,
-    "pe": 40.549404,
+    "mcap_cr": 473556.7396864,
+    "pe": 41.33403,
     "roe": 14.719999999999999,
     "de": 0.055170000000000004,
     "sales_growth_yoy": 12.8,
@@ -309,16 +308,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-23"
+    "Data as of 2026-07-24"
   ],
   "calibration": {
-    "bias_pct": 0.233,
+    "bias_pct": 0.1901,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-23",
+        "target_date": "2026-07-24",
+        "predicted_med": 1953.83,
+        "actual_close": 1941.0999755859375,
+        "error_pct": -0.6515,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-22",
         "target_date": "2026-07-23",
@@ -489,19 +497,10 @@
         "error_pct": -0.7724,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-06-23",
-        "target_date": "2026-06-24",
-        "predicted_med": 1870.53,
-        "actual_close": 1874.4000244140625,
-        "error_pct": 0.2069,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.69,
+    "mae_pct": 0.72,
     "directional_accuracy_pct": 65.0,
     "calibration_pct": 15.0
   }
