@@ -1,7 +1,7 @@
 {
   "code": "ULTRACEMCO",
   "name": "ULTRACEMCO",
-  "last": 11846.0,
+  "last": 11881.0,
   "hist": [
     12240.0,
     12221.0,
@@ -250,55 +250,56 @@
     12094.0,
     11893.0,
     11908.0,
-    11846.0
+    11846.0,
+    11881.0
   ],
   "med": [
-    11852.88
+    11879.28
   ],
   "up": [
-    11970.34
+    12005.76
   ],
   "lo": [
-    11869.72
+    11855.02
   ],
-  "ret": 0.06,
-  "cone_width_pct": 0.85,
-  "asof": "2026-07-24",
+  "ret": -0.01,
+  "cone_width_pct": 1.27,
+  "asof": "2026-07-27",
   "trading": {
-    "entry": 11846.0,
-    "stop_loss": 11869.72,
-    "exit": 11852.88,
-    "risk": -23.72,
-    "reward": 6.88,
-    "risk_reward": 0.0,
+    "entry": 11881.0,
+    "stop_loss": 11855.02,
+    "exit": 11879.28,
+    "risk": 25.98,
+    "reward": -1.72,
+    "risk_reward": -0.07,
     "conviction": 25,
     "volume": {
-      "latest": 229015,
-      "avg_20d": 259826,
-      "ratio": 0.88,
+      "latest": 250956,
+      "avg_20d": 271276,
+      "ratio": 0.93,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 11586.09,
-      "ema_200": 11783.08,
+      "ema_50": 11597.65,
+      "ema_200": 11784.06,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 56.2,
+      "rsi_14": 57.1,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 25/100 (LOW)",
-        "R:R not available",
+        "R:R unfavorable (1:-0.07)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 349502.9374976,
-    "pe": 40.936497,
+    "mcap_cr": 351709.2200448,
+    "pe": 41.07462,
     "roe": "N/A",
     "de": 0.29431999999999997,
     "sales_growth_yoy": 15.9,
@@ -307,16 +308,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-24"
+    "Data as of 2026-07-27"
   ],
   "calibration": {
-    "bias_pct": 0.2519,
+    "bias_pct": 0.2416,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-24",
+        "target_date": "2026-07-27",
+        "predicted_med": 11852.88,
+        "actual_close": 11881.0,
+        "error_pct": 0.2372,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-23",
         "target_date": "2026-07-24",
@@ -487,19 +497,10 @@
         "error_pct": -1.4239,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-06-24",
-        "target_date": "2026-06-25",
-        "predicted_med": 11438.33,
-        "actual_close": 11489.0,
-        "error_pct": 0.443,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.09,
+    "mae_pct": 1.08,
     "directional_accuracy_pct": 50.0,
     "calibration_pct": 20.0
   }

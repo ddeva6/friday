@@ -1,7 +1,7 @@
 {
   "code": "SUNPHARMA",
   "name": "SUNPHARMA",
-  "last": 1941.1,
+  "last": 1973.7,
   "hist": [
     1686.79,
     1695.02,
@@ -78,7 +78,7 @@
     1716.42,
     1721.67,
     1741.2,
-    1747.93,
+    1747.94,
     1742.88,
     1767.95,
     1761.31,
@@ -250,74 +250,84 @@
     1961.9,
     1943.0,
     1954.0,
-    1941.1
+    1941.1,
+    1973.7
   ],
   "med": [
-    1942.62
+    1971.12
   ],
   "up": [
-    1959.76
+    1996.42
   ],
   "lo": [
-    1948.28
+    1986.0
   ],
-  "ret": 0.08,
-  "cone_width_pct": 0.59,
-  "asof": "2026-07-24",
+  "ret": -0.13,
+  "cone_width_pct": 0.53,
+  "asof": "2026-07-27",
   "trading": {
-    "entry": 1941.1,
-    "stop_loss": 1948.28,
-    "exit": 1942.62,
-    "risk": -7.18,
-    "reward": 1.52,
+    "entry": 1973.7,
+    "stop_loss": 1986.0,
+    "exit": 1971.12,
+    "risk": -12.3,
+    "reward": -2.58,
     "risk_reward": 0.0,
-    "conviction": 50,
+    "conviction": 45,
     "volume": {
-      "latest": 1578929,
-      "avg_20d": 1914615,
-      "ratio": 0.82,
-      "confirmed": false
+      "latest": 5414380,
+      "avg_20d": 1993562,
+      "ratio": 2.72,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 1871.83,
-      "ema_200": 1776.64,
+      "ema_50": 1875.82,
+      "ema_200": 1778.6,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 60.0,
+      "rsi_14": 66.3,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 50/100 (MEDIUM)",
-        "Trend (BULLISH) agrees with the forecast",
+        "Conviction 45/100 (MEDIUM)",
+        "Trend (BULLISH) conflicts with the forecast",
         "R:R not available",
-        "Volume does not confirm the move"
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 473556.7396864,
-    "pe": 41.33403,
+    "mcap_cr": 474276.5346816,
+    "pe": 41.38819,
     "roe": 14.719999999999999,
     "de": 0.055170000000000004,
     "sales_growth_yoy": 12.8,
-    "hi_52w": 1961.9000244140625,
+    "hi_52w": 1973.699951171875,
     "lo_52w": 1549.150634765625
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-24"
+    "Data as of 2026-07-27"
   ],
   "calibration": {
-    "bias_pct": 0.1901,
+    "bias_pct": 0.3087,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-24",
+        "target_date": "2026-07-27",
+        "predicted_med": 1942.62,
+        "actual_close": 1973.699951171875,
+        "error_pct": 1.5999,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-23",
         "target_date": "2026-07-24",
@@ -488,20 +498,11 @@
         "error_pct": -0.1549,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-06-24",
-        "target_date": "2026-06-25",
-        "predicted_med": 1877.3,
-        "actual_close": 1862.800048828125,
-        "error_pct": -0.7724,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.72,
-    "directional_accuracy_pct": 65.0,
+    "mae_pct": 0.76,
+    "directional_accuracy_pct": 70.0,
     "calibration_pct": 15.0
   }
 }
