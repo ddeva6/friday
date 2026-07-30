@@ -1,9 +1,8 @@
 {
   "code": "SHRIRAMFIN",
   "name": "SHRIRAMFIN",
-  "last": 1040.9,
+  "last": 1044.7,
   "hist": [
-    630.91,
     625.43,
     623.5,
     607.05,
@@ -251,56 +250,57 @@
     1025.8,
     1005.1,
     1038.2,
-    1040.9
+    1040.9,
+    1044.7
   ],
   "med": [
-    1039.71
+    1042.91
   ],
   "up": [
-    1048.51
+    1053.33
   ],
   "lo": [
-    1038.49
+    1042.99
   ],
-  "ret": -0.11,
-  "cone_width_pct": 0.96,
-  "asof": "2026-07-28",
+  "ret": -0.17,
+  "cone_width_pct": 0.99,
+  "asof": "2026-07-29",
   "trading": {
-    "entry": 1040.9,
-    "stop_loss": 1038.49,
-    "exit": 1039.71,
-    "risk": 2.41,
-    "reward": -1.19,
-    "risk_reward": -0.49,
-    "conviction": 35,
+    "entry": 1044.7,
+    "stop_loss": 1042.99,
+    "exit": 1042.91,
+    "risk": 1.71,
+    "reward": -1.79,
+    "risk_reward": -1.05,
+    "conviction": 15,
     "volume": {
-      "latest": 7160194,
-      "avg_20d": 5485152,
-      "ratio": 1.31,
-      "confirmed": true
+      "latest": 4160322,
+      "avg_20d": 5582222,
+      "ratio": 0.75,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 1007.48,
-      "ema_200": 924.53,
+      "ema_50": 1008.94,
+      "ema_200": 925.27,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 54.1,
+      "rsi_14": 55.0,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
+        "Conviction 15/100 (LOW)",
         "Trend (BULLISH) conflicts with the forecast",
-        "R:R unfavorable (1:-0.49)",
-        "Volume confirms the move"
+        "R:R unfavorable (1:-1.05)",
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 245812.5074432,
-    "pe": 18.451077,
+    "mcap_cr": 241694.8543488,
+    "pe": 18.141998,
     "roe": 18.495001,
     "de": 2.7621499999999997,
     "sales_growth_yoy": 39.1,
@@ -309,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-28"
+    "Data as of 2026-07-29"
   ],
   "calibration": {
-    "bias_pct": -0.0239,
-    "coverage": 0.15,
+    "bias_pct": -0.0432,
+    "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-28",
+        "target_date": "2026-07-29",
+        "predicted_med": 1039.71,
+        "actual_close": 1044.699951171875,
+        "error_pct": 0.4799,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-07-27",
         "target_date": "2026-07-28",
@@ -489,20 +498,11 @@
         "error_pct": 1.1019,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-06-29",
-        "target_date": "2026-06-30",
-        "predicted_med": 1033.2,
-        "actual_close": 1042.1500244140625,
-        "error_pct": 0.8662,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.43,
-    "directional_accuracy_pct": 55.0,
-    "calibration_pct": 15.0
+    "mae_pct": 1.41,
+    "directional_accuracy_pct": 50.0,
+    "calibration_pct": 20.0
   }
 }
