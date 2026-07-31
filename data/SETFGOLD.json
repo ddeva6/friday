@@ -1,9 +1,8 @@
 {
   "code": "SETFGOLD",
   "name": "SETFGOLD",
-  "last": 120.53,
+  "last": 121.13,
   "hist": [
-    85.04,
     84.7,
     84.38,
     85.89,
@@ -250,48 +249,49 @@
     121.62,
     122.35,
     120.52,
-    120.53
+    120.53,
+    121.13
   ],
   "med": [
-    120.79
+    121.13
   ],
   "up": [
-    120.65
+    121.23
   ],
   "lo": [
-    119.75
+    120.29
   ],
-  "ret": 0.22,
-  "cone_width_pct": 0.75,
-  "asof": "2026-07-29",
+  "ret": 0.0,
+  "cone_width_pct": 0.78,
+  "asof": "2026-07-30",
   "trading": {
-    "entry": 120.53,
-    "stop_loss": 119.75,
-    "exit": 120.79,
-    "risk": 0.78,
-    "reward": 0.26,
-    "risk_reward": 0.33,
+    "entry": 121.13,
+    "stop_loss": 120.29,
+    "exit": 121.13,
+    "risk": 0.84,
+    "reward": 0.0,
+    "risk_reward": 0.0,
     "conviction": 50,
     "volume": {
-      "latest": 1856369,
-      "avg_20d": 3546991,
-      "ratio": 0.52,
+      "latest": 1516352,
+      "avg_20d": 3247156,
+      "ratio": 0.47,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 123.8,
-      "ema_200": 119.68,
+      "ema_50": 123.69,
+      "ema_200": 119.67,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 44.1,
+      "rsi_14": 46.4,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 50/100 (MEDIUM)",
-        "R:R unfavorable (1:0.33)",
+        "R:R not available",
         "Volume does not confirm the move"
       ]
     }
@@ -307,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-07-29"
+    "Data as of 2026-07-30"
   ],
   "calibration": {
-    "bias_pct": 0.064,
+    "bias_pct": -0.0078,
     "coverage": 0.35,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-07-29",
+        "target_date": "2026-07-30",
+        "predicted_med": 120.79,
+        "actual_close": 121.12999725341797,
+        "error_pct": 0.2815,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-07-28",
         "target_date": "2026-07-29",
@@ -487,19 +496,10 @@
         "error_pct": 2.3154,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-01",
-        "target_date": "2026-07-02",
-        "predicted_med": 119.39,
-        "actual_close": 121.44000244140625,
-        "error_pct": 1.7171,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.8,
+    "mae_pct": 0.73,
     "directional_accuracy_pct": 70.0,
     "calibration_pct": 35.0
   }
