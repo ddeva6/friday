@@ -1,9 +1,8 @@
 {
   "code": "NIFTYFINSERVICE",
   "name": "Nifty Financial Services",
-  "last": 1173.54,
+  "last": 1175.68,
   "hist": [
-    1061.6,
     1057.43,
     1057.11,
     1050.41,
@@ -249,30 +248,31 @@
     1117.02,
     1120.76,
     1109.99,
-    1150.66,
+    1149.91,
     1178.38,
-    1173.54
+    1173.54,
+    1175.68
   ],
   "med": [
-    1166.79
+    1172.29
   ],
   "up": [
-    1194.57
+    1198.33
   ],
   "lo": [
-    1187.01
+    1190.69
   ],
-  "ret": -0.58,
-  "cone_width_pct": 0.64,
-  "asof": "2026-08-04",
+  "ret": -0.29,
+  "cone_width_pct": 0.65,
+  "asof": "2026-08-05",
   "trading": {
-    "entry": 1173.54,
-    "stop_loss": 1187.01,
-    "exit": 1166.79,
-    "risk": -13.47,
-    "reward": -6.75,
+    "entry": 1175.68,
+    "stop_loss": 1190.69,
+    "exit": 1172.29,
+    "risk": -15.01,
+    "reward": -3.39,
     "risk_reward": 0.0,
-    "conviction": 25,
+    "conviction": 15,
     "volume": {
       "latest": 0,
       "avg_20d": 0,
@@ -280,18 +280,19 @@
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1090.27,
-      "ema_200": 1090.89,
-      "label": "RECOVERING"
+      "ema_50": 1093.59,
+      "ema_200": 1091.38,
+      "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 70.6,
+      "rsi_14": 71.0,
       "label": "OVERBOUGHT"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 25/100 (LOW)",
+        "Conviction 15/100 (LOW)",
+        "Trend (BULLISH) conflicts with the forecast",
         "R:R not available",
         "Volume does not confirm the move"
       ]
@@ -308,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-04"
+    "Data as of 2026-08-05"
   ],
   "calibration": {
-    "bias_pct": 0.4189,
+    "bias_pct": 0.5907,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-04",
+        "target_date": "2026-08-05",
+        "predicted_med": 1166.79,
+        "actual_close": 1175.6750183105469,
+        "error_pct": 0.7615,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-08-03",
         "target_date": "2026-08-04",
@@ -488,20 +498,11 @@
         "error_pct": 1.2583,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-07-07",
-        "target_date": "2026-07-08",
-        "predicted_med": 1105.31,
-        "actual_close": 1075.7316818237305,
-        "error_pct": -2.676,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.18,
-    "directional_accuracy_pct": 50.0,
+    "mae_pct": 1.08,
+    "directional_accuracy_pct": 45.0,
     "calibration_pct": 15.0
   }
 }
