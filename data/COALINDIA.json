@@ -1,10 +1,8 @@
 {
   "code": "COALINDIA",
   "name": "COALINDIA",
-  "last": 415.6,
+  "last": 415.25,
   "hist": [
-    355.09,
-    355.23,
     357.85,
     360.52,
     361.22,
@@ -251,55 +249,56 @@
     416.0,
     417.6,
     415.5,
-    415.6
+    415.6,
+    415.25
   ],
   "med": [
-    415.58
+    415.25
   ],
   "up": [
-    415.52
+    415.31
   ],
   "lo": [
-    413.12
+    412.75
   ],
   "ret": 0.0,
-  "cone_width_pct": 0.58,
-  "asof": "2026-08-06",
+  "cone_width_pct": 0.62,
+  "asof": "2026-08-07",
   "trading": {
-    "entry": 415.6,
-    "stop_loss": 413.12,
-    "exit": 415.58,
-    "risk": 2.48,
-    "reward": -0.02,
-    "risk_reward": -0.01,
+    "entry": 415.25,
+    "stop_loss": 412.75,
+    "exit": 415.25,
+    "risk": 2.5,
+    "reward": 0.0,
+    "risk_reward": 0.0,
     "conviction": 25,
     "volume": {
-      "latest": 4753639,
-      "avg_20d": 6717007,
-      "ratio": 0.71,
+      "latest": 3493763,
+      "avg_20d": 6811913,
+      "ratio": 0.51,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 428.65,
-      "ema_200": 419.9,
+      "ema_50": 428.12,
+      "ema_200": 420.09,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 41.3,
+      "rsi_14": 40.9,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 25/100 (LOW)",
-        "R:R unfavorable (1:-0.01)",
+        "R:R not available",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 255907.3058816,
-    "pe": 8.209766,
+    "mcap_cr": 253288.1465344,
+    "pe": 8.132173,
     "roe": "N/A",
     "de": 0.11628999999999999,
     "sales_growth_yoy": 45.1,
@@ -308,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-06"
+    "Data as of 2026-08-07"
   ],
   "calibration": {
-    "bias_pct": -0.236,
-    "coverage": 0.2,
+    "bias_pct": -0.2305,
+    "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-06",
+        "target_date": "2026-08-07",
+        "predicted_med": 415.58,
+        "actual_close": 415.25,
+        "error_pct": -0.0794,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-08-05",
         "target_date": "2026-08-06",
@@ -488,20 +496,11 @@
         "error_pct": 0.142,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-07-09",
-        "target_date": "2026-07-10",
-        "predicted_med": 430.11,
-        "actual_close": 429.29998779296875,
-        "error_pct": -0.1883,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
     "mae_pct": 0.51,
-    "directional_accuracy_pct": 45.0,
-    "calibration_pct": 20.0
+    "directional_accuracy_pct": 50.0,
+    "calibration_pct": 25.0
   }
 }
