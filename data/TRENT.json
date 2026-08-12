@@ -1,9 +1,8 @@
 {
   "code": "TRENT",
   "name": "TRENT",
-  "last": 3025.0,
+  "last": 3000.0,
   "hist": [
-    5435.47,
     5357.58,
     5390.53,
     5362.58,
@@ -245,47 +244,47 @@
     2930.7,
     3005.2,
     2999.2,
-    3005.9,
     3050.0,
     3107.7,
     3129.0,
     3107.1,
     2997.0,
-    3025.0
+    3025.0,
+    3000.0
   ],
   "med": [
-    3032.14
+    3012.96
   ],
   "up": [
-    3055.62
+    3025.64
   ],
   "lo": [
-    3028.06
+    3000.0
   ],
-  "ret": 0.24,
-  "cone_width_pct": 0.91,
-  "asof": "2026-08-10",
+  "ret": 0.43,
+  "cone_width_pct": 0.85,
+  "asof": "2026-08-11",
   "trading": {
-    "entry": 3025.0,
-    "stop_loss": 3028.06,
-    "exit": 3032.14,
-    "risk": -3.06,
-    "reward": 7.14,
+    "entry": 3000.0,
+    "stop_loss": 3000.0,
+    "exit": 3012.96,
+    "risk": 0.0,
+    "reward": 12.96,
     "risk_reward": 0.0,
     "conviction": 25,
     "volume": {
-      "latest": 989590,
-      "avg_20d": 1122671,
-      "ratio": 0.88,
+      "latest": 589607,
+      "avg_20d": 1141889,
+      "ratio": 0.52,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 2970.41,
-      "ema_200": 3286.28,
+      "ema_50": 2969.66,
+      "ema_200": 3279.67,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 52.3,
+      "rsi_14": 50.0,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -298,8 +297,8 @@
     }
   },
   "fundamentals": {
-    "mcap_cr": 159969.6928768,
-    "pe": 88.54781,
+    "mcap_cr": 159276.4792832,
+    "pe": 88.11209,
     "roe": "N/A",
     "de": 0.36034,
     "sales_growth_yoy": 17.8,
@@ -308,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-10"
+    "Data as of 2026-08-11"
   ],
   "calibration": {
-    "bias_pct": 0.4526,
-    "coverage": 0.3,
+    "bias_pct": 0.4998,
+    "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-10",
+        "target_date": "2026-08-11",
+        "predicted_med": 3032.14,
+        "actual_close": 3000.0,
+        "error_pct": -1.06,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-08-07",
         "target_date": "2026-08-10",
@@ -488,20 +496,11 @@
         "error_pct": -0.9611,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-13",
-        "target_date": "2026-07-14",
-        "predicted_med": 2927.78,
-        "actual_close": 2869.10009765625,
-        "error_pct": -2.0042,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.41,
+    "mae_pct": 1.36,
     "directional_accuracy_pct": 45.0,
-    "calibration_pct": 30.0
+    "calibration_pct": 25.0
   }
 }
