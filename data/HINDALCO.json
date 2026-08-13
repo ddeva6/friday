@@ -1,9 +1,8 @@
 {
   "code": "HINDALCO",
   "name": "HINDALCO",
-  "last": 1049.1,
+  "last": 1078.5,
   "hist": [
-    663.59,
     696.86,
     691.64,
     710.44,
@@ -235,9 +234,7 @@
     955.8,
     959.3,
     944.15,
-    947.8,
     951.4,
-    950.0,
     955.65,
     942.8,
     945.25,
@@ -250,74 +247,84 @@
     1027.0,
     1059.6,
     1054.05,
-    1049.1
+    1049.1,
+    1078.5
   ],
   "med": [
-    1045.51
+    1072.68
   ],
   "up": [
-    1075.09
+    1108.5
   ],
   "lo": [
-    1061.93
+    1095.64
   ],
-  "ret": -0.34,
-  "cone_width_pct": 1.25,
-  "asof": "2026-08-11",
+  "ret": -0.54,
+  "cone_width_pct": 1.19,
+  "asof": "2026-08-12",
   "trading": {
-    "entry": 1049.1,
-    "stop_loss": 1061.93,
-    "exit": 1045.51,
-    "risk": -12.83,
-    "reward": -3.59,
+    "entry": 1078.5,
+    "stop_loss": 1095.64,
+    "exit": 1072.68,
+    "risk": -17.14,
+    "reward": -5.82,
     "risk_reward": 0.0,
-    "conviction": 30,
+    "conviction": 20,
     "volume": {
-      "latest": 4831839,
-      "avg_20d": 5068188,
-      "ratio": 0.95,
-      "confirmed": false
+      "latest": 8786842,
+      "avg_20d": 5200101,
+      "ratio": 1.69,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 995.08,
-      "ema_200": 936.21,
+      "ema_50": 1000.29,
+      "ema_200": 940.1,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 66.0,
-      "label": "NEUTRAL"
+      "rsi_14": 70.0,
+      "label": "OVERBOUGHT"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 30/100 (LOW)",
+        "Conviction 20/100 (LOW)",
         "Trend (BULLISH) conflicts with the forecast",
         "R:R not available",
-        "Volume does not confirm the move"
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 239409.430528,
-    "pe": 14.623729,
+    "mcap_cr": 232250.4613888,
+    "pe": 13.7991295,
     "roe": "N/A",
     "de": 0.72598,
     "sales_growth_yoy": 32.1,
     "hi_52w": 1143.7333984375,
-    "lo_52w": 663.5882568359375
+    "lo_52w": 691.6419067382812
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-11"
+    "Data as of 2026-08-12"
   ],
   "calibration": {
-    "bias_pct": 0.4138,
+    "bias_pct": 0.6612,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-11",
+        "target_date": "2026-08-12",
+        "predicted_med": 1045.51,
+        "actual_close": 1078.5,
+        "error_pct": 3.1554,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-08-10",
         "target_date": "2026-08-11",
@@ -488,20 +495,11 @@
         "error_pct": 0.1409,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-07-14",
-        "target_date": "2026-07-15",
-        "predicted_med": 973.25,
-        "actual_close": 955.7999877929688,
-        "error_pct": -1.793,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.16,
-    "directional_accuracy_pct": 55.0,
+    "mae_pct": 1.23,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 15.0
   }
 }

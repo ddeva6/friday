@@ -1,9 +1,8 @@
 {
   "code": "QGOLDHALF",
   "name": "QGOLDHALF",
-  "last": 124.98,
+  "last": 125.89,
   "hist": [
-    82.79,
     83.0,
     82.91,
     82.75,
@@ -249,42 +248,43 @@
     119.54,
     122.69,
     123.84,
-    124.98
+    124.98,
+    125.89
   ],
   "med": [
-    124.29
+    125.34
   ],
   "up": [
-    127.49
+    128.56
   ],
   "lo": [
-    125.97
+    127.22
   ],
-  "ret": -0.55,
-  "cone_width_pct": 1.22,
-  "asof": "2026-08-10",
+  "ret": -0.44,
+  "cone_width_pct": 1.06,
+  "asof": "2026-08-11",
   "trading": {
-    "entry": 124.98,
-    "stop_loss": 125.97,
-    "exit": 124.29,
-    "risk": -0.99,
-    "reward": -0.69,
+    "entry": 125.89,
+    "stop_loss": 127.22,
+    "exit": 125.34,
+    "risk": -1.33,
+    "reward": -0.55,
     "risk_reward": 0.0,
     "conviction": 20,
     "volume": {
-      "latest": 313237,
-      "avg_20d": 134793,
-      "ratio": 2.32,
+      "latest": 214135,
+      "avg_20d": 140378,
+      "ratio": 1.53,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 120.3,
-      "ema_200": 116.52,
+      "ema_50": 120.51,
+      "ema_200": 116.63,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 68.9,
-      "label": "NEUTRAL"
+      "rsi_14": 70.7,
+      "label": "OVERBOUGHT"
     },
     "verdict": {
       "label": "CAUTION",
@@ -307,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-10"
+    "Data as of 2026-08-11"
   ],
   "calibration": {
-    "bias_pct": 0.2419,
-    "coverage": 0.3,
+    "bias_pct": 0.349,
+    "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-10",
+        "target_date": "2026-08-11",
+        "predicted_med": 124.29,
+        "actual_close": 125.88999938964844,
+        "error_pct": 1.2873,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-08-07",
         "target_date": "2026-08-10",
@@ -487,20 +496,11 @@
         "error_pct": -0.963,
         "in_cone": true,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-10",
-        "target_date": "2026-07-13",
-        "predicted_med": 118.22,
-        "actual_close": 117.20999908447266,
-        "error_pct": -0.8543,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.78,
-    "directional_accuracy_pct": 50.0,
-    "calibration_pct": 30.0
+    "mae_pct": 0.81,
+    "directional_accuracy_pct": 45.0,
+    "calibration_pct": 25.0
   }
 }

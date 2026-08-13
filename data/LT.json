@@ -1,9 +1,8 @@
 {
   "code": "LT",
   "name": "LT",
-  "last": 4037.4,
+  "last": 4020.0,
   "hist": [
-    3650.44,
     3657.97,
     3641.43,
     3599.94,
@@ -237,7 +236,6 @@
     3814.5,
     3838.8,
     3846.6,
-    3817.4,
     3792.4,
     3785.6,
     3806.0,
@@ -251,56 +249,57 @@
     4061.8,
     4056.0,
     4080.0,
-    4037.4
+    4037.4,
+    4020.0
   ],
   "med": [
-    4042.86
+    4033.07
   ],
   "up": [
-    4085.58
+    4063.49
   ],
   "lo": [
-    4057.36
+    4038.17
   ],
-  "ret": 0.14,
-  "cone_width_pct": 0.7,
-  "asof": "2026-08-11",
+  "ret": 0.33,
+  "cone_width_pct": 0.63,
+  "asof": "2026-08-12",
   "trading": {
-    "entry": 4037.4,
-    "stop_loss": 4057.36,
-    "exit": 4042.86,
-    "risk": -19.96,
-    "reward": 5.46,
+    "entry": 4020.0,
+    "stop_loss": 4038.17,
+    "exit": 4033.07,
+    "risk": -18.17,
+    "reward": 13.07,
     "risk_reward": 0.0,
-    "conviction": 35,
+    "conviction": 40,
     "volume": {
-      "latest": 1401285,
-      "avg_20d": 1867325,
-      "ratio": 0.75,
-      "confirmed": false
+      "latest": 2226623,
+      "avg_20d": 1879519,
+      "ratio": 1.18,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 3967.2,
-      "ema_200": 3912.92,
+      "ema_50": 3972.62,
+      "ema_200": 3915.38,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 57.9,
+      "rsi_14": 55.2,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
+        "Conviction 40/100 (MEDIUM)",
         "Trend (BULLISH) agrees with the forecast",
         "R:R not available",
-        "Volume does not confirm the move"
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 553098.2023168,
-    "pe": 33.75315,
+    "mcap_cr": 560073.801728,
+    "pe": 33.86606,
     "roe": "N/A",
     "de": 0.9764,
     "sales_growth_yoy": 8.1,
@@ -309,16 +308,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-11"
+    "Data as of 2026-08-12"
   ],
   "calibration": {
-    "bias_pct": 0.3907,
+    "bias_pct": 0.4666,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-11",
+        "target_date": "2026-08-12",
+        "predicted_med": 4042.86,
+        "actual_close": 4020.0,
+        "error_pct": -0.5654,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-08-10",
         "target_date": "2026-08-11",
@@ -489,19 +497,10 @@
         "error_pct": -0.5804,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-14",
-        "target_date": "2026-07-15",
-        "predicted_med": 3864.38,
-        "actual_close": 3783.89990234375,
-        "error_pct": -2.0826,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.93,
+    "mae_pct": 0.86,
     "directional_accuracy_pct": 25.0,
     "calibration_pct": 20.0
   }
