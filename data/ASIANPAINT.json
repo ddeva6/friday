@@ -1,9 +1,8 @@
 {
   "code": "ASIANPAINT",
   "name": "ASIANPAINT",
-  "last": 2628.4,
+  "last": 2630.8,
   "hist": [
-    2553.23,
     2544.02,
     2540.56,
     2479.09,
@@ -231,9 +230,7 @@
     2670.0,
     2674.7,
     2689.0,
-    2691.4,
     2692.4,
-    2692.8,
     2668.8,
     2637.9,
     2710.2,
@@ -251,55 +248,56 @@
     2755.5,
     2696.3,
     2687.5,
-    2628.4
+    2628.4,
+    2630.8
   ],
   "med": [
-    2643.38
+    2642.63
   ],
   "up": [
-    2619.12
+    2621.75
   ],
   "lo": [
-    2601.24
+    2603.91
   ],
-  "ret": 0.57,
+  "ret": 0.45,
   "cone_width_pct": 0.68,
-  "asof": "2026-08-18",
+  "asof": "2026-08-19",
   "trading": {
-    "entry": 2628.4,
-    "stop_loss": 2601.24,
-    "exit": 2643.38,
-    "risk": 27.16,
-    "reward": 14.98,
-    "risk_reward": 0.55,
-    "conviction": 30,
+    "entry": 2630.8,
+    "stop_loss": 2603.91,
+    "exit": 2642.63,
+    "risk": 26.89,
+    "reward": 11.83,
+    "risk_reward": 0.44,
+    "conviction": 25,
     "volume": {
-      "latest": 1017022,
-      "avg_20d": 1003402,
-      "ratio": 1.01,
-      "confirmed": true
+      "latest": 742443,
+      "avg_20d": 1021909,
+      "ratio": 0.73,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 2684.45,
-      "ema_200": 2587.23,
+      "ema_50": 2680.36,
+      "ema_200": 2584.68,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 37.2,
+      "rsi_14": 38.1,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 30/100 (LOW)",
-        "R:R unfavorable (1:0.55)",
-        "Volume confirms the move"
+        "Conviction 25/100 (LOW)",
+        "R:R unfavorable (1:0.44)",
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 252200.1440768,
-    "pe": 52.95491,
+    "mcap_cr": 251663.2993792,
+    "pe": 52.799675,
     "roe": "N/A",
     "de": 0.17847000000000002,
     "sales_growth_yoy": 17.9,
@@ -308,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-18"
+    "Data as of 2026-08-19"
   ],
   "calibration": {
-    "bias_pct": -0.1245,
-    "coverage": 0.25,
+    "bias_pct": -0.154,
+    "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-18",
+        "target_date": "2026-08-19",
+        "predicted_med": 2643.38,
+        "actual_close": 2630.800048828125,
+        "error_pct": -0.4759,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-08-17",
         "target_date": "2026-08-18",
@@ -488,20 +495,11 @@
         "error_pct": -0.92,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-21",
-        "target_date": "2026-07-22",
-        "predicted_med": 2689.73,
-        "actual_close": 2692.800048828125,
-        "error_pct": 0.1141,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.95,
-    "directional_accuracy_pct": 40.0,
-    "calibration_pct": 25.0
+    "mae_pct": 0.97,
+    "directional_accuracy_pct": 45.0,
+    "calibration_pct": 20.0
   }
 }
