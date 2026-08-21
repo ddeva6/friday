@@ -1,9 +1,8 @@
 {
   "code": "ETERNAL",
   "name": "ETERNAL",
-  "last": 320.0,
+  "last": 327.95,
   "hist": [
-    326.55,
     321.8,
     319.1,
     319.25,
@@ -230,7 +229,9 @@
     294.8,
     286.45,
     286.6,
+    286.95,
     286.6,
+    284.4,
     287.1,
     280.0,
     295.85,
@@ -250,56 +251,57 @@
     318.5,
     318.0,
     315.9,
-    320.0
+    320.0,
+    327.95
   ],
   "med": [
-    320.31
+    327.33
   ],
   "up": [
-    326.61
+    336.05
   ],
   "lo": [
-    323.37
+    332.69
   ],
-  "ret": 0.1,
-  "cone_width_pct": 1.01,
-  "asof": "2026-08-19",
+  "ret": -0.19,
+  "cone_width_pct": 1.02,
+  "asof": "2026-08-20",
   "trading": {
-    "entry": 320.0,
-    "stop_loss": 323.37,
-    "exit": 320.31,
-    "risk": -3.37,
-    "reward": 0.31,
+    "entry": 327.95,
+    "stop_loss": 332.69,
+    "exit": 327.33,
+    "risk": -4.74,
+    "reward": -0.62,
     "risk_reward": 0.0,
-    "conviction": 35,
+    "conviction": 20,
     "volume": {
-      "latest": 28100651,
-      "avg_20d": 30514113,
-      "ratio": 0.92,
-      "confirmed": false
+      "latest": 36661268,
+      "avg_20d": 30810202,
+      "ratio": 1.19,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 291.52,
-      "ema_200": 280.64,
+      "ema_50": 293.56,
+      "ema_200": 280.91,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 65.0,
+      "rsi_14": 69.5,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
-        "Trend (BULLISH) agrees with the forecast",
+        "Conviction 20/100 (LOW)",
+        "Trend (BULLISH) conflicts with the forecast",
         "R:R not available",
-        "Volume does not confirm the move"
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 301890.8762112,
-    "pe": 683.2292,
+    "mcap_cr": 301936.9086976,
+    "pe": 713.04346,
     "roe": "N/A",
     "de": 0.14826,
     "sales_growth_yoy": 182.0,
@@ -308,16 +310,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-19"
+    "Data as of 2026-08-20"
   ],
   "calibration": {
-    "bias_pct": 0.758,
-    "coverage": 0.2,
+    "bias_pct": 0.83,
+    "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-19",
+        "target_date": "2026-08-20",
+        "predicted_med": 320.31,
+        "actual_close": 327.95001220703125,
+        "error_pct": 2.3852,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-08-18",
         "target_date": "2026-08-19",
@@ -488,20 +499,11 @@
         "error_pct": -2.5171,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-22",
-        "target_date": "2026-07-23",
-        "predicted_med": 284.41,
-        "actual_close": 287.1000061035156,
-        "error_pct": 0.9458,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.58,
+    "mae_pct": 1.65,
     "directional_accuracy_pct": 50.0,
-    "calibration_pct": 20.0
+    "calibration_pct": 15.0
   }
 }

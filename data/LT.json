@@ -1,9 +1,8 @@
 {
   "code": "LT",
   "name": "LT",
-  "last": 4041.3,
+  "last": 4081.0,
   "hist": [
-    3557.55,
     3577.66,
     3561.02,
     3568.25,
@@ -232,6 +231,7 @@
     3814.5,
     3838.8,
     3846.6,
+    3817.4,
     3792.4,
     3785.6,
     3806.0,
@@ -251,41 +251,42 @@
     4057.0,
     4086.7,
     4064.3,
-    4041.3
+    4041.3,
+    4081.0
   ],
   "med": [
-    4055.07
+    4086.44
   ],
   "up": [
-    4081.13
+    4130.24
   ],
   "lo": [
-    4055.17
+    4091.68
   ],
-  "ret": 0.34,
-  "cone_width_pct": 0.64,
-  "asof": "2026-08-19",
+  "ret": 0.13,
+  "cone_width_pct": 0.94,
+  "asof": "2026-08-20",
   "trading": {
-    "entry": 4041.3,
-    "stop_loss": 4055.17,
-    "exit": 4055.07,
-    "risk": -13.87,
-    "reward": 13.77,
+    "entry": 4081.0,
+    "stop_loss": 4091.68,
+    "exit": 4086.44,
+    "risk": -10.68,
+    "reward": 5.44,
     "risk_reward": 0.0,
     "conviction": 35,
     "volume": {
-      "latest": 1190832,
-      "avg_20d": 1656556,
-      "ratio": 0.72,
+      "latest": 1056060,
+      "avg_20d": 1646402,
+      "ratio": 0.64,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 3989.1,
-      "ema_200": 3914.43,
+      "ema_50": 3990.08,
+      "ema_200": 3917.09,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 54.8,
+      "rsi_14": 59.2,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -299,8 +300,8 @@
     }
   },
   "fundamentals": {
-    "mcap_cr": 561490.952192,
-    "pe": 33.886906,
+    "mcap_cr": 563141.9875328,
+    "pe": 33.99784,
     "roe": "N/A",
     "de": 0.9764,
     "sales_growth_yoy": 8.1,
@@ -309,16 +310,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-19"
+    "Data as of 2026-08-20"
   ],
   "calibration": {
-    "bias_pct": 0.4226,
-    "coverage": 0.2,
+    "bias_pct": 0.4883,
+    "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-19",
+        "target_date": "2026-08-20",
+        "predicted_med": 4055.07,
+        "actual_close": 4081.0,
+        "error_pct": 0.6394,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-08-18",
         "target_date": "2026-08-19",
@@ -489,20 +499,11 @@
         "error_pct": -0.239,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-22",
-        "target_date": "2026-07-23",
-        "predicted_med": 3818.12,
-        "actual_close": 3792.39990234375,
-        "error_pct": -0.6736,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
     "mae_pct": 0.87,
-    "directional_accuracy_pct": 25.0,
-    "calibration_pct": 20.0
+    "directional_accuracy_pct": 30.0,
+    "calibration_pct": 25.0
   }
 }
