@@ -1,10 +1,8 @@
 {
   "code": "NIFTYFINSERVICE",
   "name": "Nifty Financial Services",
-  "last": 1134.63,
+  "last": 1141.53,
   "hist": [
-    1078.57,
-    1070.69,
     1069.74,
     1047.36,
     1041.45,
@@ -252,26 +250,27 @@
     1133.24,
     1129.33,
     1126.34,
-    1134.63
+    1134.63,
+    1141.53
   ],
   "med": [
-    1136.8
+    1143.28
   ],
   "up": [
-    1141.68
+    1150.48
   ],
   "lo": [
-    1134.68
+    1143.9
   ],
-  "ret": 0.19,
-  "cone_width_pct": 0.62,
-  "asof": "2026-08-20",
+  "ret": 0.15,
+  "cone_width_pct": 0.58,
+  "asof": "2026-08-21",
   "trading": {
-    "entry": 1134.63,
-    "stop_loss": 1134.68,
-    "exit": 1136.8,
-    "risk": -0.05,
-    "reward": 2.17,
+    "entry": 1141.53,
+    "stop_loss": 1143.9,
+    "exit": 1143.28,
+    "risk": -2.37,
+    "reward": 1.75,
     "risk_reward": 0.0,
     "conviction": 35,
     "volume": {
@@ -281,12 +280,12 @@
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1110.11,
-      "ema_200": 1098.18,
+      "ema_50": 1111.34,
+      "ema_200": 1097.89,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 53.4,
+      "rsi_14": 56.1,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -310,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-20"
+    "Data as of 2026-08-21"
   ],
   "calibration": {
-    "bias_pct": 0.1848,
-    "coverage": 0.15,
+    "bias_pct": 0.2475,
+    "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-20",
+        "target_date": "2026-08-21",
+        "predicted_med": 1136.8,
+        "actual_close": 1141.5333353678386,
+        "error_pct": 0.4164,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-08-19",
         "target_date": "2026-08-20",
@@ -490,20 +498,11 @@
         "error_pct": 1.5565,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-07-23",
-        "target_date": "2026-07-24",
-        "predicted_med": 1099.7,
-        "actual_close": 1090.493314107259,
-        "error_pct": -0.8372,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.95,
-    "directional_accuracy_pct": 40.0,
-    "calibration_pct": 15.0
+    "mae_pct": 0.93,
+    "directional_accuracy_pct": 45.0,
+    "calibration_pct": 20.0
   }
 }

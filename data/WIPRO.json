@@ -1,10 +1,8 @@
 {
   "code": "WIPRO",
   "name": "WIPRO",
-  "last": 181.0,
+  "last": 180.79,
   "hist": [
-    240.87,
-    239.65,
     244.66,
     242.91,
     241.58,
@@ -252,56 +250,57 @@
     181.9,
     178.06,
     179.55,
-    181.0
+    181.0,
+    180.79
   ],
   "med": [
-    181.66
+    181.2
   ],
   "up": [
-    182.92
+    182.02
   ],
   "lo": [
-    180.94
+    180.5
   ],
-  "ret": 0.36,
-  "cone_width_pct": 1.09,
-  "asof": "2026-08-20",
+  "ret": 0.23,
+  "cone_width_pct": 0.84,
+  "asof": "2026-08-21",
   "trading": {
-    "entry": 181.0,
-    "stop_loss": 180.94,
-    "exit": 181.66,
-    "risk": 0.06,
-    "reward": 0.66,
-    "risk_reward": 11.0,
-    "conviction": 40,
+    "entry": 180.79,
+    "stop_loss": 180.5,
+    "exit": 181.2,
+    "risk": 0.29,
+    "reward": 0.41,
+    "risk_reward": 1.41,
+    "conviction": 30,
     "volume": {
-      "latest": 5364164,
-      "avg_20d": 13254431,
-      "ratio": 0.4,
+      "latest": 4637869,
+      "avg_20d": 13069844,
+      "ratio": 0.35,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 182.08,
-      "ema_200": 201.44,
+      "ema_50": 182.03,
+      "ema_200": 201.55,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 49.2,
+      "rsi_14": 48.8,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 40/100 (MEDIUM)",
+        "Conviction 30/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R favorable (1:11.00)",
+        "R:R favorable (1:1.41)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 178848.8843264,
-    "pe": 14.348412,
+    "mcap_cr": 179363.3026048,
+    "pe": 14.4125595,
     "roe": 16.128999,
     "de": 0.27398,
     "sales_growth_yoy": 10.6,
@@ -310,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-20"
+    "Data as of 2026-08-21"
   ],
   "calibration": {
-    "bias_pct": 0.1101,
-    "coverage": 0.2,
+    "bias_pct": 0.0885,
+    "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-20",
+        "target_date": "2026-08-21",
+        "predicted_med": 181.66,
+        "actual_close": 180.7899932861328,
+        "error_pct": -0.4789,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-08-19",
         "target_date": "2026-08-20",
@@ -490,20 +498,11 @@
         "error_pct": 1.9531,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-23",
-        "target_date": "2026-07-24",
-        "predicted_med": 175.2,
-        "actual_close": 175.1199951171875,
-        "error_pct": -0.0457,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.05,
-    "directional_accuracy_pct": 45.0,
-    "calibration_pct": 20.0
+    "mae_pct": 1.07,
+    "directional_accuracy_pct": 40.0,
+    "calibration_pct": 15.0
   }
 }

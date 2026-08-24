@@ -1,10 +1,8 @@
 {
   "code": "HCLTECH",
   "name": "HCLTECH",
-  "last": 1318.4,
+  "last": 1302.5,
   "hist": [
-    1428.79,
-    1402.77,
     1439.03,
     1428.12,
     1386.99,
@@ -252,55 +250,56 @@
     1325.0,
     1298.0,
     1324.8,
-    1318.4
+    1318.4,
+    1302.5
   ],
   "med": [
-    1321.27
+    1306.2
   ],
   "up": [
-    1329.81
+    1309.42
   ],
   "lo": [
-    1317.69
+    1296.5
   ],
-  "ret": 0.22,
-  "cone_width_pct": 0.92,
-  "asof": "2026-08-20",
+  "ret": 0.28,
+  "cone_width_pct": 0.99,
+  "asof": "2026-08-21",
   "trading": {
-    "entry": 1318.4,
-    "stop_loss": 1317.69,
-    "exit": 1321.27,
-    "risk": 0.71,
-    "reward": 2.87,
-    "risk_reward": 4.04,
-    "conviction": 50,
+    "entry": 1302.5,
+    "stop_loss": 1296.5,
+    "exit": 1306.2,
+    "risk": 6.0,
+    "reward": 3.7,
+    "risk_reward": 0.62,
+    "conviction": 25,
     "volume": {
-      "latest": 1510868,
-      "avg_20d": 2547925,
+      "latest": 1484443,
+      "avg_20d": 2529545,
       "ratio": 0.59,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1264.73,
-      "ema_200": 1312.58,
+      "ema_50": 1266.21,
+      "ema_200": 1313.35,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 54.0,
+      "rsi_14": 50.4,
       "label": "NEUTRAL"
     },
     "verdict": {
-      "label": "NEUTRAL",
+      "label": "CAUTION",
       "reasons": [
-        "Conviction 50/100 (MEDIUM)",
-        "R:R favorable (1:4.04)",
+        "Conviction 25/100 (LOW)",
+        "R:R unfavorable (1:0.62)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 352426.1052416,
-    "pe": 20.285002,
+    "mcap_cr": 357702.3561728,
+    "pe": 20.588694,
     "roe": 24.067,
     "de": 0.07058,
     "sales_growth_yoy": 3.0,
@@ -309,16 +308,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-20"
+    "Data as of 2026-08-21"
   ],
   "calibration": {
-    "bias_pct": 0.2379,
-    "coverage": 0.1,
+    "bias_pct": 0.055,
+    "coverage": 0.05,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-20",
+        "target_date": "2026-08-21",
+        "predicted_med": 1321.27,
+        "actual_close": 1302.5,
+        "error_pct": -1.4206,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-08-19",
         "target_date": "2026-08-20",
@@ -489,20 +497,11 @@
         "error_pct": 2.2253,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-23",
-        "target_date": "2026-07-24",
-        "predicted_med": 1243.2,
-        "actual_close": 1271.0,
-        "error_pct": 2.2362,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.25,
+    "mae_pct": 1.21,
     "directional_accuracy_pct": 45.0,
-    "calibration_pct": 10.0
+    "calibration_pct": 5.0
   }
 }

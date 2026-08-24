@@ -1,10 +1,8 @@
 {
   "code": "IVZINGOLD",
   "name": "IVZINGOLD",
-  "last": 132.4,
+  "last": 138.5,
   "hist": [
-    8669.9,
-    8676.65,
     8763.75,
     8819.35,
     8850.2,
@@ -250,49 +248,51 @@
     131.4,
     133.25,
     132.8,
-    132.4
+    132.4,
+    135.6,
+    138.5
   ],
   "med": [
-    131.83
+    136.93
   ],
   "up": [
-    134.85
+    141.97
   ],
   "lo": [
-    131.43
+    138.45
   ],
-  "ret": -0.43,
-  "cone_width_pct": 2.58,
-  "asof": "2026-08-19",
+  "ret": -1.13,
+  "cone_width_pct": 2.54,
+  "asof": "2026-08-21",
   "trading": {
-    "entry": 132.4,
-    "stop_loss": 131.43,
-    "exit": 131.83,
-    "risk": 0.97,
-    "reward": -0.57,
-    "risk_reward": -0.59,
+    "entry": 138.5,
+    "stop_loss": 138.45,
+    "exit": 136.93,
+    "risk": 0.05,
+    "reward": -1.57,
+    "risk_reward": -31.4,
     "conviction": 35,
     "volume": {
-      "latest": 17486,
-      "avg_20d": 96644,
-      "ratio": 0.18,
+      "latest": 30430,
+      "avg_20d": 52946,
+      "ratio": 0.57,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 593.97,
-      "ema_200": 5135.24,
+      "ema_50": 558.84,
+      "ema_200": 5044.12,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 25.0,
-      "label": "OVERSOLD"
+      "rsi_14": 33.9,
+      "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 35/100 (LOW)",
         "Trend (BEARISH) agrees with the forecast",
-        "R:R unfavorable (1:-0.59)",
+        "R:R unfavorable (1:-31.40)",
         "Volume does not confirm the move"
       ]
     }
@@ -308,16 +308,25 @@
   },
   "status": [
     "Low liquidity",
-    "Data as of 2026-08-19"
+    "Data as of 2026-08-21"
   ],
   "calibration": {
-    "bias_pct": -0.0766,
+    "bias_pct": -0.0131,
     "coverage": 0.4,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-19",
+        "target_date": "2026-08-20",
+        "predicted_med": 131.83,
+        "actual_close": 135.60000610351562,
+        "error_pct": 2.8597,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-08-18",
         "target_date": "2026-08-19",
@@ -488,19 +497,10 @@
         "error_pct": 1.8323,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-20",
-        "target_date": "2026-07-21",
-        "predicted_med": 122.06,
-        "actual_close": 124.0,
-        "error_pct": 1.5894,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.15,
+    "mae_pct": 1.21,
     "directional_accuracy_pct": 45.0,
     "calibration_pct": 40.0
   }
