@@ -1,7 +1,7 @@
 {
   "code": "SBILIFE",
   "name": "SBILIFE",
-  "last": 1792.9,
+  "last": 1761.8,
   "hist": [
     1844.24,
     1814.08,
@@ -251,41 +251,42 @@
     1778.0,
     1780.4,
     1782.0,
-    1792.9
+    1792.9,
+    1761.8
   ],
   "med": [
-    1795.22
+    1765.56
   ],
   "up": [
-    1791.13
+    1749.56
   ],
   "lo": [
-    1782.19
+    1738.76
   ],
-  "ret": 0.13,
-  "cone_width_pct": 0.5,
-  "asof": "2026-08-21",
+  "ret": 0.21,
+  "cone_width_pct": 0.61,
+  "asof": "2026-08-24",
   "trading": {
-    "entry": 1792.9,
-    "stop_loss": 1782.19,
-    "exit": 1795.22,
-    "risk": 10.71,
-    "reward": 2.32,
-    "risk_reward": 0.22,
+    "entry": 1761.8,
+    "stop_loss": 1738.76,
+    "exit": 1765.56,
+    "risk": 23.04,
+    "reward": 3.76,
+    "risk_reward": 0.16,
     "conviction": 15,
     "volume": {
-      "latest": 655563,
-      "avg_20d": 908584,
-      "ratio": 0.72,
+      "latest": 542306,
+      "avg_20d": 889657,
+      "ratio": 0.61,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1828.77,
-      "ema_200": 1869.18,
+      "ema_50": 1826.15,
+      "ema_200": 1868.11,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 40.5,
+      "rsi_14": 34.1,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -293,14 +294,14 @@
       "reasons": [
         "Conviction 15/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.22)",
+        "R:R unfavorable (1:0.16)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 176770.1348352,
-    "pe": 67.76154,
+    "mcap_cr": 176087.8526464,
+    "pe": 67.76062,
     "roe": 13.703000000000001,
     "de": "N/A",
     "sales_growth_yoy": 18.8,
@@ -309,16 +310,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-21"
+    "Data as of 2026-08-24"
   ],
   "calibration": {
-    "bias_pct": -0.2585,
-    "coverage": 0.45,
-    "cone_scale": 1.777777777777778,
+    "bias_pct": -0.3736,
+    "coverage": 0.4,
+    "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-21",
+        "target_date": "2026-08-24",
+        "predicted_med": 1795.22,
+        "actual_close": 1761.800048828125,
+        "error_pct": -1.8616,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-08-20",
         "target_date": "2026-08-21",
@@ -489,20 +499,11 @@
         "error_pct": 0.5229,
         "in_cone": true,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-23",
-        "target_date": "2026-07-24",
-        "predicted_med": 1850.43,
-        "actual_close": 1858.5999755859375,
-        "error_pct": 0.4415,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.73,
+    "mae_pct": 0.8,
     "directional_accuracy_pct": 40.0,
-    "calibration_pct": 45.0
+    "calibration_pct": 40.0
   }
 }
