@@ -1,9 +1,8 @@
 {
   "code": "JSWSTEEL",
   "name": "JSWSTEEL",
-  "last": 1320.3,
+  "last": 1341.0,
   "hist": [
-    1041.12,
     1029.88,
     1020.74,
     1029.59,
@@ -252,74 +251,84 @@
     1299.7,
     1293.7,
     1327.0,
-    1320.3
+    1320.3,
+    1341.0
   ],
   "med": [
-    1318.6
+    1334.37
   ],
   "up": [
-    1337.2
+    1359.23
   ],
   "lo": [
-    1328.32
+    1349.07
   ],
-  "ret": -0.13,
-  "cone_width_pct": 0.67,
-  "asof": "2026-08-25",
+  "ret": -0.49,
+  "cone_width_pct": 0.76,
+  "asof": "2026-08-26",
   "trading": {
-    "entry": 1320.3,
-    "stop_loss": 1328.32,
-    "exit": 1318.6,
-    "risk": -8.02,
-    "reward": -1.7,
+    "entry": 1341.0,
+    "stop_loss": 1349.07,
+    "exit": 1334.37,
+    "risk": -8.07,
+    "reward": -6.63,
     "risk_reward": 0.0,
-    "conviction": 30,
+    "conviction": 35,
     "volume": {
-      "latest": 1234494,
-      "avg_20d": 1672539,
-      "ratio": 0.74,
-      "confirmed": false
+      "latest": 1894784,
+      "avg_20d": 1658479,
+      "ratio": 1.14,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 1271.59,
-      "ema_200": 1217.47,
+      "ema_50": 1274.31,
+      "ema_200": 1217.77,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 61.5,
+      "rsi_14": 65.8,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 30/100 (LOW)",
+        "Conviction 35/100 (LOW)",
         "Trend (BULLISH) conflicts with the forecast",
         "R:R not available",
-        "Volume does not confirm the move"
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 327335.1757824,
-    "pe": 13.294339,
+    "mcap_cr": 326480.822272,
+    "pe": 13.192938,
     "roe": "N/A",
     "de": 0.9537399999999999,
     "sales_growth_yoy": 9.8,
-    "hi_52w": 1330.0,
+    "hi_52w": 1341.0,
     "lo_52w": 1020.7369995117188
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-25"
+    "Data as of 2026-08-26"
   ],
   "calibration": {
-    "bias_pct": 0.2642,
+    "bias_pct": 0.2391,
     "coverage": 0.05,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-25",
+        "target_date": "2026-08-26",
+        "predicted_med": 1318.6,
+        "actual_close": 1341.0,
+        "error_pct": 1.6988,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-08-24",
         "target_date": "2026-08-25",
@@ -490,20 +499,11 @@
         "error_pct": -0.4676,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-28",
-        "target_date": "2026-07-29",
-        "predicted_med": 1249.11,
-        "actual_close": 1276.5999755859375,
-        "error_pct": 2.2008,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.01,
-    "directional_accuracy_pct": 60.0,
+    "mae_pct": 0.99,
+    "directional_accuracy_pct": 55.0,
     "calibration_pct": 5.0
   }
 }

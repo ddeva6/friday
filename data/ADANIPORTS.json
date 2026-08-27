@@ -1,9 +1,8 @@
 {
   "code": "ADANIPORTS",
   "name": "ADANIPORTS",
-  "last": 1702.7,
+  "last": 1691.5,
   "hist": [
-    1309.88,
     1309.88,
     1307.29,
     1329.7,
@@ -252,55 +251,56 @@
     1696.0,
     1700.0,
     1672.1,
-    1702.7
+    1702.7,
+    1691.5
   ],
   "med": [
-    1698.53
+    1692.15
   ],
   "up": [
-    1704.71
+    1692.41
   ],
   "lo": [
-    1691.43
+    1681.35
   ],
-  "ret": -0.24,
-  "cone_width_pct": 0.78,
-  "asof": "2026-08-25",
+  "ret": 0.04,
+  "cone_width_pct": 0.65,
+  "asof": "2026-08-26",
   "trading": {
-    "entry": 1702.7,
-    "stop_loss": 1691.43,
-    "exit": 1698.53,
-    "risk": 11.27,
-    "reward": -4.17,
-    "risk_reward": -0.37,
+    "entry": 1691.5,
+    "stop_loss": 1681.35,
+    "exit": 1692.15,
+    "risk": 10.15,
+    "reward": 0.65,
+    "risk_reward": 0.06,
     "conviction": 25,
     "volume": {
-      "latest": 1300541,
-      "avg_20d": 2177780,
-      "ratio": 0.6,
+      "latest": 1937255,
+      "avg_20d": 2153979,
+      "ratio": 0.9,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1730.74,
-      "ema_200": 1620.42,
+      "ema_50": 1729.2,
+      "ema_200": 1621.13,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 47.0,
+      "rsi_14": 44.6,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 25/100 (LOW)",
-        "R:R unfavorable (1:-0.37)",
+        "R:R unfavorable (1:0.06)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 389714.673664,
-    "pe": 28.385635,
+    "mcap_cr": 394898.571264,
+    "pe": 29.284128,
     "roe": "N/A",
     "de": 0.64051,
     "sales_growth_yoy": 18.6,
@@ -309,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-25"
+    "Data as of 2026-08-26"
   ],
   "calibration": {
-    "bias_pct": -0.2692,
-    "coverage": 0.05,
+    "bias_pct": -0.1201,
+    "coverage": 0.1,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-25",
+        "target_date": "2026-08-26",
+        "predicted_med": 1698.53,
+        "actual_close": 1691.5,
+        "error_pct": -0.4139,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-08-24",
         "target_date": "2026-08-25",
@@ -489,20 +498,11 @@
         "error_pct": -3.7581,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-28",
-        "target_date": "2026-07-29",
-        "predicted_med": 1780.17,
-        "actual_close": 1719.699951171875,
-        "error_pct": -3.3969,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.01,
-    "directional_accuracy_pct": 40.0,
-    "calibration_pct": 5.0
+    "mae_pct": 0.86,
+    "directional_accuracy_pct": 45.0,
+    "calibration_pct": 10.0
   }
 }

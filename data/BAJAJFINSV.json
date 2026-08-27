@@ -1,9 +1,8 @@
 {
   "code": "BAJAJFINSV",
   "name": "BAJAJFINSV",
-  "last": 2004.0,
+  "last": 2010.0,
   "hist": [
-    1922.56,
     1915.97,
     1911.87,
     1941.84,
@@ -252,41 +251,42 @@
     2016.0,
     2032.5,
     2001.7,
-    2004.0
+    2004.0,
+    2010.0
   ],
   "med": [
-    2010.36
+    2015.31
   ],
   "up": [
-    2023.54
+    2029.21
   ],
   "lo": [
-    2007.54
+    2014.83
   ],
-  "ret": 0.32,
-  "cone_width_pct": 0.8,
-  "asof": "2026-08-25",
+  "ret": 0.26,
+  "cone_width_pct": 0.72,
+  "asof": "2026-08-26",
   "trading": {
-    "entry": 2004.0,
-    "stop_loss": 2007.54,
-    "exit": 2010.36,
-    "risk": -3.54,
-    "reward": 6.36,
+    "entry": 2010.0,
+    "stop_loss": 2014.83,
+    "exit": 2015.31,
+    "risk": -4.83,
+    "reward": 5.31,
     "risk_reward": 0.0,
     "conviction": 50,
     "volume": {
-      "latest": 410121,
-      "avg_20d": 1347571,
-      "ratio": 0.3,
+      "latest": 564145,
+      "avg_20d": 1297326,
+      "ratio": 0.43,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1934.62,
-      "ema_200": 1897.16,
+      "ema_50": 1937.58,
+      "ema_200": 1897.74,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 54.6,
+      "rsi_14": 55.8,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -300,8 +300,8 @@
     }
   },
   "fundamentals": {
-    "mcap_cr": 321649.1937792,
-    "pe": 31.738512,
+    "mcap_cr": 321809.2064768,
+    "pe": 31.864998,
     "roe": "N/A",
     "de": 2.56404,
     "sales_growth_yoy": 19.3,
@@ -310,16 +310,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-25"
+    "Data as of 2026-08-26"
   ],
   "calibration": {
-    "bias_pct": 0.2722,
-    "coverage": 0.1,
+    "bias_pct": 0.2781,
+    "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-25",
+        "target_date": "2026-08-26",
+        "predicted_med": 2010.36,
+        "actual_close": 2010.0,
+        "error_pct": -0.0179,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-08-24",
         "target_date": "2026-08-25",
@@ -490,20 +499,11 @@
         "error_pct": -0.765,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-07-28",
-        "target_date": "2026-07-29",
-        "predicted_med": 1927.03,
-        "actual_close": 1924.4000244140625,
-        "error_pct": -0.1365,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
     "mae_pct": 1.15,
     "directional_accuracy_pct": 55.0,
-    "calibration_pct": 10.0
+    "calibration_pct": 15.0
   }
 }
