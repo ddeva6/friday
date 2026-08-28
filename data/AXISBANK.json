@@ -1,7 +1,7 @@
 {
   "code": "AXISBANK",
   "name": "AXISBANK",
-  "last": 1255.0,
+  "last": 1256.0,
   "hist": [
     1051.09,
     1044.39,
@@ -252,55 +252,56 @@
     1245.8,
     1236.0,
     1235.0,
-    1255.0
+    1255.0,
+    1256.0
   ],
   "med": [
-    1253.16
+    1255.54
   ],
   "up": [
-    1258.82
+    1263.1
   ],
   "lo": [
-    1248.7
+    1255.1
   ],
-  "ret": -0.15,
-  "cone_width_pct": 0.81,
-  "asof": "2026-08-26",
+  "ret": -0.04,
+  "cone_width_pct": 0.64,
+  "asof": "2026-08-27",
   "trading": {
-    "entry": 1255.0,
-    "stop_loss": 1248.7,
-    "exit": 1253.16,
-    "risk": 6.3,
-    "reward": -1.84,
-    "risk_reward": -0.29,
-    "conviction": 40,
+    "entry": 1256.0,
+    "stop_loss": 1255.1,
+    "exit": 1255.54,
+    "risk": 0.9,
+    "reward": -0.46,
+    "risk_reward": -0.51,
+    "conviction": 45,
     "volume": {
-      "latest": 3298266,
-      "avg_20d": 5332774,
-      "ratio": 0.62,
-      "confirmed": false
+      "latest": 7005789,
+      "avg_20d": 4992176,
+      "ratio": 1.4,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 1265.57,
-      "ema_200": 1259.54,
+      "ema_50": 1265.19,
+      "ema_200": 1259.5,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 51.6,
+      "rsi_14": 51.9,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 40/100 (MEDIUM)",
-        "R:R unfavorable (1:-0.29)",
-        "Volume does not confirm the move"
+        "Conviction 45/100 (MEDIUM)",
+        "R:R unfavorable (1:-0.51)",
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 391003.2162816,
-    "pe": 14.136185,
+    "mcap_cr": 393804.9851392,
+    "pe": 14.245495,
     "roe": 13.352998999999999,
     "de": "N/A",
     "sales_growth_yoy": 14.000000000000002,
@@ -309,16 +310,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-26"
+    "Data as of 2026-08-27"
   ],
   "calibration": {
-    "bias_pct": 0.0925,
-    "coverage": 0.2,
+    "bias_pct": 0.129,
+    "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-26",
+        "target_date": "2026-08-27",
+        "predicted_med": 1253.16,
+        "actual_close": 1256.0,
+        "error_pct": 0.2266,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-08-25",
         "target_date": "2026-08-26",
@@ -489,20 +499,11 @@
         "error_pct": -0.0041,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-07-29",
-        "target_date": "2026-07-30",
-        "predicted_med": 1235.11,
-        "actual_close": 1228.9000244140625,
-        "error_pct": -0.5028,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.82,
-    "directional_accuracy_pct": 60.0,
-    "calibration_pct": 20.0
+    "mae_pct": 0.8,
+    "directional_accuracy_pct": 55.0,
+    "calibration_pct": 25.0
   }
 }
