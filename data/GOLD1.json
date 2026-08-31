@@ -1,10 +1,8 @@
 {
   "code": "GOLD1",
   "name": "GOLD1",
-  "last": 131.33,
+  "last": 132.21,
   "hist": [
-    85.02,
-    85.98,
     87.47,
     87.47,
     88.68,
@@ -249,50 +247,51 @@
     134.48,
     134.03,
     133.65,
-    131.33
+    131.33,
+    132.21
   ],
   "med": [
-    131.73
+    132.48
   ],
   "up": [
-    134.11
+    134.84
   ],
   "lo": [
-    132.59
+    133.32
   ],
-  "ret": 0.3,
-  "cone_width_pct": 1.16,
-  "asof": "2026-08-27",
+  "ret": 0.2,
+  "cone_width_pct": 1.15,
+  "asof": "2026-08-28",
   "trading": {
-    "entry": 131.33,
-    "stop_loss": 132.59,
-    "exit": 131.73,
-    "risk": -1.26,
-    "reward": 0.4,
+    "entry": 132.21,
+    "stop_loss": 133.32,
+    "exit": 132.48,
+    "risk": -1.11,
+    "reward": 0.27,
     "risk_reward": 0.0,
-    "conviction": 40,
+    "conviction": 35,
     "volume": {
-      "latest": 2725736,
-      "avg_20d": 2414516,
-      "ratio": 1.13,
-      "confirmed": true
+      "latest": 1407154,
+      "avg_20d": 2415656,
+      "ratio": 0.58,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 124.84,
-      "ema_200": 118.82,
+      "ema_50": 125.13,
+      "ema_200": 119.16,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 64.7,
+      "rsi_14": 66.5,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 40/100 (MEDIUM)",
+        "Conviction 35/100 (LOW)",
         "Trend (BULLISH) agrees with the forecast",
         "R:R not available",
-        "Volume confirms the move"
+        "Volume does not confirm the move"
       ]
     }
   },
@@ -303,20 +302,29 @@
     "de": "N/A",
     "sales_growth_yoy": "N/A",
     "hi_52w": 146.6199951171875,
-    "lo_52w": 85.0199966430664
+    "lo_52w": 87.47000122070312
   },
   "status": [
     "Data OK",
-    "Data as of 2026-08-27"
+    "Data as of 2026-08-28"
   ],
   "calibration": {
-    "bias_pct": 0.7066,
-    "coverage": 0.25,
+    "bias_pct": 0.7358,
+    "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-08-27",
+        "target_date": "2026-08-28",
+        "predicted_med": 131.73,
+        "actual_close": 132.2100067138672,
+        "error_pct": 0.3644,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-08-26",
         "target_date": "2026-08-27",
@@ -487,20 +495,11 @@
         "error_pct": 0.2286,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-07-30",
-        "target_date": "2026-07-31",
-        "predicted_med": 118.42,
-        "actual_close": 118.16000366210938,
-        "error_pct": -0.2196,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.06,
-    "directional_accuracy_pct": 40.0,
-    "calibration_pct": 25.0
+    "mae_pct": 1.07,
+    "directional_accuracy_pct": 45.0,
+    "calibration_pct": 20.0
   }
 }
