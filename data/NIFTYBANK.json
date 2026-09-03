@@ -1,9 +1,8 @@
 {
   "code": "NIFTYBANK",
   "name": "Nifty Bank",
-  "last": 57409.6,
+  "last": 57172.0,
   "hist": [
-    53661.0,
     54067.55,
     54075.45,
     54114.55,
@@ -247,50 +246,51 @@
     57514.2,
     57783.75,
     57509.95,
+    57496.3,
     58024.95,
-    57409.6
+    57409.6,
+    57172.0
   ],
   "med": [
-    57423.73
+    57226.21
   ],
   "up": [
-    57504.23
+    57223.61
   ],
   "lo": [
-    57234.59
+    56978.43
   ],
-  "ret": 0.02,
-  "cone_width_pct": 0.47,
-  "asof": "2026-09-01",
+  "ret": 0.09,
+  "cone_width_pct": 0.43,
+  "asof": "2026-09-02",
   "trading": {
-    "entry": 57409.6,
-    "stop_loss": 57234.59,
-    "exit": 57423.73,
-    "risk": 175.01,
-    "reward": 14.13,
-    "risk_reward": 0.08,
-    "conviction": 55,
+    "entry": 57172.0,
+    "stop_loss": 56978.43,
+    "exit": 57226.21,
+    "risk": 193.57,
+    "reward": 54.21,
+    "risk_reward": 0.28,
+    "conviction": 30,
     "volume": {
-      "latest": 198500,
-      "avg_20d": 178775,
-      "ratio": 1.11,
+      "latest": 198900,
+      "avg_20d": 180880,
+      "ratio": 1.1,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 57309.96,
-      "ema_200": 56742.97,
-      "label": "BULLISH"
+      "ema_50": 57312.21,
+      "ema_200": 56789.09,
+      "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 48.4,
+      "rsi_14": 45.5,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 55/100 (MEDIUM)",
-        "Trend (BULLISH) agrees with the forecast",
-        "R:R unfavorable (1:0.08)",
+        "Conviction 30/100 (LOW)",
+        "R:R unfavorable (1:0.28)",
         "Volume confirms the move"
       ]
     }
@@ -306,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-01"
+    "Data as of 2026-09-02"
   ],
   "calibration": {
-    "bias_pct": -0.0521,
+    "bias_pct": -0.0611,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-01",
+        "target_date": "2026-09-02",
+        "predicted_med": 57423.73,
+        "actual_close": 57172.0,
+        "error_pct": -0.4384,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-08-31",
         "target_date": "2026-09-01",
@@ -486,20 +495,11 @@
         "error_pct": -0.0987,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-08-03",
-        "target_date": "2026-08-04",
-        "predicted_med": 58056.49,
-        "actual_close": 57907.19921875,
-        "error_pct": -0.2571,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.39,
-    "directional_accuracy_pct": 55.0,
+    "mae_pct": 0.4,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 20.0
   }
 }

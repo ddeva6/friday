@@ -1,9 +1,8 @@
 {
   "code": "CIPLA",
   "name": "CIPLA",
-  "last": 1423.0,
+  "last": 1412.8,
   "hist": [
-    1554.62,
     1563.73,
     1563.14,
     1538.96,
@@ -253,55 +252,56 @@
     1420.0,
     1423.5,
     1409.2,
-    1423.0
+    1423.0,
+    1412.8
   ],
   "med": [
-    1421.89
+    1412.7
   ],
   "up": [
-    1423.33
+    1412.76
   ],
   "lo": [
-    1414.99
+    1402.58
   ],
-  "ret": -0.08,
-  "cone_width_pct": 0.59,
-  "asof": "2026-09-01",
+  "ret": -0.01,
+  "cone_width_pct": 0.72,
+  "asof": "2026-09-02",
   "trading": {
-    "entry": 1423.0,
-    "stop_loss": 1414.99,
-    "exit": 1421.89,
-    "risk": 8.01,
-    "reward": -1.11,
-    "risk_reward": -0.14,
-    "conviction": 30,
+    "entry": 1412.8,
+    "stop_loss": 1402.58,
+    "exit": 1412.7,
+    "risk": 10.22,
+    "reward": -0.1,
+    "risk_reward": -0.01,
+    "conviction": 25,
     "volume": {
-      "latest": 880100,
-      "avg_20d": 763849,
-      "ratio": 1.15,
-      "confirmed": true
+      "latest": 578260,
+      "avg_20d": 760490,
+      "ratio": 0.76,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 1427.26,
-      "ema_200": 1412.13,
+      "ema_50": 1426.69,
+      "ema_200": 1412.87,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 46.4,
+      "rsi_14": 43.4,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 30/100 (LOW)",
-        "R:R unfavorable (1:-0.14)",
-        "Volume confirms the move"
+        "Conviction 25/100 (LOW)",
+        "R:R unfavorable (1:-0.01)",
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 114134.2470144,
-    "pe": 33.888226,
+    "mcap_cr": 112672.0077824,
+    "pe": 33.46209,
     "roe": "N/A",
     "de": 0.01778,
     "sales_growth_yoy": 3.5000000000000004,
@@ -310,16 +310,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-01"
+    "Data as of 2026-09-02"
   ],
   "calibration": {
-    "bias_pct": -0.2053,
+    "bias_pct": -0.2432,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-01",
+        "target_date": "2026-09-02",
+        "predicted_med": 1421.89,
+        "actual_close": 1412.800048828125,
+        "error_pct": -0.6393,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-08-31",
         "target_date": "2026-09-01",
@@ -490,19 +499,10 @@
         "error_pct": 1.349,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-08-04",
-        "target_date": "2026-08-05",
-        "predicted_med": 1457.05,
-        "actual_close": 1458.800048828125,
-        "error_pct": 0.1201,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.71,
+    "mae_pct": 0.73,
     "directional_accuracy_pct": 35.0,
     "calibration_pct": 15.0
   }
