@@ -1,7 +1,7 @@
 {
   "code": "WIPRO",
   "name": "WIPRO",
-  "last": 176.4,
+  "last": 172.8,
   "hist": [
     233.75,
     240.14,
@@ -84,7 +84,7 @@
     253.76,
     257.68,
     259.27,
-    253.78,
+    253.77,
     255.99,
     261.0,
     252.71,
@@ -252,74 +252,84 @@
     181.7,
     177.09,
     175.72,
-    176.4
+    176.4,
+    172.8
   ],
   "med": [
-    176.5
+    173.19
   ],
   "up": [
-    176.26
+    171.59
   ],
   "lo": [
-    174.7
+    169.75
   ],
-  "ret": 0.06,
-  "cone_width_pct": 0.88,
-  "asof": "2026-09-04",
+  "ret": 0.23,
+  "cone_width_pct": 1.06,
+  "asof": "2026-09-07",
   "trading": {
-    "entry": 176.4,
-    "stop_loss": 174.7,
-    "exit": 176.5,
-    "risk": 1.7,
-    "reward": 0.1,
-    "risk_reward": 0.06,
-    "conviction": 15,
+    "entry": 172.8,
+    "stop_loss": 169.75,
+    "exit": 173.19,
+    "risk": 3.05,
+    "reward": 0.39,
+    "risk_reward": 0.13,
+    "conviction": 20,
     "volume": {
-      "latest": 6882678,
-      "avg_20d": 7990454,
-      "ratio": 0.86,
-      "confirmed": false
+      "latest": 10720636,
+      "avg_20d": 7943433,
+      "ratio": 1.35,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 181.04,
-      "ema_200": 198.55,
+      "ema_50": 180.72,
+      "ema_200": 198.3,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 43.1,
+      "rsi_14": 37.9,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 15/100 (LOW)",
+        "Conviction 20/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.06)",
-        "Volume does not confirm the move"
+        "R:R unfavorable (1:0.13)",
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 170946.9990912,
-    "pe": 13.725179,
+    "mcap_cr": 169660.9337344,
+    "pe": 13.611111,
     "roe": 16.128999,
     "de": 0.27398,
     "sales_growth_yoy": 10.6,
-    "hi_52w": 262.80609130859375,
+    "hi_52w": 262.8060607910156,
     "lo_52w": 168.20892333984375
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-04"
+    "Data as of 2026-09-07"
   ],
   "calibration": {
-    "bias_pct": -0.4241,
+    "bias_pct": -0.4779,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-04",
+        "target_date": "2026-09-07",
+        "predicted_med": 176.5,
+        "actual_close": 172.8000030517578,
+        "error_pct": -2.0963,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-09-03",
         "target_date": "2026-09-04",
@@ -490,20 +500,11 @@
         "error_pct": -0.4583,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-08-07",
-        "target_date": "2026-08-10",
-        "predicted_med": 187.41,
-        "actual_close": 185.5,
-        "error_pct": -1.0192,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.01,
-    "directional_accuracy_pct": 50.0,
+    "mae_pct": 1.07,
+    "directional_accuracy_pct": 45.0,
     "calibration_pct": 20.0
   }
 }

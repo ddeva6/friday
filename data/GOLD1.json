@@ -1,7 +1,7 @@
 {
   "code": "GOLD1",
   "name": "GOLD1",
-  "last": 128.47,
+  "last": 126.71,
   "hist": [
     90.87,
     91.65,
@@ -248,49 +248,50 @@
     126.58,
     124.77,
     127.48,
-    128.47
+    128.47,
+    126.71
   ],
   "med": [
-    128.54
+    127.14
   ],
   "up": [
-    129.74
+    127.68
   ],
   "lo": [
-    127.8
+    126.38
   ],
-  "ret": 0.05,
-  "cone_width_pct": 1.51,
-  "asof": "2026-09-04",
+  "ret": 0.34,
+  "cone_width_pct": 1.03,
+  "asof": "2026-09-07",
   "trading": {
-    "entry": 128.47,
-    "stop_loss": 127.8,
-    "exit": 128.54,
-    "risk": 0.67,
-    "reward": 0.07,
-    "risk_reward": 0.1,
-    "conviction": 35,
+    "entry": 126.71,
+    "stop_loss": 126.38,
+    "exit": 127.14,
+    "risk": 0.33,
+    "reward": 0.43,
+    "risk_reward": 1.3,
+    "conviction": 50,
     "volume": {
-      "latest": 1165650,
-      "avg_20d": 2478617,
-      "ratio": 0.47,
+      "latest": 1539958,
+      "avg_20d": 2235806,
+      "ratio": 0.69,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 125.51,
-      "ema_200": 119.84,
+      "ema_50": 125.56,
+      "ema_200": 119.91,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 53.5,
+      "rsi_14": 49.1,
       "label": "NEUTRAL"
     },
     "verdict": {
-      "label": "CAUTION",
+      "label": "NEUTRAL",
       "reasons": [
-        "Conviction 35/100 (LOW)",
+        "Conviction 50/100 (MEDIUM)",
         "Trend (BULLISH) agrees with the forecast",
-        "R:R unfavorable (1:0.10)",
+        "R:R favorable (1:1.30)",
         "Volume does not confirm the move"
       ]
     }
@@ -306,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-04"
+    "Data as of 2026-09-07"
   ],
   "calibration": {
-    "bias_pct": 0.1404,
-    "coverage": 0.15,
+    "bias_pct": -0.0086,
+    "coverage": 0.1,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-04",
+        "target_date": "2026-09-07",
+        "predicted_med": 128.54,
+        "actual_close": 126.70999908447266,
+        "error_pct": -1.4237,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-09-03",
         "target_date": "2026-09-04",
@@ -486,20 +496,11 @@
         "error_pct": 1.1563,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-08-07",
-        "target_date": "2026-08-10",
-        "predicted_med": 123.98,
-        "actual_close": 125.91000366210938,
-        "error_pct": 1.5567,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
     "mae_pct": 1.19,
     "directional_accuracy_pct": 50.0,
-    "calibration_pct": 15.0
+    "calibration_pct": 10.0
   }
 }
