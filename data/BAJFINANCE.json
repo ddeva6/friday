@@ -1,9 +1,8 @@
 {
   "code": "BAJFINANCE",
   "name": "BAJFINANCE",
-  "last": 1060.0,
+  "last": 1054.1,
   "hist": [
-    938.53,
     942.61,
     962.04,
     964.32,
@@ -253,56 +252,57 @@
     1055.9,
     1049.0,
     1060.5,
-    1060.0
+    1060.0,
+    1054.1
   ],
   "med": [
-    1058.8
+    1054.69
   ],
   "up": [
-    1058.1
+    1054.19
   ],
   "lo": [
-    1049.98
+    1045.07
   ],
-  "ret": -0.11,
-  "cone_width_pct": 0.77,
-  "asof": "2026-09-07",
+  "ret": 0.06,
+  "cone_width_pct": 0.87,
+  "asof": "2026-09-08",
   "trading": {
-    "entry": 1060.0,
-    "stop_loss": 1049.98,
-    "exit": 1058.8,
-    "risk": 10.02,
-    "reward": -1.2,
-    "risk_reward": -0.12,
-    "conviction": 15,
+    "entry": 1054.1,
+    "stop_loss": 1045.07,
+    "exit": 1054.69,
+    "risk": 9.03,
+    "reward": 0.59,
+    "risk_reward": 0.07,
+    "conviction": 35,
     "volume": {
-      "latest": 3586860,
-      "avg_20d": 4829751,
-      "ratio": 0.74,
+      "latest": 3608327,
+      "avg_20d": 4643939,
+      "ratio": 0.78,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1053.34,
-      "ema_200": 990.46,
+      "ema_50": 1053.37,
+      "ema_200": 991.43,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 45.7,
+      "rsi_14": 43.7,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 15/100 (LOW)",
-        "Trend (BULLISH) conflicts with the forecast",
-        "R:R unfavorable (1:-0.12)",
+        "Conviction 35/100 (LOW)",
+        "Trend (BULLISH) agrees with the forecast",
+        "R:R unfavorable (1:0.07)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 655746.4526848,
-    "pe": 32.393974,
+    "mcap_cr": 646539.5359744,
+    "pe": 31.909735,
     "roe": "N/A",
     "de": 3.14833,
     "sales_growth_yoy": 26.1,
@@ -311,16 +311,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-07"
+    "Data as of 2026-09-08"
   ],
   "calibration": {
-    "bias_pct": -0.3798,
-    "coverage": 0.15,
+    "bias_pct": -0.3483,
+    "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-07",
+        "target_date": "2026-09-08",
+        "predicted_med": 1058.8,
+        "actual_close": 1054.0999755859375,
+        "error_pct": -0.4439,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-09-04",
         "target_date": "2026-09-07",
@@ -491,20 +500,11 @@
         "error_pct": -0.4513,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-08-10",
-        "target_date": "2026-08-11",
-        "predicted_med": 1105.17,
-        "actual_close": 1093.300048828125,
-        "error_pct": -1.074,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.7,
-    "directional_accuracy_pct": 45.0,
-    "calibration_pct": 15.0
+    "mae_pct": 0.67,
+    "directional_accuracy_pct": 50.0,
+    "calibration_pct": 20.0
   }
 }
