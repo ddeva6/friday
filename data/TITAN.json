@@ -1,9 +1,8 @@
 {
   "code": "TITAN",
   "name": "TITAN",
-  "last": 5005.0,
+  "last": 5021.0,
   "hist": [
-    3608.76,
     3572.48,
     3560.22,
     3522.54,
@@ -253,41 +252,42 @@
     5020.0,
     4995.0,
     4987.0,
-    5005.0
+    5005.0,
+    5021.0
   ],
   "med": [
-    4999.56
+    5017.1
   ],
   "up": [
-    5010.08
+    5032.86
   ],
   "lo": [
-    4975.76
+    5001.32
   ],
-  "ret": -0.11,
-  "cone_width_pct": 0.69,
-  "asof": "2026-09-09",
+  "ret": -0.08,
+  "cone_width_pct": 0.63,
+  "asof": "2026-09-10",
   "trading": {
-    "entry": 5005.0,
-    "stop_loss": 4975.76,
-    "exit": 4999.56,
-    "risk": 29.24,
-    "reward": -5.44,
-    "risk_reward": -0.19,
+    "entry": 5021.0,
+    "stop_loss": 5001.32,
+    "exit": 5017.1,
+    "risk": 19.68,
+    "reward": -3.9,
+    "risk_reward": -0.2,
     "conviction": 15,
     "volume": {
-      "latest": 502050,
-      "avg_20d": 543147,
-      "ratio": 0.92,
+      "latest": 336565,
+      "avg_20d": 512991,
+      "ratio": 0.66,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 4871.67,
-      "ema_200": 4391.76,
+      "ema_50": 4877.53,
+      "ema_200": 4395.08,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 50.9,
+      "rsi_14": 52.7,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -295,14 +295,14 @@
       "reasons": [
         "Conviction 15/100 (LOW)",
         "Trend (BULLISH) conflicts with the forecast",
-        "R:R unfavorable (1:-0.19)",
+        "R:R unfavorable (1:-0.20)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 445519.495168,
-    "pe": 77.163055,
+    "mcap_cr": 444499.1258624,
+    "pe": 77.34291,
     "roe": "N/A",
     "de": 1.95001,
     "sales_growth_yoy": 29.299999999999997,
@@ -311,16 +311,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-09"
+    "Data as of 2026-09-10"
   ],
   "calibration": {
-    "bias_pct": -0.2474,
+    "bias_pct": -0.2108,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-09",
+        "target_date": "2026-09-10",
+        "predicted_med": 4999.56,
+        "actual_close": 5021.0,
+        "error_pct": 0.4288,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-09-08",
         "target_date": "2026-09-09",
@@ -491,20 +500,11 @@
         "error_pct": -0.7487,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-08-11",
-        "target_date": "2026-08-12",
-        "predicted_med": 5114.59,
-        "actual_close": 5099.0,
-        "error_pct": -0.3048,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.5,
-    "directional_accuracy_pct": 35.0,
+    "mae_pct": 0.51,
+    "directional_accuracy_pct": 30.0,
     "calibration_pct": 20.0
   }
 }
