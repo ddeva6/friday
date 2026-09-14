@@ -1,10 +1,8 @@
 {
   "code": "HINDUNILVR",
   "name": "HINDUNILVR",
-  "last": 1942.3,
+  "last": 1927.0,
   "hist": [
-    2575.35,
-    2534.59,
     2535.08,
     2534.99,
     2523.98,
@@ -252,74 +250,84 @@
     1973.4,
     1980.0,
     1945.0,
-    1942.3
+    1942.3,
+    1927.0
   ],
   "med": [
-    1947.65
+    1931.96
   ],
   "up": [
-    1935.17
+    1915.56
   ],
   "lo": [
-    1919.95
+    1901.92
   ],
-  "ret": 0.28,
-  "cone_width_pct": 0.78,
-  "asof": "2026-09-10",
+  "ret": 0.26,
+  "cone_width_pct": 0.71,
+  "asof": "2026-09-11",
   "trading": {
-    "entry": 1942.3,
-    "stop_loss": 1919.95,
-    "exit": 1947.65,
-    "risk": 22.35,
-    "reward": 5.35,
-    "risk_reward": 0.24,
-    "conviction": 35,
+    "entry": 1927.0,
+    "stop_loss": 1901.92,
+    "exit": 1931.96,
+    "risk": 25.08,
+    "reward": 4.96,
+    "risk_reward": 0.2,
+    "conviction": 15,
     "volume": {
-      "latest": 1232506,
-      "avg_20d": 1235620,
-      "ratio": 1.0,
-      "confirmed": true
+      "latest": 1100313,
+      "avg_20d": 1247469,
+      "ratio": 0.88,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 2059.43,
-      "ema_200": 2200.79,
+      "ema_50": 2054.23,
+      "ema_200": 2194.76,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 32.9,
+      "rsi_14": 30.8,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
+        "Conviction 15/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.24)",
-        "Volume confirms the move"
+        "R:R unfavorable (1:0.20)",
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
     "mcap_cr": 452766.2563328,
-    "pe": 42.7652,
+    "pe": 42.736748,
     "roe": "N/A",
     "de": 0.03016,
     "sales_growth_yoy": 5.0,
-    "hi_52w": 2575.353759765625,
-    "lo_52w": 1942.300048828125
+    "hi_52w": 2557.37939453125,
+    "lo_52w": 1927.0
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-10"
+    "Data as of 2026-09-11"
   ],
   "calibration": {
-    "bias_pct": -0.4153,
-    "coverage": 0.25,
+    "bias_pct": -0.5221,
+    "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-10",
+        "target_date": "2026-09-11",
+        "predicted_med": 1947.65,
+        "actual_close": 1927.0,
+        "error_pct": -1.0603,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-09-09",
         "target_date": "2026-09-10",
@@ -490,20 +498,11 @@
         "error_pct": -0.6995,
         "in_cone": true,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-08-12",
-        "target_date": "2026-08-13",
-        "predicted_med": 2069.72,
-        "actual_close": 2092.0,
-        "error_pct": 1.0765,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
     "mae_pct": 0.77,
-    "directional_accuracy_pct": 55.0,
-    "calibration_pct": 25.0
+    "directional_accuracy_pct": 50.0,
+    "calibration_pct": 30.0
   }
 }
