@@ -1,9 +1,8 @@
 {
   "code": "TATACONSUM",
   "name": "TATACONSUM",
-  "last": 991.0,
+  "last": 986.1,
   "hist": [
-    1093.35,
     1082.94,
     1126.77,
     1119.82,
@@ -252,74 +251,85 @@
     1014.1,
     1001.0,
     999.6,
-    991.0
+    991.0,
+    991.0,
+    986.1
   ],
   "med": [
-    992.96
+    987.03
   ],
   "up": [
-    981.5
+    975.57
   ],
   "lo": [
-    974.82
+    969.51
   ],
-  "ret": 0.2,
-  "cone_width_pct": 0.67,
-  "asof": "2026-09-11",
+  "ret": 0.09,
+  "cone_width_pct": 0.61,
+  "asof": "2026-09-15",
   "trading": {
-    "entry": 991.0,
-    "stop_loss": 974.82,
-    "exit": 992.96,
-    "risk": 16.18,
-    "reward": 1.96,
-    "risk_reward": 0.12,
-    "conviction": 15,
+    "entry": 986.1,
+    "stop_loss": 969.51,
+    "exit": 987.03,
+    "risk": 16.59,
+    "reward": 0.93,
+    "risk_reward": 0.06,
+    "conviction": 20,
     "volume": {
-      "latest": 905959,
-      "avg_20d": 1076423,
-      "ratio": 0.84,
-      "confirmed": false
+      "latest": 1567952,
+      "avg_20d": 1025681,
+      "ratio": 1.53,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 1062.36,
-      "ema_200": 1103.79,
+      "ema_50": 1056.68,
+      "ema_200": 1100.66,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 29.2,
+      "rsi_14": 28.0,
       "label": "OVERSOLD"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 15/100 (LOW)",
+        "Conviction 20/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.12)",
-        "Volume does not confirm the move"
+        "R:R unfavorable (1:0.06)",
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 97593.327616,
-    "pe": 59.583084,
+    "mcap_cr": 98978.889728,
+    "pe": 60.356064,
     "roe": "N/A",
     "de": 0.12159,
     "sales_growth_yoy": 11.899999999999999,
     "hi_52w": 1260.33544921875,
-    "lo_52w": 991.0
+    "lo_52w": 986.0999755859375
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-11"
+    "Data as of 2026-09-15"
   ],
   "calibration": {
-    "bias_pct": -0.6497,
+    "bias_pct": -0.6101,
     "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-11",
+        "target_date": "2026-09-14",
+        "predicted_med": 992.96,
+        "actual_close": 991.0,
+        "error_pct": -0.1974,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-09-10",
         "target_date": "2026-09-11",
@@ -490,20 +500,11 @@
         "error_pct": -0.7816,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-08-13",
-        "target_date": "2026-08-14",
-        "predicted_med": 1090.27,
-        "actual_close": 1079.5,
-        "error_pct": -0.9878,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.82,
-    "directional_accuracy_pct": 30.0,
+    "mae_pct": 0.78,
+    "directional_accuracy_pct": 25.0,
     "calibration_pct": 25.0
   }
 }

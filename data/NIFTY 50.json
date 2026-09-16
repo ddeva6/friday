@@ -1,9 +1,8 @@
 {
   "code": "NIFTY 50",
   "name": "Broad Market",
-  "last": 23398.1,
+  "last": 23118.6,
   "hist": [
-    25069.2,
     25239.1,
     25330.25,
     25423.6,
@@ -248,41 +247,42 @@
     23635.1,
     23431.5,
     23477.8,
-    23398.1
+    23398.1,
+    23118.6
   ],
   "med": [
-    23407.88
+    23127.66
   ],
   "up": [
-    23239.14
+    22838.86
   ],
   "lo": [
-    23136.36
+    22712.72
   ],
   "ret": 0.04,
-  "cone_width_pct": 0.44,
-  "asof": "2026-09-11",
+  "cone_width_pct": 0.55,
+  "asof": "2026-09-15",
   "trading": {
-    "entry": 23398.1,
-    "stop_loss": 23136.36,
-    "exit": 23407.88,
-    "risk": 261.74,
-    "reward": 9.78,
-    "risk_reward": 0.04,
+    "entry": 23118.6,
+    "stop_loss": 22712.72,
+    "exit": 23127.66,
+    "risk": 405.88,
+    "reward": 9.06,
+    "risk_reward": 0.02,
     "conviction": 20,
     "volume": {
-      "latest": 293000,
-      "avg_20d": 284435,
-      "ratio": 1.03,
+      "latest": 338800,
+      "avg_20d": 285700,
+      "ratio": 1.19,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 24039.51,
-      "ema_200": 24373.59,
+      "ema_50": 24003.4,
+      "ema_200": 24375.61,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 27.2,
+      "rsi_14": 22.2,
       "label": "OVERSOLD"
     },
     "verdict": {
@@ -290,7 +290,7 @@
       "reasons": [
         "Conviction 20/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.04)",
+        "R:R unfavorable (1:0.02)",
         "Volume confirms the move"
       ]
     }
@@ -306,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-11"
+    "Data as of 2026-09-15"
   ],
   "calibration": {
-    "bias_pct": -0.2633,
+    "bias_pct": -0.3134,
     "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-11",
+        "target_date": "2026-09-15",
+        "predicted_med": 23407.88,
+        "actual_close": 23118.599609375,
+        "error_pct": -1.2358,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-09-10",
         "target_date": "2026-09-11",
@@ -486,19 +495,10 @@
         "error_pct": -0.3841,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-08-13",
-        "target_date": "2026-08-14",
-        "predicted_med": 24423.29,
-        "actual_close": 24366.0,
-        "error_pct": -0.2346,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.38,
+    "mae_pct": 0.43,
     "directional_accuracy_pct": 45.0,
     "calibration_pct": 30.0
   }
