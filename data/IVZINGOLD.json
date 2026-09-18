@@ -1,9 +1,8 @@
 {
   "code": "IVZINGOLD",
   "name": "IVZINGOLD",
-  "last": 129.8,
+  "last": 131.6,
   "hist": [
-    9548.7,
     9638.9,
     9580.0,
     9798.05,
@@ -251,49 +250,50 @@
     133.25,
     131.9,
     131.9,
-    129.8
+    129.8,
+    131.6
   ],
   "med": [
-    130.19
+    131.59
   ],
   "up": [
-    131.31
+    132.94
   ],
   "lo": [
-    129.05
+    131.16
   ],
-  "ret": 0.3,
-  "cone_width_pct": 1.74,
-  "asof": "2026-09-15",
+  "ret": -0.01,
+  "cone_width_pct": 1.35,
+  "asof": "2026-09-16",
   "trading": {
-    "entry": 129.8,
-    "stop_loss": 129.05,
-    "exit": 130.19,
-    "risk": 0.75,
-    "reward": 0.39,
-    "risk_reward": 0.52,
-    "conviction": 15,
+    "entry": 131.6,
+    "stop_loss": 131.16,
+    "exit": 131.59,
+    "risk": 0.44,
+    "reward": -0.01,
+    "risk_reward": -0.02,
+    "conviction": 35,
     "volume": {
-      "latest": 10693,
-      "avg_20d": 33204,
-      "ratio": 0.32,
+      "latest": 9928,
+      "avg_20d": 33284,
+      "ratio": 0.3,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 349.09,
-      "ema_200": 4335.17,
+      "ema_50": 340.56,
+      "ema_200": 4300.82,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 33.1,
+      "rsi_14": 37.3,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 15/100 (LOW)",
-        "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.52)",
+        "Conviction 35/100 (LOW)",
+        "Trend (BEARISH) agrees with the forecast",
+        "R:R unfavorable (1:-0.02)",
         "Volume does not confirm the move"
       ]
     }
@@ -309,16 +309,25 @@
   },
   "status": [
     "Low liquidity",
-    "Data as of 2026-09-15"
+    "Data as of 2026-09-16"
   ],
   "calibration": {
-    "bias_pct": 0.0262,
+    "bias_pct": 0.1135,
     "coverage": 0.45,
     "cone_scale": 1.777777777777778,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-15",
+        "target_date": "2026-09-16",
+        "predicted_med": 130.19,
+        "actual_close": 131.60000610351562,
+        "error_pct": 1.083,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-09-14",
         "target_date": "2026-09-15",
@@ -489,19 +498,10 @@
         "error_pct": 1.4774,
         "in_cone": true,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-08-12",
-        "target_date": "2026-08-13",
-        "predicted_med": 132.93,
-        "actual_close": 132.0500030517578,
-        "error_pct": -0.662,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.28,
+    "mae_pct": 1.3,
     "directional_accuracy_pct": 45.0,
     "calibration_pct": 45.0
   }

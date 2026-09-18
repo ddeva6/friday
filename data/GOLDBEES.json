@@ -1,9 +1,8 @@
 {
   "code": "GOLDBEES",
   "name": "GOLDBEES",
-  "last": 123.62,
+  "last": 124.91,
   "hist": [
-    91.25,
     91.6,
     91.29,
     93.14,
@@ -251,48 +250,50 @@
     126.2,
     125.12,
     125.12,
-    123.62
+    123.62,
+    124.91
   ],
   "med": [
-    123.91
+    124.89
   ],
   "up": [
-    123.57
+    125.29
   ],
   "lo": [
-    122.67
+    124.11
   ],
-  "ret": 0.23,
-  "cone_width_pct": 0.73,
-  "asof": "2026-09-15",
+  "ret": -0.02,
+  "cone_width_pct": 0.94,
+  "asof": "2026-09-16",
   "trading": {
-    "entry": 123.62,
-    "stop_loss": 122.67,
-    "exit": 123.91,
-    "risk": 0.95,
-    "reward": 0.29,
-    "risk_reward": 0.31,
-    "conviction": 25,
+    "entry": 124.91,
+    "stop_loss": 124.11,
+    "exit": 124.89,
+    "risk": 0.8,
+    "reward": -0.02,
+    "risk_reward": -0.02,
+    "conviction": 15,
     "volume": {
-      "latest": 23136571,
-      "avg_20d": 27874981,
-      "ratio": 0.83,
+      "latest": 13858810,
+      "avg_20d": 28343485,
+      "ratio": 0.49,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 124.5,
-      "ema_200": 119.46,
-      "label": "WEAKENING"
+      "ema_50": 124.51,
+      "ema_200": 119.54,
+      "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 43.5,
+      "rsi_14": 48.0,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 25/100 (LOW)",
-        "R:R unfavorable (1:0.31)",
+        "Conviction 15/100 (LOW)",
+        "Trend (BULLISH) conflicts with the forecast",
+        "R:R unfavorable (1:-0.02)",
         "Volume does not confirm the move"
       ]
     }
@@ -304,20 +305,29 @@
     "de": "N/A",
     "sales_growth_yoy": "N/A",
     "hi_52w": 146.52999877929688,
-    "lo_52w": 91.25
+    "lo_52w": 91.29000091552734
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-15"
+    "Data as of 2026-09-16"
   ],
   "calibration": {
-    "bias_pct": -0.2599,
+    "bias_pct": -0.1977,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-15",
+        "target_date": "2026-09-16",
+        "predicted_med": 123.91,
+        "actual_close": 124.91000366210938,
+        "error_pct": 0.807,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-09-14",
         "target_date": "2026-09-15",
@@ -488,19 +498,10 @@
         "error_pct": 1.1036,
         "in_cone": true,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-08-12",
-        "target_date": "2026-08-13",
-        "predicted_med": 126.03,
-        "actual_close": 125.4800033569336,
-        "error_pct": -0.4364,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.03,
+    "mae_pct": 1.05,
     "directional_accuracy_pct": 45.0,
     "calibration_pct": 20.0
   }

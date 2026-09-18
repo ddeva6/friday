@@ -1,9 +1,8 @@
 {
   "code": "HCLTECH",
   "name": "HCLTECH",
-  "last": 1253.0,
+  "last": 1258.3,
   "hist": [
-    1417.31,
     1429.08,
     1403.82,
     1377.52,
@@ -253,56 +252,57 @@
     1206.1,
     1206.1,
     1253.7,
-    1253.0
+    1253.0,
+    1258.3
   ],
   "med": [
-    1251.17
+    1255.33
   ],
   "up": [
-    1250.69
+    1258.53
   ],
   "lo": [
-    1237.97
+    1246.63
   ],
-  "ret": -0.15,
-  "cone_width_pct": 1.02,
-  "asof": "2026-09-16",
+  "ret": -0.24,
+  "cone_width_pct": 0.95,
+  "asof": "2026-09-17",
   "trading": {
-    "entry": 1253.0,
-    "stop_loss": 1237.97,
-    "exit": 1251.17,
-    "risk": 15.03,
-    "reward": -1.83,
-    "risk_reward": -0.12,
-    "conviction": 55,
+    "entry": 1258.3,
+    "stop_loss": 1246.63,
+    "exit": 1255.33,
+    "risk": 11.67,
+    "reward": -2.97,
+    "risk_reward": -0.25,
+    "conviction": 35,
     "volume": {
-      "latest": 3049093,
-      "avg_20d": 2110627,
-      "ratio": 1.44,
-      "confirmed": true
+      "latest": 1386250,
+      "avg_20d": 2178400,
+      "ratio": 0.64,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 1270.18,
-      "ema_200": 1306.49,
+      "ema_50": 1269.71,
+      "ema_200": 1306.96,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 44.8,
+      "rsi_14": 46.1,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 55/100 (MEDIUM)",
+        "Conviction 35/100 (LOW)",
         "Trend (BEARISH) agrees with the forecast",
-        "R:R unfavorable (1:-0.12)",
-        "Volume confirms the move"
+        "R:R unfavorable (1:-0.25)",
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 340466.6241024,
-    "pe": 19.575296,
+    "mcap_cr": 338031.4374144,
+    "pe": 19.353989,
     "roe": 24.067,
     "de": 0.07058,
     "sales_growth_yoy": 3.0,
@@ -311,16 +311,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-16"
+    "Data as of 2026-09-17"
   ],
   "calibration": {
-    "bias_pct": -0.4086,
+    "bias_pct": -0.4591,
     "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-16",
+        "target_date": "2026-09-17",
+        "predicted_med": 1251.17,
+        "actual_close": 1258.300048828125,
+        "error_pct": 0.5699,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-09-15",
         "target_date": "2026-09-16",
@@ -491,20 +500,11 @@
         "error_pct": -0.6593,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-08-18",
-        "target_date": "2026-08-19",
-        "predicted_med": 1304.18,
-        "actual_close": 1324.800048828125,
-        "error_pct": 1.5811,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.3,
-    "directional_accuracy_pct": 55.0,
+    "mae_pct": 1.25,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 25.0
   }
 }

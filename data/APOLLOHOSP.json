@@ -1,9 +1,8 @@
 {
   "code": "APOLLOHOSP",
   "name": "APOLLOHOSP",
-  "last": 8696.5,
+  "last": 8768.5,
   "hist": [
-    7868.38,
     7830.98,
     7787.08,
     7719.75,
@@ -246,61 +245,64 @@
     8719.0,
     8692.0,
     8650.0,
+    8760.0,
     8837.5,
     8967.0,
     8900.0,
     8836.0,
     8836.0,
     8714.0,
-    8696.5
+    8696.5,
+    8768.5
   ],
   "med": [
-    8711.49
+    8771.39
   ],
   "up": [
-    8693.13
+    8776.67
   ],
   "lo": [
-    8648.49
+    8711.53
   ],
-  "ret": 0.17,
-  "cone_width_pct": 0.51,
-  "asof": "2026-09-16",
+  "ret": 0.03,
+  "cone_width_pct": 0.74,
+  "asof": "2026-09-17",
   "trading": {
-    "entry": 8696.5,
-    "stop_loss": 8648.49,
-    "exit": 8711.49,
-    "risk": 48.01,
-    "reward": 14.99,
-    "risk_reward": 0.31,
-    "conviction": 25,
+    "entry": 8768.5,
+    "stop_loss": 8711.53,
+    "exit": 8771.39,
+    "risk": 56.97,
+    "reward": 2.89,
+    "risk_reward": 0.05,
+    "conviction": 35,
     "volume": {
-      "latest": 232987,
-      "avg_20d": 263047,
-      "ratio": 0.89,
+      "latest": 191301,
+      "avg_20d": 251214,
+      "ratio": 0.76,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 8742.28,
-      "ema_200": 8225.13,
-      "label": "WEAKENING"
+      "ema_50": 8744.53,
+      "ema_200": 8232.8,
+      "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 45.1,
+      "rsi_14": 48.8,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 25/100 (LOW)",
-        "R:R unfavorable (1:0.31)",
+        "Conviction 35/100 (LOW)",
+        "Trend (BULLISH) agrees with the forecast",
+        "R:R unfavorable (1:0.05)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 126077.5800832,
-    "pe": 60.376644,
+    "mcap_cr": 128608.1871872,
+    "pe": 61.448887,
     "roe": "N/A",
     "de": 0.85146,
     "sales_growth_yoy": 20.599999999999998,
@@ -309,16 +311,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-16"
+    "Data as of 2026-09-17"
   ],
   "calibration": {
-    "bias_pct": -0.0441,
+    "bias_pct": 0.0302,
     "coverage": 0.35,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-16",
+        "target_date": "2026-09-17",
+        "predicted_med": 8711.49,
+        "actual_close": 8768.5,
+        "error_pct": 0.6544,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-09-15",
         "target_date": "2026-09-16",
@@ -489,19 +500,10 @@
         "error_pct": -0.0653,
         "in_cone": true,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-08-14",
-        "target_date": "2026-08-17",
-        "predicted_med": 8899.41,
-        "actual_close": 8825.5,
-        "error_pct": -0.8305,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.74,
+    "mae_pct": 0.73,
     "directional_accuracy_pct": 45.0,
     "calibration_pct": 35.0
   }
