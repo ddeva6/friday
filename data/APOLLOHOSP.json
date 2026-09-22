@@ -1,7 +1,7 @@
 {
   "code": "APOLLOHOSP",
   "name": "APOLLOHOSP",
-  "last": 8944.5,
+  "last": 8912.0,
   "hist": [
     7719.75,
     7664.89,
@@ -252,56 +252,57 @@
     8714.0,
     8696.5,
     8768.5,
-    8944.5
+    8944.5,
+    8912.0
   ],
   "med": [
-    8923.76
+    8908.06
   ],
   "up": [
-    8990.18
+    8980.22
   ],
   "lo": [
-    8884.08
+    8926.12
   ],
-  "ret": -0.23,
-  "cone_width_pct": 1.19,
-  "asof": "2026-09-18",
+  "ret": -0.04,
+  "cone_width_pct": 0.61,
+  "asof": "2026-09-21",
   "trading": {
-    "entry": 8944.5,
-    "stop_loss": 8884.08,
-    "exit": 8923.76,
-    "risk": 60.42,
-    "reward": -20.74,
-    "risk_reward": -0.34,
-    "conviction": 20,
+    "entry": 8912.0,
+    "stop_loss": 8926.12,
+    "exit": 8908.06,
+    "risk": -14.12,
+    "reward": -3.94,
+    "risk_reward": 0.0,
+    "conviction": 15,
     "volume": {
-      "latest": 344265,
-      "avg_20d": 246758,
-      "ratio": 1.4,
-      "confirmed": true
+      "latest": 209388,
+      "avg_20d": 254754,
+      "ratio": 0.82,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 8752.37,
-      "ema_200": 8230.79,
+      "ema_50": 8758.63,
+      "ema_200": 8237.57,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 57.0,
+      "rsi_14": 55.3,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 20/100 (LOW)",
+        "Conviction 15/100 (LOW)",
         "Trend (BULLISH) conflicts with the forecast",
-        "R:R unfavorable (1:-0.34)",
-        "Volume confirms the move"
+        "R:R not available",
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 128140.8892928,
-    "pe": 61.50449,
+    "mcap_cr": 127040.9330688,
+    "pe": 60.821228,
     "roe": "N/A",
     "de": 0.85146,
     "sales_growth_yoy": 20.599999999999998,
@@ -310,16 +311,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-18"
+    "Data as of 2026-09-21"
   ],
   "calibration": {
-    "bias_pct": 0.1321,
-    "coverage": 0.3,
+    "bias_pct": 0.1624,
+    "coverage": 0.35,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-18",
+        "target_date": "2026-09-21",
+        "predicted_med": 8923.76,
+        "actual_close": 8912.0,
+        "error_pct": -0.1318,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-09-17",
         "target_date": "2026-09-18",
@@ -490,20 +500,11 @@
         "error_pct": -0.238,
         "in_cone": true,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-08-18",
-        "target_date": "2026-08-19",
-        "predicted_med": 8815.04,
-        "actual_close": 8750.0,
-        "error_pct": -0.7378,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.83,
+    "mae_pct": 0.8,
     "directional_accuracy_pct": 45.0,
-    "calibration_pct": 30.0
+    "calibration_pct": 35.0
   }
 }

@@ -1,7 +1,7 @@
 {
   "code": "BHARTIARTL",
   "name": "BHARTIARTL",
-  "last": 1893.3,
+  "last": 1830.2,
   "hist": [
     1931.89,
     1914.6,
@@ -252,55 +252,57 @@
     1830.4,
     1835.0,
     1836.0,
-    1893.3
+    1893.3,
+    1830.2
   ],
   "med": [
-    1882.01
+    1828.23
   ],
   "up": [
-    1900.21
+    1823.49
   ],
   "lo": [
-    1883.81
+    1790.01
   ],
-  "ret": -0.6,
-  "cone_width_pct": 0.87,
-  "asof": "2026-09-18",
+  "ret": -0.11,
+  "cone_width_pct": 1.83,
+  "asof": "2026-09-21",
   "trading": {
-    "entry": 1893.3,
-    "stop_loss": 1883.81,
-    "exit": 1882.01,
-    "risk": 9.49,
-    "reward": -11.29,
-    "risk_reward": -1.19,
-    "conviction": 30,
+    "entry": 1830.2,
+    "stop_loss": 1790.01,
+    "exit": 1828.23,
+    "risk": 40.19,
+    "reward": -1.97,
+    "risk_reward": -0.05,
+    "conviction": 40,
     "volume": {
-      "latest": 14189780,
-      "avg_20d": 5131960,
-      "ratio": 2.76,
+      "latest": 9716580,
+      "avg_20d": 5690636,
+      "ratio": 1.71,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 1880.6,
-      "ema_200": 1894.82,
-      "label": "RECOVERING"
+      "ema_50": 1878.62,
+      "ema_200": 1894.17,
+      "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 54.4,
+      "rsi_14": 43.5,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 30/100 (LOW)",
-        "R:R unfavorable (1:-1.19)",
+        "Conviction 40/100 (MEDIUM)",
+        "Trend (BEARISH) agrees with the forecast",
+        "R:R unfavorable (1:-0.05)",
         "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 1141799.124992,
-    "pe": 38.208767,
+    "mcap_cr": 1133688.91392,
+    "pe": 37.937366,
     "roe": 20.151,
     "de": 1.00415,
     "sales_growth_yoy": 18.4,
@@ -309,16 +311,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-18"
+    "Data as of 2026-09-21"
   ],
   "calibration": {
-    "bias_pct": -0.2404,
-    "coverage": 0.15,
+    "bias_pct": -0.3859,
+    "coverage": 0.1,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-18",
+        "target_date": "2026-09-21",
+        "predicted_med": 1882.01,
+        "actual_close": 1830.199951171875,
+        "error_pct": -2.7529,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-09-17",
         "target_date": "2026-09-18",
@@ -489,20 +500,11 @@
         "error_pct": -0.65,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-08-20",
-        "target_date": "2026-08-21",
-        "predicted_med": 1942.96,
-        "actual_close": 1946.0,
-        "error_pct": 0.1565,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.16,
+    "mae_pct": 1.29,
     "directional_accuracy_pct": 45.0,
-    "calibration_pct": 15.0
+    "calibration_pct": 10.0
   }
 }
