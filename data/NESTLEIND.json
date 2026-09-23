@@ -1,9 +1,8 @@
 {
   "code": "NESTLEIND",
   "name": "NESTLEIND",
-  "last": 1385.0,
+  "last": 1363.9,
   "hist": [
-    1176.26,
     1156.57,
     1166.66,
     1161.61,
@@ -253,55 +252,56 @@
     1384.5,
     1370.6,
     1372.4,
-    1385.0
+    1385.0,
+    1363.9
   ],
   "med": [
-    1385.02
+    1366.31
   ],
   "up": [
-    1380.92
+    1356.39
   ],
   "lo": [
-    1372.6
+    1346.73
   ],
-  "ret": 0.0,
-  "cone_width_pct": 0.6,
-  "asof": "2026-09-21",
+  "ret": 0.18,
+  "cone_width_pct": 0.71,
+  "asof": "2026-09-22",
   "trading": {
-    "entry": 1385.0,
-    "stop_loss": 1372.6,
-    "exit": 1385.02,
-    "risk": 12.4,
-    "reward": 0.02,
-    "risk_reward": 0.0,
+    "entry": 1363.9,
+    "stop_loss": 1346.73,
+    "exit": 1366.31,
+    "risk": 17.17,
+    "reward": 2.41,
+    "risk_reward": 0.14,
     "conviction": 25,
     "volume": {
-      "latest": 573071,
-      "avg_20d": 1236495,
-      "ratio": 0.46,
+      "latest": 865008,
+      "avg_20d": 1191891,
+      "ratio": 0.73,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1429.74,
-      "ema_200": 1368.09,
+      "ema_50": 1427.16,
+      "ema_200": 1366.44,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 40.1,
+      "rsi_14": 35.5,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 25/100 (LOW)",
-        "R:R not available",
+        "R:R unfavorable (1:0.14)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 263002.8099584,
-    "pe": 68.84907,
+    "mcap_cr": 267495.7484032,
+    "pe": 70.02524,
     "roe": "N/A",
     "de": 0.08621000000000001,
     "sales_growth_yoy": 25.2,
@@ -310,16 +310,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-21"
+    "Data as of 2026-09-22"
   ],
   "calibration": {
-    "bias_pct": -0.3294,
+    "bias_pct": -0.4494,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-21",
+        "target_date": "2026-09-22",
+        "predicted_med": 1385.02,
+        "actual_close": 1363.9000244140625,
+        "error_pct": -1.5249,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-09-18",
         "target_date": "2026-09-21",
@@ -490,20 +499,11 @@
         "error_pct": -0.6066,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-08-20",
-        "target_date": "2026-08-21",
-        "predicted_med": 1464.3,
-        "actual_close": 1477.0999755859375,
-        "error_pct": 0.8741,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.95,
-    "directional_accuracy_pct": 40.0,
+    "mae_pct": 0.98,
+    "directional_accuracy_pct": 35.0,
     "calibration_pct": 20.0
   }
 }
