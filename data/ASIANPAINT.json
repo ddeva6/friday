@@ -1,9 +1,8 @@
 {
   "code": "ASIANPAINT",
   "name": "ASIANPAINT",
-  "last": 2455.0,
+  "last": 2392.7,
   "hist": [
-    2432.27,
     2379.61,
     2319.03,
     2318.83,
@@ -253,55 +252,56 @@
     2451.3,
     2440.3,
     2448.5,
-    2455.0
+    2455.0,
+    2392.7
   ],
   "med": [
-    2454.95
+    2402.14
   ],
   "up": [
-    2444.73
+    2371.2
   ],
   "lo": [
-    2431.29
+    2354.42
   ],
-  "ret": 0.0,
-  "cone_width_pct": 0.55,
-  "asof": "2026-09-23",
+  "ret": 0.39,
+  "cone_width_pct": 0.7,
+  "asof": "2026-09-24",
   "trading": {
-    "entry": 2455.0,
-    "stop_loss": 2431.29,
-    "exit": 2454.95,
-    "risk": 23.71,
-    "reward": -0.05,
-    "risk_reward": -0.0,
+    "entry": 2392.7,
+    "stop_loss": 2354.42,
+    "exit": 2402.14,
+    "risk": 38.28,
+    "reward": 9.44,
+    "risk_reward": 0.25,
     "conviction": 40,
     "volume": {
-      "latest": 398823,
-      "avg_20d": 540544,
-      "ratio": 0.74,
+      "latest": 259577,
+      "avg_20d": 543530,
+      "ratio": 0.48,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 2572.9,
-      "ema_200": 2565.86,
+      "ema_50": 2565.83,
+      "ema_200": 2559.86,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 36.1,
-      "label": "NEUTRAL"
+      "rsi_14": 29.1,
+      "label": "OVERSOLD"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 40/100 (MEDIUM)",
-        "R:R not available",
+        "R:R unfavorable (1:0.25)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 229374.820352,
-    "pe": 48.249645,
+    "mcap_cr": 234292.6680064,
+    "pe": 49.10589,
     "roe": "N/A",
     "de": 0.17847000000000002,
     "sales_growth_yoy": 17.9,
@@ -310,16 +310,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-23"
+    "Data as of 2026-09-24"
   ],
   "calibration": {
-    "bias_pct": -0.3792,
-    "coverage": 0.1,
+    "bias_pct": -0.4722,
+    "coverage": 0.05,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-23",
+        "target_date": "2026-09-24",
+        "predicted_med": 2454.95,
+        "actual_close": 2392.699951171875,
+        "error_pct": -2.5357,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-09-22",
         "target_date": "2026-09-23",
@@ -490,20 +499,11 @@
         "error_pct": 0.0072,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-08-25",
-        "target_date": "2026-08-26",
-        "predicted_med": 2644.35,
-        "actual_close": 2626.5,
-        "error_pct": -0.675,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.74,
-    "directional_accuracy_pct": 55.0,
-    "calibration_pct": 10.0
+    "mae_pct": 0.83,
+    "directional_accuracy_pct": 60.0,
+    "calibration_pct": 5.0
   }
 }

@@ -1,9 +1,8 @@
 {
   "code": "GRASIM",
   "name": "GRASIM",
-  "last": 3188.5,
+  "last": 3166.5,
   "hist": [
-    2798.68,
     2769.97,
     2738.27,
     2738.37,
@@ -253,55 +252,56 @@
     3209.2,
     3166.0,
     3128.2,
-    3188.5
+    3188.5,
+    3166.5
   ],
   "med": [
-    3188.35
+    3169.67
   ],
   "up": [
-    3185.61
+    3158.33
   ],
   "lo": [
-    3159.05
+    3136.09
   ],
-  "ret": 0.0,
-  "cone_width_pct": 0.83,
-  "asof": "2026-09-23",
+  "ret": 0.1,
+  "cone_width_pct": 0.7,
+  "asof": "2026-09-24",
   "trading": {
-    "entry": 3188.5,
-    "stop_loss": 3159.05,
-    "exit": 3188.35,
-    "risk": 29.45,
-    "reward": -0.15,
-    "risk_reward": -0.01,
+    "entry": 3166.5,
+    "stop_loss": 3136.09,
+    "exit": 3169.67,
+    "risk": 30.41,
+    "reward": 3.17,
+    "risk_reward": 0.1,
     "conviction": 25,
     "volume": {
-      "latest": 411551,
-      "avg_20d": 881033,
-      "ratio": 0.47,
+      "latest": 471338,
+      "avg_20d": 845990,
+      "ratio": 0.56,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 3217.29,
-      "ema_200": 3030.65,
+      "ema_50": 3215.29,
+      "ema_200": 3029.67,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 44.6,
+      "rsi_14": 42.4,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 25/100 (LOW)",
-        "R:R unfavorable (1:-0.01)",
+        "R:R unfavorable (1:0.10)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 214768.7333888,
-    "pe": 37.75936,
+    "mcap_cr": 216430.4510976,
+    "pe": 38.02884,
     "roe": "N/A",
     "de": 1.35044,
     "sales_growth_yoy": 21.4,
@@ -310,16 +310,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-23"
+    "Data as of 2026-09-24"
   ],
   "calibration": {
-    "bias_pct": -0.2435,
-    "coverage": 0.2,
+    "bias_pct": -0.3234,
+    "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-23",
+        "target_date": "2026-09-24",
+        "predicted_med": 3188.35,
+        "actual_close": 3166.5,
+        "error_pct": -0.6853,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-09-22",
         "target_date": "2026-09-23",
@@ -490,20 +499,11 @@
         "error_pct": 0.2309,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-08-19",
-        "target_date": "2026-08-20",
-        "predicted_med": 3270.16,
-        "actual_close": 3300.0,
-        "error_pct": 0.9125,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.73,
+    "mae_pct": 0.72,
     "directional_accuracy_pct": 50.0,
-    "calibration_pct": 20.0
+    "calibration_pct": 25.0
   }
 }
