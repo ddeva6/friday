@@ -1,9 +1,8 @@
 {
   "code": "SUNPHARMA",
   "name": "SUNPHARMA",
-  "last": 1838.0,
+  "last": 1865.0,
   "hist": [
-    1574.92,
     1579.87,
     1621.39,
     1616.44,
@@ -253,55 +252,56 @@
     1865.0,
     1849.9,
     1852.2,
-    1838.0
+    1838.0,
+    1865.0
   ],
   "med": [
-    1838.83
+    1861.13
   ],
   "up": [
-    1832.87
+    1865.41
   ],
   "lo": [
-    1823.43
+    1856.01
   ],
-  "ret": 0.05,
-  "cone_width_pct": 0.51,
-  "asof": "2026-09-28",
+  "ret": -0.21,
+  "cone_width_pct": 0.5,
+  "asof": "2026-09-29",
   "trading": {
-    "entry": 1838.0,
-    "stop_loss": 1823.43,
-    "exit": 1838.83,
-    "risk": 14.57,
-    "reward": 0.83,
-    "risk_reward": 0.06,
-    "conviction": 40,
+    "entry": 1865.0,
+    "stop_loss": 1856.01,
+    "exit": 1861.13,
+    "risk": 8.99,
+    "reward": -3.87,
+    "risk_reward": -0.43,
+    "conviction": 45,
     "volume": {
-      "latest": 947719,
-      "avg_20d": 1512519,
-      "ratio": 0.63,
-      "confirmed": false
+      "latest": 3083083,
+      "avg_20d": 1439244,
+      "ratio": 2.14,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 1885.0,
-      "ema_200": 1816.32,
+      "ema_50": 1884.22,
+      "ema_200": 1817.2,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 41.0,
+      "rsi_14": 47.8,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 40/100 (MEDIUM)",
-        "R:R unfavorable (1:0.06)",
-        "Volume does not confirm the move"
+        "Conviction 45/100 (MEDIUM)",
+        "R:R unfavorable (1:-0.43)",
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 447475.9806976,
-    "pe": 37.03336,
+    "mcap_cr": 435863.1849984,
+    "pe": 36.072277,
     "roe": "N/A",
     "de": 0.055170000000000004,
     "sales_growth_yoy": 10.5,
@@ -310,16 +310,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-28"
+    "Data as of 2026-09-29"
   ],
   "calibration": {
-    "bias_pct": -0.3081,
+    "bias_pct": -0.2583,
     "coverage": 0.1,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-28",
+        "target_date": "2026-09-29",
+        "predicted_med": 1838.83,
+        "actual_close": 1865.0,
+        "error_pct": 1.4232,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-09-25",
         "target_date": "2026-09-28",
@@ -490,20 +499,11 @@
         "error_pct": -2.0081,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-08-27",
-        "target_date": "2026-08-28",
-        "predicted_med": 1911.82,
-        "actual_close": 1920.0,
-        "error_pct": 0.4279,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.81,
-    "directional_accuracy_pct": 60.0,
+    "mae_pct": 0.86,
+    "directional_accuracy_pct": 65.0,
     "calibration_pct": 10.0
   }
 }
