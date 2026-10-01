@@ -1,9 +1,8 @@
 {
   "code": "ETERNAL",
   "name": "ETERNAL",
-  "last": 327.85,
+  "last": 320.0,
   "hist": [
-    325.5,
     329.0,
     328.45,
     335.1,
@@ -253,41 +252,42 @@
     335.5,
     335.0,
     330.95,
-    327.85
+    327.85,
+    320.0
   ],
   "med": [
-    328.46
+    321.35
   ],
   "up": [
-    329.98
+    319.67
   ],
   "lo": [
-    326.96
+    312.27
   ],
-  "ret": 0.19,
-  "cone_width_pct": 0.92,
-  "asof": "2026-09-29",
+  "ret": 0.42,
+  "cone_width_pct": 2.31,
+  "asof": "2026-09-30",
   "trading": {
-    "entry": 327.85,
-    "stop_loss": 326.96,
-    "exit": 328.46,
-    "risk": 0.89,
-    "reward": 0.61,
-    "risk_reward": 0.69,
+    "entry": 320.0,
+    "stop_loss": 312.27,
+    "exit": 321.35,
+    "risk": 7.73,
+    "reward": 1.35,
+    "risk_reward": 0.17,
     "conviction": 55,
     "volume": {
-      "latest": 30822496,
-      "avg_20d": 17423981,
-      "ratio": 1.77,
+      "latest": 28850208,
+      "avg_20d": 17890021,
+      "ratio": 1.61,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 316.77,
-      "ema_200": 292.48,
+      "ema_50": 316.89,
+      "ema_200": 293.04,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 52.2,
+      "rsi_14": 44.2,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -295,14 +295,14 @@
       "reasons": [
         "Conviction 55/100 (MEDIUM)",
         "Trend (BULLISH) agrees with the forecast",
-        "R:R unfavorable (1:0.69)",
+        "R:R unfavorable (1:0.17)",
         "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 294572.5759488,
-    "pe": 695.65216,
+    "mcap_cr": 288957.2941824,
+    "pe": 697.55554,
     "roe": "N/A",
     "de": 0.14826,
     "sales_growth_yoy": 182.0,
@@ -311,16 +311,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-29"
+    "Data as of 2026-09-30"
   ],
   "calibration": {
-    "bias_pct": 0.1487,
+    "bias_pct": 0.0218,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-29",
+        "target_date": "2026-09-30",
+        "predicted_med": 328.46,
+        "actual_close": 320.0,
+        "error_pct": -2.5757,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-09-28",
         "target_date": "2026-09-29",
@@ -491,20 +500,11 @@
         "error_pct": -0.0823,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-08-28",
-        "target_date": "2026-08-31",
-        "predicted_med": 328.22,
-        "actual_close": 328.1000061035156,
-        "error_pct": -0.0366,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.79,
-    "directional_accuracy_pct": 60.0,
+    "mae_pct": 0.92,
+    "directional_accuracy_pct": 55.0,
     "calibration_pct": 20.0
   }
 }
