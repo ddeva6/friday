@@ -1,9 +1,8 @@
 {
   "code": "INDIGO",
   "name": "INDIGO",
-  "last": 4984.0,
+  "last": 4929.9,
   "hist": [
-    5606.0,
     5657.0,
     5694.5,
     5664.0,
@@ -252,48 +251,49 @@
     4940.0,
     4874.5,
     4872.0,
-    4984.0
+    4984.0,
+    4929.9
   ],
   "med": [
-    4981.47
+    4932.29
   ],
   "up": [
-    5023.97
+    4952.59
   ],
   "lo": [
-    4975.97
+    4905.89
   ],
-  "ret": -0.05,
-  "cone_width_pct": 0.96,
-  "asof": "2026-09-30",
+  "ret": 0.05,
+  "cone_width_pct": 0.95,
+  "asof": "2026-10-01",
   "trading": {
-    "entry": 4984.0,
-    "stop_loss": 4975.97,
-    "exit": 4981.47,
-    "risk": 8.03,
-    "reward": -2.53,
-    "risk_reward": -0.32,
+    "entry": 4929.9,
+    "stop_loss": 4905.89,
+    "exit": 4932.29,
+    "risk": 24.01,
+    "reward": 2.39,
+    "risk_reward": 0.1,
     "conviction": 30,
     "volume": {
-      "latest": 624800,
-      "avg_20d": 603759,
-      "ratio": 1.03,
+      "latest": 592514,
+      "avg_20d": 563100,
+      "ratio": 1.05,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 5026.33,
-      "ema_200": 5006.83,
+      "ema_50": 5022.55,
+      "ema_200": 5010.25,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 49.7,
+      "rsi_14": 46.5,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 30/100 (LOW)",
-        "R:R unfavorable (1:-0.32)",
+        "R:R unfavorable (1:0.10)",
         "Volume confirms the move"
       ]
     }
@@ -309,16 +309,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-30"
+    "Data as of 2026-10-01"
   ],
   "calibration": {
-    "bias_pct": 0.0042,
+    "bias_pct": -0.1091,
     "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-30",
+        "target_date": "2026-10-01",
+        "predicted_med": 4981.47,
+        "actual_close": 4929.89990234375,
+        "error_pct": -1.0352,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-09-29",
         "target_date": "2026-09-30",
@@ -489,19 +498,10 @@
         "error_pct": -1.1599,
         "in_cone": true,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-08-28",
-        "target_date": "2026-08-31",
-        "predicted_med": 5170.43,
-        "actual_close": 5234.0,
-        "error_pct": 1.2295,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.03,
+    "mae_pct": 1.02,
     "directional_accuracy_pct": 45.0,
     "calibration_pct": 30.0
   }

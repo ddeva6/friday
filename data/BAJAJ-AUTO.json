@@ -1,9 +1,8 @@
 {
   "code": "BAJAJ-AUTO",
   "name": "BAJAJ-AUTO",
-  "last": 10874.0,
+  "last": 10045.0,
   "hist": [
-    8506.78,
     8559.05,
     8669.98,
     8780.43,
@@ -253,73 +252,83 @@
     11281.0,
     11024.0,
     10811.0,
-    10874.0
+    10874.0,
+    10045.0
   ],
   "med": [
-    10917.68
+    10173.4
   ],
   "up": [
-    10780.32
+    9763.98
   ],
   "lo": [
-    10695.82
+    9655.1
   ],
-  "ret": 0.4,
-  "cone_width_pct": 0.78,
-  "asof": "2026-09-30",
+  "ret": 1.28,
+  "cone_width_pct": 1.08,
+  "asof": "2026-10-01",
   "trading": {
-    "entry": 10874.0,
-    "stop_loss": 10695.82,
-    "exit": 10917.68,
-    "risk": 178.18,
-    "reward": 43.68,
-    "risk_reward": 0.25,
+    "entry": 10045.0,
+    "stop_loss": 9655.1,
+    "exit": 10173.4,
+    "risk": 389.9,
+    "reward": 128.4,
+    "risk_reward": 0.33,
     "conviction": 30,
     "volume": {
-      "latest": 313712,
-      "avg_20d": 195966,
-      "ratio": 1.6,
+      "latest": 1491300,
+      "avg_20d": 194971,
+      "ratio": 7.65,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 11347.01,
-      "ema_200": 10361.65,
+      "ema_50": 11295.95,
+      "ema_200": 10362.74,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 32.6,
-      "label": "NEUTRAL"
+      "rsi_14": 21.3,
+      "label": "OVERSOLD"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 30/100 (LOW)",
-        "R:R unfavorable (1:0.25)",
+        "R:R unfavorable (1:0.33)",
         "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
     "mcap_cr": 276040.4631552,
-    "pe": 23.870062,
+    "pe": 23.866093,
     "roe": "N/A",
     "de": 0.56352,
     "sales_growth_yoy": 64.0,
     "hi_52w": 12361.0,
-    "lo_52w": 8506.78125
+    "lo_52w": 8559.0458984375
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-30"
+    "Data as of 2026-10-01"
   ],
   "calibration": {
-    "bias_pct": -0.6555,
+    "bias_pct": -1.1825,
     "coverage": 0.1,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-30",
+        "target_date": "2026-10-01",
+        "predicted_med": 10917.68,
+        "actual_close": 10045.0,
+        "error_pct": -7.9933,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-09-29",
         "target_date": "2026-09-30",
@@ -490,19 +499,10 @@
         "error_pct": -1.3548,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-08-31",
-        "target_date": "2026-09-01",
-        "predicted_med": 12054.01,
-        "actual_close": 12361.0,
-        "error_pct": 2.5468,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.05,
+    "mae_pct": 1.33,
     "directional_accuracy_pct": 40.0,
     "calibration_pct": 10.0
   }

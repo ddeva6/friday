@@ -1,9 +1,8 @@
 {
   "code": "NIFTYFINSERVICE",
   "name": "Nifty Financial Services",
-  "last": 1017.93,
+  "last": 1015.7,
   "hist": [
-    1081.22,
     1076.88,
     1088.69,
     1090.66,
@@ -253,27 +252,28 @@
     1043.67,
     1032.25,
     1027.3,
-    1017.93
+    1017.93,
+    1015.7
   ],
   "med": [
-    1022.78
+    1019.91
   ],
   "up": [
-    1008.8
+    1006.49
   ],
   "lo": [
-    1002.62
+    1000.43
   ],
-  "ret": 0.48,
-  "cone_width_pct": 0.61,
-  "asof": "2026-09-30",
+  "ret": 0.41,
+  "cone_width_pct": 0.6,
+  "asof": "2026-10-01",
   "trading": {
-    "entry": 1017.93,
-    "stop_loss": 1002.62,
-    "exit": 1022.78,
-    "risk": 15.31,
-    "reward": 4.85,
-    "risk_reward": 0.32,
+    "entry": 1015.7,
+    "stop_loss": 1000.43,
+    "exit": 1019.91,
+    "risk": 15.27,
+    "reward": 4.21,
+    "risk_reward": 0.28,
     "conviction": 15,
     "volume": {
       "latest": 0,
@@ -282,12 +282,12 @@
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1083.0,
-      "ema_200": 1093.4,
+      "ema_50": 1080.36,
+      "ema_200": 1092.28,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 30.0,
+      "rsi_14": 29.5,
       "label": "OVERSOLD"
     },
     "verdict": {
@@ -295,7 +295,7 @@
       "reasons": [
         "Conviction 15/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.32)",
+        "R:R unfavorable (1:0.28)",
         "Volume does not confirm the move"
       ]
     }
@@ -311,16 +311,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-30"
+    "Data as of 2026-10-01"
   ],
   "calibration": {
-    "bias_pct": -0.4039,
+    "bias_pct": -0.4211,
     "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-30",
+        "target_date": "2026-10-01",
+        "predicted_med": 1022.78,
+        "actual_close": 1015.6999918619791,
+        "error_pct": -0.6922,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-09-29",
         "target_date": "2026-09-30",
@@ -491,19 +500,10 @@
         "error_pct": -0.187,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-09-01",
-        "target_date": "2026-09-02",
-        "predicted_med": 1100.96,
-        "actual_close": 1097.1166737874348,
-        "error_pct": -0.3491,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.84,
+    "mae_pct": 0.86,
     "directional_accuracy_pct": 45.0,
     "calibration_pct": 30.0
   }

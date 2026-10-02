@@ -1,9 +1,8 @@
 {
   "code": "POWERGRID",
   "name": "POWERGRID",
-  "last": 260.5,
+  "last": 254.55,
   "hist": [
-    271.68,
     280.44,
     277.73,
     279.76,
@@ -253,41 +252,42 @@
     269.5,
     261.85,
     261.5,
-    260.5
+    260.5,
+    254.55
   ],
   "med": [
-    261.29
+    256.01
   ],
   "up": [
-    260.25
+    252.75
   ],
   "lo": [
-    258.79
+    251.39
   ],
-  "ret": 0.3,
-  "cone_width_pct": 0.56,
-  "asof": "2026-09-30",
+  "ret": 0.57,
+  "cone_width_pct": 0.53,
+  "asof": "2026-10-01",
   "trading": {
-    "entry": 260.5,
-    "stop_loss": 258.79,
-    "exit": 261.29,
-    "risk": 1.71,
-    "reward": 0.79,
+    "entry": 254.55,
+    "stop_loss": 251.39,
+    "exit": 256.01,
+    "risk": 3.16,
+    "reward": 1.46,
     "risk_reward": 0.46,
     "conviction": 35,
     "volume": {
-      "latest": 9769840,
-      "avg_20d": 9486148,
-      "ratio": 1.03,
+      "latest": 10976701,
+      "avg_20d": 9521197,
+      "ratio": 1.15,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 270.34,
-      "ema_200": 279.2,
+      "ema_50": 269.72,
+      "ema_200": 279.67,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 40.8,
+      "rsi_14": 34.7,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -302,7 +302,7 @@
   },
   "fundamentals": {
     "mcap_cr": 236746.8863488,
-    "pe": 12.46572,
+    "pe": 12.4718275,
     "roe": "N/A",
     "de": 1.50813,
     "sales_growth_yoy": 2.7,
@@ -311,16 +311,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-30"
+    "Data as of 2026-10-01"
   ],
   "calibration": {
-    "bias_pct": -0.1564,
-    "coverage": 0.35,
+    "bias_pct": -0.244,
+    "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-30",
+        "target_date": "2026-10-01",
+        "predicted_med": 261.29,
+        "actual_close": 254.5500030517578,
+        "error_pct": -2.5795,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-09-29",
         "target_date": "2026-09-30",
@@ -491,20 +500,11 @@
         "error_pct": 0.368,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-08-28",
-        "target_date": "2026-08-31",
-        "predicted_med": 265.75,
-        "actual_close": 263.54998779296875,
-        "error_pct": -0.8279,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.76,
-    "directional_accuracy_pct": 65.0,
-    "calibration_pct": 35.0
+    "mae_pct": 0.85,
+    "directional_accuracy_pct": 60.0,
+    "calibration_pct": 30.0
   }
 }

@@ -1,9 +1,8 @@
 {
   "code": "ULTRACEMCO",
   "name": "ULTRACEMCO",
-  "last": 10956.0,
+  "last": 10710.0,
   "hist": [
-    11853.06,
     11778.58,
     11813.86,
     11940.28,
@@ -253,50 +252,51 @@
     11155.0,
     11025.0,
     10829.0,
-    10956.0
+    10956.0,
+    10710.0
   ],
   "med": [
-    10962.51
+    10747.81
   ],
   "up": [
-    10960.21
+    10670.53
   ],
   "lo": [
-    10884.41
+    10577.19
   ],
-  "ret": 0.06,
-  "cone_width_pct": 0.69,
-  "asof": "2026-09-30",
+  "ret": 0.35,
+  "cone_width_pct": 0.87,
+  "asof": "2026-10-01",
   "trading": {
-    "entry": 10956.0,
-    "stop_loss": 10884.41,
-    "exit": 10962.51,
-    "risk": 71.59,
-    "reward": 6.51,
-    "risk_reward": 0.09,
-    "conviction": 30,
+    "entry": 10710.0,
+    "stop_loss": 10577.19,
+    "exit": 10747.81,
+    "risk": 132.81,
+    "reward": 37.81,
+    "risk_reward": 0.28,
+    "conviction": 35,
     "volume": {
-      "latest": 257558,
-      "avg_20d": 268775,
-      "ratio": 0.96,
-      "confirmed": false
+      "latest": 570684,
+      "avg_20d": 270212,
+      "ratio": 2.11,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 11257.84,
-      "ema_200": 11465.57,
+      "ema_50": 11236.36,
+      "ema_200": 11452.0,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 44.1,
+      "rsi_14": 38.0,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 30/100 (LOW)",
+        "Conviction 35/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.09)",
-        "Volume does not confirm the move"
+        "R:R unfavorable (1:0.28)",
+        "Volume confirms the move"
       ]
     }
   },
@@ -311,16 +311,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-09-30"
+    "Data as of 2026-10-01"
   ],
   "calibration": {
-    "bias_pct": -0.153,
-    "coverage": 0.1,
+    "bias_pct": -0.2576,
+    "coverage": 0.05,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-09-30",
+        "target_date": "2026-10-01",
+        "predicted_med": 10962.51,
+        "actual_close": 10710.0,
+        "error_pct": -2.3034,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-09-29",
         "target_date": "2026-09-30",
@@ -491,20 +500,11 @@
         "error_pct": -1.0136,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-01",
-        "target_date": "2026-09-02",
-        "predicted_med": 11417.0,
-        "actual_close": 11393.0,
-        "error_pct": -0.2102,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.89,
+    "mae_pct": 1.0,
     "directional_accuracy_pct": 65.0,
-    "calibration_pct": 10.0
+    "calibration_pct": 5.0
   }
 }
