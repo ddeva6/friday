@@ -1,7 +1,7 @@
 {
   "code": "HDFCGOLD",
   "name": "HDFCGOLD",
-  "last": 125.58,
+  "last": 125.72,
   "hist": [
     102.32,
     102.91,
@@ -247,48 +247,49 @@
     125.41,
     124.76,
     125.75,
-    125.58
+    125.58,
+    125.72
   ],
   "med": [
-    125.87
+    125.91
   ],
   "up": [
-    125.21
+    125.43
   ],
   "lo": [
-    124.27
+    124.55
   ],
-  "ret": 0.23,
-  "cone_width_pct": 0.75,
-  "asof": "2026-10-01",
+  "ret": 0.15,
+  "cone_width_pct": 0.7,
+  "asof": "2026-10-05",
   "trading": {
-    "entry": 125.58,
-    "stop_loss": 124.27,
-    "exit": 125.87,
-    "risk": 1.31,
-    "reward": 0.29,
-    "risk_reward": 0.22,
+    "entry": 125.72,
+    "stop_loss": 124.55,
+    "exit": 125.91,
+    "risk": 1.17,
+    "reward": 0.19,
+    "risk_reward": 0.16,
     "conviction": 40,
     "volume": {
-      "latest": 3414958,
-      "avg_20d": 4712699,
-      "ratio": 0.72,
+      "latest": 3530908,
+      "avg_20d": 4661716,
+      "ratio": 0.76,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 128.29,
-      "ema_200": 124.42,
+      "ema_50": 128.19,
+      "ema_200": 124.43,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 40.2,
+      "rsi_14": 40.8,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 40/100 (MEDIUM)",
-        "R:R unfavorable (1:0.22)",
+        "R:R unfavorable (1:0.16)",
         "Volume does not confirm the move"
       ]
     }
@@ -304,16 +305,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-01"
+    "Data as of 2026-10-05"
   ],
   "calibration": {
-    "bias_pct": -0.1625,
+    "bias_pct": -0.2235,
     "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-01",
+        "target_date": "2026-10-05",
+        "predicted_med": 125.87,
+        "actual_close": 125.72000122070312,
+        "error_pct": -0.1192,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-09-30",
         "target_date": "2026-10-01",
@@ -484,19 +494,10 @@
         "error_pct": 0.4816,
         "in_cone": true,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-02",
-        "target_date": "2026-09-03",
-        "predicted_med": 128.95,
-        "actual_close": 130.3699951171875,
-        "error_pct": 1.1012,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.72,
+    "mae_pct": 0.67,
     "directional_accuracy_pct": 65.0,
     "calibration_pct": 30.0
   }
