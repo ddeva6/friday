@@ -1,9 +1,8 @@
 {
   "code": "QGOLDHALF",
   "name": "QGOLDHALF",
-  "last": 121.86,
+  "last": 121.3,
   "hist": [
-    101.93,
     101.75,
     100.5,
     102.75,
@@ -140,7 +139,6 @@
     122.81,
     121.7,
     123.6,
-    123.6,
     122.69,
     122.35,
     124.16,
@@ -158,7 +156,6 @@
     130.69,
     130.72,
     129.75,
-    129.06,
     129.06,
     128.8,
     127.86,
@@ -179,7 +176,6 @@
     121.3,
     119.1,
     117.75,
-    115.09,
     115.09,
     116.79,
     116.19,
@@ -236,7 +232,6 @@
     126.0,
     126.42,
     125.35,
-    125.35,
     124.36,
     125.15,
     124.65,
@@ -250,51 +245,51 @@
     120.8,
     121.85,
     121.63,
-    121.63,
     121.83,
-    121.86
+    121.86,
+    121.3
   ],
   "med": [
-    121.82
-  ],
-  "up": [
     121.48
   ],
-  "lo": [
-    120.64
+  "up": [
+    121.1
   ],
-  "ret": -0.03,
-  "cone_width_pct": 0.69,
-  "asof": "2026-10-06",
+  "lo": [
+    119.86
+  ],
+  "ret": 0.15,
+  "cone_width_pct": 1.02,
+  "asof": "2026-10-07",
   "trading": {
-    "entry": 121.86,
-    "stop_loss": 120.64,
-    "exit": 121.82,
-    "risk": 1.22,
-    "reward": -0.04,
-    "risk_reward": -0.03,
-    "conviction": 45,
+    "entry": 121.3,
+    "stop_loss": 119.86,
+    "exit": 121.48,
+    "risk": 1.44,
+    "reward": 0.18,
+    "risk_reward": 0.12,
+    "conviction": 40,
     "volume": {
-      "latest": 336939,
-      "avg_20d": 190339,
-      "ratio": 1.77,
-      "confirmed": true
+      "latest": 146528,
+      "avg_20d": 225549,
+      "ratio": 0.65,
+      "confirmed": false
     },
     "trend": {
       "ema_50": 124.11,
-      "ema_200": 121.04,
+      "ema_200": 120.92,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 41.1,
+      "rsi_14": 39.5,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 45/100 (MEDIUM)",
-        "R:R unfavorable (1:-0.03)",
-        "Volume confirms the move"
+        "Conviction 40/100 (MEDIUM)",
+        "R:R unfavorable (1:0.12)",
+        "Volume does not confirm the move"
       ]
     }
   },
@@ -309,16 +304,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-06"
+    "Data as of 2026-10-07"
   ],
   "calibration": {
-    "bias_pct": -0.3491,
-    "coverage": 0.3,
+    "bias_pct": -0.2665,
+    "coverage": 0.35,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-06",
+        "target_date": "2026-10-07",
+        "predicted_med": 121.82,
+        "actual_close": 121.30000305175781,
+        "error_pct": -0.4269,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-10-05",
         "target_date": "2026-10-06",
@@ -489,20 +493,11 @@
         "error_pct": 1.5921,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-01",
-        "target_date": "2026-09-02",
-        "predicted_med": 126.47,
-        "actual_close": 123.83999633789062,
-        "error_pct": -2.0795,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.72,
-    "directional_accuracy_pct": 55.0,
-    "calibration_pct": 30.0
+    "mae_pct": 0.63,
+    "directional_accuracy_pct": 60.0,
+    "calibration_pct": 35.0
   }
 }

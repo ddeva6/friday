@@ -1,9 +1,8 @@
 {
   "code": "SETFGOLD",
   "name": "SETFGOLD",
-  "last": 125.36,
+  "last": 124.92,
   "hist": [
-    104.74,
     104.91,
     103.79,
     105.97,
@@ -140,7 +139,6 @@
     126.49,
     125.39,
     127.44,
-    127.44,
     126.37,
     126.01,
     128.06,
@@ -158,7 +156,6 @@
     134.58,
     134.64,
     133.57,
-    133.02,
     133.02,
     132.69,
     131.49,
@@ -179,7 +176,6 @@
     124.95,
     122.62,
     121.24,
-    118.34,
     118.34,
     120.42,
     119.58,
@@ -236,7 +232,6 @@
     129.83,
     130.26,
     129.06,
-    129.06,
     127.57,
     128.88,
     128.39,
@@ -250,51 +245,51 @@
     124.44,
     125.61,
     125.35,
-    125.35,
     125.41,
-    125.36
+    125.36,
+    124.92
   ],
   "med": [
-    125.3
+    125.04
   ],
   "up": [
-    124.98
+    124.54
   ],
   "lo": [
-    123.88
+    123.5
   ],
-  "ret": -0.05,
-  "cone_width_pct": 0.88,
-  "asof": "2026-10-06",
+  "ret": 0.1,
+  "cone_width_pct": 0.83,
+  "asof": "2026-10-07",
   "trading": {
-    "entry": 125.36,
-    "stop_loss": 123.88,
-    "exit": 125.3,
-    "risk": 1.48,
-    "reward": -0.06,
-    "risk_reward": -0.04,
-    "conviction": 45,
+    "entry": 124.92,
+    "stop_loss": 123.5,
+    "exit": 125.04,
+    "risk": 1.42,
+    "reward": 0.12,
+    "risk_reward": 0.08,
+    "conviction": 40,
     "volume": {
-      "latest": 9150958,
-      "avg_20d": 4748330,
-      "ratio": 1.93,
-      "confirmed": true
+      "latest": 4215605,
+      "avg_20d": 5582312,
+      "ratio": 0.76,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 127.74,
-      "ema_200": 124.6,
+      "ema_50": 127.73,
+      "ema_200": 124.51,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 40.7,
+      "rsi_14": 39.6,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 45/100 (MEDIUM)",
-        "R:R unfavorable (1:-0.04)",
-        "Volume confirms the move"
+        "Conviction 40/100 (MEDIUM)",
+        "R:R unfavorable (1:0.08)",
+        "Volume does not confirm the move"
       ]
     }
   },
@@ -309,16 +304,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-06"
+    "Data as of 2026-10-07"
   ],
   "calibration": {
-    "bias_pct": -0.348,
-    "coverage": 0.3,
+    "bias_pct": -0.2579,
+    "coverage": 0.35,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-06",
+        "target_date": "2026-10-07",
+        "predicted_med": 125.3,
+        "actual_close": 124.91999816894531,
+        "error_pct": -0.3033,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-10-05",
         "target_date": "2026-10-06",
@@ -489,20 +493,11 @@
         "error_pct": 1.2833,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-01",
-        "target_date": "2026-09-02",
-        "predicted_med": 130.18,
-        "actual_close": 127.44000244140625,
-        "error_pct": -2.1048,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.71,
-    "directional_accuracy_pct": 60.0,
-    "calibration_pct": 30.0
+    "mae_pct": 0.62,
+    "directional_accuracy_pct": 65.0,
+    "calibration_pct": 35.0
   }
 }

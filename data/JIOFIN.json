@@ -1,9 +1,8 @@
 {
   "code": "JIOFIN",
   "name": "JIOFIN",
-  "last": 216.44,
+  "last": 211.0,
   "hist": [
-    303.94,
     306.63,
     307.43,
     307.73,
@@ -141,7 +140,6 @@
     250.22,
     250.12,
     245.79,
-    245.79,
     252.15,
     247.87,
     251.85,
@@ -159,7 +157,6 @@
     237.63,
     241.18,
     240.11,
-    242.32,
     242.32,
     238.39,
     234.4,
@@ -180,7 +177,6 @@
     242.81,
     237.25,
     238.31,
-    238.87,
     238.87,
     236.16,
     235.89,
@@ -237,7 +233,6 @@
     231.0,
     230.25,
     229.9,
-    229.9,
     225.6,
     224.84,
     229.3,
@@ -251,77 +246,86 @@
     217.56,
     216.88,
     212.5,
-    212.5,
     212.0,
     217.9,
-    216.44
+    216.44,
+    211.0
   ],
   "med": [
-    216.39
+    212.0
   ],
   "up": [
-    215.21
+    208.58
   ],
   "lo": [
-    213.29
+    206.58
   ],
-  "ret": -0.02,
-  "cone_width_pct": 0.89,
-  "asof": "2026-10-07",
+  "ret": 0.47,
+  "cone_width_pct": 0.95,
+  "asof": "2026-10-08",
   "trading": {
-    "entry": 216.44,
-    "stop_loss": 213.29,
-    "exit": 216.39,
-    "risk": 3.15,
-    "reward": -0.05,
-    "risk_reward": -0.02,
-    "conviction": 35,
+    "entry": 211.0,
+    "stop_loss": 206.58,
+    "exit": 212.0,
+    "risk": 4.42,
+    "reward": 1.0,
+    "risk_reward": 0.23,
+    "conviction": 15,
     "volume": {
-      "latest": 10207060,
-      "avg_20d": 12102234,
-      "ratio": 0.84,
+      "latest": 10614368,
+      "avg_20d": 13059314,
+      "ratio": 0.81,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 231.2,
-      "ema_200": 248.69,
+      "ema_50": 231.36,
+      "ema_200": 249.42,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 34.6,
-      "label": "NEUTRAL"
+      "rsi_14": 29.0,
+      "label": "OVERSOLD"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
-        "Trend (BEARISH) agrees with the forecast",
-        "R:R unfavorable (1:-0.02)",
+        "Conviction 15/100 (LOW)",
+        "Trend (BEARISH) conflicts with the forecast",
+        "R:R unfavorable (1:0.23)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 139326.2854144,
-    "pe": 65.52795,
+    "mcap_cr": 141716.619264,
+    "pe": 66.65217,
     "roe": "N/A",
     "de": 0.16286,
     "sales_growth_yoy": 208.2,
     "hi_52w": 314.16424560546875,
-    "lo_52w": 212.0
+    "lo_52w": 211.0
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-07"
+    "Data as of 2026-10-08"
   ],
   "calibration": {
-    "bias_pct": -0.6012,
+    "bias_pct": -0.6117,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-07",
+        "target_date": "2026-10-08",
+        "predicted_med": 216.39,
+        "actual_close": 211.0,
+        "error_pct": -2.4909,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-10-06",
         "target_date": "2026-10-07",
@@ -492,19 +496,10 @@
         "error_pct": -1.0325,
         "in_cone": true,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-09-04",
-        "target_date": "2026-09-08",
-        "predicted_med": 238.59,
-        "actual_close": 233.14999389648438,
-        "error_pct": -2.2801,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.13,
+    "mae_pct": 1.14,
     "directional_accuracy_pct": 30.0,
     "calibration_pct": 15.0
   }
