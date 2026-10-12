@@ -1,10 +1,8 @@
 {
   "code": "TATASTEEL",
   "name": "TATASTEEL",
-  "last": 171.96,
+  "last": 173.8,
   "hist": [
-    172.86,
-    170.35,
     169.53,
     167.06,
     169.74,
@@ -249,56 +247,57 @@
     178.14,
     178.69,
     175.64,
-    171.96
+    171.96,
+    173.8
   ],
   "med": [
-    173.35
+    174.31
   ],
   "up": [
-    169.97
+    171.83
   ],
   "lo": [
-    168.73
+    170.61
   ],
-  "ret": 0.81,
-  "cone_width_pct": 0.72,
-  "asof": "2026-10-08",
+  "ret": 0.29,
+  "cone_width_pct": 0.7,
+  "asof": "2026-10-09",
   "trading": {
-    "entry": 171.96,
-    "stop_loss": 168.73,
-    "exit": 173.35,
-    "risk": 3.23,
-    "reward": 1.39,
-    "risk_reward": 0.43,
-    "conviction": 35,
+    "entry": 173.8,
+    "stop_loss": 170.61,
+    "exit": 174.31,
+    "risk": 3.19,
+    "reward": 0.51,
+    "risk_reward": 0.16,
+    "conviction": 30,
     "volume": {
-      "latest": 30689721,
-      "avg_20d": 26102231,
-      "ratio": 1.18,
-      "confirmed": true
+      "latest": 13053584,
+      "avg_20d": 26423076,
+      "ratio": 0.49,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 185.25,
-      "ema_200": 187.93,
+      "ema_50": 184.8,
+      "ema_200": 187.51,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 31.6,
+      "rsi_14": 35.5,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
+        "Conviction 30/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.43)",
-        "Volume confirms the move"
+        "R:R unfavorable (1:0.16)",
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 216803.6130816,
-    "pe": 19.638418,
+    "mcap_cr": 214857.6264192,
+    "pe": 19.462147,
     "roe": "N/A",
     "de": 0.8901699999999999,
     "sales_growth_yoy": 14.299999999999999,
@@ -307,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-08"
+    "Data as of 2026-10-09"
   ],
   "calibration": {
-    "bias_pct": -0.4431,
+    "bias_pct": -0.5531,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-08",
+        "target_date": "2026-10-09",
+        "predicted_med": 173.35,
+        "actual_close": 173.8000030517578,
+        "error_pct": 0.2596,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-10-07",
         "target_date": "2026-10-08",
@@ -487,19 +495,10 @@
         "error_pct": -0.7756,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-08",
-        "target_date": "2026-09-09",
-        "predicted_med": 184.22,
-        "actual_close": 188.75,
-        "error_pct": 2.459,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.38,
+    "mae_pct": 1.27,
     "directional_accuracy_pct": 65.0,
     "calibration_pct": 15.0
   }

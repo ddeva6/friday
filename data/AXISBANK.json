@@ -1,10 +1,8 @@
 {
   "code": "AXISBANK",
   "name": "AXISBANK",
-  "last": 1245.0,
+  "last": 1259.1,
   "hist": [
-    1166.5,
-    1179.49,
     1188.68,
     1175.89,
     1168.7,
@@ -249,56 +247,56 @@
     1222.2,
     1248.0,
     1242.5,
-    1245.0
+    1245.0,
+    1259.1
   ],
   "med": [
-    1243.53
+    1255.18
   ],
   "up": [
-    1254.67
+    1269.78
   ],
   "lo": [
-    1244.13
+    1257.6
   ],
-  "ret": -0.12,
-  "cone_width_pct": 0.85,
-  "asof": "2026-10-08",
+  "ret": -0.31,
+  "cone_width_pct": 0.97,
+  "asof": "2026-10-09",
   "trading": {
-    "entry": 1245.0,
-    "stop_loss": 1244.13,
-    "exit": 1243.53,
-    "risk": 0.87,
-    "reward": -1.47,
-    "risk_reward": -1.69,
-    "conviction": 40,
+    "entry": 1259.1,
+    "stop_loss": 1257.6,
+    "exit": 1255.18,
+    "risk": 1.5,
+    "reward": -3.92,
+    "risk_reward": -2.61,
+    "conviction": 25,
     "volume": {
-      "latest": 7360960,
-      "avg_20d": 5848812,
-      "ratio": 1.26,
-      "confirmed": true
+      "latest": 5173548,
+      "avg_20d": 6035697,
+      "ratio": 0.86,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 1246.88,
-      "ema_200": 1262.41,
-      "label": "BEARISH"
+      "ema_50": 1247.36,
+      "ema_200": 1264.26,
+      "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 52.2,
+      "rsi_14": 56.0,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 40/100 (MEDIUM)",
-        "Trend (BEARISH) agrees with the forecast",
-        "R:R unfavorable (1:-1.69)",
-        "Volume confirms the move"
+        "Conviction 25/100 (LOW)",
+        "R:R unfavorable (1:-2.61)",
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 392055.1477248,
-    "pe": 14.158326,
+    "mcap_cr": 390155.7571584,
+    "pe": 14.089733,
     "roe": 13.352998999999999,
     "de": "N/A",
     "sales_growth_yoy": 14.000000000000002,
@@ -307,16 +305,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-08"
+    "Data as of 2026-10-09"
   ],
   "calibration": {
-    "bias_pct": -0.0351,
+    "bias_pct": 0.0625,
     "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-08",
+        "target_date": "2026-10-09",
+        "predicted_med": 1243.53,
+        "actual_close": 1259.0999755859375,
+        "error_pct": 1.2521,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-10-07",
         "target_date": "2026-10-08",
@@ -487,19 +494,10 @@
         "error_pct": 0.2615,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-08",
-        "target_date": "2026-09-09",
-        "predicted_med": 1247.25,
-        "actual_close": 1238.5,
-        "error_pct": -0.7015,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.87,
+    "mae_pct": 0.89,
     "directional_accuracy_pct": 50.0,
     "calibration_pct": 30.0
   }
