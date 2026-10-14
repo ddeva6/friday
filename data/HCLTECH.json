@@ -1,9 +1,8 @@
 {
   "code": "HCLTECH",
   "name": "HCLTECH",
-  "last": 1216.7,
+  "last": 1326.0,
   "hist": [
-    1429.94,
     1430.61,
     1430.9,
     1449.36,
@@ -248,74 +247,84 @@
     1204.4,
     1185.0,
     1176.9,
-    1216.7
+    1216.7,
+    1223.0,
+    1326.0
   ],
   "med": [
-    1217.53
+    1310.08
   ],
   "up": [
-    1215.75
+    1355.12
   ],
   "lo": [
-    1202.27
+    1338.9
   ],
-  "ret": 0.07,
-  "cone_width_pct": 1.11,
-  "asof": "2026-10-09",
+  "ret": -1.2,
+  "cone_width_pct": 1.22,
+  "asof": "2026-10-13",
   "trading": {
-    "entry": 1216.7,
-    "stop_loss": 1202.27,
-    "exit": 1217.53,
-    "risk": 14.43,
-    "reward": 0.83,
-    "risk_reward": 0.06,
-    "conviction": 35,
+    "entry": 1326.0,
+    "stop_loss": 1338.9,
+    "exit": 1310.08,
+    "risk": -12.9,
+    "reward": -15.92,
+    "risk_reward": 0.0,
+    "conviction": 45,
     "volume": {
-      "latest": 2934650,
-      "avg_20d": 2729495,
-      "ratio": 1.08,
+      "latest": 21744525,
+      "avg_20d": 2786938,
+      "ratio": 7.8,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 1252.7,
-      "ema_200": 1301.09,
-      "label": "BEARISH"
+      "ema_50": 1254.46,
+      "ema_200": 1300.62,
+      "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 44.4,
+      "rsi_14": 62.9,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
-        "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.06)",
+        "Conviction 45/100 (MEDIUM)",
+        "R:R not available",
         "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 358784.6701056,
-    "pe": 19.720406,
-    "roe": 24.067,
-    "de": 0.07058,
-    "sales_growth_yoy": 3.0,
+    "mcap_cr": 359055.228928,
+    "pe": 19.633083,
+    "roe": 24.648,
+    "de": 0.07905000000000001,
+    "sales_growth_yoy": 2.1999999999999997,
     "hi_52w": 1679.9578857421875,
     "lo_52w": 1023.7482299804688
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-09"
+    "Data as of 2026-10-13"
   ],
   "calibration": {
-    "bias_pct": -0.1438,
-    "coverage": 0.3,
+    "bias_pct": -0.0049,
+    "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-09",
+        "target_date": "2026-10-12",
+        "predicted_med": 1217.53,
+        "actual_close": 1223.0,
+        "error_pct": 0.4493,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-10-08",
         "target_date": "2026-10-09",
@@ -486,20 +495,11 @@
         "error_pct": -0.726,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-09-09",
-        "target_date": "2026-09-10",
-        "predicted_med": 1235.79,
-        "actual_close": 1207.0,
-        "error_pct": -2.3297,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.08,
-    "directional_accuracy_pct": 55.0,
-    "calibration_pct": 30.0
+    "mae_pct": 0.99,
+    "directional_accuracy_pct": 60.0,
+    "calibration_pct": 25.0
   }
 }

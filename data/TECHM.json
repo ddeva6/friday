@@ -1,9 +1,8 @@
 {
   "code": "TECHM",
   "name": "TECHM",
-  "last": 1514.1,
+  "last": 1543.5,
   "hist": [
-    1399.5,
     1415.99,
     1407.31,
     1411.94,
@@ -248,55 +247,57 @@
     1504.5,
     1491.1,
     1496.2,
-    1514.1
+    1514.1,
+    1471.0,
+    1543.5
   ],
   "med": [
-    1514.07
+    1540.53
   ],
   "up": [
-    1514.11
+    1560.01
   ],
   "lo": [
-    1498.87
+    1542.39
   ],
-  "ret": 0.0,
-  "cone_width_pct": 1.01,
-  "asof": "2026-10-09",
+  "ret": -0.19,
+  "cone_width_pct": 1.14,
+  "asof": "2026-10-13",
   "trading": {
-    "entry": 1514.1,
-    "stop_loss": 1498.87,
-    "exit": 1514.07,
-    "risk": 15.23,
-    "reward": -0.03,
-    "risk_reward": -0.0,
-    "conviction": 45,
+    "entry": 1543.5,
+    "stop_loss": 1542.39,
+    "exit": 1540.53,
+    "risk": 1.11,
+    "reward": -2.97,
+    "risk_reward": -2.68,
+    "conviction": 55,
     "volume": {
-      "latest": 2021871,
-      "avg_20d": 1933973,
-      "ratio": 1.05,
+      "latest": 3258982,
+      "avg_20d": 2111171,
+      "ratio": 1.54,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 1546.49,
-      "ema_200": 1496.45,
+      "ema_50": 1543.53,
+      "ema_200": 1498.06,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 43.0,
+      "rsi_14": 51.2,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 45/100 (MEDIUM)",
-        "R:R not available",
+        "Conviction 55/100 (MEDIUM)",
+        "R:R unfavorable (1:-2.68)",
         "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 136742.2795776,
-    "pe": 25.928104,
+    "mcap_cr": 139550.654464,
+    "pe": 27.233747,
     "roe": "N/A",
     "de": 0.07269,
     "sales_growth_yoy": 17.7,
@@ -305,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-09"
+    "Data as of 2026-10-13"
   ],
   "calibration": {
-    "bias_pct": -0.2555,
+    "bias_pct": -0.2224,
     "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-09",
+        "target_date": "2026-10-12",
+        "predicted_med": 1514.07,
+        "actual_close": 1471.0,
+        "error_pct": -2.8447,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-10-08",
         "target_date": "2026-10-09",
@@ -485,20 +495,11 @@
         "error_pct": 0.6099,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-08",
-        "target_date": "2026-09-09",
-        "predicted_med": 1562.79,
-        "actual_close": 1508.0,
-        "error_pct": -3.5059,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.94,
-    "directional_accuracy_pct": 65.0,
+    "mae_pct": 0.91,
+    "directional_accuracy_pct": 70.0,
     "calibration_pct": 25.0
   }
 }
