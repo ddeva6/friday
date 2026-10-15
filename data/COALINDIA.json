@@ -1,9 +1,8 @@
 {
   "code": "COALINDIA",
   "name": "COALINDIA",
-  "last": 408.5,
+  "last": 417.0,
   "hist": [
-    356.72,
     359.81,
     362.95,
     364.07,
@@ -249,73 +248,84 @@
     409.35,
     411.55,
     404.8,
-    408.5
+    408.5,
+    417.0
   ],
   "med": [
-    408.06
+    415.42
   ],
   "up": [
-    407.16
+    417.9
   ],
   "lo": [
-    404.12
+    411.88
   ],
-  "ret": -0.11,
-  "cone_width_pct": 0.74,
-  "asof": "2026-10-13",
+  "ret": -0.38,
+  "cone_width_pct": 1.44,
+  "asof": "2026-10-14",
   "trading": {
-    "entry": 408.5,
-    "stop_loss": 404.12,
-    "exit": 408.06,
-    "risk": 4.38,
-    "reward": -0.44,
-    "risk_reward": -0.1,
-    "conviction": 25,
+    "entry": 417.0,
+    "stop_loss": 411.88,
+    "exit": 415.42,
+    "risk": 5.12,
+    "reward": -1.58,
+    "risk_reward": -0.31,
+    "conviction": 20,
     "volume": {
-      "latest": 4530505,
-      "avg_20d": 6587765,
-      "ratio": 0.69,
-      "confirmed": false
+      "latest": 7073152,
+      "avg_20d": 6620879,
+      "ratio": 1.07,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 415.97,
-      "ema_200": 413.69,
-      "label": "WEAKENING"
+      "ema_50": 416.01,
+      "ema_200": 413.99,
+      "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 44.1,
+      "rsi_14": 51.1,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 25/100 (LOW)",
-        "R:R unfavorable (1:-0.10)",
-        "Volume does not confirm the move"
+        "Conviction 20/100 (LOW)",
+        "Trend (BULLISH) conflicts with the forecast",
+        "R:R unfavorable (1:-0.31)",
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 256985.7662976,
-    "pe": 8.236223,
+    "mcap_cr": 257602.0406272,
+    "pe": 8.255975,
     "roe": "N/A",
     "de": 0.11628999999999999,
     "sales_growth_yoy": 45.1,
     "hi_52w": 469.35980224609375,
-    "lo_52w": 355.902587890625
+    "lo_52w": 355.9026184082031
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-13"
+    "Data as of 2026-10-14"
   ],
   "calibration": {
-    "bias_pct": -0.4609,
+    "bias_pct": -0.3119,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-13",
+        "target_date": "2026-10-14",
+        "predicted_med": 408.06,
+        "actual_close": 417.0,
+        "error_pct": 2.1909,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-10-09",
         "target_date": "2026-10-12",
@@ -486,20 +496,11 @@
         "error_pct": 0.1833,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-09-10",
-        "target_date": "2026-09-11",
-        "predicted_med": 429.79,
-        "actual_close": 426.3999938964844,
-        "error_pct": -0.7888,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.02,
-    "directional_accuracy_pct": 45.0,
+    "mae_pct": 1.09,
+    "directional_accuracy_pct": 40.0,
     "calibration_pct": 15.0
   }
 }
