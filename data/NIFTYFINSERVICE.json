@@ -1,9 +1,8 @@
 {
   "code": "NIFTYFINSERVICE",
   "name": "Nifty Financial Services",
-  "last": 1006.96,
+  "last": 1012.07,
   "hist": [
-    1118.9,
     1116.18,
     1117.76,
     1130.83,
@@ -249,28 +248,29 @@
     1015.17,
     1010.01,
     1031.91,
-    1006.96
+    1006.96,
+    1012.07
   ],
   "med": [
-    1008.48
+    1011.78
   ],
   "up": [
-    1002.96
+    1007.28
   ],
   "lo": [
-    993.88
+    1000.9
   ],
-  "ret": 0.15,
-  "cone_width_pct": 0.9,
-  "asof": "2026-10-14",
+  "ret": -0.03,
+  "cone_width_pct": 0.63,
+  "asof": "2026-10-15",
   "trading": {
-    "entry": 1006.96,
-    "stop_loss": 993.88,
-    "exit": 1008.48,
-    "risk": 13.08,
-    "reward": 1.52,
-    "risk_reward": 0.12,
-    "conviction": 30,
+    "entry": 1012.07,
+    "stop_loss": 1000.9,
+    "exit": 1011.78,
+    "risk": 11.17,
+    "reward": -0.29,
+    "risk_reward": -0.03,
+    "conviction": 50,
     "volume": {
       "latest": 0,
       "avg_20d": 0,
@@ -278,20 +278,20 @@
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1063.91,
-      "ema_200": 1090.79,
+      "ema_50": 1061.88,
+      "ema_200": 1089.78,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 37.6,
+      "rsi_14": 39.6,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 30/100 (LOW)",
-        "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.12)",
+        "Conviction 50/100 (MEDIUM)",
+        "Trend (BEARISH) agrees with the forecast",
+        "R:R unfavorable (1:-0.03)",
         "Volume does not confirm the move"
       ]
     }
@@ -307,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-14"
+    "Data as of 2026-10-15"
   ],
   "calibration": {
-    "bias_pct": -0.5011,
+    "bias_pct": -0.4732,
     "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-14",
+        "target_date": "2026-10-15",
+        "predicted_med": 1008.48,
+        "actual_close": 1012.0683364868164,
+        "error_pct": 0.3558,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-10-13",
         "target_date": "2026-10-14",
@@ -487,20 +496,11 @@
         "error_pct": -0.0108,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-11",
-        "target_date": "2026-09-14",
-        "predicted_med": 1072.37,
-        "actual_close": 1070.199986775716,
-        "error_pct": -0.2024,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
     "mae_pct": 0.94,
-    "directional_accuracy_pct": 55.0,
+    "directional_accuracy_pct": 60.0,
     "calibration_pct": 25.0
   }
 }
