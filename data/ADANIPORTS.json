@@ -1,7 +1,7 @@
 {
   "code": "ADANIPORTS",
   "name": "ADANIPORTS",
-  "last": 1748.8,
+  "last": 1750.0,
   "hist": [
     1447.0,
     1423.0,
@@ -248,41 +248,42 @@
     1743.2,
     1750.8,
     1766.0,
-    1748.8
+    1748.8,
+    1750.0
   ],
   "med": [
-    1747.36
+    1744.74
   ],
   "up": [
-    1758.22
+    1751.4
   ],
   "lo": [
-    1738.04
+    1737.22
   ],
-  "ret": -0.08,
-  "cone_width_pct": 1.15,
-  "asof": "2026-10-21",
+  "ret": -0.3,
+  "cone_width_pct": 0.81,
+  "asof": "2026-10-22",
   "trading": {
-    "entry": 1748.8,
-    "stop_loss": 1738.04,
-    "exit": 1747.36,
-    "risk": 10.76,
-    "reward": -1.44,
-    "risk_reward": -0.13,
+    "entry": 1750.0,
+    "stop_loss": 1737.22,
+    "exit": 1744.74,
+    "risk": 12.78,
+    "reward": -5.26,
+    "risk_reward": -0.41,
     "conviction": 30,
     "volume": {
-      "latest": 2298918,
-      "avg_20d": 2939487,
-      "ratio": 0.78,
+      "latest": 1634218,
+      "avg_20d": 2938542,
+      "ratio": 0.56,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1747.28,
-      "ema_200": 1666.63,
+      "ema_50": 1747.39,
+      "ema_200": 1667.46,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 49.3,
+      "rsi_14": 49.5,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -290,14 +291,14 @@
       "reasons": [
         "Conviction 30/100 (LOW)",
         "Trend (BULLISH) conflicts with the forecast",
-        "R:R unfavorable (1:-0.13)",
+        "R:R unfavorable (1:-0.41)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 403192.8336384,
-    "pe": 29.868578,
+    "mcap_cr": 392295.088128,
+    "pe": 29.061272,
     "roe": "N/A",
     "de": 0.64051,
     "sales_growth_yoy": 18.6,
@@ -306,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-21"
+    "Data as of 2026-10-22"
   ],
   "calibration": {
-    "bias_pct": -0.2001,
-    "coverage": 0.25,
+    "bias_pct": -0.4304,
+    "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-21",
+        "target_date": "2026-10-22",
+        "predicted_med": 1747.36,
+        "actual_close": 1750.0,
+        "error_pct": 0.1511,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-10-19",
         "target_date": "2026-10-21",
@@ -486,20 +496,11 @@
         "error_pct": -1.548,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-17",
-        "target_date": "2026-09-18",
-        "predicted_med": 1741.18,
-        "actual_close": 1824.0,
-        "error_pct": 4.7565,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.55,
-    "directional_accuracy_pct": 65.0,
-    "calibration_pct": 25.0
+    "mae_pct": 1.32,
+    "directional_accuracy_pct": 60.0,
+    "calibration_pct": 30.0
   }
 }
