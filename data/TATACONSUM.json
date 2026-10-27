@@ -1,7 +1,7 @@
 {
   "code": "TATACONSUM",
   "name": "TATACONSUM",
-  "last": 963.9,
+  "last": 936.5,
   "hist": [
     1160.08,
     1159.09,
@@ -248,73 +248,84 @@
     966.5,
     970.65,
     959.8,
-    963.9
+    963.9,
+    936.5
   ],
   "med": [
-    963.9
+    941.29
   ],
   "up": [
-    965.52
+    933.13
   ],
   "lo": [
-    956.94
+    926.31
   ],
-  "ret": 0.0,
-  "cone_width_pct": 0.89,
-  "asof": "2026-10-23",
+  "ret": 0.51,
+  "cone_width_pct": 0.73,
+  "asof": "2026-10-26",
   "trading": {
-    "entry": 963.9,
-    "stop_loss": 956.94,
-    "exit": 963.9,
-    "risk": 6.96,
-    "reward": 0.0,
-    "risk_reward": 0.0,
+    "entry": 936.5,
+    "stop_loss": 926.31,
+    "exit": 941.29,
+    "risk": 10.19,
+    "reward": 4.79,
+    "risk_reward": 0.47,
     "conviction": 45,
     "volume": {
-      "latest": 1474671,
-      "avg_20d": 1315764,
-      "ratio": 1.12,
+      "latest": 2325779,
+      "avg_20d": 1346959,
+      "ratio": 1.73,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 1002.83,
-      "ema_200": 1077.84,
+      "ema_50": 1000.23,
+      "ema_200": 1076.43,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 43.6,
+      "rsi_14": 35.8,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
         "Conviction 45/100 (MEDIUM)",
-        "R:R not available",
+        "Trend (BEARISH) conflicts with the forecast",
+        "R:R unfavorable (1:0.47)",
         "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 92685.2251648,
-    "pe": 56.68886,
-    "roe": "N/A",
-    "de": 0.12159,
-    "sales_growth_yoy": 11.899999999999999,
+    "mcap_cr": 98969.8064384,
+    "pe": 62.305298,
+    "roe": 7.59,
+    "de": 0.10772,
+    "sales_growth_yoy": 14.000000000000002,
     "hi_52w": 1260.33544921875,
-    "lo_52w": 949.5
+    "lo_52w": 936.5
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-23"
+    "Data as of 2026-10-26"
   ],
   "calibration": {
-    "bias_pct": -0.2183,
+    "bias_pct": -0.2795,
     "coverage": 0.1,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-23",
+        "target_date": "2026-10-26",
+        "predicted_med": 963.9,
+        "actual_close": 936.5,
+        "error_pct": -2.8426,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-10-22",
         "target_date": "2026-10-23",
@@ -485,19 +496,10 @@
         "error_pct": 0.7743,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-21",
-        "target_date": "2026-09-22",
-        "predicted_med": 1000.28,
-        "actual_close": 984.0999755859375,
-        "error_pct": -1.6175,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.0,
+    "mae_pct": 1.06,
     "directional_accuracy_pct": 70.0,
     "calibration_pct": 10.0
   }

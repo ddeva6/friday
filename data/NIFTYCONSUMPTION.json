@@ -1,7 +1,7 @@
 {
   "code": "NIFTYCONSUMPTION",
   "name": "Nifty Consumption",
-  "last": 10726.75,
+  "last": 10804.45,
   "hist": [
     12601.65,
     12550.1,
@@ -246,27 +246,28 @@
     10938.6,
     10833.3,
     10753.25,
-    10726.75
+    10726.75,
+    10804.45
   ],
   "med": [
-    10780.83
+    10839.4
   ],
   "up": [
-    10738.78
+    10817.29
   ],
   "lo": [
-    10701.25
+    10792.83
   ],
-  "ret": 0.5,
-  "cone_width_pct": 0.35,
-  "asof": "2026-10-23",
+  "ret": 0.32,
+  "cone_width_pct": 0.23,
+  "asof": "2026-10-26",
   "trading": {
-    "entry": 10726.75,
-    "stop_loss": 10701.25,
-    "exit": 10780.83,
-    "risk": 25.5,
-    "reward": 54.08,
-    "risk_reward": 2.12,
+    "entry": 10804.45,
+    "stop_loss": 10792.83,
+    "exit": 10839.4,
+    "risk": 11.62,
+    "reward": 34.95,
+    "risk_reward": 3.01,
     "conviction": 40,
     "volume": {
       "latest": 0,
@@ -275,12 +276,12 @@
       "confirmed": false
     },
     "trend": {
-      "ema_50": 11292.17,
-      "ema_200": 11612.87,
+      "ema_50": 11273.04,
+      "ema_200": 11604.83,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 34.4,
+      "rsi_14": 38.4,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -288,7 +289,7 @@
       "reasons": [
         "Conviction 40/100 (MEDIUM)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R favorable (1:2.12)",
+        "R:R favorable (1:3.01)",
         "Volume does not confirm the move"
       ]
     }
@@ -304,16 +305,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-23"
+    "Data as of 2026-10-26"
   ],
   "calibration": {
     "bias_pct": 0.0,
     "coverage": null,
     "cone_scale": 1.0,
-    "n": 1
+    "n": 2
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-23",
+        "target_date": "2026-10-26",
+        "predicted_med": 10780.83,
+        "actual_close": 10804.4501953125,
+        "error_pct": 0.2191,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-10-22",
         "target_date": "2026-10-23",
@@ -324,9 +334,9 @@
         "direction_correct": false
       }
     ],
-    "n": 1,
-    "mae_pct": 0.86,
-    "directional_accuracy_pct": 0.0,
+    "n": 2,
+    "mae_pct": 0.54,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 0.0
   }
 }
