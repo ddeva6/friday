@@ -1,9 +1,8 @@
 {
   "code": "NIFTYMETAL",
   "name": "Nifty Metal",
-  "last": 11731.55,
+  "last": 11806.7,
   "hist": [
-    10467.15,
     10596.2,
     10777.5,
     10729.2,
@@ -247,49 +246,50 @@
     11859.55,
     11798.35,
     11478.2,
-    11731.55
+    11731.55,
+    11806.7
   ],
   "med": [
-    11822.41
+    11876.88
   ],
   "up": [
-    11755.78
+    11834.62
   ],
   "lo": [
-    11714.21
+    11791.26
   ],
-  "ret": 0.77,
-  "cone_width_pct": 0.35,
-  "asof": "2026-10-26",
+  "ret": 0.59,
+  "cone_width_pct": 0.37,
+  "asof": "2026-10-27",
   "trading": {
-    "entry": 11731.55,
-    "stop_loss": 11714.21,
-    "exit": 11822.41,
-    "risk": 17.34,
-    "reward": 90.86,
-    "risk_reward": 5.24,
-    "conviction": 50,
+    "entry": 11806.7,
+    "stop_loss": 11791.26,
+    "exit": 11876.88,
+    "risk": 15.44,
+    "reward": 70.18,
+    "risk_reward": 4.55,
+    "conviction": 70,
     "volume": {
-      "latest": 902200,
-      "avg_20d": 926320,
-      "ratio": 0.97,
-      "confirmed": false
+      "latest": 1131400,
+      "avg_20d": 934865,
+      "ratio": 1.21,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 12535.93,
-      "ema_200": 12340.71,
+      "ema_50": 12507.34,
+      "ema_200": 12346.53,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 36.2,
+      "rsi_14": 38.4,
       "label": "NEUTRAL"
     },
     "verdict": {
-      "label": "NEUTRAL",
+      "label": "FAVORABLE",
       "reasons": [
-        "Conviction 50/100 (MEDIUM)",
-        "R:R favorable (1:5.24)",
-        "Volume does not confirm the move"
+        "Conviction 70/100 (HIGH)",
+        "R:R favorable (1:4.55)",
+        "Volume confirms the move"
       ]
     }
   },
@@ -304,16 +304,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-26"
+    "Data as of 2026-10-27"
   ],
   "calibration": {
     "bias_pct": 0.0,
     "coverage": null,
     "cone_scale": 1.0,
-    "n": 2
+    "n": 3
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-26",
+        "target_date": "2026-10-27",
+        "predicted_med": 11822.41,
+        "actual_close": 11806.7001953125,
+        "error_pct": -0.1329,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-10-23",
         "target_date": "2026-10-26",
@@ -333,9 +342,9 @@
         "direction_correct": false
       }
     ],
-    "n": 2,
-    "mae_pct": 2.31,
-    "directional_accuracy_pct": 50.0,
+    "n": 3,
+    "mae_pct": 1.59,
+    "directional_accuracy_pct": 66.7,
     "calibration_pct": 0.0
   }
 }

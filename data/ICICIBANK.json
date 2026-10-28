@@ -1,9 +1,8 @@
 {
   "code": "ICICIBANK",
   "name": "ICICIBANK",
-  "last": 1403.0,
+  "last": 1386.9,
   "hist": [
-    1366.08,
     1351.7,
     1358.94,
     1351.01,
@@ -249,56 +248,57 @@
     1385.0,
     1398.5,
     1394.2,
-    1403.0
+    1403.0,
+    1386.9
   ],
   "med": [
-    1401.05
+    1388.46
   ],
   "up": [
-    1419.63
+    1400.54
   ],
   "lo": [
-    1410.97
+    1391.68
   ],
-  "ret": -0.14,
-  "cone_width_pct": 0.62,
-  "asof": "2026-10-26",
+  "ret": 0.11,
+  "cone_width_pct": 0.64,
+  "asof": "2026-10-27",
   "trading": {
-    "entry": 1403.0,
-    "stop_loss": 1410.97,
-    "exit": 1401.05,
-    "risk": -7.97,
-    "reward": -1.95,
+    "entry": 1386.9,
+    "stop_loss": 1391.68,
+    "exit": 1388.46,
+    "risk": -4.78,
+    "reward": 1.56,
     "risk_reward": 0.0,
-    "conviction": 15,
+    "conviction": 40,
     "volume": {
-      "latest": 7936076,
-      "avg_20d": 12517395,
-      "ratio": 0.63,
-      "confirmed": false
+      "latest": 16183741,
+      "avg_20d": 12481503,
+      "ratio": 1.3,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 1372.81,
-      "ema_200": 1359.23,
+      "ema_50": 1373.37,
+      "ema_200": 1358.29,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 59.4,
+      "rsi_14": 54.4,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 15/100 (LOW)",
-        "Trend (BULLISH) conflicts with the forecast",
+        "Conviction 40/100 (MEDIUM)",
+        "Trend (BULLISH) agrees with the forecast",
         "R:R not available",
-        "Volume does not confirm the move"
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 995735.9484928,
-    "pe": 17.031807,
+    "mcap_cr": 989205.4171648,
+    "pe": 16.917597,
     "roe": 16.49,
     "de": "N/A",
     "sales_growth_yoy": 15.8,
@@ -307,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-26"
+    "Data as of 2026-10-27"
   ],
   "calibration": {
-    "bias_pct": 0.2718,
+    "bias_pct": 0.2369,
     "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-26",
+        "target_date": "2026-10-27",
+        "predicted_med": 1401.05,
+        "actual_close": 1386.9000244140625,
+        "error_pct": -1.01,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-10-23",
         "target_date": "2026-10-26",
@@ -487,19 +496,10 @@
         "error_pct": -0.6359,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-09-22",
-        "target_date": "2026-09-23",
-        "predicted_med": 1344.21,
-        "actual_close": 1340.0,
-        "error_pct": -0.3132,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.05,
+    "mae_pct": 1.08,
     "directional_accuracy_pct": 35.0,
     "calibration_pct": 30.0
   }

@@ -1,9 +1,8 @@
 {
   "code": "HDFCBANK",
   "name": "HDFCBANK",
-  "last": 688.05,
+  "last": 680.2,
   "hist": [
-    986.63,
     987.22,
     991.45,
     981.91,
@@ -249,74 +248,84 @@
     706.95,
     694.05,
     692.8,
-    688.05
+    688.05,
+    680.2
   ],
   "med": [
-    689.42
+    682.18
   ],
   "up": [
-    683.32
+    674.88
   ],
   "lo": [
-    675.76
+    664.06
   ],
-  "ret": 0.2,
-  "cone_width_pct": 1.1,
-  "asof": "2026-10-26",
+  "ret": 0.29,
+  "cone_width_pct": 1.59,
+  "asof": "2026-10-27",
   "trading": {
-    "entry": 688.05,
-    "stop_loss": 675.76,
-    "exit": 689.42,
-    "risk": 12.29,
-    "reward": 1.37,
-    "risk_reward": 0.11,
-    "conviction": 15,
+    "entry": 680.2,
+    "stop_loss": 664.06,
+    "exit": 682.18,
+    "risk": 16.14,
+    "reward": 1.98,
+    "risk_reward": 0.12,
+    "conviction": 20,
     "volume": {
-      "latest": 23489755,
-      "avg_20d": 31252108,
-      "ratio": 0.75,
-      "confirmed": false
+      "latest": 40614930,
+      "avg_20d": 30947836,
+      "ratio": 1.31,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 719.64,
-      "ema_200": 786.97,
+      "ema_50": 718.09,
+      "ema_200": 785.95,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 39.2,
+      "rsi_14": 36.5,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 15/100 (LOW)",
+        "Conviction 20/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.11)",
-        "Volume does not confirm the move"
+        "R:R unfavorable (1:0.12)",
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 1049386.549248,
-    "pe": 14.86776,
+    "mcap_cr": 1057254.6441216,
+    "pe": 14.979235,
     "roe": 11.004999999999999,
     "de": "N/A",
     "sales_growth_yoy": 80.80000000000001,
     "hi_52w": 993.0750732421875,
-    "lo_52w": 687.0999755859375
+    "lo_52w": 680.2000122070312
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-26"
+    "Data as of 2026-10-27"
   ],
   "calibration": {
-    "bias_pct": -0.2918,
-    "coverage": 0.25,
+    "bias_pct": -0.3749,
+    "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-26",
+        "target_date": "2026-10-27",
+        "predicted_med": 689.42,
+        "actual_close": 680.2000122070312,
+        "error_pct": -1.3374,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-10-23",
         "target_date": "2026-10-26",
@@ -487,20 +496,11 @@
         "error_pct": -0.7462,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-22",
-        "target_date": "2026-09-23",
-        "predicted_med": 734.86,
-        "actual_close": 737.25,
-        "error_pct": 0.3252,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.11,
-    "directional_accuracy_pct": 35.0,
-    "calibration_pct": 25.0
+    "mae_pct": 1.16,
+    "directional_accuracy_pct": 30.0,
+    "calibration_pct": 30.0
   }
 }
