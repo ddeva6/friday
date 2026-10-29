@@ -1,9 +1,8 @@
 {
   "code": "NIFTYENERGY",
   "name": "Nifty Energy",
-  "last": 35261.85,
+  "last": 34946.3,
   "hist": [
-    35658.15,
     36347.95,
     36392.6,
     36275.95,
@@ -247,50 +246,51 @@
     35101.45,
     34520.05,
     35022.35,
-    35261.85
+    35261.85,
+    34946.3
   ],
   "med": [
-    35433.91
+    35154.62
   ],
   "up": [
-    35359.67
+    35037.17
   ],
   "lo": [
-    35270.45
+    34940.65
   ],
-  "ret": 0.49,
-  "cone_width_pct": 0.25,
-  "asof": "2026-10-27",
+  "ret": 0.6,
+  "cone_width_pct": 0.28,
+  "asof": "2026-10-28",
   "trading": {
-    "entry": 35261.85,
-    "stop_loss": 35270.45,
-    "exit": 35433.91,
-    "risk": -8.6,
-    "reward": 172.06,
-    "risk_reward": 0.0,
-    "conviction": 35,
+    "entry": 34946.3,
+    "stop_loss": 34940.65,
+    "exit": 35154.62,
+    "risk": 5.65,
+    "reward": 208.32,
+    "risk_reward": 36.87,
+    "conviction": 40,
     "volume": {
-      "latest": 4111700,
-      "avg_20d": 3144030,
-      "ratio": 1.31,
-      "confirmed": true
+      "latest": 2638600,
+      "avg_20d": 3233985,
+      "ratio": 0.82,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 36938.2,
-      "ema_200": 37540.53,
+      "ema_50": 36860.12,
+      "ema_200": 37574.24,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 37.4,
+      "rsi_14": 34.6,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
+        "Conviction 40/100 (MEDIUM)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R not available",
-        "Volume confirms the move"
+        "R:R favorable (1:36.87)",
+        "Volume does not confirm the move"
       ]
     }
   },
@@ -305,16 +305,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-27"
+    "Data as of 2026-10-28"
   ],
   "calibration": {
     "bias_pct": 0.0,
     "coverage": null,
     "cone_scale": 1.0,
-    "n": 3
+    "n": 4
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-27",
+        "target_date": "2026-10-28",
+        "predicted_med": 35433.91,
+        "actual_close": 34946.30078125,
+        "error_pct": -1.3761,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-10-26",
         "target_date": "2026-10-27",
@@ -343,9 +352,9 @@
         "direction_correct": false
       }
     ],
-    "n": 3,
-    "mae_pct": 0.97,
-    "directional_accuracy_pct": 66.7,
+    "n": 4,
+    "mae_pct": 1.07,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 0.0
   }
 }

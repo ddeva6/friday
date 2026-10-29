@@ -1,9 +1,8 @@
 {
   "code": "NIFTYFMCG",
   "name": "Nifty FMCG",
-  "last": 43118.2,
+  "last": 42878.35,
   "hist": [
-    56110.05,
     56615.35,
     56343.5,
     56208.5,
@@ -247,41 +246,42 @@
     43105.45,
     42680.7,
     42800.75,
-    43118.2
+    43118.2,
+    42878.35
   ],
   "med": [
-    43246.73
+    43090.79
   ],
   "up": [
-    43110.49
+    42908.17
   ],
   "lo": [
-    42943.79
+    42736.99
   ],
-  "ret": 0.3,
-  "cone_width_pct": 0.39,
-  "asof": "2026-10-27",
+  "ret": 0.5,
+  "cone_width_pct": 0.4,
+  "asof": "2026-10-28",
   "trading": {
-    "entry": 43118.2,
-    "stop_loss": 42943.79,
-    "exit": 43246.73,
-    "risk": 174.41,
-    "reward": 128.53,
-    "risk_reward": 0.74,
+    "entry": 42878.35,
+    "stop_loss": 42736.99,
+    "exit": 43090.79,
+    "risk": 141.36,
+    "reward": 212.44,
+    "risk_reward": 1.5,
     "conviction": 35,
     "volume": {
-      "latest": 60200,
-      "avg_20d": 42135,
-      "ratio": 1.43,
+      "latest": 51800,
+      "avg_20d": 44145,
+      "ratio": 1.17,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 45440.82,
-      "ema_200": 48775.36,
+      "ema_50": 45340.36,
+      "ema_200": 48760.28,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 38.1,
+      "rsi_14": 36.6,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -289,7 +289,7 @@
       "reasons": [
         "Conviction 35/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.74)",
+        "R:R favorable (1:1.50)",
         "Volume confirms the move"
       ]
     }
@@ -305,16 +305,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-27"
+    "Data as of 2026-10-28"
   ],
   "calibration": {
     "bias_pct": 0.0,
     "coverage": null,
     "cone_scale": 1.0,
-    "n": 3
+    "n": 4
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-27",
+        "target_date": "2026-10-28",
+        "predicted_med": 43246.73,
+        "actual_close": 42878.3515625,
+        "error_pct": -0.8518,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-10-26",
         "target_date": "2026-10-27",
@@ -343,9 +352,9 @@
         "direction_correct": false
       }
     ],
-    "n": 3,
-    "mae_pct": 0.58,
-    "directional_accuracy_pct": 66.7,
+    "n": 4,
+    "mae_pct": 0.65,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 0.0
   }
 }
