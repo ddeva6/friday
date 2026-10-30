@@ -1,9 +1,8 @@
 {
   "code": "NIFTYINFRA",
   "name": "Nifty Infrastructure",
-  "last": 8690.05,
+  "last": 8792.5,
   "hist": [
-    9661.85,
     9608.65,
     9566.15,
     9592.8,
@@ -247,50 +246,51 @@
     8554.25,
     8661.2,
     8726.6,
-    8690.05
+    8690.05,
+    8792.5
   ],
   "med": [
-    8691.22
+    8807.17
   ],
   "up": [
-    8703.86
+    8877.87
   ],
   "lo": [
-    8680.53
+    8822.65
   ],
-  "ret": 0.01,
-  "cone_width_pct": 0.27,
-  "asof": "2026-10-28",
+  "ret": 0.17,
+  "cone_width_pct": 0.63,
+  "asof": "2026-10-29",
   "trading": {
-    "entry": 8690.05,
-    "stop_loss": 8680.53,
-    "exit": 8691.22,
-    "risk": 9.52,
-    "reward": 1.17,
-    "risk_reward": 0.12,
-    "conviction": 40,
+    "entry": 8792.5,
+    "stop_loss": 8822.65,
+    "exit": 8807.17,
+    "risk": -30.15,
+    "reward": 14.67,
+    "risk_reward": 0.0,
+    "conviction": 45,
     "volume": {
-      "latest": 2233800,
-      "avg_20d": 2362665,
-      "ratio": 0.95,
-      "confirmed": false
+      "latest": 2469800,
+      "avg_20d": 2380215,
+      "ratio": 1.04,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 8889.63,
-      "ema_200": 9200.54,
+      "ema_50": 8885.82,
+      "ema_200": 9191.89,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 46.4,
+      "rsi_14": 52.2,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 40/100 (MEDIUM)",
+        "Conviction 45/100 (MEDIUM)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.12)",
-        "Volume does not confirm the move"
+        "R:R not available",
+        "Volume confirms the move"
       ]
     }
   },
@@ -305,16 +305,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-28"
+    "Data as of 2026-10-29"
   ],
   "calibration": {
-    "bias_pct": 0.0,
-    "coverage": null,
-    "cone_scale": 1.0,
-    "n": 4
+    "bias_pct": 0.2993,
+    "coverage": 0.0,
+    "cone_scale": 2.0,
+    "n": 5
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-28",
+        "target_date": "2026-10-29",
+        "predicted_med": 8691.22,
+        "actual_close": 8792.5,
+        "error_pct": 1.1653,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-10-27",
         "target_date": "2026-10-28",
@@ -352,9 +361,9 @@
         "direction_correct": false
       }
     ],
-    "n": 4,
-    "mae_pct": 0.67,
-    "directional_accuracy_pct": 75.0,
+    "n": 5,
+    "mae_pct": 0.77,
+    "directional_accuracy_pct": 80.0,
     "calibration_pct": 0.0
   }
 }
