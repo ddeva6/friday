@@ -1,10 +1,8 @@
 {
   "code": "HINDUNILVR",
   "name": "HINDUNILVR",
-  "last": 1858.2,
+  "last": 1864.6,
   "hist": [
-    2425.67,
-    2421.64,
     2416.24,
     2402.19,
     2392.66,
@@ -249,56 +247,57 @@
     1818.6,
     1818.0,
     1815.8,
-    1858.2
+    1858.2,
+    1864.6
   ],
   "med": [
-    1851.64
+    1860.19
   ],
   "up": [
-    1857.0
+    1868.67
   ],
   "lo": [
-    1839.06
+    1858.17
   ],
-  "ret": -0.35,
-  "cone_width_pct": 0.97,
-  "asof": "2026-10-29",
+  "ret": -0.24,
+  "cone_width_pct": 0.56,
+  "asof": "2026-10-30",
   "trading": {
-    "entry": 1858.2,
-    "stop_loss": 1839.06,
-    "exit": 1851.64,
-    "risk": 19.14,
-    "reward": -6.56,
-    "risk_reward": -0.34,
-    "conviction": 55,
+    "entry": 1864.6,
+    "stop_loss": 1858.17,
+    "exit": 1860.19,
+    "risk": 6.43,
+    "reward": -4.41,
+    "risk_reward": -0.69,
+    "conviction": 35,
     "volume": {
-      "latest": 2653805,
-      "avg_20d": 1654891,
-      "ratio": 1.6,
-      "confirmed": true
+      "latest": 1597400,
+      "avg_20d": 1684689,
+      "ratio": 0.95,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 1920.61,
-      "ema_200": 2101.34,
+      "ema_50": 1918.41,
+      "ema_200": 2098.18,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 46.9,
+      "rsi_14": 48.2,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 55/100 (MEDIUM)",
+        "Conviction 35/100 (LOW)",
         "Trend (BEARISH) agrees with the forecast",
-        "R:R unfavorable (1:-0.34)",
-        "Volume confirms the move"
+        "R:R unfavorable (1:-0.69)",
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 438104.7783424,
-    "pe": 41.398754,
+    "mcap_cr": 446022.9165056,
+    "pe": 42.14698,
     "roe": 21.564,
     "de": 0.03405,
     "sales_growth_yoy": 12.2,
@@ -307,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-29"
+    "Data as of 2026-10-30"
   ],
   "calibration": {
-    "bias_pct": -0.2997,
+    "bias_pct": -0.1508,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-29",
+        "target_date": "2026-10-30",
+        "predicted_med": 1851.64,
+        "actual_close": 1864.5999755859375,
+        "error_pct": 0.6999,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-10-28",
         "target_date": "2026-10-29",
@@ -487,20 +495,11 @@
         "error_pct": -1.9806,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-09-25",
-        "target_date": "2026-09-28",
-        "predicted_med": 1940.21,
-        "actual_close": 1896.0,
-        "error_pct": -2.2786,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.13,
-    "directional_accuracy_pct": 55.0,
+    "mae_pct": 1.05,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 20.0
   }
 }
