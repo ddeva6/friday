@@ -248,37 +248,38 @@
     119.19,
     120.79,
     120.02,
+    120.02,
     120.02
   ],
   "med": [
-    120.07
+    120.14
   ],
   "up": [
-    119.41
+    119.56
   ],
   "lo": [
-    118.69
+    118.86
   ],
-  "ret": 0.04,
-  "cone_width_pct": 0.6,
-  "asof": "2026-10-30",
+  "ret": 0.1,
+  "cone_width_pct": 0.58,
+  "asof": "2026-11-02",
   "trading": {
     "entry": 120.02,
-    "stop_loss": 118.69,
-    "exit": 120.07,
-    "risk": 1.33,
-    "reward": 0.05,
-    "risk_reward": 0.04,
-    "conviction": 40,
+    "stop_loss": 118.86,
+    "exit": 120.14,
+    "risk": 1.16,
+    "reward": 0.12,
+    "risk_reward": 0.1,
+    "conviction": 25,
     "volume": {
       "latest": 0,
-      "avg_20d": 4844701,
+      "avg_20d": 4604534,
       "ratio": 0.0,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 125.02,
-      "ema_200": 124.02,
+      "ema_50": 124.82,
+      "ema_200": 123.98,
       "label": "WEAKENING"
     },
     "momentum": {
@@ -288,8 +289,8 @@
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 40/100 (MEDIUM)",
-        "R:R unfavorable (1:0.04)",
+        "Conviction 25/100 (LOW)",
+        "R:R unfavorable (1:0.10)",
         "Volume does not confirm the move"
       ]
     }
@@ -305,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-30"
+    "Data as of 2026-11-02"
   ],
   "calibration": {
-    "bias_pct": -0.4142,
+    "bias_pct": -0.3044,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-30",
+        "target_date": "2026-11-02",
+        "predicted_med": 120.07,
+        "actual_close": 120.0199966430664,
+        "error_pct": -0.0416,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-10-29",
         "target_date": "2026-10-30",
@@ -485,20 +495,11 @@
         "error_pct": -0.3763,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-25",
-        "target_date": "2026-09-28",
-        "predicted_med": 127.83,
-        "actual_close": 124.97000122070312,
-        "error_pct": -2.2373,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.67,
-    "directional_accuracy_pct": 55.0,
+    "mae_pct": 0.56,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 15.0
   }
 }

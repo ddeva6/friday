@@ -1,7 +1,7 @@
 {
   "code": "COALINDIA",
   "name": "COALINDIA",
-  "last": 389.0,
+  "last": 408.0,
   "hist": [
     363.84,
     363.12,
@@ -248,49 +248,50 @@
     398.0,
     392.0,
     393.1,
-    389.0
+    389.0,
+    408.0
   ],
   "med": [
-    390.28
+    405.91
   ],
   "up": [
-    385.74
+    408.31
   ],
   "lo": [
-    383.12
+    401.81
   ],
-  "ret": 0.33,
-  "cone_width_pct": 0.67,
-  "asof": "2026-10-30",
+  "ret": -0.51,
+  "cone_width_pct": 1.59,
+  "asof": "2026-11-02",
   "trading": {
-    "entry": 389.0,
-    "stop_loss": 383.12,
-    "exit": 390.28,
-    "risk": 5.88,
-    "reward": 1.28,
-    "risk_reward": 0.22,
-    "conviction": 20,
+    "entry": 408.0,
+    "stop_loss": 401.81,
+    "exit": 405.91,
+    "risk": 6.19,
+    "reward": -2.09,
+    "risk_reward": -0.34,
+    "conviction": 40,
     "volume": {
-      "latest": 21081382,
-      "avg_20d": 6174803,
-      "ratio": 3.41,
+      "latest": 12303009,
+      "avg_20d": 6857026,
+      "ratio": 1.79,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 410.92,
-      "ema_200": 413.09,
+      "ema_50": 410.81,
+      "ema_200": 413.04,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 34.7,
+      "rsi_14": 50.4,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 20/100 (LOW)",
-        "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.22)",
+        "Conviction 40/100 (MEDIUM)",
+        "Trend (BEARISH) agrees with the forecast",
+        "R:R unfavorable (1:-0.34)",
         "Volume confirms the move"
       ]
     }
@@ -306,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-30"
+    "Data as of 2026-11-02"
   ],
   "calibration": {
-    "bias_pct": -0.5688,
-    "coverage": 0.25,
+    "bias_pct": -0.3588,
+    "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-30",
+        "target_date": "2026-11-02",
+        "predicted_med": 390.28,
+        "actual_close": 408.0,
+        "error_pct": 4.5403,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-10-29",
         "target_date": "2026-10-30",
@@ -486,20 +496,11 @@
         "error_pct": -0.2418,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-09-28",
-        "target_date": "2026-09-29",
-        "predicted_med": 423.56,
-        "actual_close": 425.0,
-        "error_pct": 0.34,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.09,
+    "mae_pct": 1.3,
     "directional_accuracy_pct": 40.0,
-    "calibration_pct": 25.0
+    "calibration_pct": 20.0
   }
 }

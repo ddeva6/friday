@@ -1,7 +1,7 @@
 {
   "code": "GOLDBEES",
   "name": "GOLDBEES",
-  "last": 115.23,
+  "last": 112.53,
   "hist": [
     100.05,
     99.8,
@@ -248,48 +248,49 @@
     115.64,
     117.13,
     116.37,
-    115.23
+    115.23,
+    112.53
   ],
   "med": [
-    115.49
+    113.04
   ],
   "up": [
-    114.59
+    111.32
   ],
   "lo": [
-    113.65
+    109.98
   ],
-  "ret": 0.23,
-  "cone_width_pct": 0.82,
-  "asof": "2026-10-30",
+  "ret": 0.45,
+  "cone_width_pct": 1.19,
+  "asof": "2026-11-02",
   "trading": {
-    "entry": 115.23,
-    "stop_loss": 113.65,
-    "exit": 115.49,
-    "risk": 1.58,
-    "reward": 0.26,
-    "risk_reward": 0.16,
-    "conviction": 45,
+    "entry": 112.53,
+    "stop_loss": 109.98,
+    "exit": 113.04,
+    "risk": 2.55,
+    "reward": 0.51,
+    "risk_reward": 0.2,
+    "conviction": 30,
     "volume": {
-      "latest": 23917456,
-      "avg_20d": 19872522,
-      "ratio": 1.2,
+      "latest": 47732848,
+      "avg_20d": 19828061,
+      "ratio": 2.41,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 121.14,
-      "ema_200": 120.21,
+      "ema_50": 120.81,
+      "ema_200": 120.14,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 31.2,
-      "label": "NEUTRAL"
+      "rsi_14": 25.3,
+      "label": "OVERSOLD"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 45/100 (MEDIUM)",
-        "R:R unfavorable (1:0.16)",
+        "Conviction 30/100 (LOW)",
+        "R:R unfavorable (1:0.20)",
         "Volume confirms the move"
       ]
     }
@@ -305,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-10-30"
+    "Data as of 2026-11-02"
   ],
   "calibration": {
-    "bias_pct": -0.4642,
+    "bias_pct": -0.4834,
     "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-10-30",
+        "target_date": "2026-11-02",
+        "predicted_med": 115.49,
+        "actual_close": 112.52999877929688,
+        "error_pct": -2.563,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-10-29",
         "target_date": "2026-10-30",
@@ -485,20 +495,11 @@
         "error_pct": -0.3799,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-25",
-        "target_date": "2026-09-28",
-        "predicted_med": 123.87,
-        "actual_close": 121.16999816894531,
-        "error_pct": -2.1797,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.7,
-    "directional_accuracy_pct": 55.0,
+    "mae_pct": 0.72,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 25.0
   }
 }
