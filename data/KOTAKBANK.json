@@ -1,9 +1,8 @@
 {
   "code": "KOTAKBANK",
   "name": "KOTAKBANK",
-  "last": 464.65,
+  "last": 459.4,
   "hist": [
-    418.6,
     415.92,
     416.94,
     417.82,
@@ -249,56 +248,57 @@
     459.0,
     461.6,
     458.35,
-    464.65
+    464.65,
+    459.4
   ],
   "med": [
-    463.96
+    459.97
   ],
   "up": [
-    475.46
+    467.99
   ],
   "lo": [
-    471.14
+    464.19
   ],
-  "ret": -0.15,
-  "cone_width_pct": 0.93,
-  "asof": "2026-11-03",
+  "ret": 0.12,
+  "cone_width_pct": 0.83,
+  "asof": "2026-11-04",
   "trading": {
-    "entry": 464.65,
-    "stop_loss": 471.14,
-    "exit": 463.96,
-    "risk": -6.49,
-    "reward": -0.69,
+    "entry": 459.4,
+    "stop_loss": 464.19,
+    "exit": 459.97,
+    "risk": -4.79,
+    "reward": 0.57,
     "risk_reward": 0.0,
-    "conviction": 15,
+    "conviction": 35,
     "volume": {
-      "latest": 18521269,
-      "avg_20d": 24919055,
-      "ratio": 0.74,
+      "latest": 22086206,
+      "avg_20d": 24746736,
+      "ratio": 0.89,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 428.0,
-      "ema_200": 409.11,
+      "ema_50": 429.23,
+      "ema_200": 409.39,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 68.9,
+      "rsi_14": 64.0,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 15/100 (LOW)",
-        "Trend (BULLISH) conflicts with the forecast",
+        "Conviction 35/100 (LOW)",
+        "Trend (BULLISH) agrees with the forecast",
         "R:R not available",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 457005.6491008,
-    "pe": 21.288229,
+    "mcap_cr": 464566.0393472,
+    "pe": 21.640408,
     "roe": 11.834999999999999,
     "de": "N/A",
     "sales_growth_yoy": 20.7,
@@ -307,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-03"
+    "Data as of 2026-11-04"
   ],
   "calibration": {
-    "bias_pct": 0.7918,
-    "coverage": 0.1,
+    "bias_pct": 0.707,
+    "coverage": 0.05,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-03",
+        "target_date": "2026-11-04",
+        "predicted_med": 463.96,
+        "actual_close": 459.3999938964844,
+        "error_pct": -0.9828,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-02",
         "target_date": "2026-11-03",
@@ -487,20 +496,11 @@
         "error_pct": -0.1009,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-09-30",
-        "target_date": "2026-10-01",
-        "predicted_med": 415.39,
-        "actual_close": 418.3500061035156,
-        "error_pct": 0.7126,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.31,
-    "directional_accuracy_pct": 45.0,
-    "calibration_pct": 10.0
+    "mae_pct": 1.33,
+    "directional_accuracy_pct": 50.0,
+    "calibration_pct": 5.0
   }
 }
