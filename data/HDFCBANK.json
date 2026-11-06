@@ -1,7 +1,7 @@
 {
   "code": "HDFCBANK",
   "name": "HDFCBANK",
-  "last": 736.7,
+  "last": 760.0,
   "hist": [
     968.63,
     966.32,
@@ -249,41 +249,42 @@
     692.8,
     700.0,
     725.5,
-    736.7
+    736.7,
+    760.0
   ],
   "med": [
-    731.57
+    757.09
   ],
   "up": [
-    747.45
+    786.87
   ],
   "lo": [
-    741.95
+    774.47
   ],
-  "ret": -0.7,
-  "cone_width_pct": 0.75,
-  "asof": "2026-11-04",
+  "ret": -0.38,
+  "cone_width_pct": 1.63,
+  "asof": "2026-11-05",
   "trading": {
-    "entry": 736.7,
-    "stop_loss": 741.95,
-    "exit": 731.57,
-    "risk": -5.25,
-    "reward": -5.13,
+    "entry": 760.0,
+    "stop_loss": 774.47,
+    "exit": 757.09,
+    "risk": -14.47,
+    "reward": -2.91,
     "risk_reward": 0.0,
     "conviction": 30,
     "volume": {
-      "latest": 50677695,
-      "avg_20d": 28897811,
-      "ratio": 1.75,
+      "latest": 65401905,
+      "avg_20d": 30103282,
+      "ratio": 2.17,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 715.35,
-      "ema_200": 779.66,
+      "ema_50": 717.1,
+      "ema_200": 779.47,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 62.1,
+      "rsi_14": 68.3,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -296,8 +297,8 @@
     }
   },
   "fundamentals": {
-    "mcap_cr": 1172854.276096,
-    "pe": 16.612022,
+    "mcap_cr": 1216450.5010176,
+    "pe": 17.229507,
     "roe": 11.004999999999999,
     "de": "N/A",
     "sales_growth_yoy": 80.80000000000001,
@@ -306,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-04"
+    "Data as of 2026-11-05"
   ],
   "calibration": {
-    "bias_pct": 0.1477,
-    "coverage": 0.3,
+    "bias_pct": 0.3506,
+    "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-04",
+        "target_date": "2026-11-05",
+        "predicted_med": 731.57,
+        "actual_close": 760.0,
+        "error_pct": 3.8862,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-03",
         "target_date": "2026-11-04",
@@ -486,20 +496,11 @@
         "error_pct": 0.4164,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-10-01",
-        "target_date": "2026-10-02",
-        "predicted_med": 722.45,
-        "actual_close": 721.2000122070312,
-        "error_pct": -0.173,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.24,
+    "mae_pct": 1.42,
     "directional_accuracy_pct": 20.0,
-    "calibration_pct": 30.0
+    "calibration_pct": 25.0
   }
 }
