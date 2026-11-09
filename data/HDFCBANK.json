@@ -1,10 +1,8 @@
 {
   "code": "HDFCBANK",
   "name": "HDFCBANK",
-  "last": 760.0,
+  "last": 788.25,
   "hist": [
-    968.63,
-    966.32,
     968.48,
     975.56,
     973.4,
@@ -250,42 +248,43 @@
     700.0,
     725.5,
     736.7,
-    760.0
+    760.0,
+    788.25
   ],
   "med": [
-    757.09
+    784.18
   ],
   "up": [
-    786.87
+    826.3
   ],
   "lo": [
-    774.47
+    815.5
   ],
-  "ret": -0.38,
-  "cone_width_pct": 1.63,
-  "asof": "2026-11-05",
+  "ret": -0.52,
+  "cone_width_pct": 1.37,
+  "asof": "2026-11-06",
   "trading": {
-    "entry": 760.0,
-    "stop_loss": 774.47,
-    "exit": 757.09,
-    "risk": -14.47,
-    "reward": -2.91,
+    "entry": 788.25,
+    "stop_loss": 815.5,
+    "exit": 784.18,
+    "risk": -27.25,
+    "reward": -4.07,
     "risk_reward": 0.0,
     "conviction": 30,
     "volume": {
-      "latest": 65401905,
-      "avg_20d": 30103282,
-      "ratio": 2.17,
+      "latest": 73482878,
+      "avg_20d": 31876177,
+      "ratio": 2.31,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 717.1,
-      "ema_200": 779.47,
+      "ema_50": 719.89,
+      "ema_200": 779.54,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 68.3,
-      "label": "NEUTRAL"
+      "rsi_14": 73.9,
+      "label": "OVERBOUGHT"
     },
     "verdict": {
       "label": "CAUTION",
@@ -297,8 +296,8 @@
     }
   },
   "fundamentals": {
-    "mcap_cr": 1216450.5010176,
-    "pe": 17.229507,
+    "mcap_cr": 1231728.5679104,
+    "pe": 17.445902,
     "roe": 11.004999999999999,
     "de": "N/A",
     "sales_growth_yoy": 80.80000000000001,
@@ -307,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-05"
+    "Data as of 2026-11-06"
   ],
   "calibration": {
-    "bias_pct": 0.3506,
+    "bias_pct": 0.5356,
     "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-05",
+        "target_date": "2026-11-06",
+        "predicted_med": 757.09,
+        "actual_close": 788.25,
+        "error_pct": 4.1158,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-04",
         "target_date": "2026-11-05",
@@ -487,20 +495,11 @@
         "error_pct": -1.5191,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-05",
-        "target_date": "2026-10-06",
-        "predicted_med": 708.5,
-        "actual_close": 711.4500122070312,
-        "error_pct": 0.4164,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.42,
-    "directional_accuracy_pct": 20.0,
+    "mae_pct": 1.61,
+    "directional_accuracy_pct": 15.0,
     "calibration_pct": 25.0
   }
 }

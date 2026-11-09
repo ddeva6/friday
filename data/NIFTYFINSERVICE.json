@@ -1,10 +1,8 @@
 {
   "code": "NIFTYFINSERVICE",
   "name": "Nifty Financial Services",
-  "last": 1062.9,
+  "last": 1082.35,
   "hist": [
-    1145.51,
-    1167.85,
     1173.46,
     1144.64,
     1155.88,
@@ -250,26 +248,27 @@
     985.04,
     999.28,
     1020.7,
-    1062.9
+    1062.9,
+    1082.35
   ],
   "med": [
-    1056.2
+    1071.51
   ],
   "up": [
-    1091.58
+    1111.59
   ],
   "lo": [
-    1075.02
+    1096.53
   ],
-  "ret": -0.63,
-  "cone_width_pct": 1.56,
-  "asof": "2026-11-05",
+  "ret": -1.0,
+  "cone_width_pct": 1.39,
+  "asof": "2026-11-06",
   "trading": {
-    "entry": 1062.9,
-    "stop_loss": 1075.02,
-    "exit": 1056.2,
-    "risk": -12.12,
-    "reward": -6.7,
+    "entry": 1082.35,
+    "stop_loss": 1096.53,
+    "exit": 1071.51,
+    "risk": -14.18,
+    "reward": -10.84,
     "risk_reward": 0.0,
     "conviction": 25,
     "volume": {
@@ -279,12 +278,12 @@
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1030.55,
-      "ema_200": 1077.8,
+      "ema_50": 1032.58,
+      "ema_200": 1080.19,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 66.2,
+      "rsi_14": 69.8,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -307,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-05"
+    "Data as of 2026-11-06"
   ],
   "calibration": {
-    "bias_pct": 0.149,
-    "coverage": 0.2,
+    "bias_pct": 0.2379,
+    "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-05",
+        "target_date": "2026-11-06",
+        "predicted_med": 1056.2,
+        "actual_close": 1082.3499933878581,
+        "error_pct": 2.4759,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-04",
         "target_date": "2026-11-05",
@@ -487,20 +495,11 @@
         "error_pct": -0.7149,
         "in_cone": true,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-10-05",
-        "target_date": "2026-10-06",
-        "predicted_med": 1024.92,
-        "actual_close": 1032.066665649414,
-        "error_pct": 0.6973,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.15,
-    "directional_accuracy_pct": 45.0,
-    "calibration_pct": 20.0
+    "mae_pct": 1.24,
+    "directional_accuracy_pct": 40.0,
+    "calibration_pct": 25.0
   }
 }
