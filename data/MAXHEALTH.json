@@ -1,7 +1,7 @@
 {
   "code": "MAXHEALTH",
   "name": "MAXHEALTH",
-  "last": 934.0,
+  "last": 915.0,
   "hist": [
     1096.05,
     1093.46,
@@ -249,47 +249,49 @@
     895.5,
     927.15,
     932.0,
-    934.0
+    934.0,
+    915.0
   ],
   "med": [
-    928.66
+    913.36
   ],
   "up": [
-    952.08
+    927.88
   ],
   "lo": [
-    943.38
+    919.42
   ],
-  "ret": -0.57,
-  "cone_width_pct": 0.93,
-  "asof": "2026-11-06",
+  "ret": -0.18,
+  "cone_width_pct": 0.92,
+  "asof": "2026-11-09",
   "trading": {
-    "entry": 934.0,
-    "stop_loss": 943.38,
-    "exit": 928.66,
-    "risk": -9.38,
-    "reward": -5.34,
+    "entry": 915.0,
+    "stop_loss": 919.42,
+    "exit": 913.36,
+    "risk": -4.42,
+    "reward": -1.64,
     "risk_reward": 0.0,
-    "conviction": 25,
+    "conviction": 35,
     "volume": {
-      "latest": 2762172,
-      "avg_20d": 4055840,
-      "ratio": 0.68,
+      "latest": 1715685,
+      "avg_20d": 4081985,
+      "ratio": 0.42,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 931.04,
-      "ema_200": 1006.24,
-      "label": "RECOVERING"
+      "ema_50": 930.41,
+      "ema_200": 1005.34,
+      "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 61.2,
+      "rsi_14": 54.6,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 25/100 (LOW)",
+        "Conviction 35/100 (LOW)",
+        "Trend (BEARISH) agrees with the forecast",
         "R:R not available",
         "Volume does not confirm the move"
       ]
@@ -306,16 +308,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-06"
+    "Data as of 2026-11-09"
   ],
   "calibration": {
-    "bias_pct": 0.3101,
+    "bias_pct": 0.2722,
     "coverage": 0.0,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-06",
+        "target_date": "2026-11-09",
+        "predicted_med": 928.66,
+        "actual_close": 915.0,
+        "error_pct": -1.4709,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-05",
         "target_date": "2026-11-06",
@@ -486,19 +497,10 @@
         "error_pct": -4.6798,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-06",
-        "target_date": "2026-10-07",
-        "predicted_med": 914.52,
-        "actual_close": 908.0,
-        "error_pct": -0.7129,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.78,
+    "mae_pct": 1.82,
     "directional_accuracy_pct": 20.0,
     "calibration_pct": 0.0
   }

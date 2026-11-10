@@ -1,7 +1,7 @@
 {
   "code": "CIPLA",
   "name": "CIPLA",
-  "last": 1411.0,
+  "last": 1403.8,
   "hist": [
     1497.45,
     1500.82,
@@ -249,41 +249,42 @@
     1396.9,
     1402.0,
     1404.1,
-    1411.0
+    1411.0,
+    1403.8
   ],
   "med": [
-    1408.64
+    1404.14
   ],
   "up": [
-    1433.56
+    1423.88
   ],
   "lo": [
-    1421.02
+    1412.66
   ],
-  "ret": -0.17,
-  "cone_width_pct": 0.89,
-  "asof": "2026-11-06",
+  "ret": 0.02,
+  "cone_width_pct": 0.8,
+  "asof": "2026-11-09",
   "trading": {
-    "entry": 1411.0,
-    "stop_loss": 1421.02,
-    "exit": 1408.64,
-    "risk": -10.02,
-    "reward": -2.36,
+    "entry": 1403.8,
+    "stop_loss": 1412.66,
+    "exit": 1404.14,
+    "risk": -8.86,
+    "reward": 0.34,
     "risk_reward": 0.0,
     "conviction": 30,
     "volume": {
-      "latest": 1567019,
-      "avg_20d": 1250308,
-      "ratio": 1.25,
+      "latest": 1706347,
+      "avg_20d": 1301073,
+      "ratio": 1.31,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 1371.98,
-      "ema_200": 1389.57,
+      "ema_50": 1373.23,
+      "ema_200": 1389.71,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 67.2,
+      "rsi_14": 63.6,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -306,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-06"
+    "Data as of 2026-11-09"
   ],
   "calibration": {
-    "bias_pct": 0.3746,
+    "bias_pct": 0.4183,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-06",
+        "target_date": "2026-11-09",
+        "predicted_med": 1408.64,
+        "actual_close": 1403.800048828125,
+        "error_pct": -0.3436,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-05",
         "target_date": "2026-11-06",
@@ -486,20 +496,11 @@
         "error_pct": -1.8985,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-06",
-        "target_date": "2026-10-07",
-        "predicted_med": 1343.56,
-        "actual_close": 1327.199951171875,
-        "error_pct": -1.2177,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 0.97,
-    "directional_accuracy_pct": 30.0,
+    "mae_pct": 0.93,
+    "directional_accuracy_pct": 35.0,
     "calibration_pct": 20.0
   }
 }

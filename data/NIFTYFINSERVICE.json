@@ -1,7 +1,7 @@
 {
   "code": "NIFTYFINSERVICE",
   "name": "Nifty Financial Services",
-  "last": 1082.35,
+  "last": 1068.36,
   "hist": [
     1173.46,
     1144.64,
@@ -249,26 +249,27 @@
     999.28,
     1020.7,
     1062.9,
-    1082.35
+    1082.35,
+    1068.36
   ],
   "med": [
-    1071.51
+    1060.57
   ],
   "up": [
-    1111.59
+    1087.31
   ],
   "lo": [
-    1096.53
+    1078.89
   ],
-  "ret": -1.0,
-  "cone_width_pct": 1.39,
-  "asof": "2026-11-06",
+  "ret": -0.73,
+  "cone_width_pct": 0.79,
+  "asof": "2026-11-09",
   "trading": {
-    "entry": 1082.35,
-    "stop_loss": 1096.53,
-    "exit": 1071.51,
-    "risk": -14.18,
-    "reward": -10.84,
+    "entry": 1068.36,
+    "stop_loss": 1078.89,
+    "exit": 1060.57,
+    "risk": -10.53,
+    "reward": -7.79,
     "risk_reward": 0.0,
     "conviction": 25,
     "volume": {
@@ -278,12 +279,12 @@
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1032.58,
-      "ema_200": 1080.19,
+      "ema_50": 1033.98,
+      "ema_200": 1080.07,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 69.8,
+      "rsi_14": 64.5,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -306,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-06"
+    "Data as of 2026-11-09"
   ],
   "calibration": {
-    "bias_pct": 0.2379,
-    "coverage": 0.25,
+    "bias_pct": 0.259,
+    "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-06",
+        "target_date": "2026-11-09",
+        "predicted_med": 1071.51,
+        "actual_close": 1068.3583374023438,
+        "error_pct": -0.2941,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-05",
         "target_date": "2026-11-06",
@@ -486,20 +496,11 @@
         "error_pct": -2.0991,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-06",
-        "target_date": "2026-10-07",
-        "predicted_med": 1031.33,
-        "actual_close": 1023.9566650390625,
-        "error_pct": -0.7149,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.24,
+    "mae_pct": 1.22,
     "directional_accuracy_pct": 40.0,
-    "calibration_pct": 25.0
+    "calibration_pct": 20.0
   }
 }

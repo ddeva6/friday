@@ -1,7 +1,7 @@
 {
   "code": "BEL",
   "name": "BEL",
-  "last": 396.0,
+  "last": 394.55,
   "hist": [
     414.52,
     424.91,
@@ -249,47 +249,48 @@
     380.1,
     398.0,
     395.1,
-    396.0
+    396.0,
+    394.55
   ],
   "med": [
-    393.64
+    393.12
   ],
   "up": [
-    402.14
+    399.96
   ],
   "lo": [
-    398.96
+    397.04
   ],
-  "ret": -0.6,
-  "cone_width_pct": 0.8,
-  "asof": "2026-11-06",
+  "ret": -0.36,
+  "cone_width_pct": 0.74,
+  "asof": "2026-11-09",
   "trading": {
-    "entry": 396.0,
-    "stop_loss": 398.96,
-    "exit": 393.64,
-    "risk": -2.96,
-    "reward": -2.36,
+    "entry": 394.55,
+    "stop_loss": 397.04,
+    "exit": 393.12,
+    "risk": -2.49,
+    "reward": -1.43,
     "risk_reward": 0.0,
-    "conviction": 25,
+    "conviction": 40,
     "volume": {
-      "latest": 8830404,
-      "avg_20d": 11205378,
-      "ratio": 0.79,
+      "latest": 9235268,
+      "avg_20d": 10978224,
+      "ratio": 0.84,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 386.3,
-      "ema_200": 404.61,
+      "ema_50": 386.63,
+      "ema_200": 404.51,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 62.3,
+      "rsi_14": 60.8,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 25/100 (LOW)",
+        "Conviction 40/100 (MEDIUM)",
         "R:R not available",
         "Volume does not confirm the move"
       ]
@@ -306,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-06"
+    "Data as of 2026-11-09"
   ],
   "calibration": {
-    "bias_pct": 0.1023,
+    "bias_pct": 0.2318,
     "coverage": 0.1,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-06",
+        "target_date": "2026-11-09",
+        "predicted_med": 393.64,
+        "actual_close": 394.54998779296875,
+        "error_pct": 0.2312,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-05",
         "target_date": "2026-11-06",
@@ -486,20 +496,11 @@
         "error_pct": -3.3421,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-06",
-        "target_date": "2026-10-07",
-        "predicted_med": 387.44,
-        "actual_close": 378.29998779296875,
-        "error_pct": -2.3591,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.4,
-    "directional_accuracy_pct": 50.0,
+    "mae_pct": 1.3,
+    "directional_accuracy_pct": 55.0,
     "calibration_pct": 10.0
   }
 }

@@ -1,7 +1,7 @@
 {
   "code": "ONGC",
   "name": "ONGC",
-  "last": 231.76,
+  "last": 233.5,
   "hist": [
     238.73,
     236.88,
@@ -249,41 +249,42 @@
     232.17,
     235.0,
     230.0,
-    231.76
+    231.76,
+    233.5
   ],
   "med": [
-    231.85
+    233.53
   ],
   "up": [
-    233.75
+    236.03
   ],
   "lo": [
-    232.25
+    234.51
   ],
-  "ret": 0.04,
+  "ret": 0.01,
   "cone_width_pct": 0.65,
-  "asof": "2026-11-06",
+  "asof": "2026-11-09",
   "trading": {
-    "entry": 231.76,
-    "stop_loss": 232.25,
-    "exit": 231.85,
-    "risk": -0.49,
-    "reward": 0.09,
+    "entry": 233.5,
+    "stop_loss": 234.51,
+    "exit": 233.53,
+    "risk": -1.01,
+    "reward": 0.03,
     "risk_reward": 0.0,
     "conviction": 30,
     "volume": {
-      "latest": 27519580,
-      "avg_20d": 9591496,
-      "ratio": 2.87,
+      "latest": 19692705,
+      "avg_20d": 10493881,
+      "ratio": 1.88,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 230.91,
-      "ema_200": 243.47,
+      "ema_50": 231.02,
+      "ema_200": 243.37,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 54.3,
+      "rsi_14": 56.5,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -306,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-06"
+    "Data as of 2026-11-09"
   ],
   "calibration": {
-    "bias_pct": 0.2558,
+    "bias_pct": 0.3498,
     "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-06",
+        "target_date": "2026-11-09",
+        "predicted_med": 231.85,
+        "actual_close": 233.5,
+        "error_pct": 0.7117,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-05",
         "target_date": "2026-11-06",
@@ -486,20 +496,11 @@
         "error_pct": -1.2268,
         "in_cone": true,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-06",
-        "target_date": "2026-10-07",
-        "predicted_med": 224.5,
-        "actual_close": 221.8800048828125,
-        "error_pct": -1.167,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.06,
-    "directional_accuracy_pct": 45.0,
+    "mae_pct": 1.03,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 30.0
   }
 }
