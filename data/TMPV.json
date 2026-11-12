@@ -1,9 +1,8 @@
 {
   "code": "TMPV",
   "name": "TMPV",
-  "last": 295.0,
+  "last": 299.25,
   "hist": [
-    404.25,
     398.84,
     394.68,
     387.98,
@@ -249,41 +248,42 @@
     278.5,
     293.7,
     292.0,
-    295.0
+    295.0,
+    299.25
   ],
   "med": [
-    293.24
+    297.94
   ],
   "up": [
-    301.38
+    306.82
   ],
   "lo": [
-    298.36
+    303.84
   ],
-  "ret": -0.6,
-  "cone_width_pct": 1.02,
-  "asof": "2026-11-09",
+  "ret": -0.44,
+  "cone_width_pct": 1.0,
+  "asof": "2026-11-11",
   "trading": {
-    "entry": 295.0,
-    "stop_loss": 298.36,
-    "exit": 293.24,
-    "risk": -3.36,
-    "reward": -1.76,
+    "entry": 299.25,
+    "stop_loss": 303.84,
+    "exit": 297.94,
+    "risk": -4.59,
+    "reward": -1.31,
     "risk_reward": 0.0,
     "conviction": 25,
     "volume": {
-      "latest": 6787416,
-      "avg_20d": 8050751,
-      "ratio": 0.84,
+      "latest": 7993192,
+      "avg_20d": 8066253,
+      "ratio": 0.99,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 291.04,
-      "ema_200": 328.66,
+      "ema_50": 291.36,
+      "ema_200": 327.91,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 61.8,
+      "rsi_14": 64.6,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -296,26 +296,35 @@
     }
   },
   "fundamentals": {
-    "mcap_cr": 110213.5427072,
+    "mcap_cr": 109476.9442816,
     "pe": "N/A",
     "roe": "N/A",
     "de": 0.70364,
     "sales_growth_yoy": -8.200000000000001,
-    "hi_52w": 404.2466735839844,
+    "hi_52w": 398.84149169921875,
     "lo_52w": 261.20001220703125
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-09"
+    "Data as of 2026-11-11"
   ],
   "calibration": {
-    "bias_pct": 0.3928,
-    "coverage": 0.25,
+    "bias_pct": 0.6665,
+    "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-09",
+        "target_date": "2026-11-11",
+        "predicted_med": 293.24,
+        "actual_close": 299.25,
+        "error_pct": 2.0495,
+        "in_cone": true,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-06",
         "target_date": "2026-11-09",
@@ -486,20 +495,11 @@
         "error_pct": 2.3662,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-10-07",
-        "target_date": "2026-10-08",
-        "predicted_med": 282.68,
-        "actual_close": 273.0,
-        "error_pct": -3.4244,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.59,
-    "directional_accuracy_pct": 40.0,
-    "calibration_pct": 25.0
+    "mae_pct": 1.52,
+    "directional_accuracy_pct": 35.0,
+    "calibration_pct": 30.0
   }
 }

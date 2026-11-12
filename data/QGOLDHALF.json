@@ -1,9 +1,8 @@
 {
   "code": "QGOLDHALF",
   "name": "QGOLDHALF",
-  "last": 117.15,
+  "last": 115.65,
   "hist": [
-    103.18,
     102.65,
     105.41,
     103.78,
@@ -249,49 +248,49 @@
     116.63,
     118.38,
     116.46,
-    117.15
+    117.15,
+    115.65
   ],
   "med": [
-    116.95
+    115.65
   ],
   "up": [
-    117.45
+    115.63
   ],
   "lo": [
-    116.43
+    114.59
   ],
-  "ret": -0.17,
-  "cone_width_pct": 0.87,
-  "asof": "2026-11-09",
+  "ret": 0.0,
+  "cone_width_pct": 0.9,
+  "asof": "2026-11-11",
   "trading": {
-    "entry": 117.15,
-    "stop_loss": 116.43,
-    "exit": 116.95,
-    "risk": 0.72,
-    "reward": -0.2,
-    "risk_reward": -0.28,
-    "conviction": 35,
+    "entry": 115.65,
+    "stop_loss": 114.59,
+    "exit": 115.65,
+    "risk": 1.06,
+    "reward": 0.0,
+    "risk_reward": 0.0,
+    "conviction": 15,
     "volume": {
-      "latest": 62904,
-      "avg_20d": 136503,
-      "ratio": 0.46,
+      "latest": 89741,
+      "avg_20d": 135621,
+      "ratio": 0.66,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 120.23,
-      "ema_200": 120.43,
+      "ema_50": 120.05,
+      "ema_200": 120.34,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 46.0,
+      "rsi_14": 42.2,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
-        "Trend (BEARISH) agrees with the forecast",
-        "R:R unfavorable (1:-0.28)",
+        "Conviction 15/100 (LOW)",
+        "R:R not available",
         "Volume does not confirm the move"
       ]
     }
@@ -307,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-09"
+    "Data as of 2026-11-11"
   ],
   "calibration": {
-    "bias_pct": -0.3456,
-    "coverage": 0.3,
+    "bias_pct": -0.3798,
+    "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-09",
+        "target_date": "2026-11-11",
+        "predicted_med": 116.95,
+        "actual_close": 115.6500015258789,
+        "error_pct": -1.1116,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-06",
         "target_date": "2026-11-09",
@@ -487,20 +495,11 @@
         "error_pct": -0.214,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-06",
-        "target_date": "2026-10-07",
-        "predicted_med": 121.82,
-        "actual_close": 121.30000305175781,
-        "error_pct": -0.4269,
-        "in_cone": true,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.0,
+    "mae_pct": 1.04,
     "directional_accuracy_pct": 50.0,
-    "calibration_pct": 30.0
+    "calibration_pct": 25.0
   }
 }
