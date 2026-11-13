@@ -1,9 +1,8 @@
 {
   "code": "HDFCLIFE",
   "name": "HDFCLIFE",
-  "last": 573.55,
+  "last": 597.8,
   "hist": [
-    780.32,
     779.42,
     770.95,
     767.51,
@@ -249,55 +248,56 @@
     543.8,
     565.3,
     565.4,
-    573.55
+    573.55,
+    597.8
   ],
   "med": [
-    569.21
+    590.17
   ],
   "up": [
-    586.37
+    618.21
   ],
   "lo": [
-    580.05
+    609.19
   ],
-  "ret": -0.76,
-  "cone_width_pct": 1.1,
-  "asof": "2026-11-11",
+  "ret": -1.28,
+  "cone_width_pct": 1.51,
+  "asof": "2026-11-12",
   "trading": {
-    "entry": 573.55,
-    "stop_loss": 580.05,
-    "exit": 569.21,
-    "risk": -6.5,
-    "reward": -4.34,
+    "entry": 597.8,
+    "stop_loss": 609.19,
+    "exit": 590.17,
+    "risk": -11.39,
+    "reward": -7.63,
     "risk_reward": 0.0,
-    "conviction": 25,
+    "conviction": 30,
     "volume": {
-      "latest": 2110578,
-      "avg_20d": 2320912,
-      "ratio": 0.91,
-      "confirmed": false
+      "latest": 6593698,
+      "avg_20d": 2341222,
+      "ratio": 2.82,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 541.75,
-      "ema_200": 594.3,
+      "ema_50": 543.95,
+      "ema_200": 594.26,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 68.2,
-      "label": "NEUTRAL"
+      "rsi_14": 74.9,
+      "label": "OVERBOUGHT"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 25/100 (LOW)",
+        "Conviction 30/100 (LOW)",
         "R:R not available",
-        "Volume does not confirm the move"
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 129845.100544,
-    "pe": 63.125656,
+    "mcap_cr": 128632.1471488,
+    "pe": 62.539597,
     "roe": 11.256,
     "de": 0.15919,
     "sales_growth_yoy": 18.5,
@@ -306,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-11"
+    "Data as of 2026-11-12"
   ],
   "calibration": {
-    "bias_pct": 0.3283,
+    "bias_pct": 0.4662,
     "coverage": 0.35,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-11",
+        "target_date": "2026-11-12",
+        "predicted_med": 569.21,
+        "actual_close": 597.7999877929688,
+        "error_pct": 5.0227,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-09",
         "target_date": "2026-11-11",
@@ -486,19 +495,10 @@
         "error_pct": 0.6388,
         "in_cone": true,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-08",
-        "target_date": "2026-10-09",
-        "predicted_med": 544.32,
-        "actual_close": 556.6500244140625,
-        "error_pct": 2.2652,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.38,
+    "mae_pct": 1.52,
     "directional_accuracy_pct": 35.0,
     "calibration_pct": 35.0
   }

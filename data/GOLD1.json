@@ -1,9 +1,8 @@
 {
   "code": "GOLD1",
   "name": "GOLD1",
-  "last": 116.36,
+  "last": 113.7,
   "hist": [
-    103.63,
     106.24,
     104.58,
     102.75,
@@ -248,50 +247,51 @@
     119.33,
     117.02,
     117.97,
-    116.36
+    116.36,
+    113.7
   ],
   "med": [
-    116.33
+    114.02
   ],
   "up": [
-    116.19
+    112.82
   ],
   "lo": [
-    115.17
+    111.92
   ],
-  "ret": -0.03,
-  "cone_width_pct": 0.88,
-  "asof": "2026-11-11",
+  "ret": 0.28,
+  "cone_width_pct": 0.79,
+  "asof": "2026-11-12",
   "trading": {
-    "entry": 116.36,
-    "stop_loss": 115.17,
-    "exit": 116.33,
-    "risk": 1.19,
-    "reward": -0.03,
-    "risk_reward": -0.03,
-    "conviction": 35,
+    "entry": 113.7,
+    "stop_loss": 111.92,
+    "exit": 114.02,
+    "risk": 1.78,
+    "reward": 0.32,
+    "risk_reward": 0.18,
+    "conviction": 20,
     "volume": {
-      "latest": 1979935,
-      "avg_20d": 2327125,
-      "ratio": 0.85,
-      "confirmed": false
+      "latest": 3138930,
+      "avg_20d": 2372593,
+      "ratio": 1.32,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 120.93,
-      "ema_200": 121.19,
+      "ema_50": 120.65,
+      "ema_200": 121.34,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 41.8,
+      "rsi_14": 36.1,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
-        "Trend (BEARISH) agrees with the forecast",
-        "R:R unfavorable (1:-0.03)",
-        "Volume does not confirm the move"
+        "Conviction 20/100 (LOW)",
+        "Trend (BEARISH) conflicts with the forecast",
+        "R:R unfavorable (1:0.18)",
+        "Volume confirms the move"
       ]
     }
   },
@@ -306,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-11"
+    "Data as of 2026-11-12"
   ],
   "calibration": {
-    "bias_pct": -0.4205,
+    "bias_pct": -0.4774,
     "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-11",
+        "target_date": "2026-11-12",
+        "predicted_med": 116.33,
+        "actual_close": 113.69999694824219,
+        "error_pct": -2.2608,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-09",
         "target_date": "2026-11-11",
@@ -486,19 +495,10 @@
         "error_pct": -0.3425,
         "in_cone": true,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-09",
-        "target_date": "2026-10-12",
-        "predicted_med": 123.89,
-        "actual_close": 122.5,
-        "error_pct": -1.122,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.11,
+    "mae_pct": 1.16,
     "directional_accuracy_pct": 50.0,
     "calibration_pct": 25.0
   }
