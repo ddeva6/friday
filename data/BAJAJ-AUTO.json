@@ -1,10 +1,8 @@
 {
   "code": "BAJAJ-AUTO",
   "name": "BAJAJ-AUTO",
-  "last": 10945.0,
+  "last": 10850.0,
   "hist": [
-    8744.44,
-    8720.28,
     8821.35,
     8797.19,
     8761.2,
@@ -249,56 +247,57 @@
     10900.0,
     10979.0,
     11040.0,
-    10945.0
+    10945.0,
+    10850.0
   ],
   "med": [
-    10987.07
+    10887.63
   ],
   "up": [
-    11199.07
+    11032.87
   ],
   "lo": [
-    11089.95
+    10947.99
   ],
-  "ret": 0.38,
-  "cone_width_pct": 1.0,
-  "asof": "2026-11-12",
+  "ret": 0.35,
+  "cone_width_pct": 0.78,
+  "asof": "2026-11-13",
   "trading": {
-    "entry": 10945.0,
-    "stop_loss": 11089.95,
-    "exit": 10987.07,
-    "risk": -144.95,
-    "reward": 42.07,
+    "entry": 10850.0,
+    "stop_loss": 10947.99,
+    "exit": 10887.63,
+    "risk": -97.99,
+    "reward": 37.63,
     "risk_reward": 0.0,
-    "conviction": 40,
+    "conviction": 35,
     "volume": {
-      "latest": 356938,
-      "avg_20d": 346199,
-      "ratio": 1.03,
-      "confirmed": true
+      "latest": 256208,
+      "avg_20d": 346997,
+      "ratio": 0.74,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 10725.18,
-      "ema_200": 10355.48,
+      "ema_50": 10730.08,
+      "ema_200": 10366.99,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 60.4,
+      "rsi_14": 56.8,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 40/100 (MEDIUM)",
+        "Conviction 35/100 (LOW)",
         "Trend (BULLISH) agrees with the forecast",
         "R:R not available",
-        "Volume confirms the move"
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 297916.8256,
-    "pe": 23.1442,
+    "mcap_cr": 294974.4427008,
+    "pe": 22.896759,
     "roe": 35.56,
     "de": 0.69647,
     "sales_growth_yoy": 57.4,
@@ -307,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-12"
+    "Data as of 2026-11-13"
   ],
   "calibration": {
-    "bias_pct": 0.7411,
+    "bias_pct": 0.5781,
     "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-12",
+        "target_date": "2026-11-13",
+        "predicted_med": 10987.07,
+        "actual_close": 10850.0,
+        "error_pct": -1.2476,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-11",
         "target_date": "2026-11-12",
@@ -487,20 +495,11 @@
         "error_pct": -0.4675,
         "in_cone": true,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-10-09",
-        "target_date": "2026-10-12",
-        "predicted_med": 9836.09,
-        "actual_close": 10034.0,
-        "error_pct": 2.0121,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.14,
-    "directional_accuracy_pct": 45.0,
+    "mae_pct": 1.11,
+    "directional_accuracy_pct": 40.0,
     "calibration_pct": 25.0
   }
 }

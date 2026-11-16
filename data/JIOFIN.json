@@ -1,10 +1,8 @@
 {
   "code": "JIOFIN",
   "name": "JIOFIN",
-  "last": 231.2,
+  "last": 227.5,
   "hist": [
-    309.97,
-    314.16,
     311.27,
     305.24,
     303.74,
@@ -249,73 +247,83 @@
     231.2,
     230.0,
     230.6,
-    231.2
+    231.2,
+    227.5
   ],
   "med": [
-    229.65
+    227.13
   ],
   "up": [
-    235.05
+    230.55
   ],
   "lo": [
-    232.05
+    227.91
   ],
-  "ret": -0.67,
-  "cone_width_pct": 1.3,
-  "asof": "2026-11-12",
+  "ret": -0.16,
+  "cone_width_pct": 1.16,
+  "asof": "2026-11-13",
   "trading": {
-    "entry": 231.2,
-    "stop_loss": 232.05,
-    "exit": 229.65,
-    "risk": -0.85,
-    "reward": -1.55,
+    "entry": 227.5,
+    "stop_loss": 227.91,
+    "exit": 227.13,
+    "risk": -0.41,
+    "reward": -0.37,
     "risk_reward": 0.0,
-    "conviction": 25,
+    "conviction": 40,
     "volume": {
-      "latest": 9779818,
-      "avg_20d": 15359531,
-      "ratio": 0.64,
+      "latest": 7895721,
+      "avg_20d": 14998769,
+      "ratio": 0.53,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 223.05,
-      "ema_200": 242.95,
+      "ema_50": 223.23,
+      "ema_200": 242.9,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 65.5,
+      "rsi_14": 59.3,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 25/100 (LOW)",
+        "Conviction 40/100 (MEDIUM)",
         "R:R not available",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 155908.964352,
-    "pe": 86.5019,
+    "mcap_cr": 154880.9928704,
+    "pe": 85.93156,
     "roe": 1.2949999,
     "de": 0.31949,
     "sales_growth_yoy": 26.700000000000003,
-    "hi_52w": 314.16424560546875,
+    "hi_52w": 311.2710266113281,
     "lo_52w": 204.5
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-12"
+    "Data as of 2026-11-13"
   ],
   "calibration": {
-    "bias_pct": 0.5559,
-    "coverage": 0.2,
+    "bias_pct": 0.5466,
+    "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-12",
+        "target_date": "2026-11-13",
+        "predicted_med": 229.65,
+        "actual_close": 227.5,
+        "error_pct": -0.9362,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-11",
         "target_date": "2026-11-12",
@@ -486,20 +494,11 @@
         "error_pct": 0.8427,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-09",
-        "target_date": "2026-10-12",
-        "predicted_med": 215.06,
-        "actual_close": 213.4499969482422,
-        "error_pct": -0.7486,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.37,
-    "directional_accuracy_pct": 50.0,
-    "calibration_pct": 20.0
+    "mae_pct": 1.38,
+    "directional_accuracy_pct": 55.0,
+    "calibration_pct": 15.0
   }
 }
