@@ -1,7 +1,7 @@
 {
   "code": "EICHERMOT",
   "name": "EICHERMOT",
-  "last": 7650.0,
+  "last": 7599.0,
   "hist": [
     6728.54,
     6743.88,
@@ -248,56 +248,57 @@
     7629.0,
     7592.0,
     7549.0,
-    7650.0
+    7650.0,
+    7599.0
   ],
   "med": [
-    7639.76
+    7602.32
   ],
   "up": [
-    7775.04
+    7691.1
   ],
   "lo": [
-    7707.66
+    7604.48
   ],
-  "ret": -0.13,
-  "cone_width_pct": 0.88,
-  "asof": "2026-11-13",
+  "ret": 0.04,
+  "cone_width_pct": 1.14,
+  "asof": "2026-11-16",
   "trading": {
-    "entry": 7650.0,
-    "stop_loss": 7707.66,
-    "exit": 7639.76,
-    "risk": -57.66,
-    "reward": -10.24,
+    "entry": 7599.0,
+    "stop_loss": 7604.48,
+    "exit": 7602.32,
+    "risk": -5.48,
+    "reward": 3.32,
     "risk_reward": 0.0,
-    "conviction": 35,
+    "conviction": 55,
     "volume": {
-      "latest": 523543,
-      "avg_20d": 465406,
-      "ratio": 1.12,
+      "latest": 1719822,
+      "avg_20d": 468559,
+      "ratio": 3.67,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 7406.01,
-      "ema_200": 7336.34,
+      "ema_50": 7413.58,
+      "ema_200": 7338.95,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 61.7,
+      "rsi_14": 58.9,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
-        "Trend (BULLISH) conflicts with the forecast",
+        "Conviction 55/100 (MEDIUM)",
+        "Trend (BULLISH) agrees with the forecast",
         "R:R not available",
         "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 208628.7310848,
-    "pe": 34.945965,
+    "mcap_cr": 214915.874816,
+    "pe": 35.99908,
     "roe": 24.887999999999998,
     "de": 0.01984,
     "sales_growth_yoy": 20.3,
@@ -306,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-13"
+    "Data as of 2026-11-16"
   ],
   "calibration": {
-    "bias_pct": 0.4742,
+    "bias_pct": 0.4892,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-13",
+        "target_date": "2026-11-16",
+        "predicted_med": 7639.76,
+        "actual_close": 7599.0,
+        "error_pct": -0.5335,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-12",
         "target_date": "2026-11-13",
@@ -486,19 +496,10 @@
         "error_pct": 2.0645,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-13",
-        "target_date": "2026-10-14",
-        "predicted_med": 7142.12,
-        "actual_close": 7082.5,
-        "error_pct": -0.8348,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.07,
+    "mae_pct": 1.05,
     "directional_accuracy_pct": 55.0,
     "calibration_pct": 20.0
   }
