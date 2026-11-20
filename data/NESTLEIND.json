@@ -1,9 +1,8 @@
 {
   "code": "NESTLEIND",
   "name": "NESTLEIND",
-  "last": 1281.6,
+  "last": 1303.4,
   "hist": [
-    1266.05,
     1266.24,
     1267.73,
     1256.34,
@@ -249,56 +248,56 @@
     1263.2,
     1297.0,
     1294.3,
-    1281.6
+    1281.6,
+    1303.4
   ],
   "med": [
-    1281.97
+    1300.71
   ],
   "up": [
-    1296.17
+    1319.97
   ],
   "lo": [
-    1284.57
+    1301.93
   ],
-  "ret": 0.03,
-  "cone_width_pct": 0.91,
-  "asof": "2026-11-18",
+  "ret": -0.21,
+  "cone_width_pct": 1.38,
+  "asof": "2026-11-19",
   "trading": {
-    "entry": 1281.6,
-    "stop_loss": 1284.57,
-    "exit": 1281.97,
-    "risk": -2.97,
-    "reward": 0.37,
-    "risk_reward": 0.0,
-    "conviction": 15,
+    "entry": 1303.4,
+    "stop_loss": 1301.93,
+    "exit": 1300.71,
+    "risk": 1.47,
+    "reward": -2.69,
+    "risk_reward": -1.83,
+    "conviction": 25,
     "volume": {
-      "latest": 892880,
-      "avg_20d": 1686770,
-      "ratio": 0.53,
+      "latest": 1309494,
+      "avg_20d": 1672038,
+      "ratio": 0.78,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 1301.65,
-      "ema_200": 1343.1,
-      "label": "BEARISH"
+      "ema_50": 1301.72,
+      "ema_200": 1342.72,
+      "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 52.1,
+      "rsi_14": 56.1,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 15/100 (LOW)",
-        "Trend (BEARISH) conflicts with the forecast",
-        "R:R not available",
+        "Conviction 25/100 (LOW)",
+        "R:R unfavorable (1:-1.83)",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 251336.5106688,
-    "pe": 61.62648,
+    "mcap_cr": 255501.664256,
+    "pe": 62.647755,
     "roe": 79.863,
     "de": 0.08035,
     "sales_growth_yoy": 20.3,
@@ -307,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-18"
+    "Data as of 2026-11-19"
   ],
   "calibration": {
-    "bias_pct": 0.2121,
+    "bias_pct": 0.4124,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-18",
+        "target_date": "2026-11-19",
+        "predicted_med": 1281.97,
+        "actual_close": 1303.4000244140625,
+        "error_pct": 1.6716,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-17",
         "target_date": "2026-11-18",
@@ -487,20 +495,11 @@
         "error_pct": -3.3442,
         "in_cone": true,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-19",
-        "target_date": "2026-10-21",
-        "predicted_med": 1253.15,
-        "actual_close": 1223.9000244140625,
-        "error_pct": -2.3341,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.61,
-    "directional_accuracy_pct": 45.0,
+    "mae_pct": 1.58,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 20.0
   }
 }

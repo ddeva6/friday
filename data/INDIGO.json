@@ -1,9 +1,8 @@
 {
   "code": "INDIGO",
   "name": "INDIGO",
-  "last": 5499.3,
+  "last": 5475.0,
   "hist": [
-    5758.5,
     5785.5,
     5843.5,
     5805.5,
@@ -249,55 +248,56 @@
     5587.3,
     5544.0,
     5611.0,
-    5499.3
+    5499.3,
+    5475.0
   ],
   "med": [
-    5524.54
+    5512.06
   ],
   "up": [
-    5653.7
+    5624.7
   ],
   "lo": [
-    5601.82
+    5578.3
   ],
-  "ret": 0.46,
-  "cone_width_pct": 0.94,
-  "asof": "2026-11-18",
+  "ret": 0.68,
+  "cone_width_pct": 0.85,
+  "asof": "2026-11-19",
   "trading": {
-    "entry": 5499.3,
-    "stop_loss": 5601.82,
-    "exit": 5524.54,
-    "risk": -102.52,
-    "reward": 25.24,
+    "entry": 5475.0,
+    "stop_loss": 5578.3,
+    "exit": 5512.06,
+    "risk": -103.3,
+    "reward": 37.06,
     "risk_reward": 0.0,
-    "conviction": 35,
+    "conviction": 40,
     "volume": {
-      "latest": 710243,
-      "avg_20d": 858616,
-      "ratio": 0.83,
-      "confirmed": false
+      "latest": 1669739,
+      "avg_20d": 865314,
+      "ratio": 1.93,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 5087.64,
-      "ema_200": 5022.25,
+      "ema_50": 5102.84,
+      "ema_200": 5029.04,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 64.7,
+      "rsi_14": 63.3,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
+        "Conviction 40/100 (MEDIUM)",
         "Trend (BULLISH) agrees with the forecast",
         "R:R not available",
-        "Volume does not confirm the move"
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 211700.5082624,
+    "mcap_cr": 216054.3793152,
     "pe": "N/A",
     "roe": -60.12,
     "de": 17.3869,
@@ -307,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-18"
+    "Data as of 2026-11-19"
   ],
   "calibration": {
-    "bias_pct": 1.2788,
+    "bias_pct": 1.3204,
     "coverage": 0.1,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-18",
+        "target_date": "2026-11-19",
+        "predicted_med": 5524.54,
+        "actual_close": 5475.0,
+        "error_pct": -0.8967,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-17",
         "target_date": "2026-11-18",
@@ -487,19 +496,10 @@
         "error_pct": -1.3891,
         "in_cone": true,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-19",
-        "target_date": "2026-10-21",
-        "predicted_med": 4723.11,
-        "actual_close": 4641.5,
-        "error_pct": -1.7279,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 2.03,
+    "mae_pct": 1.98,
     "directional_accuracy_pct": 45.0,
     "calibration_pct": 10.0
   }

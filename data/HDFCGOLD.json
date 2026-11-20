@@ -1,9 +1,8 @@
 {
   "code": "HDFCGOLD",
   "name": "HDFCGOLD",
-  "last": 111.21,
+  "last": 109.85,
   "hist": [
-    105.33,
     104.89,
     105.31,
     105.51,
@@ -248,41 +247,42 @@
     115.68,
     113.66,
     113.59,
-    111.21
+    111.21,
+    109.85
   ],
   "med": [
-    111.44
+    110.58
   ],
   "up": [
-    109.44
+    107.96
   ],
   "lo": [
-    107.5
+    106.18
   ],
-  "ret": 0.21,
-  "cone_width_pct": 1.74,
-  "asof": "2026-11-18",
+  "ret": 0.66,
+  "cone_width_pct": 1.62,
+  "asof": "2026-11-19",
   "trading": {
-    "entry": 111.21,
-    "stop_loss": 107.5,
-    "exit": 111.44,
-    "risk": 3.71,
-    "reward": 0.23,
-    "risk_reward": 0.06,
+    "entry": 109.85,
+    "stop_loss": 106.18,
+    "exit": 110.58,
+    "risk": 3.67,
+    "reward": 0.73,
+    "risk_reward": 0.2,
     "conviction": 20,
     "volume": {
-      "latest": 7885925,
-      "avg_20d": 3684480,
-      "ratio": 2.14,
+      "latest": 7489669,
+      "avg_20d": 4002378,
+      "ratio": 1.87,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 122.04,
-      "ema_200": 123.55,
+      "ema_50": 121.56,
+      "ema_200": 123.38,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 26.4,
+      "rsi_14": 24.5,
       "label": "OVERSOLD"
     },
     "verdict": {
@@ -290,7 +290,7 @@
       "reasons": [
         "Conviction 20/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.06)",
+        "R:R unfavorable (1:0.20)",
         "Volume confirms the move"
       ]
     }
@@ -306,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-18"
+    "Data as of 2026-11-19"
   ],
   "calibration": {
-    "bias_pct": -0.6331,
+    "bias_pct": -0.6282,
     "coverage": 0.2,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-18",
+        "target_date": "2026-11-19",
+        "predicted_med": 111.44,
+        "actual_close": 109.8499984741211,
+        "error_pct": -1.4268,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-17",
         "target_date": "2026-11-18",
@@ -486,19 +495,10 @@
         "error_pct": -0.8664,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-19",
-        "target_date": "2026-10-21",
-        "predicted_med": 124.0,
-        "actual_close": 122.11000061035156,
-        "error_pct": -1.5242,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.3,
+    "mae_pct": 1.29,
     "directional_accuracy_pct": 35.0,
     "calibration_pct": 20.0
   }
