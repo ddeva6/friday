@@ -1,10 +1,8 @@
 {
   "code": "LT",
   "name": "LT",
-  "last": 4211.0,
+  "last": 4209.1,
   "hist": [
-    3998.35,
-    3985.97,
     3974.48,
     3958.04,
     4022.71,
@@ -249,55 +247,57 @@
     4140.0,
     4155.5,
     4159.0,
-    4211.0
+    4211.0,
+    4209.1
   ],
   "med": [
-    4219.05
+    4222.89
   ],
   "up": [
-    4307.77
+    4307.69
   ],
   "lo": [
-    4281.61
+    4280.29
   ],
-  "ret": 0.19,
-  "cone_width_pct": 0.62,
-  "asof": "2026-11-19",
+  "ret": 0.33,
+  "cone_width_pct": 0.65,
+  "asof": "2026-11-20",
   "trading": {
-    "entry": 4211.0,
-    "stop_loss": 4281.61,
-    "exit": 4219.05,
-    "risk": -70.61,
-    "reward": 8.05,
+    "entry": 4209.1,
+    "stop_loss": 4280.29,
+    "exit": 4222.89,
+    "risk": -71.19,
+    "reward": 13.79,
     "risk_reward": 0.0,
-    "conviction": 25,
+    "conviction": 35,
     "volume": {
-      "latest": 2071601,
-      "avg_20d": 2359333,
-      "ratio": 0.88,
+      "latest": 2154352,
+      "avg_20d": 2367782,
+      "ratio": 0.91,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 3931.26,
-      "ema_200": 3933.82,
-      "label": "RECOVERING"
+      "ema_50": 3942.16,
+      "ema_200": 3934.53,
+      "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 73.8,
+      "rsi_14": 73.5,
       "label": "OVERBOUGHT"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 25/100 (LOW)",
+        "Conviction 35/100 (LOW)",
+        "Trend (BULLISH) agrees with the forecast",
         "R:R not available",
         "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 579124.6974976,
-    "pe": 32.422585,
+    "mcap_cr": 564100.0189952,
+    "pe": 31.581417,
     "roe": 17.875,
     "de": 1.05287,
     "sales_growth_yoy": 16.900000000000002,
@@ -306,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-19"
+    "Data as of 2026-11-20"
   ],
   "calibration": {
-    "bias_pct": 1.0875,
+    "bias_pct": 1.069,
     "coverage": 0.05,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-19",
+        "target_date": "2026-11-20",
+        "predicted_med": 4219.05,
+        "actual_close": 4209.10009765625,
+        "error_pct": -0.2358,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-18",
         "target_date": "2026-11-19",
@@ -486,19 +495,10 @@
         "error_pct": 0.4094,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-21",
-        "target_date": "2026-10-22",
-        "predicted_med": 3633.4,
-        "actual_close": 3638.300048828125,
-        "error_pct": 0.1349,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.24,
+    "mae_pct": 1.25,
     "directional_accuracy_pct": 35.0,
     "calibration_pct": 5.0
   }

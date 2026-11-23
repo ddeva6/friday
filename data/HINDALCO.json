@@ -1,10 +1,8 @@
 {
   "code": "HINDALCO",
   "name": "HINDALCO",
-  "last": 910.0,
+  "last": 929.5,
   "hist": [
-    795.65,
-    773.66,
     770.63,
     785.25,
     796.64,
@@ -249,56 +247,57 @@
     923.3,
     927.75,
     900.0,
-    910.0
+    910.0,
+    929.5
   ],
   "med": [
-    915.81
+    932.65
   ],
   "up": [
-    915.43
+    938.81
   ],
   "lo": [
-    904.47
+    930.31
   ],
-  "ret": 0.64,
-  "cone_width_pct": 1.2,
-  "asof": "2026-11-19",
+  "ret": 0.34,
+  "cone_width_pct": 0.91,
+  "asof": "2026-11-20",
   "trading": {
-    "entry": 910.0,
-    "stop_loss": 904.47,
-    "exit": 915.81,
-    "risk": 5.53,
-    "reward": 5.81,
-    "risk_reward": 1.05,
-    "conviction": 35,
+    "entry": 929.5,
+    "stop_loss": 930.31,
+    "exit": 932.65,
+    "risk": -0.81,
+    "reward": 3.15,
+    "risk_reward": 0.0,
+    "conviction": 20,
     "volume": {
-      "latest": 10335377,
-      "avg_20d": 6458981,
-      "ratio": 1.6,
+      "latest": 8885677,
+      "avg_20d": 6812782,
+      "ratio": 1.3,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 938.37,
-      "ema_200": 950.75,
+      "ema_50": 938.02,
+      "ema_200": 948.42,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 44.7,
+      "rsi_14": 50.9,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
+        "Conviction 20/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R favorable (1:1.05)",
+        "R:R not available",
         "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 206333.87008,
-    "pe": 10.778062,
+    "mcap_cr": 199885.2456448,
+    "pe": 10.441211,
     "roe": 13.031,
     "de": 0.7414499999999999,
     "sales_growth_yoy": 38.800000000000004,
@@ -307,16 +306,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-19"
+    "Data as of 2026-11-20"
   ],
   "calibration": {
-    "bias_pct": 0.2575,
-    "coverage": 0.2,
+    "bias_pct": 0.3809,
+    "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-19",
+        "target_date": "2026-11-20",
+        "predicted_med": 915.81,
+        "actual_close": 929.5,
+        "error_pct": 1.4949,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-18",
         "target_date": "2026-11-19",
@@ -487,20 +495,11 @@
         "error_pct": -1.9125,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-21",
-        "target_date": "2026-10-22",
-        "predicted_med": 894.31,
-        "actual_close": 885.5999755859375,
-        "error_pct": -0.9739,
-        "in_cone": true,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.42,
-    "directional_accuracy_pct": 30.0,
-    "calibration_pct": 20.0
+    "mae_pct": 1.44,
+    "directional_accuracy_pct": 35.0,
+    "calibration_pct": 15.0
   }
 }
