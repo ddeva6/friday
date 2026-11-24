@@ -1,7 +1,7 @@
 {
   "code": "JIOFIN",
   "name": "JIOFIN",
-  "last": 224.97,
+  "last": 219.7,
   "hist": [
     299.15,
     300.1,
@@ -248,47 +248,49 @@
     228.96,
     224.5,
     226.8,
-    224.97
+    224.97,
+    219.7
   ],
   "med": [
-    226.07
+    221.6
   ],
   "up": [
-    228.45
+    221.86
   ],
   "lo": [
-    226.39
+    219.9
   ],
-  "ret": 0.49,
-  "cone_width_pct": 0.92,
-  "asof": "2026-11-20",
+  "ret": 0.86,
+  "cone_width_pct": 0.89,
+  "asof": "2026-11-23",
   "trading": {
-    "entry": 224.97,
-    "stop_loss": 226.39,
-    "exit": 226.07,
-    "risk": -1.42,
-    "reward": 1.1,
+    "entry": 219.7,
+    "stop_loss": 219.9,
+    "exit": 221.6,
+    "risk": -0.2,
+    "reward": 1.9,
     "risk_reward": 0.0,
-    "conviction": 40,
+    "conviction": 30,
     "volume": {
-      "latest": 11052572,
-      "avg_20d": 14194256,
-      "ratio": 0.78,
+      "latest": 11900554,
+      "avg_20d": 14194634,
+      "ratio": 0.84,
       "confirmed": false
     },
     "trend": {
-      "ema_50": 223.77,
-      "ema_200": 241.07,
-      "label": "RECOVERING"
+      "ema_50": 223.61,
+      "ema_200": 240.86,
+      "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 53.6,
+      "rsi_14": 46.7,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 40/100 (MEDIUM)",
+        "Conviction 30/100 (LOW)",
+        "Trend (BEARISH) conflicts with the forecast",
         "R:R not available",
         "Volume does not confirm the move"
       ]
@@ -305,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-20"
+    "Data as of 2026-11-23"
   ],
   "calibration": {
-    "bias_pct": 0.5493,
+    "bias_pct": 0.5437,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-20",
+        "target_date": "2026-11-23",
+        "predicted_med": 226.07,
+        "actual_close": 219.6999969482422,
+        "error_pct": -2.8177,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-19",
         "target_date": "2026-11-20",
@@ -485,20 +496,11 @@
         "error_pct": -0.1265,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-10-22",
-        "target_date": "2026-10-23",
-        "predicted_med": 210.73,
-        "actual_close": 205.02999877929688,
-        "error_pct": -2.7049,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
     "mae_pct": 1.46,
-    "directional_accuracy_pct": 65.0,
+    "directional_accuracy_pct": 60.0,
     "calibration_pct": 15.0
   }
 }

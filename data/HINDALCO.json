@@ -1,7 +1,7 @@
 {
   "code": "HINDALCO",
   "name": "HINDALCO",
-  "last": 929.5,
+  "last": 900.45,
   "hist": [
     770.63,
     785.25,
@@ -248,41 +248,42 @@
     927.75,
     900.0,
     910.0,
-    929.5
+    929.5,
+    900.45
   ],
   "med": [
-    932.65
+    906.59
   ],
   "up": [
-    938.81
+    904.09
   ],
   "lo": [
-    930.31
+    878.05
   ],
-  "ret": 0.34,
-  "cone_width_pct": 0.91,
-  "asof": "2026-11-20",
+  "ret": 0.68,
+  "cone_width_pct": 2.89,
+  "asof": "2026-11-23",
   "trading": {
-    "entry": 929.5,
-    "stop_loss": 930.31,
-    "exit": 932.65,
-    "risk": -0.81,
-    "reward": 3.15,
-    "risk_reward": 0.0,
+    "entry": 900.45,
+    "stop_loss": 878.05,
+    "exit": 906.59,
+    "risk": 22.4,
+    "reward": 6.14,
+    "risk_reward": 0.27,
     "conviction": 20,
     "volume": {
-      "latest": 8885677,
-      "avg_20d": 6812782,
-      "ratio": 1.3,
+      "latest": 11973503,
+      "avg_20d": 7076300,
+      "ratio": 1.69,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 938.02,
-      "ema_200": 948.42,
+      "ema_50": 936.55,
+      "ema_200": 947.95,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 50.9,
+      "rsi_14": 43.1,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -290,7 +291,7 @@
       "reasons": [
         "Conviction 20/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R not available",
+        "R:R unfavorable (1:0.27)",
         "Volume confirms the move"
       ]
     }
@@ -306,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-20"
+    "Data as of 2026-11-23"
   ],
   "calibration": {
-    "bias_pct": 0.3809,
+    "bias_pct": 0.3039,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-20",
+        "target_date": "2026-11-23",
+        "predicted_med": 932.65,
+        "actual_close": 900.4500122070312,
+        "error_pct": -3.4525,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-19",
         "target_date": "2026-11-20",
@@ -486,19 +496,10 @@
         "error_pct": 1.5735,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-10-22",
-        "target_date": "2026-10-23",
-        "predicted_med": 886.81,
-        "actual_close": 869.8499755859375,
-        "error_pct": -1.9125,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.44,
+    "mae_pct": 1.52,
     "directional_accuracy_pct": 35.0,
     "calibration_pct": 15.0
   }

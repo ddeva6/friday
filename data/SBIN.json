@@ -1,7 +1,7 @@
 {
   "code": "SBIN",
   "name": "SBIN",
-  "last": 1165.1,
+  "last": 1132.65,
   "hist": [
     953.41,
     966.18,
@@ -248,50 +248,51 @@
     1108.6,
     1135.0,
     1156.0,
-    1165.1
+    1165.1,
+    1132.65
   ],
   "med": [
-    1164.07
+    1134.47
   ],
   "up": [
-    1220.07
+    1170.65
   ],
   "lo": [
-    1201.25
+    1159.41
   ],
-  "ret": -0.09,
-  "cone_width_pct": 1.62,
-  "asof": "2026-11-20",
+  "ret": 0.16,
+  "cone_width_pct": 0.99,
+  "asof": "2026-11-23",
   "trading": {
-    "entry": 1165.1,
-    "stop_loss": 1201.25,
-    "exit": 1164.07,
-    "risk": -36.15,
-    "reward": -1.03,
+    "entry": 1132.65,
+    "stop_loss": 1159.41,
+    "exit": 1134.47,
+    "risk": -26.76,
+    "reward": 1.82,
     "risk_reward": 0.0,
-    "conviction": 20,
+    "conviction": 35,
     "volume": {
-      "latest": 17524838,
-      "avg_20d": 16979449,
-      "ratio": 1.03,
-      "confirmed": true
+      "latest": 14924743,
+      "avg_20d": 17566623,
+      "ratio": 0.85,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 1021.76,
-      "ema_200": 1014.21,
+      "ema_50": 1026.11,
+      "ema_200": 1015.39,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 82.1,
+      "rsi_14": 70.3,
       "label": "OVERBOUGHT"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 20/100 (LOW)",
-        "Trend (BULLISH) conflicts with the forecast",
+        "Conviction 35/100 (LOW)",
+        "Trend (BULLISH) agrees with the forecast",
         "R:R not available",
-        "Volume confirms the move"
+        "Volume does not confirm the move"
       ]
     }
   },
@@ -306,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-20"
+    "Data as of 2026-11-23"
   ],
   "calibration": {
-    "bias_pct": 1.2838,
+    "bias_pct": 1.189,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-20",
+        "target_date": "2026-11-23",
+        "predicted_med": 1164.07,
+        "actual_close": 1132.6500244140625,
+        "error_pct": -2.6991,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-19",
         "target_date": "2026-11-20",
@@ -486,19 +496,10 @@
         "error_pct": 0.3918,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-22",
-        "target_date": "2026-10-23",
-        "predicted_med": 966.36,
-        "actual_close": 958.5999755859375,
-        "error_pct": -0.803,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.7,
+    "mae_pct": 1.79,
     "directional_accuracy_pct": 30.0,
     "calibration_pct": 15.0
   }

@@ -1,7 +1,7 @@
 {
   "code": "HCLTECH",
   "name": "HCLTECH",
-  "last": 1344.4,
+  "last": 1364.3,
   "hist": [
     1539.23,
     1530.34,
@@ -248,41 +248,42 @@
     1355.7,
     1344.7,
     1332.9,
-    1344.4
+    1344.4,
+    1364.3
   ],
   "med": [
-    1344.33
+    1360.68
   ],
   "up": [
-    1338.01
+    1365.4
   ],
   "lo": [
-    1325.27
+    1350.06
   ],
-  "ret": -0.01,
-  "cone_width_pct": 0.95,
-  "asof": "2026-11-20",
+  "ret": -0.27,
+  "cone_width_pct": 1.12,
+  "asof": "2026-11-23",
   "trading": {
-    "entry": 1344.4,
-    "stop_loss": 1325.27,
-    "exit": 1344.33,
-    "risk": 19.13,
-    "reward": -0.07,
-    "risk_reward": -0.0,
+    "entry": 1364.3,
+    "stop_loss": 1350.06,
+    "exit": 1360.68,
+    "risk": 14.24,
+    "reward": -3.62,
+    "risk_reward": -0.25,
     "conviction": 20,
     "volume": {
-      "latest": 3594840,
-      "avg_20d": 3097322,
-      "ratio": 1.16,
+      "latest": 3981800,
+      "avg_20d": 3097118,
+      "ratio": 1.29,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 1338.41,
-      "ema_200": 1321.95,
+      "ema_50": 1339.43,
+      "ema_200": 1322.37,
       "label": "BULLISH"
     },
     "momentum": {
-      "rsi_14": 45.1,
+      "rsi_14": 50.0,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -290,7 +291,7 @@
       "reasons": [
         "Conviction 20/100 (LOW)",
         "Trend (BULLISH) conflicts with the forecast",
-        "R:R not available",
+        "R:R unfavorable (1:-0.25)",
         "Volume confirms the move"
       ]
     }
@@ -302,20 +303,29 @@
     "de": 0.07905000000000001,
     "sales_growth_yoy": 2.1999999999999997,
     "hi_52w": 1665.134765625,
-    "lo_52w": 1014.7151489257812
+    "lo_52w": 1014.7152099609375
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-20"
+    "Data as of 2026-11-23"
   ],
   "calibration": {
-    "bias_pct": -0.3099,
+    "bias_pct": -0.285,
     "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-20",
+        "target_date": "2026-11-23",
+        "predicted_med": 1344.33,
+        "actual_close": 1364.300048828125,
+        "error_pct": 1.4855,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-19",
         "target_date": "2026-11-20",
@@ -486,19 +496,10 @@
         "error_pct": 0.5093,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-10-22",
-        "target_date": "2026-10-23",
-        "predicted_med": 1408.29,
-        "actual_close": 1422.199951171875,
-        "error_pct": 0.9877,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.15,
+    "mae_pct": 1.17,
     "directional_accuracy_pct": 30.0,
     "calibration_pct": 25.0
   }

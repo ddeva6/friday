@@ -1,7 +1,7 @@
 {
   "code": "TATASTEEL",
   "name": "TATASTEEL",
-  "last": 178.0,
+  "last": 163.0,
   "hist": [
     162.02,
     162.97,
@@ -248,41 +248,42 @@
     181.5,
     179.0,
     180.89,
-    178.0
+    178.0,
+    163.0
   ],
   "med": [
-    179.17
+    165.69
   ],
   "up": [
-    179.15
+    161.03
   ],
   "lo": [
-    176.57
+    157.77
   ],
-  "ret": 0.66,
-  "cone_width_pct": 1.45,
-  "asof": "2026-11-20",
+  "ret": 1.65,
+  "cone_width_pct": 2.0,
+  "asof": "2026-11-23",
   "trading": {
-    "entry": 178.0,
-    "stop_loss": 176.57,
-    "exit": 179.17,
-    "risk": 1.43,
-    "reward": 1.17,
-    "risk_reward": 0.82,
+    "entry": 163.0,
+    "stop_loss": 157.77,
+    "exit": 165.69,
+    "risk": 5.23,
+    "reward": 2.69,
+    "risk_reward": 0.51,
     "conviction": 20,
     "volume": {
-      "latest": 46172019,
-      "avg_20d": 22935453,
-      "ratio": 2.01,
+      "latest": 168843913,
+      "avg_20d": 24409342,
+      "ratio": 6.92,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 180.51,
-      "ema_200": 184.35,
+      "ema_50": 179.83,
+      "ema_200": 184.13,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 47.2,
+      "rsi_14": 32.0,
       "label": "NEUTRAL"
     },
     "verdict": {
@@ -290,7 +291,7 @@
       "reasons": [
         "Conviction 20/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.82)",
+        "R:R unfavorable (1:0.51)",
         "Volume confirms the move"
       ]
     }
@@ -306,16 +307,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-20"
+    "Data as of 2026-11-23"
   ],
   "calibration": {
-    "bias_pct": 0.3717,
+    "bias_pct": 0.0574,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-20",
+        "target_date": "2026-11-23",
+        "predicted_med": 179.17,
+        "actual_close": 163.0,
+        "error_pct": -9.0249,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-19",
         "target_date": "2026-11-20",
@@ -486,19 +496,10 @@
         "error_pct": 0.9445,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-10-22",
-        "target_date": "2026-10-23",
-        "predicted_med": 172.39,
-        "actual_close": 167.6699981689453,
-        "error_pct": -2.738,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 1.57,
+    "mae_pct": 1.89,
     "directional_accuracy_pct": 45.0,
     "calibration_pct": 15.0
   }
