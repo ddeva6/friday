@@ -1,9 +1,8 @@
 {
   "code": "NIFTYMETAL",
   "name": "Nifty Metal",
-  "last": 11819.25,
+  "last": 11578.5,
   "hist": [
-    10073.4,
     10280.7,
     10273.75,
     10293.05,
@@ -246,48 +245,49 @@
     12222.3,
     12299.75,
     12271.1,
-    11819.25
+    11819.25,
+    11578.5
   ],
   "med": [
-    11940.93
+    11711.58
   ],
   "up": [
-    11850.49
+    11552.84
   ],
   "lo": [
-    11726.13
+    11427.9
   ],
-  "ret": 1.03,
-  "cone_width_pct": 1.05,
-  "asof": "2026-11-23",
+  "ret": 1.15,
+  "cone_width_pct": 1.08,
+  "asof": "2026-11-25",
   "trading": {
-    "entry": 11819.25,
-    "stop_loss": 11726.13,
-    "exit": 11940.93,
-    "risk": 93.12,
-    "reward": 121.68,
-    "risk_reward": 1.31,
-    "conviction": 60,
+    "entry": 11578.5,
+    "stop_loss": 11427.9,
+    "exit": 11711.58,
+    "risk": 150.6,
+    "reward": 133.08,
+    "risk_reward": 0.88,
+    "conviction": 30,
     "volume": {
-      "latest": 2918200,
-      "avg_20d": 1054345,
-      "ratio": 2.77,
+      "latest": 2607800,
+      "avg_20d": 1140385,
+      "ratio": 2.29,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 12423.85,
-      "ema_200": 12300.97,
+      "ema_50": 12390.71,
+      "ema_200": 12311.85,
       "label": "WEAKENING"
     },
     "momentum": {
-      "rsi_14": 37.1,
+      "rsi_14": 33.1,
       "label": "NEUTRAL"
     },
     "verdict": {
-      "label": "NEUTRAL",
+      "label": "CAUTION",
       "reasons": [
-        "Conviction 60/100 (MEDIUM)",
-        "R:R favorable (1:1.31)",
+        "Conviction 30/100 (LOW)",
+        "R:R unfavorable (1:0.88)",
         "Volume confirms the move"
       ]
     }
@@ -299,20 +299,29 @@
     "de": "N/A",
     "sales_growth_yoy": "N/A",
     "hi_52w": 13718.2998046875,
-    "lo_52w": 10073.400390625
+    "lo_52w": 10112.650390625
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-23"
+    "Data as of 2026-11-25"
   ],
   "calibration": {
-    "bias_pct": 0.0451,
+    "bias_pct": -0.1492,
     "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-23",
+        "target_date": "2026-11-25",
+        "predicted_med": 11940.93,
+        "actual_close": 11578.5,
+        "error_pct": -3.0352,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-20",
         "target_date": "2026-11-23",
@@ -483,20 +492,11 @@
         "error_pct": -0.1329,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-10-23",
-        "target_date": "2026-10-26",
-        "predicted_med": 11632.46,
-        "actual_close": 11731.5498046875,
-        "error_pct": 0.8518,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.11,
-    "directional_accuracy_pct": 55.0,
+    "mae_pct": 1.22,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 25.0
   }
 }

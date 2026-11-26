@@ -1,9 +1,8 @@
 {
   "code": "IVZINGOLD",
   "name": "IVZINGOLD",
-  "last": 108.05,
+  "last": 104.05,
   "hist": [
-    10828.4,
     10954.2,
     10912.9,
     10955.95,
@@ -248,49 +247,50 @@
     113.1,
     111.6,
     106.1,
-    108.05
+    108.05,
+    104.05
   ],
   "med": [
-    108.77
+    104.72
   ],
   "up": [
-    106.39
+    102.1
   ],
   "lo": [
-    104.33
+    99.14
   ],
-  "ret": 0.67,
-  "cone_width_pct": 1.91,
-  "asof": "2026-11-23",
+  "ret": 0.64,
+  "cone_width_pct": 2.84,
+  "asof": "2026-11-25",
   "trading": {
-    "entry": 108.05,
-    "stop_loss": 104.33,
-    "exit": 108.77,
-    "risk": 3.72,
-    "reward": 0.72,
-    "risk_reward": 0.19,
-    "conviction": 35,
+    "entry": 104.05,
+    "stop_loss": 99.14,
+    "exit": 104.72,
+    "risk": 4.91,
+    "reward": 0.67,
+    "risk_reward": 0.14,
+    "conviction": 20,
     "volume": {
-      "latest": 201893,
-      "avg_20d": 106106,
-      "ratio": 1.9,
+      "latest": 222586,
+      "avg_20d": 110625,
+      "ratio": 2.01,
       "confirmed": true
     },
     "trend": {
-      "ema_50": 163.27,
-      "ema_200": 2968.55,
+      "ema_50": 160.95,
+      "ema_200": 2950.79,
       "label": "BEARISH"
     },
     "momentum": {
-      "rsi_14": 27.0,
+      "rsi_14": 23.2,
       "label": "OVERSOLD"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 35/100 (LOW)",
+        "Conviction 20/100 (LOW)",
         "Trend (BEARISH) conflicts with the forecast",
-        "R:R unfavorable (1:0.19)",
+        "R:R unfavorable (1:0.14)",
         "Volume confirms the move"
       ]
     }
@@ -302,20 +302,29 @@
     "de": "N/A",
     "sales_growth_yoy": "N/A",
     "hi_52w": 15439.900390625,
-    "lo_52w": 106.0999984741211
+    "lo_52w": 104.05000305175781
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-23"
+    "Data as of 2026-11-25"
   ],
   "calibration": {
-    "bias_pct": -0.628,
+    "bias_pct": -0.8643,
     "coverage": 0.3,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-23",
+        "target_date": "2026-11-25",
+        "predicted_med": 108.77,
+        "actual_close": 104.05000305175781,
+        "error_pct": -4.3394,
+        "in_cone": false,
+        "direction_correct": false
+      },
       {
         "asof_date": "2026-11-20",
         "target_date": "2026-11-23",
@@ -486,20 +495,11 @@
         "error_pct": -0.4333,
         "in_cone": true,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-10-23",
-        "target_date": "2026-10-26",
-        "predicted_med": 121.98,
-        "actual_close": 122.44999694824219,
-        "error_pct": 0.3853,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.55,
-    "directional_accuracy_pct": 55.0,
+    "mae_pct": 1.75,
+    "directional_accuracy_pct": 50.0,
     "calibration_pct": 30.0
   }
 }

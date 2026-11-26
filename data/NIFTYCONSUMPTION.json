@@ -1,9 +1,8 @@
 {
   "code": "NIFTYCONSUMPTION",
   "name": "Nifty Consumption",
-  "last": 12262.25,
+  "last": 12490.6,
   "hist": [
-    12405.0,
     12497.9,
     12450.35,
     12472.15,
@@ -246,26 +245,27 @@
     12005.75,
     12254.9,
     12336.6,
-    12262.25
+    12262.25,
+    12490.6
   ],
   "med": [
-    12288.75
+    12505.05
   ],
   "up": [
-    12566.41
+    12856.93
   ],
   "lo": [
-    12454.57
+    12733.97
   ],
-  "ret": 0.22,
-  "cone_width_pct": 0.91,
-  "asof": "2026-11-23",
+  "ret": 0.12,
+  "cone_width_pct": 0.98,
+  "asof": "2026-11-25",
   "trading": {
-    "entry": 12262.25,
-    "stop_loss": 12454.57,
-    "exit": 12288.75,
-    "risk": -192.32,
-    "reward": 26.5,
+    "entry": 12490.6,
+    "stop_loss": 12733.97,
+    "exit": 12505.05,
+    "risk": -243.37,
+    "reward": 14.45,
     "risk_reward": 0.0,
     "conviction": 40,
     "volume": {
@@ -275,13 +275,13 @@
       "confirmed": false
     },
     "trend": {
-      "ema_50": 11573.17,
-      "ema_200": 11618.62,
+      "ema_50": 11609.15,
+      "ema_200": 11635.39,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 69.8,
-      "label": "NEUTRAL"
+      "rsi_14": 74.1,
+      "label": "OVERBOUGHT"
     },
     "verdict": {
       "label": "CAUTION",
@@ -303,16 +303,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-23"
+    "Data as of 2026-11-25"
   ],
   "calibration": {
-    "bias_pct": 0.6367,
-    "coverage": 0.2,
+    "bias_pct": 0.7078,
+    "coverage": 0.25,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-23",
+        "target_date": "2026-11-25",
+        "predicted_med": 12288.75,
+        "actual_close": 12490.599609375,
+        "error_pct": 1.6426,
+        "in_cone": true,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-20",
         "target_date": "2026-11-23",
@@ -483,20 +492,11 @@
         "error_pct": 0.8972,
         "in_cone": false,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-10-23",
-        "target_date": "2026-10-26",
-        "predicted_med": 10780.83,
-        "actual_close": 10804.4501953125,
-        "error_pct": 0.2191,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 0.9,
+    "mae_pct": 0.97,
     "directional_accuracy_pct": 65.0,
-    "calibration_pct": 20.0
+    "calibration_pct": 25.0
   }
 }

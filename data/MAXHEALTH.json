@@ -1,9 +1,8 @@
 {
   "code": "MAXHEALTH",
   "name": "MAXHEALTH",
-  "last": 1089.55,
+  "last": 1076.3,
   "hist": [
-    1156.05,
     1160.54,
     1159.74,
     1160.74,
@@ -248,55 +247,56 @@
     1022.85,
     1040.65,
     1081.0,
-    1089.55
+    1089.55,
+    1076.3
   ],
   "med": [
-    1087.99
+    1077.02
   ],
   "up": [
-    1142.19
+    1121.54
   ],
   "lo": [
-    1133.33
+    1112.84
   ],
-  "ret": -0.14,
+  "ret": 0.07,
   "cone_width_pct": 0.81,
-  "asof": "2026-11-23",
+  "asof": "2026-11-25",
   "trading": {
-    "entry": 1089.55,
-    "stop_loss": 1133.33,
-    "exit": 1087.99,
-    "risk": -43.78,
-    "reward": -1.56,
+    "entry": 1076.3,
+    "stop_loss": 1112.84,
+    "exit": 1077.02,
+    "risk": -36.54,
+    "reward": 0.72,
     "risk_reward": 0.0,
-    "conviction": 25,
+    "conviction": 30,
     "volume": {
-      "latest": 3699706,
-      "avg_20d": 4430880,
-      "ratio": 0.83,
-      "confirmed": false
+      "latest": 6110141,
+      "avg_20d": 4434540,
+      "ratio": 1.38,
+      "confirmed": true
     },
     "trend": {
-      "ema_50": 956.37,
-      "ema_200": 1010.77,
+      "ema_50": 961.07,
+      "ema_200": 1011.81,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 79.8,
+      "rsi_14": 75.3,
       "label": "OVERBOUGHT"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 25/100 (LOW)",
+        "Conviction 30/100 (LOW)",
         "R:R not available",
-        "Volume does not confirm the move"
+        "Volume confirms the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 104759.1911424,
-    "pe": 76.17127,
+    "mcap_cr": 105240.9856,
+    "pe": 76.52158,
     "roe": 12.791,
     "de": 0.32905,
     "sales_growth_yoy": 20.3,
@@ -305,16 +305,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-23"
+    "Data as of 2026-11-25"
   ],
   "calibration": {
-    "bias_pct": 1.9404,
+    "bias_pct": 1.7618,
     "coverage": 0.05,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-23",
+        "target_date": "2026-11-25",
+        "predicted_med": 1087.99,
+        "actual_close": 1076.300048828125,
+        "error_pct": -1.0745,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-20",
         "target_date": "2026-11-23",
@@ -485,20 +494,11 @@
         "error_pct": 1.7447,
         "in_cone": false,
         "direction_correct": false
-      },
-      {
-        "asof_date": "2026-10-23",
-        "target_date": "2026-10-26",
-        "predicted_med": 814.66,
-        "actual_close": 835.0,
-        "error_pct": 2.4967,
-        "in_cone": false,
-        "direction_correct": false
       }
     ],
     "n": 20,
-    "mae_pct": 2.11,
-    "directional_accuracy_pct": 20.0,
+    "mae_pct": 2.04,
+    "directional_accuracy_pct": 25.0,
     "calibration_pct": 5.0
   }
 }
