@@ -1,9 +1,8 @@
 {
   "code": "BEL",
   "name": "BEL",
-  "last": 404.3,
+  "last": 404.5,
   "hist": [
-    412.98,
     410.74,
     409.45,
     414.92,
@@ -248,55 +247,56 @@
     404.2,
     402.0,
     395.8,
-    404.3
+    404.3,
+    404.5
   ],
   "med": [
-    405.53
+    405.45
   ],
   "up": [
-    412.09
+    411.37
   ],
   "lo": [
-    408.37
+    408.31
   ],
-  "ret": 0.3,
-  "cone_width_pct": 0.92,
-  "asof": "2026-11-25",
+  "ret": 0.23,
+  "cone_width_pct": 0.76,
+  "asof": "2026-11-26",
   "trading": {
-    "entry": 404.3,
-    "stop_loss": 408.37,
-    "exit": 405.53,
-    "risk": -4.07,
-    "reward": 1.23,
+    "entry": 404.5,
+    "stop_loss": 408.31,
+    "exit": 405.45,
+    "risk": -3.81,
+    "reward": 0.95,
     "risk_reward": 0.0,
-    "conviction": 30,
+    "conviction": 25,
     "volume": {
-      "latest": 10976767,
-      "avg_20d": 10474416,
-      "ratio": 1.05,
-      "confirmed": true
+      "latest": 8123673,
+      "avg_20d": 10570800,
+      "ratio": 0.77,
+      "confirmed": false
     },
     "trend": {
-      "ema_50": 391.29,
-      "ema_200": 404.0,
+      "ema_50": 391.81,
+      "ema_200": 403.81,
       "label": "RECOVERING"
     },
     "momentum": {
-      "rsi_14": 60.3,
+      "rsi_14": 60.5,
       "label": "NEUTRAL"
     },
     "verdict": {
       "label": "CAUTION",
       "reasons": [
-        "Conviction 30/100 (LOW)",
+        "Conviction 25/100 (LOW)",
         "R:R not available",
-        "Volume confirms the move"
+        "Volume does not confirm the move"
       ]
     }
   },
   "fundamentals": {
-    "mcap_cr": 295680.5537792,
-    "pe": 46.228573,
+    "mcap_cr": 300760.8520704,
+    "pe": 47.022858,
     "roe": 26.748,
     "de": 0.0032400000000000003,
     "sales_growth_yoy": 26.5,
@@ -305,16 +305,25 @@
   },
   "status": [
     "Data OK",
-    "Data as of 2026-11-25"
+    "Data as of 2026-11-26"
   ],
   "calibration": {
-    "bias_pct": 0.7401,
+    "bias_pct": 0.6654,
     "coverage": 0.15,
     "cone_scale": 2.0,
     "n": 20
   },
   "accuracy": {
     "history": [
+      {
+        "asof_date": "2026-11-25",
+        "target_date": "2026-11-26",
+        "predicted_med": 405.53,
+        "actual_close": 404.5,
+        "error_pct": -0.254,
+        "in_cone": false,
+        "direction_correct": true
+      },
       {
         "asof_date": "2026-11-23",
         "target_date": "2026-11-25",
@@ -485,19 +494,10 @@
         "error_pct": -1.0431,
         "in_cone": true,
         "direction_correct": true
-      },
-      {
-        "asof_date": "2026-10-26",
-        "target_date": "2026-10-27",
-        "predicted_med": 363.44,
-        "actual_close": 367.95001220703125,
-        "error_pct": 1.2409,
-        "in_cone": false,
-        "direction_correct": true
       }
     ],
     "n": 20,
-    "mae_pct": 1.29,
+    "mae_pct": 1.24,
     "directional_accuracy_pct": 50.0,
     "calibration_pct": 15.0
   }
